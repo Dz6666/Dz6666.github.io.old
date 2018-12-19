@@ -2087,7 +2087,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff9969;
+  background: #e5d252;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3227,7 +3227,7 @@ body {
   background-position: center;
 }
 .site-meta {
-  background: #ff2a2a;
+  background: $black;
 }
 .github-corner :hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;

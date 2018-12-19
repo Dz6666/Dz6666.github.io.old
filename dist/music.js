@@ -7,7 +7,7 @@ const ap = new APlayer({
         name: '走歌人',
         artist: '杠姐',
         url: 'http://other.web.ri01.sycdn.kuwo.cn/resource/n3/1/70/780373770.mp3',
-        cover: 'https://www.liukui.tech/images/haha.gif',
+        cover: 'http://img1.2345.com/duoteimg/zixunImg/local/2017/03/09/14890377216756.jpg',
       },
       {
         name: 'Explore',
