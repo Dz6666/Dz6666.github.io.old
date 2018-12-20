@@ -307,7 +307,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
         
@@ -326,7 +326,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
 
   </li>
         
@@ -345,7 +345,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
 
   </li>
         
@@ -454,6 +454,1425 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/数据库基础原理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/数据库基础原理/" class="post-title-link" itemprop="https://9527dz.top/index.html">数据库基础原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/数据库基础原理/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/数据库基础原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://raw.githubusercontent.com/Dz6666/Dz6666.github.ii/master/css/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%A7%E6%A0%87%E9%A2%98.png" alt=""></p>
+<h2 id="MYSQL数据库"><a href="#MYSQL数据库" class="headerlink" title="MYSQL数据库"></a>MYSQL数据库</h2><p>关系型数据库基础<br>安装MySQL<br>管理数据库和表<br>用户和权限管理<br>函数，存储过程和触发器<br>MySQL架构<br>存储引擎<br>服务器选项，系统和状态变量<br>优化查询和索引管理<br>锁和事务管理<br>日志管理<br>备份还原<br>MySQL集群  </p>
+<h2 id="数据的时代"><a href="#数据的时代" class="headerlink" title="数据的时代"></a>数据的时代</h2><p>涉及的数据量大<br>数据不随程序的结束而消失<br>数据被多个应用程序共享<br>大数据   </p>
+<h2 id="数据库的发展史"><a href="#数据库的发展史" class="headerlink" title="数据库的发展史"></a>数据库的发展史</h2><p>萌芽阶段：文件系统        使用磁盘文件来存储数据<br>初级阶段：第一代数据库    出现了网状模型、层次模型的数据库<br>中级阶段：第二代数据库    关系型数据库和结构化查询语言<br>高级阶段：新一代数据库    “关系-对象”型数据库   </p>
+<h2 id="文件管理系统的缺点"><a href="#文件管理系统的缺点" class="headerlink" title="文件管理系统的缺点"></a>文件管理系统的缺点</h2><p>编写应用程序不方便<br>数据冗余不可避免<br>应用程序依赖性<br>不支持对文件的并发访问<br>数据间联系弱<br>难以按用户视图表示数据<br>无安全控制功能   </p>
+<h2 id="数据库管理系统的优点"><a href="#数据库管理系统的优点" class="headerlink" title="数据库管理系统的优点"></a>数据库管理系统的优点</h2><p>相互关联的数据的集合<br>较少的数据冗余<br>程序与数据相互独立<br>保证数据的安全、可靠<br>最大限度地保证数据的正确性<br>数据可以并发使用并能同时保证一致性   </p>
+<h2 id="数据库管理系统"><a href="#数据库管理系统" class="headerlink" title="数据库管理系统"></a>数据库管理系统</h2><p>数据库是数据的汇集，它以一定的组织形式存于存储介质上<br>DBMS是管理数据库的系统软件，它实现数据库系统的各种功能。是数据库系 统的核心<br>DBA：负责数据库的规划、设计、协调、维护和管理等工作<br>应用程序指以数据库为基础的应用程序<br><img src="https://raw.githubusercontent.com/Dz6666/Dz6666.github.ii/master/fancybox/DBMS.png" alt="管理数据库的系统软件"></p>
+<h2 id="数据库管理系统的基本功能"><a href="#数据库管理系统的基本功能" class="headerlink" title="数据库管理系统的基本功能"></a>数据库管理系统的基本功能</h2><p>数据定义<br>数据处理<br>数据安全<br>数据备份 </p>
+<h2 id="网状数据库"><a href="#网状数据库" class="headerlink" title="网状数据库"></a>网状数据库</h2><p>最早出现的是网状DBMS，1964年通用电气公司的Charles Bachman成功地开发出世界上第一 个网状IDS，也是第一个数据库管理系统，IDS 具有数据模式和日志的特征，只能在GE主机运行   </p>
+<h2 id="层次数据库"><a href="#层次数据库" class="headerlink" title="层次数据库"></a>层次数据库</h2><h2 id="数据库系统的架构"><a href="#数据库系统的架构" class="headerlink" title="数据库系统的架构"></a>数据库系统的架构</h2><p>单机架构<br>大型主机/终端架构<br>主从式架构（C/S）<br>分布式架构   </p>
+<h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><p>关系型数据库：使用的是sql语言，结构化的查询语言  ，内部机制特性ACID特性：保证数据库的安全稳定，影响性能<br>NOSQL：redis:高性能，高并发</p>
+<p><code>关系 ：</code>关系就是二维表，其中：表中的行、列次序并不重要<br><code>行row：</code>表中的每一行，又称为一条记录<br><code>列column：</code>表中的每一列，称为属性，字段<br><code>主键（Primary key）：</code>用于惟一确定一个记录的字段<br><code>域domain：</code>属性的取值范围，如，性别只能是‘男’和‘女’两个值    </p>
+<p>一个服务器可以搭建多个DBMS<br>DBMS:多个数据库  ，推荐存放一个数据库，防止访问量过大<br>库：同一个项目的相关系数据，多个表<br>表：一个表多个字段和记录  </p>
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><p>RDBMS：<br>&ensp;&ensp;MySQL: MySQL, MariaDB, Percona Server<br>&ensp;&ensp;PostgreSQL: 简称为pgsql，EnterpriseDB  &ensp;&ensp;Oracle    MSSQL<br>&ensp;&ensp;DB2<br>数据库排名：   <a href="https://db-engines.com/en/ranking" target="_blank" rel="noopener">https://db-engines.com/en/ranking</a>  </p>
+<h2 id="实体-联系模型E-R"><a href="#实体-联系模型E-R" class="headerlink" title="实体-联系模型E-R"></a>实体-联系模型E-R</h2><p>实体Entity：客观存在并可以相互区分的客观事物或抽象事件称为实体<br>&ensp;&ensp;在E-R图中用矩形框表示实体，把实体名写在框内<br>属性：实体所具有的特征或性质<br>联系：联系是数据之间的关联集合，是客观存在的应用语义链<br>&ensp;&ensp;实体内部的联系：指组成实体的各属性之间的联系。如职工实体中，职工号和 部门经理号之间有一种关联关系<br>&ensp;&ensp;实体之间的联系：指不同实体之间联系。例：学生选课实体和学生基本信息实 体之间<br>&ensp;&ensp;实体之间的联系用菱形框表示   </p>
+<h2 id="联系类型"><a href="#联系类型" class="headerlink" title="联系类型"></a>联系类型</h2><p>联系的类型<br>&ensp;&ensp;一对一联系(1:1)<br>&ensp;&ensp;一对多联系(1:n)<br>&ensp;&ensp;多对多联系(m:n)<br>数据的操作：<br>&ensp;&ensp;数据提取：在数据集合中提取感兴趣的内容。SELECT<br>&ensp;&ensp;数据更新：变更数据库中的数据。INSERT、DELETE、UPDATE<br>数据的约束条件 ：是一组完整性规则的集合<br>&ensp;&ensp;实体（行）完整性 Entity integrity<br>&ensp;&ensp;域（列）完整性 Domain Integrity<br>&ensp;&ensp;参考完整性 Referential Integrity </p>
+<h2 id="简易数据规划流程"><a href="#简易数据规划流程" class="headerlink" title="简易数据规划流程"></a>简易数据规划流程</h2><p>第一阶段：收集数据，得到字段<br>&ensp;&ensp;收集必要且完整的数据项<br>&ensp;&ensp;转换成数据表的字段<br>第二阶段：把字段分类，归入表，建立表的关联<br>&ensp;&ensp;关联：表和表间的关系<br>&ensp;&ensp;分割数据表并建立关联的优点<br>&ensp;&ensp;节省空间<br>&ensp;&ensp;减少输入错误<br>&ensp;&ensp;方便数据修改<br>第三阶段：<br>&ensp;&ensp;规范化数据库   </p>
+<h2 id="数据库的正规化分析"><a href="#数据库的正规化分析" class="headerlink" title="数据库的正规化分析"></a>数据库的正规化分析</h2><p>RDMBS设计范式基础概念<br>&ensp;&ensp;设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不 同的规范要求被称为不同范式，各种范式呈递次规范，越高的范式数据库冗余越小<br>&ensp;&ensp;目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式 （3NF）、巴德斯科范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称 完美范式）。满足最低要求的范式是第一范式（1NF）。在第一范式的基础上 进一步满足更多规范要求的称为第二范式（2NF），其余范式以次类推。一般 数据库只需满足第三范式(3NF）即可 </p>
+<p><code>1NF：无重复的列，每一列都是不可分割的基本数据项，同一列中不能有多个 值，即实体中的某个属性不能有多个值或者不能有重复的属性。除去同类型的 字段，就是无重复的列</code><br>说明：第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF） 的数据库就不是关系数据库<br><code>2NF：属性完全依赖于主键，第二范式必须先满足第一范式，要求表中的每个 行必须可以被唯一地区分。通常为表加上一个列，以存储各个实例的唯一标识 PK，非PK的字段需要与整个PK有直接相关性</code><br><code>3NF：属性不依赖于其它非主属性，满足第三范式必须先满足第二范式。第三 范式要求一个数据库表中不包含已在其它表中已包含的非主关键字信息，非PK 的字段间不能有从属关系</code>  </p>
+<h2 id="SQL概念"><a href="#SQL概念" class="headerlink" title="SQL概念"></a>SQL概念</h2><p>SQL: Structure Query Language<br>&ensp;&ensp;结构化查询语言<br>&ensp;&ensp;SQL解释器：<br>&ensp;&ensp;数据存储协议：应用层协议，C/S<br>S：server, 监听于套接字，接收并处理客户端的应用请求<br>C：Client<br>&ensp;&ensp;客户端程序接口<br>&ensp;&ensp;&ensp;&ensp;CLI     字符、命令行<br>&ensp;&ensp;&ensp;&ensp;GUI     图形化<br>&ensp;&ensp;应用编程接口  API<br>&ensp;&ensp;&ensp;&ensp;ODBC：Open Database Connectivity     开放的数据库连接<br>&ensp;&ensp;&ensp;&ensp;JDBC：Java Data Base Connectivity     java开放数据库的开发接口</p>
+<p>mysql：端口tcp 3306<br>oracle：端口tcp 1521<br>sqlserver:端口tcp 1433</p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p><code>约束：constraint，表中的数据要遵守的限制</code><br>&ensp;&ensp;主键pk：一个或多个字段的组合，填入的数据必须能在本表中唯一标识本行； 必须提供数据，即NOT NULL，一个表只能有一个<br>&ensp;&ensp;惟一键uk：一个或多个字段的组合，填入的数据必须能在本表中唯一标识本行； 允许为NULL，一个表可以存在多个<br>&ensp;&ensp;外键fk：一个表中的某字段可填入的数据取决于另一个表的主键或唯一键已有 的数据 ,作用在依赖的表上，被依赖的表上，可以作用主键和唯一键<br>&ensp;&ensp;检查：字段值在一定范围内   </p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>索引：将表中的一个或多个字段中的数据复制一份另存，并且按特定次序排序 存储   （例如：书签，标识）<br>关系运算：<br>&ensp;&ensp;选择：挑选出符合条件的行<br>&ensp;&ensp;投影：挑选出需要的字段<br>&ensp;&ensp;连接：表间字段的关联  </p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>数据抽象：<br>&ensp;&ensp;物理层：数据存储格式，即RDBMS在磁盘上如何组织文件<br>&ensp;&ensp;逻辑层：DBA角度，描述存储什么数据，以及数据间存在什么样的关系<br>&ensp;&ensp;视图层：用户角度，描述DB中的部分数据<br>关系模型的分类：<br>&ensp;&ensp;关系模型<br>&ensp;&ensp;基于对象的关系模型<br>&ensp;&ensp;半结构化的关系模型：XML数据  ：扩展的标记语言</p>
+<p><code>范例：基于xml语言存放的数据</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">下面目录内的文件都是基于xml语言存放数据的文件</span><br><span class="line">[root@centos6 gconf]<span class="comment"># cd /etc/gconf/gconf.xml.defaults/</span></span><br></pre></td></tr></table></figure></p>
+<p><code>范例：设置开机自动登陆</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># vim /etc/gdm/custom.conf </span></span><br><span class="line"><span class="comment"># GDM configuration storage</span></span><br><span class="line">[daemon]</span><br><span class="line">AutomaticLoginEnable=ture</span><br><span class="line">AutomaticLongin=root</span><br></pre></td></tr></table></figure></p>
+<h2 id="MySQL历史"><a href="#MySQL历史" class="headerlink" title="MySQL历史"></a>MySQL历史</h2><p>1979年：TcX公司 Monty Widenius，Unireg<br>1996年：发布MySQL1.0，Solaris版本，Linux版本<br>1999年：MySQL AB公司，瑞典<br>2003年：MySQL 5.0版本，提供视图、存储过程等功能<br>2008年：Sun 收购<br>2009年：Oracle收购sun<br>2009年：Monty成立MariaDB   </p>
+<h2 id="MySQL和MariaDB"><a href="#MySQL和MariaDB" class="headerlink" title="MySQL和MariaDB"></a>MySQL和MariaDB</h2><p>官方网址：<br><a href="https://www.mysql.com/" target="_blank" rel="noopener">https://www.mysql.com/</a><br><a href="http://mariadb.org/" target="_blank" rel="noopener">http://mariadb.org/</a><br><code>官方文档</code><br><code>https://dev.mysql.com/doc/</code><br><code>https://mariadb.com/kb/en/</code><br>版本演变：<br>MySQL：5.1 –&gt; 5.5 –&gt; 5.6 –&gt; 5.7 –&gt;8.0<br>MariaDB：5.5 –&gt;10.0–&gt; 10.1 –&gt; 10.2 –&gt; 10.3<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum info ..</span><br><span class="line">centos6默认光盘安装mysql 5.1.73</span><br><span class="line">centos7使用的是mariadb 5.5.56</span><br></pre></td></tr></table></figure></p>
+<h2 id="MYSQL的特性"><a href="#MYSQL的特性" class="headerlink" title="MYSQL的特性"></a>MYSQL的特性</h2><p><code>插件式存储引擎：</code>也称为“表类型”，存储管理器有多种实现版本，功能和特 性可能均略有差别；用户可根据需要灵活选择,Mysql5.5.5开始innoDB引擎是 MYSQL默认引擎<br>&ensp;&ensp;MyISAM ==&gt; Aria<br>&ensp;&ensp;InnoDB ==&gt; XtraDB<br>单进程，多线程<br>诸多扩展和新特性<br>提供了较多测试组件<br>开源   </p>
+<p>raw:裸文件系统：无文件系统：二进制方式存储</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/mysql安装和基本操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/mysql安装和基本操作/" class="post-title-link" itemprop="https://9527dz.top/index.html">mysql安装和基本操作</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/mysql安装和基本操作/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/mysql安装和基本操作/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MYSQL的特性"><a href="#MYSQL的特性" class="headerlink" title="MYSQL的特性"></a>MYSQL的特性</h2><p><code>插件式存储引擎：也称为“表类型”，存储管理器有多种实现版本，功能和特 性可能均略有差别；用户可根据需要灵活选择,Mysql5.5.5开始&amp;innoDB引擎是 MYSQL默认引擎</code><br>&ensp;&ensp;MyISAM ==&gt; Aria<br>&ensp;&ensp;InnoDB ==&gt; XtraDB<br>单进程，多线程<br>诸多扩展和新特性<br>提供了较多测试组件<br>开源 </p>
+<h2 id="安装MYSQL"><a href="#安装MYSQL" class="headerlink" title="安装MYSQL"></a>安装MYSQL</h2><p><code>Mariadb安装方式：</code><br>1、源代码：编译安装<br>2、二进制格式的程序包：展开至特定路径，并经过简单配置后即可使用<br>3、程序包管理器管理的程序包<br>CentOS 安装光盘<br>项目官方：  <a href="https://downloads.mariadb.org/mariadb/repositories/" target="_blank" rel="noopener">https://downloads.mariadb.org/mariadb/repositories/</a><br>国内镜像：  <a href="https://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadbx.y.z/yum/centos/7/x86_64/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadbx.y.z/yum/centos/7/x86_64/</a>     </p>
+<h2 id="RPM包安装MySQL"><a href="#RPM包安装MySQL" class="headerlink" title="RPM包安装MySQL"></a>RPM包安装MySQL</h2><p>RPM包安装<br>&ensp;&ensp;CentOS 7：安装光盘直接提供<br>&ensp;&ensp;&ensp;&ensp;mariadb-server   服务器包<br>&ensp;&ensp;&ensp;&ensp;mariadb       客户端工具包<br>&ensp;&ensp;CentOS 6<br>提高安全性<br>&ensp;&ensp;<code>mysql_secure_installation</code><br>&ensp;&ensp;&ensp;&ensp;<code>设置数据库管理员root口令</code><br>&ensp;&ensp;&ensp;&ensp;<code>禁止root远程登录</code><br>&ensp;&ensp;&ensp;&ensp;<code>删除anonymous用户帐号</code><br>&ensp;&ensp;&ensp;&ensp;<code>删除test数据库</code></p>
+<h2 id="MariaDB程序"><a href="#MariaDB程序" class="headerlink" title="MariaDB程序"></a>MariaDB程序</h2><p>客户端程序：<br>&ensp;&ensp;mysql: 交互式的CLI工具<br>&ensp;&ensp;mysqldump：备份工具，基于mysql协议向mysqld发起查询请求，并将查得的所<br>有数据转换成insert等写操作语句保存文本文件中<br>&ensp;&ensp;mysqladmin：基于mysql协议管理mysqld<br>&ensp;&ensp;mysqlimport：数据导入工具<br>MyISAM存储引擎的管理工具：<br>&ensp;&ensp;myisamchk：检查MyISAM库<br>&ensp;&ensp;myisampack：打包MyISAM表，只读<br>服务器端程序<br>&ensp;&ensp;mysqld_safe<br>&ensp;&ensp;mysqld<br>&ensp;&ensp;mysqld_multi    多实例（一个程序在系统上运行多次，多个进程，缺点仅能实现单一版本的多实例） ，示例：mysqld_multi  –example   </p>
+<h2 id="用户账号"><a href="#用户账号" class="headerlink" title="用户账号"></a>用户账号</h2><p><code>mysql用户账号由两部分组成：</code><br>&ensp;&ensp;‘USERNAME‘@’HOST‘<br>说明：<br>&ensp;&ensp;HOST限制此用户可通过哪些远程主机连接mysql服务器<br>&ensp;&ensp;支持使用通配符：<br>&ensp;&ensp;&ensp;&ensp;% 匹配任意长度的任意字符<br>&ensp;&ensp;&ensp;&ensp;172.16.0.0/255.255.0.0 或 172.16.%.%<br>&ensp;&ensp;&ensp;&ensp;_  匹配任意单个字符  </p>
+<h2 id="Mysql-客户端"><a href="#Mysql-客户端" class="headerlink" title="Mysql 客户端"></a>Mysql 客户端</h2><p>mysql使用模式：<br>交互式模式：<br>&ensp;&ensp;可运行命令有两类：<br>&ensp;&ensp;客户端命令：<br>&ensp;&ensp;&ensp;&ensp;\h, help<br>&ensp;&ensp;&ensp;&ensp;\u，use<br>&ensp;&ensp;&ensp;&ensp;\s，status<br>&ensp;&ensp;&ensp;&ensp;!，system<br>&ensp;&ensp;服务器端命令：<br>&ensp;&ensp;&ensp;&ensp;SQL语句， 需要语句结束符；<br>脚本模式：<br>&ensp;&ensp;mysql –uUSERNAME -pPASSWORD &lt; /path/somefile.sql<br>&ensp;&ensp;mysql&gt; source /path/from/somefile.sql   </p>
+<h2 id="Mysql客户端"><a href="#Mysql客户端" class="headerlink" title="Mysql客户端"></a>Mysql客户端</h2><p>mysql客户端可用选项：<br>-A, –no-auto-rehash 禁止补全<br>-u, –user=  用户名,默认为root<br>-h, –host=  服务器主机,默认为localhost<br>-p, –passowrd= 用户密码,建议使用-p,默认为空密码<br>-P, –port=  服务器端口<br>-S, –socket= 指定连接socket文件路径<br>-D, –database=  指定默认数据库<br>-C, –compress 启用压缩<br>-e   “SQL“ 执行SQL命令<br>-V, –version 显示版本<br>-v  –verbose 显示详细信息<br>–print-defaults   获取程序默认使用的配置    </p>
+<h2 id="socket地址"><a href="#socket地址" class="headerlink" title="socket地址"></a>socket地址</h2><p>服务器监听的两种socket地址：<br>&ensp;&ensp;ip socket: 监听在tcp的3306端口，支持远程通信<br>&ensp;&ensp;unix sock: 监听在sock文件上，仅支持本机通信<br>&ensp;&ensp;&ensp;&ensp;如：/var/lib/mysql/mysql.sock)<br>说明：host为localhost,127.0.0.1时自动使用unix sock   </p>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>运行mysql命令：默认空密码登录<br>&ensp;&ensp;mysql&gt;use mysql<br>&ensp;&ensp;mysql&gt;select user();查看当前用户<br>&ensp;&ensp;mysql&gt;SELECT User,Host,Password FROM user;<br>登录系统：mysql  –uroot  –p<br>客户端命令：本地执行<br>&ensp;&ensp;mysql&gt; help<br>&ensp;&ensp;每个命令都完整形式和简写格式<br>&ensp;&ensp;mysql&gt; status 或 \s<br>服务端命令：通过mysql协议发往服务器执行并取回结果  每个命令末尾都必须使用命令结束符号，默认为分号<br>&ensp;&ensp;示例：SELECT VERSION();    </p>
+<h2 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h2><p>服务器端(mysqld)：工作特性有多种配置方式<br>1、命令行选项：<br>2、配置文件：类ini格式<br>集中式的配置，能够为mysql的各应用程序提供配置信息<br>&ensp;&ensp;[mysqld]<br>&ensp;&ensp;[mysqld_safe]<br>&ensp;&ensp;[mysqld_multi]<br>&ensp;&ensp;[mysql]<br>&ensp;&ensp;[mysqldump]<br>&ensp;&ensp;[server]<br>&ensp;&ensp;[client]<br>格式：parameter = value<br>说明：_和- 相同<br>&ensp;&ensp;1，ON，TRUE意义相同， 0，OFF，FALSE意义相同   </p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p><code>配置文件：</code><br><code>后面覆盖前面的配置文件，顺序如下：下面的优先级高</code><br>/etc/my.cnf              Global选项<br>/etc/mysql/my.cnf        Global选项<br>SYSCONFDIR/my.cnf        Global选项<br>$MYSQL_HOME/my.cnf       Server-specific 选项<br>–defaults-extra-file= path<br>~/.my.cnf                User-specific 选项   </p>
+<h2 id="MairaDB配置"><a href="#MairaDB配置" class="headerlink" title="MairaDB配置"></a>MairaDB配置</h2><p>侦听3306/tcp端口可以在绑定有一个或全部接口IP上<br>vim /etc/my.cnf<br>[mysqld]<br>skip-networking=1<br>关闭网络连接，只侦听本地客户端， 所有和服务器的交互都通过一个socket实 现，socket的配置存放在/var/lib/mysql/mysql.sock） 可在/etc/my.cnf修改   </p>
+<h2 id="通用二进制格式安装过程"><a href="#通用二进制格式安装过程" class="headerlink" title="通用二进制格式安装过程"></a>通用二进制格式安装过程</h2><p>二进制格式安装过程<br>(1) 准备用户<br>&ensp;&ensp;groupadd -r -g 306 mysql<br>&ensp;&ensp;useradd -r -g 306 -u 306 –d /data/mysql  mysql<br>(2) 准备数据目录，建议使用逻辑卷<br>&ensp;&ensp;mkdir /data/mysql<br>&ensp;&ensp;chown mysql:mysql  /data/mysql<br>(3) 准备二进制程序<br>&ensp;&ensp;tar xf mariadb-VERSION-linux-x86_64.tar.gz -C   /usr/local<br>&ensp;&ensp;cd /usr/local<br>&ensp;&ensp;ln -sv mariadb-VERSION mysql<br>&ensp;&ensp;chown -R root:mysql /usr/local/mysql/<br>(4) 准备配置文件<br>&ensp;&ensp;mkdir /etc/mysql/<br>&ensp;&ensp;cp support-files/my-large.cnf /etc/mysql/my.cnf<br>&ensp;&ensp;[mysqld]中添加三个选项：<br>&ensp;&ensp;datadir = /data/mysql<br>&ensp;&ensp;innodb_file_per_table = on<br>&ensp;&ensp;skip_name_resolve = on    禁止主机名解析，建议使用<br>(5)创建数据库文件<br>&ensp;&ensp;cd /usr/local/mysql/<br>&ensp;&ensp;./scripts/mysql_install_db –datadir=/data/mysql –user=mysql<br>(6)准备服务脚本，并启动服务<br>&ensp;&ensp;cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld<br>&ensp;&ensp;chkconfig –add mysqld<br>service mysqld start<br>(7)PATH路径<br>&ensp;&ensp;echo ‘PATH=/user/local/mysql/bin:$PATH’ &gt;   /etc/profile.d/mysql<br>(8)安全初始化<br> &ensp;&ensp;/user/local/mysql/bin/mysql_secure_installation  </p>
+<h2 id="源码编译安装mariadb"><a href="#源码编译安装mariadb" class="headerlink" title="源码编译安装mariadb"></a>源码编译安装mariadb</h2><p>安装包<br>&ensp;&ensp;yum install bison bison-devel  zlib-devel libcurl-devel libarchive-devel  boost-devel  gcc  gcc-c++  cmake ncurses-devel gnutls-devel libxml2-devel openssl-devel libevent-devel libaio-devel<br>做准备用户和数据目录<br>&ensp;&ensp;useradd –r –s /sbin/nologin –d  /data/mysql/  mysql<br>&ensp;&ensp;mkdir   /data/mysql<br>&ensp;&ensp;chown  mysql.mysql  /data/mysql<br>&ensp;&ensp;tar xvf   mariadb-10.2.18.tar.gz<br>cmake 编译安装<br>&ensp;&ensp;cmake的重要特性之一是其独立于源码(out-of-source)的编译功能，即编译工作可以在 另一个指定的目录中而非源码目录中进行，这可以保证源码目录不受任何一次编译的影 响，因此在同一个源码树上可以进行多次不同的编译，如针对于不同平台编译  编译选项:<a href="https://dev.mysql.com/doc/refman/5.7/en/source-configuration-options.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/source-configuration-options.html</a>  </p>
+<p>cd mariadb-10.2.18/<br>cmake . \<br>-DCMAKE_INSTALL_PREFIX=/app/mysql \<br>-DMYSQL_DATADIR=/data/mysql/ \<br>-DSYSCONFDIR=/etc \<br>-DMYSQL_USER=mysql \<br>-DWITH_INNOBASE_STORAGE_ENGINE=1 \<br>-DWITH_ARCHIVE_STORAGE_ENGINE=1 \<br>-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \<br>-DWITH_PARTITION_STORAGE_ENGINE=1  \<br>-DWITHOUT_MROONGA_STORAGE_ENGINE=1 \<br>-DWITH_DEBUG=0 \<br>-DWITH_READLINE=1 \<br>-DWITH_SSL=system \<br>-DWITH_ZLIB=system \<br>-DWITH_LIBWRAP=0 \<br>-DENABLED_LOCAL_INFILE=1  \<br>-DMYSQL_UNIX_ADDR=/data/mysql/mysql.sock \<br>-DDEFAULT_CHARSET=utf8 \<br>-DDEFAULT_COLLATION=utf8_general_ci make &amp;&amp; make install<br>提示：如果出错，执行rm -f CMakeCache.txt    </p>
+<p>准备环境变量<br>echo ‘PATH=/app/mysql/bin:$PATH’ &gt; /etc/profile.d/mysql.sh<br>.     /etc/profile.d/mysql.sh<br>生成数据库文件<br>cd   /app/mysql/<br>scripts/mysql_install_db –datadir=/data/mysql/ –user=mysql<br>准备配置文件<br>cp  /app/mysql/support-files/my-huge.cnf   /etc/my.cnf<br>准备启动脚本<br>cp /app/mysql/support-files/mysql.server  /etc/init.d/mysqld<br>启动服务<br>chkconfig –add mysqld ;service mysqld start     </p>
+<h2 id="关系型数据库的常见组件"><a href="#关系型数据库的常见组件" class="headerlink" title="关系型数据库的常见组件"></a>关系型数据库的常见组件</h2><p>数据库：database<br>表：table  行：row  列：column<br>索引：index<br>视图：view<br>用户：user<br>权限：privilege<br>存储过程：procedure<br>存储函数：function<br>触发器：trigger<br>事件调度器：event scheduler，任务计划   </p>
+<h2 id="SQL语言的兴起与语法标准"><a href="#SQL语言的兴起与语法标准" class="headerlink" title="SQL语言的兴起与语法标准"></a>SQL语言的兴起与语法标准</h2><p>20世纪70年代，IBM开发出SQL，用于DB2<br>1981年，IBM推出SQL/DS数据库<br>业内标准微软和Sybase的T-SQL，Oracle的PL/SQL<br>SQL作为关系型数据库所使用的标准语言，最初是基于IBM的实现在1986年被 批准的。1987年，“国际标准化组织(ISO)”把ANSI(美国国家标准化组织) SQL作为国际标准。<br>SQL：ANSI SQL<br>SQL-1986, SQL-1989, SQL-1992, SQL-1999, SQL-2003 , SQL-2008  SQL-2011   </p>
+<h2 id="SQL语言规范"><a href="#SQL语言规范" class="headerlink" title="SQL语言规范"></a>SQL语言规范</h2><p>在数据库系统中，SQL语句不区分大小写(建议用大写)<br>SQL语句可单行或多行书写，以“;”结尾<br>关键词不能跨多行或简写<br>用空格和缩进来提高语句的可读性<br>子句通常位于独立行，便于编辑，提高可读性<br>注释：<br>&ensp;&ensp;SQL标准：<br>&ensp;&ensp;/<em>注释内容</em>/   多行注释<br>&ensp;&ensp;– 注释内容    单行注释，注意有空格<br>&ensp;&ensp;MySQL注释：  #     </p>
+<h2 id="数据库对象"><a href="#数据库对象" class="headerlink" title="数据库对象"></a>数据库对象</h2><p>数据库的组件(对象)：<br>&ensp;&ensp;数据库、表、索引、视图、用户、存储过程、函数、触发器、事件调度器等<br>命名规则：<br>&ensp;&ensp;必须以字母开头<br>&ensp;&ensp;可包括数字和三个特殊字符（# _ $）<br>&ensp;&ensp;不要使用MySQL的保留字<br>&ensp;&ensp;同一database(Schema)下的对象不能同名   </p>
+<h2 id="SQL语句分类"><a href="#SQL语句分类" class="headerlink" title="SQL语句分类"></a>SQL语句分类</h2><p>SQL语句分类：<br>DDL: Data Defination Language 数据定义语言<br>&ensp;&ensp;CREATE，DROP，ALTER<br>DML: Data Manipulation Language 数据操纵语言<br>&ensp;&ensp;INSERT，DELETE，UPDATE<br>DCL：Data Control Language 数据控制语言<br>&ensp;&ensp;GRANT，REVOKE，COMMIT，ROLLBACK<br>DQL：Data Query Language 数据查询语言<br>&ensp;&ensp;SELECT </p>
+<h2 id="SQL语句构成"><a href="#SQL语句构成" class="headerlink" title="SQL语句构成"></a>SQL语句构成</h2><p>SQL语句构成：<br>&ensp;&ensp;Keyword组成clause<br>&ensp;&ensp;多条clause组成语句<br>示例：<br>SELECT *                   SELECT子句<br>FROM products              FROM子句<br>WHERE price&gt;400            WHERE子句<br>说明：一组SQL语句，由三个子句构成，SELECT,FROM和WHERE是关键字     </p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a><code>数据库操作</code></h2><p>创建数据库：<br>&ensp;&ensp;CREATE DATABASE|SCHEMA [IF NOT EXISTS] ‘DB_NAME’;<br>&ensp;&ensp;CHARACTER SET ‘character set name’<br>&ensp;&ensp;COLLATE ‘collate name’<br>删除数据库<br>&ensp;&ensp;DROP DATABASE|SCHEMA [IF EXISTS] ‘DB_NAME’;<br>查看支持所有字符集：<br>&ensp;&ensp;SHOW CHARACTER SET;<br>查看支持所有排序规则：<br>&ensp;&ensp;SHOW COLLATION;<br>获取命令使用帮助：<br>&ensp;&ensp;mysql&gt; HELP KEYWORD;<br>查看数据库列表：<br>&ensp;&ensp;mysql&gt; SHOW DATABASES;  </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/mysql安装 centos7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/mysql安装 centos7/" class="post-title-link" itemprop="https://9527dz.top/index.html">mysql安装 centos7</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/mysql安装 centos7/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/mysql安装 centos7/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mysql安装-centos7"><a href="#mysql安装-centos7" class="headerlink" title="mysql安装 centos7"></a>mysql安装 centos7</h2><p><code>光盘自带的版本</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># yum info mariadb</span></span><br><span class="line">Loaded plugins: fastestmirror, langpacks</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirrors.tuna.tsinghua.edu.cn</span><br><span class="line"> * extras: mirror.bit.edu.cn</span><br><span class="line"> * updates: mirror.bit.edu.cn</span><br><span class="line">Available Packages</span><br><span class="line">Name        : mariadb</span><br><span class="line">Arch        : x86_64</span><br><span class="line">Epoch       : 1</span><br><span class="line">Version     : 5.5.60</span><br><span class="line">Release     : 1.el7_5</span><br><span class="line">Size        : 8.9 M</span><br><span class="line">Repo        : updates/7/x86_64</span><br><span class="line">Summary     : A community developed branch of MySQL</span><br><span class="line">URL         : http://mariadb.org</span><br><span class="line">License     : GPLv2 with exceptions and LGPLv2 and BSD</span><br><span class="line">Description : MariaDB is a community developed branch of MySQL.</span><br><span class="line">            : MariaDB is a multi-user, multi-threaded SQL database</span><br><span class="line">            : server. It is a client/server implementation consisting</span><br><span class="line">            : of a server daemon (mysqld) and many different client</span><br><span class="line">            : programs and libraries. The base package contains the</span><br><span class="line">            : standard MariaDB/MySQL client programs and generic MySQL</span><br><span class="line">            : files.</span><br></pre></td></tr></table></figure></p>
+<p><code>rpm 方式安装Mariadb：</code><br>mysql端口默认为tcp 3306<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">安装：</span><br><span class="line">[root@centos7 ~]<span class="comment"># yum install mariadb-server -y</span></span><br><span class="line"></span><br><span class="line">查看安装包主要的文件列表：</span><br><span class="line">[root@centos7 ~]<span class="comment"># rpm -ql mariadb-server</span></span><br><span class="line">/etc/my.cnf.d/server.cnf   服务器端配置文件</span><br><span class="line">/usr/libexec/mysqld        服务器主程序</span><br><span class="line">/var/lib/mysql             存放数据库数据的路径</span><br><span class="line">/var/<span class="built_in">log</span>/mariadb/mariadb.log 日志</span><br><span class="line">/usr/lib/systemd/system/mariadb.service 服务启动脚本</span><br><span class="line"></span><br><span class="line">启动程序：</span><br><span class="line">    启动前查看数据库数据目录是为空</span><br><span class="line">    [root@centos7 ~]<span class="comment"># ls /var/lib/mysql/</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># </span></span><br><span class="line">[root@centos7 ~]<span class="comment"># systemctl restart mariadb</span></span><br><span class="line">root@centos7 ~]<span class="comment"># ls /var/lib/mysql/</span></span><br><span class="line">aria_log.00000001  ib_logfile0  mysql.sock</span><br><span class="line">aria_log_control   ib_logfile1  performance_schema</span><br><span class="line">ibdata1            mysql        <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">连接数据库：</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 2</span><br><span class="line">Server version: 5.5.60-MariaDB MariaDB Server</span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line">MariaDB [(none)]&gt; </span><br><span class="line"></span><br><span class="line">查看搜索引擎：</span><br><span class="line">MariaDB [(none)]&gt; show engines;</span><br><span class="line">+--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| Engine             | Support | Comment                                                                    | Transactions | XA   | Savepoints |</span><br><span class="line">+--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| MEMORY             | YES     | Hash based, stored <span class="keyword">in</span> memory, useful <span class="keyword">for</span> temporary tables                  | NO           | NO   | NO         |</span><br><span class="line">| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                                      | NO           | NO   | NO         |</span><br><span class="line">| CSV                | YES     | CSV storage engine                                                         | NO           | NO   | NO         |</span><br><span class="line">| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears)             | NO           | NO   | NO         |</span><br><span class="line">| MyISAM             | YES     | MyISAM storage engine                                                      | NO           | NO   | NO         |</span><br><span class="line">| InnoDB             | DEFAULT | Percona-XtraDB, Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |</span><br><span class="line">| ARCHIVE            | YES     | Archive storage engine                                                     | NO           | NO   | NO         |</span><br><span class="line">| FEDERATED          | YES     | FederatedX pluggable storage engine                                        | YES          | NO   | YES        |</span><br><span class="line">| PERFORMANCE_SCHEMA | YES     | Performance Schema                                                         | NO           | NO   | NO         |</span><br><span class="line">| Aria               | YES     | Crash-safe tables with MyISAM heritage                                     | NO           | NO   | NO         |</span><br><span class="line">+--------------------+---------+----------------------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">10 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">从服务器中得到相关的状态信息</span><br><span class="line">MariaDB [(none)]&gt; \s</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 15.1 Distrib 5.5.60-MariaDB, <span class="keyword">for</span> Linux (x86_64) using readline 5.1</span><br><span class="line"></span><br><span class="line">Connection id:		2</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server:			MariaDB</span><br><span class="line">Server version:		5.5.60-MariaDB MariaDB Server</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	utf8</span><br><span class="line">Conn.  characterset:	utf8</span><br><span class="line">UNIX socket:		/var/lib/mysql/mysql.sock</span><br><span class="line">Uptime:			9 min 44 sec</span><br><span class="line">Threads: 1  Questions: 6  Slow queries: 0  Opens: 0  Flush tables: 2  Open tables: 26  Queries per second avg: 0.010</span><br><span class="line">--------------</span><br></pre></td></tr></table></figure></p>
+<p><code>范例：centos7修改提示符：</code><br>（centos7mysql的配置文件和客户端是分开的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># cd /etc/my.cnf.d/</span></span><br><span class="line">[root@centos7 my.cnf.d]<span class="comment"># ls</span></span><br><span class="line">client.cnf  mysql-clients.cnf  server.cnf</span><br><span class="line"></span><br><span class="line">编辑客户端配置文件修改提示符</span><br><span class="line">[root@centos7 my.cnf.d]<span class="comment"># vim mysql-clients.cnf </span></span><br><span class="line">[mysql]</span><br><span class="line">prompt=<span class="string">'\u@\D-&gt;'</span></span><br><span class="line"></span><br><span class="line">查看是否修改成功</span><br><span class="line">[root@centos7 my.cnf.d]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 3</span><br><span class="line">Server version: 5.5.60-MariaDB MariaDB Server</span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and other</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current inputatement.</span><br><span class="line">root@Tue Nov 27 15:04:34 2018-&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt;    none:表示当前正在处于哪个数据库里面</span><br><span class="line"></span><br><span class="line">查看数据库的数据路径目录形式的代表数据库，也是系统自带的数据库，所以可以理解为数据库存放数据 分为系统自身用的数据、用户创建生产的数据库</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /var/lib/mysql/</span></span><br><span class="line">aria_log.00000001  ib_logfile0  mysql.sock</span><br><span class="line">aria_log_control   ib_logfile1  performance_schema</span><br><span class="line">ibdata1            mysql        <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">查看当前有多少数据库即表</span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">查看当前数据库的版本信息（数据库中带有括号的命令，表现为系统自带的函数）</span><br><span class="line">MariaDB [(none)]&gt; select version();</span><br><span class="line">+----------------+</span><br><span class="line">| version()      |</span><br><span class="line">+----------------+</span><br><span class="line">| 5.5.60-MariaDB |</span><br><span class="line">+----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">查看当前的用户信息</span><br><span class="line">MariaDB [(none)]&gt; select user();</span><br><span class="line">+----------------+</span><br><span class="line">| user()         |</span><br><span class="line">+----------------+</span><br><span class="line">| root@localhost |</span><br><span class="line">+----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">查看用户当前所在哪个数据库中</span><br><span class="line">MariaDB [(none)]&gt; select database();</span><br><span class="line">+------------+</span><br><span class="line">| database() |</span><br><span class="line">+------------+</span><br><span class="line">| NULL       |</span><br><span class="line">+------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line">使用use 客户端工具切换到指定的数据库，作为当前使用的数据库</span><br><span class="line">MariaDB [(none)]&gt; use mysql</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; </span><br><span class="line"></span><br><span class="line">查看当前使用的数据库中的所有表列表</span><br><span class="line">MariaDB [mysql]&gt; show tables;</span><br><span class="line">+---------------------------+</span><br><span class="line">| Tables_in_mysql           |</span><br><span class="line">+---------------------------+</span><br><span class="line">| columns_priv              |</span><br><span class="line">| db                        |</span><br><span class="line">| event                     |</span><br><span class="line">| func                      |</span><br><span class="line">| general_log               |</span><br><span class="line">| help_category             |</span><br><span class="line">| help_keyword              |</span><br><span class="line">| help_relation             |</span><br><span class="line">| help_topic                |</span><br><span class="line">| host                      |</span><br><span class="line">| ndb_binlog_index          |</span><br><span class="line">| plugin                    |</span><br><span class="line">| proc                      |</span><br><span class="line">| procs_priv                |</span><br><span class="line">| proxies_priv              |</span><br><span class="line">| servers                   |</span><br><span class="line">| slow_log                  |</span><br><span class="line">| tables_priv               |</span><br><span class="line">| time_zone                 |</span><br><span class="line">| time_zone_leap_second     |</span><br><span class="line">| time_zone_name            |</span><br><span class="line">| time_zone_transition      |</span><br><span class="line">| time_zone_transition_type |</span><br><span class="line">| user                      |</span><br><span class="line">+---------------------------+</span><br><span class="line">24 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">命令行指定显示指定数据库中的表列表(意义同上命令)</span><br><span class="line">MariaDB [mysql]&gt; show tables from mysql;</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">上面的数据库中的表实际表现为</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /var/lib/mysql/mysql</span></span><br><span class="line"></span><br><span class="line">查看服务端命令的帮助</span><br><span class="line"><span class="built_in">help</span> + 服务端命令</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">`范例：安装完数据库，linux上的任何用户都可以使用mysql的root用户登陆，也可以使用任何一个用户连接登陆`</span><br><span class="line">```bash</span><br><span class="line">查看mysql存放的用户信息</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 7</span><br><span class="line">Server version: 5.5.60-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; show tables;</span><br><span class="line">+---------------------------+</span><br><span class="line">| Tables_in_mysql           |</span><br><span class="line">+---------------------------+</span><br><span class="line">| columns_priv              |</span><br><span class="line">| db                        |</span><br><span class="line">| event                     |</span><br><span class="line">| func                      |</span><br><span class="line">| general_log               |</span><br><span class="line">| help_category             |</span><br><span class="line">| help_keyword              |</span><br><span class="line">| help_relation             |</span><br><span class="line">| help_topic                |</span><br><span class="line">| host                      |</span><br><span class="line">| ndb_binlog_index          |</span><br><span class="line">| plugin                    |</span><br><span class="line">| proc                      |</span><br><span class="line">| procs_priv                |</span><br><span class="line">| proxies_priv              |</span><br><span class="line">| servers                   |</span><br><span class="line">| slow_log                  |</span><br><span class="line">| tables_priv               |</span><br><span class="line">| time_zone                 |</span><br><span class="line">| time_zone_leap_second     |</span><br><span class="line">| time_zone_name            |</span><br><span class="line">| time_zone_transition      |</span><br><span class="line">| time_zone_transition_type |</span><br><span class="line">| user                      |</span><br><span class="line">+---------------------------+</span><br><span class="line">24 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; select user,host,password from user;</span><br><span class="line">+------+-------------+----------+</span><br><span class="line">| user | host        | password |</span><br><span class="line">+------+-------------+----------+</span><br><span class="line">| root | localhost   |          |</span><br><span class="line">| root | centos7.com |          |</span><br><span class="line">| root | 127.0.0.1   |          |</span><br><span class="line">| root | ::1         |          |</span><br><span class="line">|      | localhost   |          |</span><br><span class="line">|      | centos7.com |          |</span><br><span class="line">+------+-------------+----------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">安全加固，执行初始化命令</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql_secure_installation </span></span><br><span class="line">Enter current password <span class="keyword">for</span> root (enter <span class="keyword">for</span> none): （输入当前数据库中root用户的口令，若无口令，直接回车）</span><br><span class="line">Set root password? [Y/n] （是否设置root的口令）y</span><br><span class="line">New password:              口令</span><br><span class="line">Re-enter new password:     确定口令</span><br><span class="line">Password updated successfully!</span><br><span class="line">Reloading privilege tables..</span><br><span class="line"> ... Success!</span><br><span class="line">Remove anonymous users? [Y/n]  （是否删除匿名用户）y</span><br><span class="line">Disallow root login remotely? [Y/n] (是否禁用远程登陆)y</span><br><span class="line">Remove <span class="built_in">test</span> database and access to it? [Y/n] (是否删除测试数据库)y</span><br><span class="line">Reload privilege tables now? [Y/n]  (是否重新加载特权表)y</span><br><span class="line">Thanks <span class="keyword">for</span> using MariaDB!</span><br><span class="line"></span><br><span class="line">再次连接mysql数据库</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql -u root -p</span></span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; show tables;</span><br><span class="line">+---------------------------+</span><br><span class="line">| Tables_in_mysql           |</span><br><span class="line">+---------------------------+</span><br><span class="line">| columns_priv              |</span><br><span class="line">| db                        |</span><br><span class="line">| event                     |</span><br><span class="line">| func                      |</span><br><span class="line">| general_log               |</span><br><span class="line">| help_category             |</span><br><span class="line">| help_keyword              |</span><br><span class="line">| help_relation             |</span><br><span class="line">| help_topic                |</span><br><span class="line">| host                      |</span><br><span class="line">| ndb_binlog_index          |</span><br><span class="line">| plugin                    |</span><br><span class="line">| proc                      |</span><br><span class="line">| procs_priv                |</span><br><span class="line">| proxies_priv              |</span><br><span class="line">| servers                   |</span><br><span class="line">| slow_log                  |</span><br><span class="line">| tables_priv               |</span><br><span class="line">| time_zone                 |</span><br><span class="line">| time_zone_leap_second     |</span><br><span class="line">| time_zone_name            |</span><br><span class="line">| time_zone_transition      |</span><br><span class="line">| time_zone_transition_type |</span><br><span class="line">| user                      |</span><br><span class="line">+---------------------------+</span><br><span class="line">24 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; select user,host,password from user;</span><br><span class="line">+------+-----------+-------------------------------------------+</span><br><span class="line">| user | host      | password                                  |</span><br><span class="line">+------+-----------+-------------------------------------------+</span><br><span class="line">| root | localhost | *0E04F27C8B21547FD069D6E8519AE49B7ECE8E94 |</span><br><span class="line">| root | 127.0.0.1 | *0E04F27C8B21547FD069D6E8519AE49B7ECE8E94 |</span><br><span class="line">| root | ::1       | *0E04F27C8B21547FD069D6E8519AE49B7ECE8E94 |</span><br><span class="line">+------+-----------+-------------------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">目前仅可以本机连接，使用centos6连接测试</span><br><span class="line">[root@centos6 ~]<span class="comment"># mysql -u root -p centos -h 172.18.135.88</span></span><br><span class="line">Enter password: </span><br><span class="line">连接不上</span><br></pre></td></tr></table></figure>
+<p><code>范例：查看mysql账号数据库是否活跃</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># mysqladmin -u root -p ping</span></span><br><span class="line">Enter password: </span><br><span class="line">mysqld is alive</span><br></pre></td></tr></table></figure></p>
+<p><code>范例：停止此用户的数据库</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># mysqladmin -u root -p shutdown</span></span><br><span class="line">Enter password: </span><br><span class="line"></span><br><span class="line">测试：连接不上去了</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql -u root -p</span></span><br><span class="line">Enter password: </span><br><span class="line">ERROR 2002 (HY000): Can<span class="string">'t connect to local MySQL server through socket '</span>/var/lib/mysql/mysql.sock<span class="string">' (2)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">启动服务</span></span><br><span class="line"><span class="string">[root@centos7 ~]# systemctl restart mariadb</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">查看连接信息</span></span><br><span class="line"><span class="string">[root@centos7 ~]# mysqladmin status</span></span><br><span class="line"><span class="string">Uptime: 23  Threads: 1  Questions: 3  Slow queries: 0  Opens: 0  Flush tables: 2  Open tables: 18  Queries per second avg: 0.130</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/mysql安装 centos6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/mysql安装 centos6/" class="post-title-link" itemprop="https://9527dz.top/index.html">mysql安装 centos6</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/mysql安装 centos6/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/mysql安装 centos6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">10k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mysql安装-centos6"><a href="#mysql安装-centos6" class="headerlink" title="mysql安装 centos6"></a>mysql安装 centos6</h2><p><code>光盘自带的版本</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># yum info mysql</span></span><br><span class="line">Loaded plugins: fastestmirror, refresh-packagekit, security</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirror.bit.edu.cn</span><br><span class="line"> * extras: ftp.sjtu.edu.cn</span><br><span class="line"> * updates: mirrors.huaweicloud.com</span><br><span class="line">Available Packages</span><br><span class="line">Name        : mysql</span><br><span class="line">Arch        : x86_64</span><br><span class="line">Version     : 5.1.73</span><br><span class="line">Release     : 8.el6_8</span><br><span class="line">Size        : 895 k</span><br><span class="line">Repo        : base</span><br><span class="line">Summary     : MySQL client programs and shared libraries</span><br><span class="line">URL         : http://www.mysql.com</span><br><span class="line">License     : GPLv2 with exceptions</span><br><span class="line">Description : MySQL is a multi-user, multi-threaded SQL database</span><br><span class="line">            : server. MySQL is a client/server implementation</span><br><span class="line">            : consisting of a server daemon (mysqld) and many different</span><br><span class="line">            : client programs and libraries. The base package contains</span><br><span class="line">            : the standard MySQL client programs and generic MySQL</span><br><span class="line">            : files.</span><br></pre></td></tr></table></figure></p>
+<p><code>rpm 方式安装Mariadb：</code><br>mysql端口默认为tcp 3306<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">安装：</span><br><span class="line">[root@centos6 ~]<span class="comment"># yum install mysql-server -y</span></span><br><span class="line"></span><br><span class="line">查看安装包主要的文件列表：</span><br><span class="line">[root@centos6 ~]<span class="comment"># rpm -ql mysql-server</span></span><br><span class="line">/etc/rc.d/init.d/mysqld  服务启动脚本</span><br><span class="line">/usr/libexec/mysqld      服务器主程序</span><br><span class="line">/var/lib/mysql           存放数据库的数据的路径</span><br><span class="line">/var/<span class="built_in">log</span>/mysqld.log      日志文件</span><br><span class="line">/etc/my.cnf              服务的配置文件</span><br><span class="line">[root@centos6 ~]<span class="comment"># rpm -qf /etc/my.cnf （可以作为mysql数据库的服务器的配置文件，也可以作为客户端的配置文件）</span></span><br><span class="line">mysql-libs-5.1.73-8.el6_8.x86_64</span><br><span class="line"></span><br><span class="line">启动服务：</span><br><span class="line">[root@centos6 ~]<span class="comment"># service mysqld star</span></span><br><span class="line">Installing MySQL system tables...</span><br><span class="line">OK</span><br><span class="line">Filling <span class="built_in">help</span> tables...</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">To start mysqld at boot time you have to copy</span><br><span class="line">support-files/mysql.server to the right place <span class="keyword">for</span> your syste</span><br><span class="line"></span><br><span class="line">PLEASE REMEMBERTO  SET A PASSWORD FOR THE MySQL root USER !</span><br><span class="line">To <span class="keyword">do</span> so, start the server, <span class="keyword">then</span> issue the following <span class="built_in">command</span></span><br><span class="line"></span><br><span class="line">/usr/bin/mysqladmin -u root password <span class="string">'new-password'</span></span><br><span class="line">/usr/bin/mysqladmin -u root -h centos6.com password <span class="string">'new-pasd'</span></span><br><span class="line"></span><br><span class="line">Alternatively you can run:</span><br><span class="line">/usr/bin/mysql_secure_installation 初始化服务脚本，可以设置root口令，也可以更安全的数据库</span><br><span class="line"></span><br><span class="line"><span class="built_in">which</span> will also give you the option of removing the <span class="built_in">test</span></span><br><span class="line">databases and anonymous user created by default.  This is</span><br><span class="line">strongly recommended <span class="keyword">for</span> production servers.</span><br><span class="line"></span><br><span class="line">See the manual <span class="keyword">for</span> more instructions.</span><br><span class="line"></span><br><span class="line">You can start the MySQL daemon with:</span><br><span class="line"><span class="built_in">cd</span> /usr ; /usr/bin/mysqld_safe &amp;</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">test</span> the MySQL daemon with mysql-test-run.pl</span><br><span class="line"><span class="built_in">cd</span> /usr/mysql-test ; perl mysql-test-run.pl</span><br><span class="line"></span><br><span class="line">Please report any problems with the /usr/bin/mysqlbug script</span><br><span class="line"></span><br><span class="line">                                                           [ ok ]</span><br><span class="line">Starting mysqld:                                           [ ok ]</span><br><span class="line"></span><br><span class="line">  启动程序后，生成数据库数据相关的文件，未启动之前时空的：</span><br><span class="line">  [root@centos6 ~]<span class="comment"># ls /var/lib/mysql/</span></span><br><span class="line">  ibdata1  ib_logfile0  ib_logfile1  mysql  mysql.sock（数据库的套接字）  <span class="built_in">test</span></span><br><span class="line">  自己连接本机的mysql服务端，可以走套接字（数据库服务的用户与linux用户无关）</span><br><span class="line"></span><br><span class="line">使用客户端工具连接数据库</span><br><span class="line">[root@centos6 ~]<span class="comment"># which mysql</span></span><br><span class="line">/usr/bin/mysql</span><br><span class="line">[root@centos6 ~]<span class="comment"># rpm -qf /usr/bin/mysql</span></span><br><span class="line">mysql-5.1.73-8.el6_8.x86_64</span><br><span class="line"></span><br><span class="line">查看进程：</span><br><span class="line">[root@centos6 ~]<span class="comment"># ps aux</span></span><br><span class="line">root       4616  0.0  0.0 108228  1468 pts/1    S    21:05   0:00 /bin/sh /usr/bin/mysqld_safe --datadir=/var/lib/mysql --socket=/var/lib/mysql/mysql.sock --</span><br><span class="line">（数据库的主程序）mysql      4718  0.0  1.6 367520 30848 pts/1    Sl   21:05   0:00 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --user=mysql --<span class="built_in">log</span>-error=/var/l</span><br><span class="line"></span><br><span class="line">mysql数据库是单进程多线程的数据库程序：</span><br><span class="line">[root@centos6 ~]<span class="comment"># pstree -p</span></span><br><span class="line">├─mysqld_safe(4616)───mysqld(4718)─┬─&#123;mysqld&#125;(4720)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4721)线程</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4722)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4723)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4724)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4725)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4726)</span><br><span class="line">        │                                  ├─&#123;mysqld&#125;(4727)</span><br><span class="line">        │                                  └─&#123;mysqld&#125;(4728)</span><br><span class="line"></span><br><span class="line">查看数据库安装脚本</span><br><span class="line">[root@centos6 ~]<span class="comment"># rpm -q --scripts mysql-server</span></span><br><span class="line">preinstall scriptlet (using /bin/sh):</span><br><span class="line">/usr/sbin/groupadd -g 27 -o -r mysql &gt;/dev/null 2&gt;&amp;1 || :</span><br><span class="line">/usr/sbin/useradd -M -N -g mysql -o -r -d /var/lib/mysql -s /bin/bash \</span><br><span class="line">	-c <span class="string">"MySQL Server"</span> -u 27 mysql &gt;/dev/null 2&gt;&amp;1 || :</span><br><span class="line">postinstall scriptlet (using /bin/sh):</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> = 1 ]; <span class="keyword">then</span></span><br><span class="line">    /sbin/chkconfig --add mysqld</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">/bin/chmod 0755 /var/lib/mysql</span><br><span class="line">/bin/touch /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">preuninstall scriptlet (using /bin/sh):</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> = 0 ]; <span class="keyword">then</span></span><br><span class="line">    /sbin/service mysqld stop &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">    /sbin/chkconfig --del mysqld</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">postuninstall scriptlet (using /bin/sh):</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> -ge 1 ]; <span class="keyword">then</span></span><br><span class="line">    /sbin/service mysqld condrestart &gt;/dev/null 2&gt;&amp;1 || :</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">连接数据库：（本地连接数据库是由本机的sock套接字连接）</span><br><span class="line">  使用mysql客户端工具连接：</span><br><span class="line">  mysql -u 数据库用户 -p （提示输入口令）-s 指定套接字路径 （默认为/var/lib/mysql/mysql.sock）</span><br><span class="line"></span><br><span class="line">[root@centos6 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 2</span><br><span class="line">Server version: 5.1.73 Source distribution</span><br><span class="line">Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> 帮助<span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span>清屏 to clear the current input statement.</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>范例：下面为mysql数据库的客户端命令</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">下面为mysql数据库的客户端命令</span><br><span class="line">mysql&gt; <span class="built_in">help</span>      </span><br><span class="line">List of all MySQL commands:</span><br><span class="line">Note that all text commands must be first on line and end with <span class="string">';'</span></span><br><span class="line">?         (\?) Synonym <span class="keyword">for</span> `<span class="built_in">help</span><span class="string">'. </span></span><br><span class="line"><span class="string">clear     (\c) --清除当前输入的语句</span></span><br><span class="line"><span class="string">connect   (\r) --重新连接，通常用于被剔除或异常断开后重新连接，SQL*plus下也有这样一个connect命令</span></span><br><span class="line"><span class="string">delimiter (\d) --设置命令终止符，缺省为；，比如我们可以设定为/来表示语句结束 </span></span><br><span class="line"><span class="string">edit      (\e) --编辑缓冲区的上一条SQL语句到文件，缺省调用vi，文件会放在/tmp路径下</span></span><br><span class="line"><span class="string">ego       (\G) --控制结果显示为垂直显示</span></span><br><span class="line"><span class="string">exit      (\q) --退出mysql</span></span><br><span class="line"><span class="string">go        (\g) --发送命令到mysql服务</span></span><br><span class="line"><span class="string">help      (\h) Display this help.</span></span><br><span class="line"><span class="string">nopager   (\n) --关闭页设置，打印到标准输出  </span></span><br><span class="line"><span class="string">notee     (\t) --关闭输出到文件</span></span><br><span class="line"><span class="string">pager     (\P) --设置pager方式，可以设置为调用more,less等等，主要是用于分页显示</span></span><br><span class="line"><span class="string">print     (\p) Print current command.           </span></span><br><span class="line"><span class="string">prompt    (\R) --改变mysql的提示符 </span></span><br><span class="line"><span class="string">quit      (\q) Quit mysql.                             </span></span><br><span class="line"><span class="string">rehash    (\#) --自动补齐相关对象名字  </span></span><br><span class="line"><span class="string">source    (\.) --执行脚本文件</span></span><br><span class="line"><span class="string">status    (\s) --获得状态信息</span></span><br><span class="line"><span class="string">system    (\!) --执行系统命令   </span></span><br><span class="line"><span class="string">tee       (\T) --操作结果输出到文件 </span></span><br><span class="line"><span class="string">use       (\u) --切换数据库</span></span><br><span class="line"><span class="string">charset   (\C) --设置字符集</span></span><br><span class="line"><span class="string">warnings  (\W) --打印警告信息</span></span><br><span class="line"><span class="string">nowarning (\w) Don'</span>t show warnings after every statement.</span><br><span class="line">--上面的所有命令，扩号内的为快捷操作，即只需要输入“\”+ 字母即可执行</span><br><span class="line"></span><br><span class="line">查看mysql数据库的存储引擎：（服务器端命令）</span><br><span class="line">mysql&gt; show engines;</span><br><span class="line">+------------+---------+------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| Engine     | Support | Comment                                                    | Transactions | XA   | Savepoints |</span><br><span class="line">+------------+---------+------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| MRG_MYISAM | YES     | Collection of identical MyISAM tables                      | NO           | NO   | NO         |</span><br><span class="line">| CSV        | YES     | CSV storage engine                                         | NO           | NO   | NO         |</span><br><span class="line">| MyISAM     | DEFAULT | Default engine as of MySQL 3.23 with great performance     | NO           | NO   | NO         |</span><br><span class="line">| InnoDB     | YES     | Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |</span><br><span class="line">| MEMORY     | YES     | Hash based, stored <span class="keyword">in</span> memory, useful <span class="keyword">for</span> temporary tables  | NO           | NO   | NO         |</span><br><span class="line">+------------+---------+------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">从服务器中得到相关的状态信息</span><br><span class="line">mysql&gt; status</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.1.73, <span class="keyword">for</span> redhat-linux-gnu (x86_64) using readline 5.1</span><br><span class="line">Connection id:		2</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost（当前连接身份）</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.1.73 Source distribution</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1 （字符集）</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/lib/mysql/mysql.sock（套接字文件路径）</span><br><span class="line">Uptime:			1 hour 1 min 14 sec</span><br><span class="line">Threads: 1（当前线程）  Questions: 8  Slow queries: 0  Opens: 15  Flush tables: 1  Open tables: 8  Queries per second avg: 0.2</span><br><span class="line">--------------</span><br><span class="line"></span><br><span class="line">调用linux命令</span><br><span class="line">mysql&gt; system hostname</span><br><span class="line">centos6.com</span><br></pre></td></tr></table></figure></p>
+<p><code>范例：mysql中的提示符</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">提示符：</span><br><span class="line">修改方式建议</span><br><span class="line">为了方便我们在平时的使用，有效的给我们提示信息。 </span><br><span class="line">建议参考Linux系统的提示符方式命名，即：用户名@主机名+当前所在位置。 </span><br><span class="line">在MySQL中可以通过参数来获取提示符信息，下面列表中列出了常用的四个信息，方便我们等下修改MySQL提示符。</span><br><span class="line"></span><br><span class="line">参数	描述</span><br><span class="line">\D	完整的日期</span><br><span class="line">\d	当前数据库</span><br><span class="line">\h	服务器名称</span><br><span class="line">\u	当前用户</span><br><span class="line">mysql&gt; PROMPT \u@\h \d &gt;    </span><br><span class="line">root@localhost (none) &gt;CREATE DATABASE testdb;</span><br><span class="line">root@localhost (none) &gt;USE testdb;</span><br><span class="line">root@localhost testdb &gt;</span><br><span class="line"></span><br><span class="line">修改mysql数据库的提示符</span><br><span class="line">mysql&gt; prompt mysql--&gt;</span><br><span class="line">PROMPT <span class="built_in">set</span> to <span class="string">'mysql--&gt;'</span></span><br><span class="line">mysql--&gt;</span><br><span class="line"></span><br><span class="line">命令行进入mysql顺便修改提示符</span><br><span class="line">[root@centos6 ~]<span class="comment"># mysql --prompt="\u@\D"</span></span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.1.73 Source distribution</span><br><span class="line">Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved</span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line">root@Tue Nov 27 22:53:50 2018</span><br><span class="line"></span><br><span class="line">修改mysql提示符，永久保存生效(centos6的服务端和客户端的配置文件在同一个文件中)</span><br><span class="line">  编辑数据库的配置文件，写入客户端配置</span><br><span class="line">[root@centos6 ~]<span class="comment"># vim /etc/my.cnf </span></span><br><span class="line">服务端配置</span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line">服务端配置</span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line">客户端配置，写入提示符信息</span><br><span class="line">[mysql]</span><br><span class="line">prompt=<span class="string">'\u@\D-&gt;'</span></span><br><span class="line"></span><br><span class="line">保存，进入数据库，查看提示符，是否发生变化</span><br><span class="line">[root@centos6 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 4</span><br><span class="line">Server version: 5.1.73 Source distribution</span><br><span class="line">Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line">root@Tue Nov 27 22:58:29 2018-&gt;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/Mariadb实现源码安装/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/Mariadb实现源码安装/" class="post-title-link" itemprop="https://9527dz.top/index.html">mairadb实现源码安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/Mariadb实现源码安装/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/Mariadb实现源码安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mairadb实现源码安装10-2-19"><a href="#mairadb实现源码安装10-2-19" class="headerlink" title="mairadb实现源码安装10.2.19"></a>mairadb实现源码安装10.2.19</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">第一步：安装相关的依赖包</span><br><span class="line">[root@centos7 yum.repos.d]<span class="comment"># yum install bison bison-devel  zlib-devel libcurl-devel libarchive-devel  boost-devel  gcc  gcc-c++  cmake ncurses-devel gnutls-devel libxml2-devel openssl-devel libevent-devel libaio-devel</span></span><br><span class="line"></span><br><span class="line">第二步：创建对应的账号              （数据库存放数据的路径）</span><br><span class="line">[root@centos7 yum.repos.d]<span class="comment"># useradd -r -s /sbin/nologin -d  /data/mysql/  mysql </span></span><br><span class="line"></span><br><span class="line">第三步：创建数据对应的数据库路径</span><br><span class="line">[root@centos7 ~]<span class="comment"># mkdir /data/mysql</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># chown mysql:mysql /data/mysql</span></span><br><span class="line"></span><br><span class="line">第四步：下载源码解压</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls</span></span><br><span class="line">mariadb-10.2.19.tar.gz</span><br><span class="line">[root@centos7 ~]<span class="comment"># tar xvf mariadb-10.2.19.tar.gz </span></span><br><span class="line">[root@centos7 ~]<span class="comment"># ls</span></span><br><span class="line">mariadb-10.2.19        </span><br><span class="line">mariadb-10.2.19.tar.gz</span><br><span class="line">[root@centos7 ~]<span class="comment"># du -sh mariadb-10.2.19</span></span><br><span class="line">506M	mariadb-10.2.19</span><br><span class="line"></span><br><span class="line">第五步：cmack编译</span><br><span class="line">[root@centos7 ~]<span class="comment"># cd mariadb-10.2.19/</span></span><br><span class="line">[root@centos7 mariadb-10.2.19]<span class="comment"># cmake . \</span></span><br><span class="line">-DCMAKE_INSTALL_PREFIX=/app/mysql \</span><br><span class="line">-DMYSQL_DATADIR=/data/mysql/ \</span><br><span class="line">-DSYSCONFDIR=/etc \</span><br><span class="line">-DMYSQL_USER=mysql \</span><br><span class="line">-DWITH_INNOBASE_STORAGE_ENGINE=1 \</span><br><span class="line">-DWITH_ARCHIVE_STORAGE_ENGINE=1 \</span><br><span class="line">-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \</span><br><span class="line">-DWITH_PARTITION_STORAGE_ENGINE=1 \</span><br><span class="line">-DWITHOUT_MROONGA_STORAGE_ENGINE=1 \</span><br><span class="line">-DWITH_DEBUG=0 \</span><br><span class="line">-DWITH_READLINE=1 \</span><br><span class="line">-DWITH_SSL=system \</span><br><span class="line">-DWITH_ZLIB=system \</span><br><span class="line">-DWITH_LIBWRAP=0 \</span><br><span class="line">-DENABLED_LOCAL_INFILE=1 \</span><br><span class="line">-DMYSQL_UNIX_ADDR=/data/mysql/mysql.sock \</span><br><span class="line">-DDEFAULT_CHARSET=utf8 \</span><br><span class="line">-DDEFAULT_COLLATION=utf8_general_ci</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 多线程编译</span><br><span class="line">[root@centos7 ~]<span class="comment"># make -j 4 &amp;&amp; make install</span></span><br><span class="line"></span><br><span class="line">[root@centos7 mariadb-10.2.19]<span class="comment"># ls /app/mysql/</span></span><br><span class="line">bin                 EXCEPTIONS-CLIENT  README.md</span><br><span class="line">COPYING             include            README-wsrep</span><br><span class="line">COPYING.thirdparty  INSTALL-BINARY     scripts</span><br><span class="line">CREDITS             lib                share</span><br><span class="line">data                man                sql-bench</span><br><span class="line">docs                mysql-test         support-files</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第五步：生成数据库文件</span><br><span class="line">[root@centos7 mysql]<span class="comment"># scripts/mysql_install_db --user=mysql --datadir=/data/mysql</span></span><br><span class="line"></span><br><span class="line">[root@centos7 mysql]<span class="comment"># ls -l  /data/mysql/</span></span><br><span class="line">total 110620</span><br><span class="line">-rw-rw----. 1 mysql mysql    16384 Nov 27 21:02 aria_log.00000001</span><br><span class="line">-rw-rw----. 1 mysql mysql       52 Nov 27 21:02 aria_log_control</span><br><span class="line">-rw-rw----. 1 mysql mysql      938 Nov 27 21:02 ib_buffer_pool</span><br><span class="line">-rw-rw----. 1 mysql mysql 12582912 Nov 27 21:02 ibdata1</span><br><span class="line">-rw-rw----. 1 mysql mysql 50331648 Nov 27 21:02 ib_logfile0</span><br><span class="line">-rw-rw----. 1 mysql mysql 50331648 Nov 27 21:02 ib_logfile1</span><br><span class="line">drwx------. 2 mysql root      4096 Nov 27 21:02 mysql</span><br><span class="line">drwx------. 2 mysql mysql       20 Nov 27 21:02 performance_schema</span><br><span class="line">drwx------. 2 mysql root         6 Nov 27 21:02 <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">第六步：设置PATH变量</span><br><span class="line">[root@centos7 mysql]<span class="comment"># echo 'PATH=/app/mysql/bin:$PATH' &gt; /etc/profile.d/mysql.sh</span></span><br><span class="line">[root@centos7 mysql]<span class="comment"># source /etc/profile.d/mysql.sh </span></span><br><span class="line"></span><br><span class="line">第七步：拷贝模板配置文件</span><br><span class="line">[root@centos7 mysql]<span class="comment"># pwd</span></span><br><span class="line">/app/mysql</span><br><span class="line">[root@centos7 mysql]<span class="comment"># cp support-files/my-huge.cnf /etc/my.cnf</span></span><br><span class="line">cp: overwrite ‘/etc/my.cnf’? y</span><br><span class="line"></span><br><span class="line">第八步：设置启动脚本</span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /app/mysql/support-files/</span></span><br><span class="line">[root@centos7 support-files]<span class="comment"># ls</span></span><br><span class="line">binary-configure        my-medium.cnf        policy</span><br><span class="line">magic                   my-small.cnf         wsrep.cnf</span><br><span class="line">my-huge.cnf             mysqld_multi.server  wsrep_notify</span><br><span class="line">my-innodb-heavy-4G.cnf  mysql-log-rotate</span><br><span class="line">my-large.cnf            mysql.server</span><br><span class="line">[root@centos7 support-files]<span class="comment"># cp mysql.server /etc/init.d/mysqld</span></span><br><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># chkconfig --add mysqld</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># chkconfig --list</span></span><br><span class="line"></span><br><span class="line">Note: This output shows SysV services only and does not include native</span><br><span class="line">      systemd services. SysV configuration data might be overridden by native</span><br><span class="line">      systemd configuration.</span><br><span class="line"></span><br><span class="line">      If you want to list systemd services use <span class="string">'systemctl list-unit-files'</span>.</span><br><span class="line">      To see services enabled on particular target use</span><br><span class="line">      <span class="string">'systemctl list-dependencies [target]'</span>.</span><br><span class="line"></span><br><span class="line">mysqld         	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line"></span><br><span class="line">启动</span><br><span class="line">[root@centos7 ~]<span class="comment"># service mysqld restart</span></span><br><span class="line">Restarting mysqld (via systemctl):                         [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># ss -ntl</span></span><br><span class="line">LISTEN      0      80     :::3306               :::*     </span><br><span class="line"></span><br><span class="line">安全脚本</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/12/20/mariadb实现二进制安装/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/20/mariadb实现二进制安装/" class="post-title-link" itemprop="https://9527dz.top/index.html">mariadb实现二进制安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-20 19:06:25" itemprop="dateCreated datePublished" datetime="2018-12-20T19:06:25+08:00">2018-12-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/mariadb实现二进制安装/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/mariadb实现二进制安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="通用二进制格式安装过程"><a href="#通用二进制格式安装过程" class="headerlink" title="通用二进制格式安装过程"></a>通用二进制格式安装过程</h2><p>范例：二进制格式安装的mysql版本为：mysql-10.2</p>
+<pre><code class="bash">第一步：将二进制编译完的文件传进linux中，解压缩、创建软连接
+[root@centos7 ~]<span class="comment"># ls</span>
+mariadb-10.2.19-linux-x86_64.tar.gz 
+[root@centos7 ~]<span class="comment"># tar xfv mariadb-10.2.19-linux-x86_64.tar.gz -C /usr/local</span>
+[root@centos7 ~]<span class="comment"># ls /usr/local</span>
+bin  games    lib    libexec                       sbin   src
+etc  include  lib64  mariadb-10.2.19-linux-x86_64  share
+   创建软连接，方便下次升级（链接程序所在路径，因为源码编译时文档中指定程序路径放置在/usr/<span class="built_in">local</span>/mysql）
+[root@centos7 ~]<span class="comment"># ln -s /usr/local/mariadb-10.2.19-linux-x86_64/ /usr/local/mysql</span>
+[root@centos7 ~]<span class="comment"># ll /usr/local/mysql</span>
+lrwxrwxrwx. 1 root root 40 Nov 27 17:01 /usr/<span class="built_in">local</span>/mysql -&gt; /usr/<span class="built_in">local</span>/mariadb-10.2.19-linux-x86_64/
+
+第二步：修改程序目录的属性
+[root@centos7 ~]<span class="comment"># chown -R root:root /usr/local/mysql/</span>
+[root@centos7 ~]<span class="comment"># ll /usr/local/mysql/</span>
+total 180
+drwxrwxr-x.  2 root root  4096 Sep 23 10:13 bin  程序
+-rw-r--r--.  1 root root 17987 Nov 13 00:32 COPYING
+-rw-r--r--.  1 root root 86263 Nov 13 00:32 COPYING.thirdparty
+-rw-r--r--.  1 root root  2354 Nov 13 00:32 CREDITS
+drwxrwxr-x.  3 root root    18 Nov 13 07:37 data
+-rw-r--r--.  1 root root  8245 Nov 13 00:32 EXCEPTIONS-CLIENT
+drwxrwxr-x.  3 root root    19 Nov 13 07:37 include
+-rw-r--r--.  1 root root  8694 Nov 13 00:32 INSTALL-BINARY
+drwxrwxr-x.  5 root root  4096 Sep 23 10:14 lib
+drwxrwxr-x.  4 root root    30 Nov 13 07:37 man
+drwxrwxr-x. 11 root root  4096 Nov 13 07:37 mysql-test
+-rw-r--r--.  1 root root  2469 Nov 13 00:32 README.md
+-rw-r--r--.  1 root root 19510 Nov 13 00:32 README-wsrep
+drwxrwxr-x.  2 root root    30 Nov 13 07:37 scripts
+drwxrwxr-x. 32 root root  4096 Nov 13 07:37 share
+drwxrwxr-x.  4 root root  4096 Nov 13 07:37 sql-bench
+drwxrwxr-x.  3 root root   275 Nov 13 07:37 support-files
+
+第三步：创建程序用户
+[root@centos7 ~]<span class="comment"># useradd -r -s /sbin/nologin -d /data/mysql -c "mariadb user" mysql</span>
+[root@centos7 ~]<span class="comment"># getent passwd mysql</span>
+mysql:x:989:983:mariadb user:/data/mysql:/sbin/nologin
+
+第四步：创建数据库目录：存放数据库的数据
+[root@centos7 ~]<span class="comment"># ls -ld /data/mysql</span>
+ls: cannot access /data/mysql: No such file or directory
+[root@centos7 ~]<span class="comment"># mkdir /data/mysql</span>
+[root@centos7 ~]<span class="comment"># install -d /data/mysql -o root -g mysql</span>
+[root@centos7 ~]<span class="comment"># ls -ld /data/mysql</span>
+drwxr-xr-x. 2 root mysql 6 Nov 27 17:15 /data/mysql
+
+第四步：生成系统数据库
+[root@centos7 ~]<span class="comment"># ls /usr/local/mysql/</span>
+bin                 include         README-wsrep
+COPYING             INSTALL-BINARY  scripts
+COPYING.thirdparty  lib             share
+CREDITS             man             sql-bench
+data                mysql-test      support-files
+EXCEPTIONS-CLIENT   README.md
+
+  安装数据库的脚本：生成系统数据库
+  [root@centos7 ~]<span class="comment"># ls /usr/local/mysql/scripts/</span>
+   mysql_install_db
+
+[root@centos7 mysql]<span class="comment"># pwd</span>
+/usr/<span class="built_in">local</span>/mysql
+[root@centos7 mysql]<span class="comment"># scripts/mysql_install_db --user=mysql --datadir=/data/mysql</span>
+
+   确定是否生成了数据库
+   [root@centos7 mysql]<span class="comment"># ls /data/mysql/</span>
+    aria_log.00000001  ibdata1      mysql
+    aria_log_control   ib_logfile0  performance_schema
+    ib_buffer_pool     ib_logfile1  <span class="built_in">test</span>
+
+第五步：准备数据库的配置文件
+[root@centos7 ~]<span class="comment"># mkdir /etc/mysql</span>
+[root@centos7 ~]<span class="comment"># ls /usr/local/mysql/support-files/</span>
+binary-configure        my-medium.cnf        policy
+magic                   my-small.cnf         wsrep.cnf
+my-huge.cnf             mysqld_multi.server  wsrep_notify
+my-innodb-heavy-4G.cnf  mysql-log-rotate
+my-large.cnf            mysql.server
+[root@centos7 ~]<span class="comment"># cd /usr/local/mysql/support-files/</span>
+[root@centos7 support-files]<span class="comment"># cp my-huge.cnf /etc/mysql/my.cnf</span>
+
+第六步：修改配置文件，根据自己定义的数据路径进行修改
+[root@centos7 ~]<span class="comment"># vim /etc/mysql/my.cnf </span>
+[mysqld]
+datadir=/data/mysql
+port            = 3306
+socket          = /tmp/mysql.sock
+
+第七步：准备程序服务的启动脚本
+[root@centos7 ~]<span class="comment"># ls /usr/local/mysql/support-files/</span>
+mysql.server
+[root@centos7 ~]<span class="comment"># cp /usr/local/mysql/support-files/mysql.server  /etc/init.d/</span>
+  可以改名，方便启动
+[root@centos7 ~]<span class="comment"># cd /etc/init.d/</span>
+[root@centos7 init.d]<span class="comment"># ls</span>
+<span class="built_in">functions</span>  mysql.server  netconsole  network  README
+[root@centos7 init.d]<span class="comment"># mv mysql.server mysqld</span>
+
+第八步：准备启动
+[root@centos7 ~]<span class="comment"># chkconfig --add mysqld</span>
+[root@centos7 ~]<span class="comment"># chkconfig --list</span>
+mysqld             0:off    1:off    2:on    3:on    4:on    5:on    6:off
+netconsole         0:off    1:off    2:off    3:off    4:off    5:off    6:off
+network            0:off    1:off    2:on    3:on    4:on    5:on    6:off
+
+启动
+[root@centos7 ~]<span class="comment"># service mysqld restart</span>
+Restarting mysqld (via systemctl):                         [  OK  ]
+
+准备PATH变量
+[root@centos7 ~]<span class="comment"># echo 'PATH=/usr/local/mysql/bin:$PATH' &gt; /etc/profile.d/mysql.sh</span>
+[root@centos7 ~]<span class="comment"># source /etc/profile.d/mysql.sh </span>
+
+连接测试
+[root@centos7 ~]<span class="comment"># mysql</span>
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.2.19-MariaDB-log MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.
+
+MariaDB [(none)]&gt; <span class="built_in">exit</span>
+
+查看数据库路径
+方法1
+MariaDB [(none)]&gt; show variables like <span class="string">'datadir'</span>
+    -&gt; ;
++---------------+--------------+
+| Variable_name | Value        |
++---------------+--------------+
+| datadir       | /data/mysql/ |
++---------------+--------------+
+1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)
+
+方法2
+MariaDB [(none)]&gt; select @@datadir
+    -&gt; ;
++--------------+
+| @@datadir    |
++--------------+
+| /data/mysql/ |
++--------------+
+1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)
+
+
+执行初始化安装脚本
+[root@centos7 ~]<span class="comment"># ls /usr/local/mysql/bin/</span>
+ mysql_secure_installation
+[root@centos7 ~]<span class="comment"># mysql_secure_installation</span>
+
+</code></pre>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+</div>
+<div>
+      
+</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -646,216 +2065,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2017/10/01/旧事-大好河山/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="唐憎洗发">
-      <meta itemprop="description" content="More than that">
-      <meta itemprop="image" content="/images/haha.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dai zhe's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/10/01/旧事-大好河山/" class="post-title-link" itemprop="https://9527dz.top/index.html">旧事-大好河山</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-                  
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-10-01 08:00:00" itemprop="dateCreated datePublished" datetime="2017-10-01T08:00:00+08:00">2017-10-01</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/旧事，杂记/" itemprop="url" rel="index"><span itemprop="name">旧事，杂记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/01/旧事-大好河山/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/10/01/旧事-大好河山/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">426</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <font size="3" color="#FF0000">私密文章，需要输入密码.</font><br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/10/01/旧事-大好河山/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-<div>
-  
-</div>
-<div>
-      
-</div>
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -898,7 +2114,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -913,7 +2129,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -928,7 +2148,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1024,7 +2246,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">52k</span>
   
 
   
@@ -1035,7 +2257,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7 分钟</span>
+    <span title="站点阅读时长">47 分钟</span>
   
 </div>
 
