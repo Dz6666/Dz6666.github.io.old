@@ -137,18 +137,18 @@
   </script>
 
   <meta name="description" content="MYSQL数据库关系型数据库基础安装MySQL管理数据库和表用户和权限管理函数，存储过程和触发器MySQL架构存储引擎服务器选项，系统和状态变量优化查询和索引管理锁和事务管理日志管理备份还原MySQL集群   数据的时代涉及的数据量大数据不随程序的结束而消失数据被多个应用程序共享大数据    数据库的发展史萌芽阶段：文件系统        使用磁盘文件来存储数据初级阶段：第一代数据库    出现">
-<meta name="keywords" content="linux服务">
+<meta name="keywords" content="数据库基础原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库基础原理">
+<meta property="og:title" content="mysql">
 <meta property="og:url" content="https://9527dz.top/2018/12/20/数据库基础原理/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="MYSQL数据库关系型数据库基础安装MySQL管理数据库和表用户和权限管理函数，存储过程和触发器MySQL架构存储引擎服务器选项，系统和状态变量优化查询和索引管理锁和事务管理日志管理备份还原MySQL集群   数据的时代涉及的数据量大数据不随程序的结束而消失数据被多个应用程序共享大数据    数据库的发展史萌芽阶段：文件系统        使用磁盘文件来存储数据初级阶段：第一代数据库    出现">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Dz6666/Dz6666.github.ii/master/css/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%A7%E6%A0%87%E9%A2%98.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Dz6666/Dz6666.github.ii/master/fancybox/DBMS.png">
-<meta property="og:updated_time" content="2018-11-27T05:26:16.529Z">
+<meta property="og:updated_time" content="2018-12-20T11:12:45.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库基础原理">
+<meta name="twitter:title" content="mysql">
 <meta name="twitter:description" content="MYSQL数据库关系型数据库基础安装MySQL管理数据库和表用户和权限管理函数，存储过程和触发器MySQL架构存储引擎服务器选项，系统和状态变量优化查询和索引管理锁和事务管理日志管理备份还原MySQL集群   数据的时代涉及的数据量大数据不随程序的结束而消失数据被多个应用程序共享大数据    数据库的发展史萌芽阶段：文件系统        使用磁盘文件来存储数据初级阶段：第一代数据库    出现">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Dz6666/Dz6666.github.ii/master/css/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%A7%E6%A0%87%E9%A2%98.png">
 
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>数据库基础原理 | Dai zhe's notes</title>
+  <title>mysql | Dai zhe's notes</title>
   
 
 
@@ -311,7 +311,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">7</span></a>
 
   </li>
         
@@ -330,7 +330,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
 
   </li>
         
@@ -491,7 +491,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库基础原理
+          <h1 class="post-title" itemprop="name headline">mysql
               
             
           </h1>
@@ -535,7 +535,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux服务/" itemprop="url" rel="index"><span itemprop="name">linux服务</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -703,7 +703,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux服务/" rel="tag"># linux服务</a>
+            <a href="/tags/数据库基础原理/" rel="tag"># 数据库基础原理</a>
           
         </div>
       
@@ -770,8 +770,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/20/mysql安装和基本操作/" rel="next" title="mysql安装和基本操作">
-                <i class="fa fa-chevron-left"></i> mysql安装和基本操作
+              <a href="/2018/12/20/mysql安装 centos7/" rel="next" title="mysql">
+                <i class="fa fa-chevron-left"></i> mysql
               </a>
             
           </div>
@@ -871,8 +871,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -890,7 +888,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
