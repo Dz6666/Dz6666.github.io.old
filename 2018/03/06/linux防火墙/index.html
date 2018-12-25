@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "Infinity"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="linux防火墙">
+<meta name="keywords" content="iptables防火墙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux防火墙">
+<meta property="og:url" content="https://9527dz.top/2018/03/06/linux防火墙/index.html">
+<meta property="og:site_name" content="Dai zhe&#39;s notes">
+<meta property="og:description" content="linux防火墙">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://9527dz.top/2018/03/06/linux防火墙/linux防火墙.png">
+<meta property="og:image" content="https://9527dz.top/2018/03/06/linux防火墙/网路型防火墙.png">
+<meta property="og:image" content="https://9527dz.top/2018/03/06/linux防火墙/应用层防火墙.png">
+<meta property="og:image" content="https://9527dz.top/2018/03/06/linux防火墙/Netfilter表和链对应关系.png">
+<meta property="og:image" content="https://9527dz.top/2018/03/06/linux防火墙/数据包过滤匹配流程.png">
+<meta property="og:updated_time" content="2018-12-23T09:46:29.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux防火墙">
+<meta name="twitter:description" content="linux防火墙">
+<meta name="twitter:image" content="https://9527dz.top/2018/03/06/linux防火墙/linux防火墙.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Dai zhe's notes" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://9527dz.top/2018/03/06/linux防火墙/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>linux防火墙 | Dai zhe's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dai zhe's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just Du It</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-card"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-相册">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单&music">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/shudan/" rel="section"><i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br>书单&music</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    <a href="https://github.com/liukkui" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+      </a>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2018/03/06/linux防火墙/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="唐憎洗发">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux防火墙
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">2018-03-06</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iptables防火墙/" itemprop="url" rel="index"><span itemprop="name">iptables防火墙</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/06/linux防火墙/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/03/06/linux防火墙/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">15k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">14 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="linux防火墙"><a href="#linux防火墙" class="headerlink" title="linux防火墙"></a>linux防火墙</h1><p><img src="/2018/03/06/linux防火墙/linux防火墙.png" alt=""><br><a id="more"></a></p>
+<h2 id="本章内容"><a href="#本章内容" class="headerlink" title="本章内容"></a>本章内容</h2><h2 id="安全技术"><a href="#安全技术" class="headerlink" title="安全技术"></a>安全技术</h2><ul>
+<li><p>入侵检测与管理系统（Intrusion Detection Systems）：特点是不阻断任何网络 访问，量化、定位来自内外网络的威胁情况，主要以提供报告和事后监督为主， 提供有针对性的指导措施和安全决策依据。一般采用旁路部署方式 </p>
+</li>
+<li><p>入侵防御系统（Intrusion Prevention System）：以透明模式工作，分析数据包 的内容如：溢出攻击、拒绝服务攻击、木马、蠕虫、系统漏洞等进行准确的分析 判断，在判定为攻击行为后立即予以阻断，主动而有效的保护网络的安全，一般 采用在线部署方式 </p>
+</li>
+<li><p>防火墙（ FireWall ）：隔离功能，工作在网络或主机边缘，对进出网络或主机的 数据包基于一定的规则检查，并在匹配某规则时由规则定义的行为进行处理的一 组功能的组件，基本上的实现都是默认情况下关闭所有的通过型访问，只开放允 许访问的策略(防范非授权网络)</p>
+</li>
+</ul>
+<p><code>linux操作系统的空间：内核空间和用户空间</code><br><code>端口：进程地址</code></p>
+<h2 id="防火墙的分类"><a href="#防火墙的分类" class="headerlink" title="防火墙的分类"></a>防火墙的分类</h2><p>防火墙的分类   </p>
+<ul>
+<li>主机防火墙：服务范围为当前主机   <ul>
+<li>网络防火墙：服务范围为防火墙一侧的局域网   </li>
+<li>硬件防火墙：在专用硬件级别实现部分功能的防火墙；另一个部分功能基于软件   </li>
+<li>实现，Checkpoint,NetScreen   </li>
+<li>软件防火墙：运行于通用硬件平台之上的防火墙的应用软件   </li>
+</ul>
+</li>
+<li>网络层防火墙：OSI模型下四层   <ul>
+<li>应用层防火墙/代理服务器：代理网关，OSI模型七层  </li>
+</ul>
+</li>
+</ul>
+<h2 id="网络型防火墙"><a href="#网络型防火墙" class="headerlink" title="网络型防火墙"></a>网络型防火墙</h2><p>网络层防火墙   </p>
+<ul>
+<li>包过滤防火墙   </li>
+<li>网络层对数据包进行选择，选择的依据是系统内设置的过滤逻辑，被称为访问控制 列表（ACL），通过检查数据流中每个数据的源地址，目的地址，所用端口号和协议 状态等因素，或他们的组合来确定是否允许该数据包通过   </li>
+<li>优点：对用户来说透明，处理速度快且易于维护   </li>
+<li>缺点：无法检查应用层数据，如病毒等  </li>
+</ul>
+<p><img src="/2018/03/06/linux防火墙/网路型防火墙.png" alt=""></p>
+<h2 id="应用层防火墙"><a href="#应用层防火墙" class="headerlink" title="应用层防火墙"></a>应用层防火墙</h2><p>应用层防火墙/代理服务型防火墙（Proxy Service）   </p>
+<ul>
+<li>将所有跨越防火墙的网络通信链路分为两段   </li>
+<li>内外网用户的访问都是通过代理服务器上的“链接”来实现   </li>
+<li>优点：在应用层对数据进行检查，比较安全   </li>
+<li>缺点：增加防火墙的负载  </li>
+</ul>
+<p>现实生产环境中所使用的防火墙一般都是二者结合体<br>&ensp;&ensp;即先检查网络数据，通过之后再送到应用层去检查  </p>
+<p><img src="/2018/03/06/linux防火墙/应用层防火墙.png" alt=""></p>
+<h2 id="iptables的基本认识"><a href="#iptables的基本认识" class="headerlink" title="iptables的基本认识"></a>iptables的基本认识</h2><p>Netfilter组件<br>&ensp;&ensp;内核空间，集成在linux内核中<br>&ensp;&ensp;扩展各种网络服务的结构化底层框架<br>&ensp;&ensp;内核中选取五个位置放了五个hook(勾子) function(INPUT、OUTPUT、 FORWARD、PREROUTING、POSTROUTING)，而这五个hook function 向用户开放，用户可以通过一个命令工具（iptables）向其写入规则<br>&ensp;&ensp;由信息过滤表（table）组成，包含控制IP包处理的规则集（rules），规则 被分组放在链（chain）上   </p>
+<p><code>三种报文流向：</code><br><code>netfilter内核级别的框架，，人是不可和内核打交道，使用用户空间的工具iptables，规则编辑器，内核级的系统级别netfilter的调用接口，将写的规则送到内核中的钩子hook上直接生效，直接送到内存中，说明主机关机则规则就没有了，所以想永久生效，可以放在内核启动时初始化时读取到的文件中，或者在或者启动完后，自动执行某个命令或者启动某个服务来调用</code>（即刻生效，但是不会永久有效）<br>路由前：PREROUTING<br>流入：INPUT<br>流出：OUTPUT<br>转发：FORWARD<br>路由后：POSTROUTING    </p>
+<p>&ensp;&ensp;<code>流入本机：PREROUTING --&gt; INPUT--&gt;用户空间进程</code><br>&ensp;&ensp;<code>流出本机：用户空间进程 --&gt;OUTPUT--&gt; POSTROUTING</code><br>&ensp;&ensp;<code>转发：PREROUTING --&gt; FORWARD --&gt; POSTROUTING</code>  </p>
+<p>linux早期没有防火墙的，仿照unix的发行版的OpenBSD，著名的以安全为目标的发行版<br>OpenBSD：纯软件，内核级只负责传输层一下级检测实现，进行工作和防护  </p>
+<p>定制防火墙规则：黑名单、白名单<br>&ensp;&ensp;黑名单适用于知道改拒绝谁<br>&ensp;&ensp;百名单高效的仅授权可以连接的  </p>
+<h2 id="iptables的基本认识-1"><a href="#iptables的基本认识-1" class="headerlink" title="iptables的基本认识"></a>iptables的基本认识</h2><p>防火墙工具<br>iptables<br>&ensp;&ensp;命令行工具，工作在用户空间<br>&ensp;&ensp;用来编写规则，写好的规则被送往netfilter，告诉内核如何去处理信息包   </p>
+<p>firewalld<br>&ensp;&ensp;CentOS 7 引入了新的前端管理工具<br>&ensp;&ensp;管理工具：<br>&ensp;&ensp;&ensp;&ensp;firewall-cmd 命令行<br>&ensp;&ensp;&ensp;&ensp;firewall-config 图形  </p>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p><code>ipfw -&gt; ipchains -&gt; iptables -&gt; nftables(rhel8)</code></p>
+<p><code>主机级别防火墙：INPUT---OUTPUTS</code><br><code>网络级别防火墙：FROWARD</code></p>
+<p>NAT：网络地址转换</p>
+<p><code>iptables：
+四个功能：table</code></p>
+<ul>
+<li>filter:过滤    </li>
+<li>nat:地址转换   </li>
+<li>mangle:报文修改，fwmark</li>
+<li>raw:关闭连接追踪</li>
+</ul>
+<p>Centos：使用iptables的方式</p>
+<ul>
+<li>netfilter:内核框架（framework）</li>
+<li>syscall:系统调用接口，iptables命令行工具，管理规则（服务化的管理工具）</li>
+<li>firewalld:守护进程，firewall-cmd(默认安装，但是尽量不使用)</li>
+</ul>
+<p>禁用firewalld<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># systemctl stop firewalld</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># systemctl disable firewalld</span></span><br><span class="line">Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.</span><br><span class="line">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.</span><br><span class="line">[root@centos7 ~]<span class="comment"># systemctl is-enabled firewalld</span></span><br><span class="line">disabled</span><br></pre></td></tr></table></figure></p>
+<p><code>报文流向：</code></p>
+<ul>
+<li>到本机内部：prerouting–&gt;input</li>
+<li>由本机发现：output–&gt;postrouting</li>
+<li>转发：prerouting –&gt;forward–&gt;postrouting</li>
+</ul>
+<p><code>tables&lt;--&gt;CHANS链:</code></p>
+<ul>
+<li>filter: INPUT,PORWARD,OUTPUT</li>
+<li>nat: PREROUTING,INPUT,OUTPUT,POSTROUTING</li>
+<li>mangle: PREROUTING,INPUT,FOREARD,OUTPUT,POSTROUIING</li>
+<li>raw: PREROUTING,OUTPUT</li>
+</ul>
+<p>查看各表中的链的规则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># iptables -t filter -nL</span></span><br><span class="line">Chain INPUT (policy ACCEPT)</span><br><span class="line">target     prot opt <span class="built_in">source</span>               destination         </span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy ACCEPT)</span><br><span class="line">target     prot opt <span class="built_in">source</span>               destination         </span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT)</span><br><span class="line">target     prot opt <span class="built_in">source</span>               destination</span><br></pre></td></tr></table></figure></p>
+<h2 id="Netfilter表和链对应的关系"><a href="#Netfilter表和链对应的关系" class="headerlink" title="Netfilter表和链对应的关系"></a>Netfilter表和链对应的关系</h2><p><img src="/2018/03/06/linux防火墙/Netfilter表和链对应关系.png" alt=""></p>
+<h2 id="数据包过滤匹配流程"><a href="#数据包过滤匹配流程" class="headerlink" title="数据包过滤匹配流程"></a>数据包过滤匹配流程</h2><p><img src="/2018/03/06/linux防火墙/数据包过滤匹配流程.png" alt=""></p>
+<h2 id="命令的使用格式"><a href="#命令的使用格式" class="headerlink" title="命令的使用格式"></a><code>命令的使用格式</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">       iptables [-t table] &#123;-A|-C|-D&#125; chain rule-specification</span><br><span class="line"></span><br><span class="line">       ip6tables [-t table] &#123;-A|-C|-D&#125; chain rule-specification</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -I chain  [rulenum]  rule-specifica‐</span><br><span class="line">       tion</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -R chain rulenum rule-specification</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -D chain rulenum</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -S [chain [rulenum]]</span><br><span class="line"></span><br><span class="line">       iptables   [-t   table]   &#123;-F|-L|-Z&#125;  [chain  [rulenum]]</span><br><span class="line">       [options...]</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -N chain</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -X [chain]</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -P chain target</span><br><span class="line"></span><br><span class="line">       iptables [-t table] -E old-chain-name new-chain-name</span><br><span class="line"></span><br><span class="line">       rule-specification = [matches...] [target]</span><br><span class="line"></span><br><span class="line">       match = -m matchname [per-match-options]</span><br><span class="line"></span><br><span class="line">       target = -j targetname [per-target-options]</span><br></pre></td></tr></table></figure>
+<p><code>iptables [-t tables,如果不指定则代表使用默认的filter] SUBCMMAND子命令  chain [rulenum规则号码] [rule-spce]</code> </p>
+<p><code>rule-specification=[matches匹配条件][-j target处理动作]</code></p>
+<p>CRUD:增删改查（指定多个规则隐含的是与关系，符合所有的条件才是满足定义的条件的）</p>
+<p>子命令：</p>
+<ul>
+<li>管理规则：<ul>
+<li>-A ：append,尾部追加</li>
+<li>-I ：inset,插入</li>
+<li>-D ：删除</li>
+<li>-R ：替换</li>
+</ul>
+</li>
+<li>管理链<ul>
+<li>-N ：new,新增加一条链</li>
+<li>-X : 删除一条自定义、空的，不可有规则、引用计数为0的链</li>
+<li>-E : rename 改自定义引用技术为0的链</li>
+<li>-P ： policy,设置链的默认策略</li>
+<li>-F ： flush,清空</li>
+<li>-Z ： zero,置零，计数器归零<ul>
+<li>iptables的每条规则和每个链都有专用的两个计数器：pkts规则匹配到的报个数计数器，bytes报文体积计数器kbytes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查看 -L<ul>
+<li>-n : 以数字显示主机的地址和端口</li>
+<li>-v : -vv : 显示详细的信息</li>
+<li>-x : exact，避免单位的换算显示精准的信息</li>
+<li>–line-numbers : 显示行号</li>
+</ul>
+</li>
+<li>链<ul>
+<li>内置链</li>
+<li>自定义链</li>
+</ul>
+</li>
+<li><p>匹配条件</p>
+<ul>
+<li>检查报文<ul>
+<li>TCP或UDP首部：源端口，目标端口<ul>
+<li>FSM:有限状态机</li>
+</ul>
+</li>
+<li>IP首部：sip,dip（源ip和目标ip）</li>
+<li>MAC首部:MAC地址</li>
+</ul>
+</li>
+<li><p>匹配条件</p>
+<ul>
+<li>通用匹配<ul>
+<li>[!] -s,–sip,–spurce-ip:报文的源地址,其值可以是ip或者是网络地址，不可使离散的网络（!为取反）</li>
+<li>[!] -d,–dip,–destination:报文的目标地址</li>
+<li>-i,–in-interface : 表示从哪个网卡进入（PREROUTING，INPUT,FORWARD）</li>
+<li>-o,–out-interface : 表示从哪个网卡出去(,OUTPUT,POSTRUTING,FORWARD)</li>
+<li>-p protocol:四层协议，tcp,udp,icmp</li>
+</ul>
+</li>
+<li><p>扩展匹配</p>
+<ul>
+<li><p>隐式扩展</p>
+<ul>
+<li>-p tcp :隐含 -m tcp<ul>
+<li>[!] –source-port ,–sport port [:port] : 匹配报文中的传输层的源端口,连续的端口范围，22，21：22</li>
+<li>[!] –destination-port ,–dport poet [:port] :匹配报文中传输层的目标端口</li>
+<li>[!] –tcp-flags mask comp<ul>
+<li>SYN,ACK,RST,，FIN,URG,PSH</li>
+<li>mask:需要检查的标志位列表，以逗号分隔；</li>
+<li>comp:必须为1的标志列表，余下的出现在mask列表中的标志位则必须为0</li>
+<li>范例:-tcp-flags SYN,ACK,FIN,RST   SYN   表示检查报文tcp首部，syn为1，其余的为0，代表只检查源报文来的第一次握手</li>
+</ul>
+</li>
+<li>[!] –syn : tcp发送报文三次握手的第一次（相当于：–tcp-flags SYN,SCK,FINRST  SYN）</li>
+</ul>
+</li>
+<li>-p udp : 隐含了-m udp:<ul>
+<li>[!] –source-port ,–sport port[:port] :匹配报文中传输层的源端口</li>
+<li>[!] –destination-port,–dport port[:port] :匹配报文中传输层的目标端口</li>
+</ul>
+</li>
+<li>-p icmp(互联网控制协议) ： 隐含了-m udp:<ul>
+<li>[!] –lcmp-type {type[/code]|typename}<ul>
+<li>8 : echo-request回显请求</li>
+<li>0 : echo-reply  回显应答</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>显示扩展 ； 必须使用-m选项指出matchname(模块),有的match可能存在专用的选项</p>
+<ul>
+<li>1.matchname扩展<br>  以离散的或连续的方式定义多端口匹配条件<ul>
+<li>[!] –source-ports,–sports port[,port|,port:port]…:指定多个源端口,逗号隔开最多制定15个</li>
+<li>[!] –destnation-ports,–dports port[,port|,port:port]…:制定多个目标端口</li>
+<li>[!] –ports port[,port|,port:port]…:指定多个端口</li>
+</ul>
+</li>
+<li>2.iprange扩展<br>  以连续的ip地址范围指明连续的多地址匹配条件</li>
+<li>3.set扩展<br>  依赖于ipset命令行工具<ul>
+<li>set存在的类型：<ul>
+<li>hash:net  : 网络地址的集合</li>
+<li>hash:ip   ：目标ip地址</li>
+</ul>
+</li>
+<li>使用方式：<ul>
+<li>先创建集合 ：ipset create NAMETYPE</li>
+<li>向集合中添加元素 ：ipset add NAMETYPE</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.string扩展<br>  对报文的应用层数据做字符串匹配检测<ul>
+<li>[!] –string pattern : 要检测的字符串模式</li>
+<li>[!] –hex-string pattern : 要检测的字符串模式，16进制编码</li>
+<li>–algo {bm|kmp}</li>
+</ul>
+</li>
+<li>5.time扩展<br>  根据报文到达的时间与指定的时间范围进行匹配度检测<ul>
+<li>–datestart YYYY[-MM[-DD]Thh[:mm]:ss]]]]] : 起始日期时间</li>
+<li>–datestop YYYY[-MM[-DD]Thh[:mm]:ss]]]]] : 结束日期时间</li>
+<li>–timestart hh:mm[:ss]</li>
+<li>–timestop  hh:mm[:ss]</li>
+<li>[!] –monthdays day[,day…] ： 每月几号的时间</li>
+<li>[!] –weekdays day[,day…]  ： 每周几的时间</li>
+<li>–kerneltz : 使用内核中的配置的时区</li>
+</ul>
+</li>
+<li><p>6、connlimit扩展<br>  根据每客户端IP做并发连接数匹配；    </p>
+<ul>
+<li>–connlimit-upto n：连接数数量小于等于n，此时应该允许；</li>
+<li>–connlimit-above n：连接数数量大于n，此时应该拒绝；            <ul>
+<li>~]# iptables -A INPUT -d 172.16.100.67 -p tcp –dport 23 -m connlimit –connlimit-upto 2 -j ACCEPT</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>7、limit扩展<br>  基于收发报文的速率进行匹配；        </p>
+<ul>
+<li>–limit rate[/second|/minute|/hour|/day]：平均速率</li>
+<li>–limit-burst number：峰值速率</li>
+</ul>
+</li>
+<li><p>8、state扩展<br>  状态检测；连接追踪机制（conntrack）；</p>
+<ul>
+<li>INVALID：无法识别的状态； </li>
+<li>ESTABLISHED：已建立的连接；</li>
+<li>NEW：新连接； </li>
+<li>RELATED：相关联的连接；</li>
+<li><p>UNTRACKED：未追踪的连接；</p>
+<ul>
+<li><p>nf_conntrack内核模块；</p>
+<ul>
+<li>追踪到的连接：/proc/net/nf_conntrack文件中；</li>
+</ul>
+</li>
+<li><p>能追踪的最大连接数量定义在：/proc/sys/net/nf_conntrack_max</p>
+<ul>
+<li>此值可自行定义，建议必要时调整到足够大；</li>
+</ul>
+</li>
+<li><p>不同的协议的连接追踪的时长：</p>
+<ul>
+<li>/proc/sys/net/netfilter/</li>
+</ul>
+</li>
+<li><p>[!] –state STATE</p>
+</li>
+<li><p>如何开放被模式的ftp服务： </p>
+<ul>
+<li>(1) 装载追踪ftp协议的模块；<ul>
+<li># modprobe nf_conntrack_ftp</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- (2) 放行命令连接
+    - ~] # iptables -A INPUT -d 172.16.100.67 -p tcp -m state --state ESTABLISHED -j ACCEPT
+    - ~] # iptables -A INPUT -d 172.16.100.67 -p tcp --dport 21 -m state --state NEW -j ACCEPT
+
+- (3) 放行数据连接
+    - ~] iptables -A INPUT -d 172.16.100.67 -p tcp -m state --state RELATED -j ACCEPT
+</code></pre><ul>
+<li><p>处理动作target</p>
+<ul>
+<li>DROP : 丢弃</li>
+<li>REJECT : 拒绝</li>
+<li>ACCEPT :  接受</li>
+<li>RETURN : 无匹配的链的时候自动调回</li>
+<li>REDIRECT : 重定向</li>
+<li>SANT : 源地址转换</li>
+<li>DNAT: 目标地址转换</li>
+<li>MASQUERADE : 地址伪装</li>
+<li>LOG : 日志</li>
+<li>自定义链</li>
+</ul>
+</li>
+<li><p>管理机制 ： 两不兼容，最好不要并行</p>
+<ul>
+<li>firewalld : firewalld-cmd</li>
+<li>iptables ： iptables-save,iptables-restore<ul>
+<li>yum install iptables-services<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">每一个内核就是一个扩展  xt开头</span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /lib/modules/3.10.0-862.el7.x86_64/kernel/net/netfilter/</span></span><br><span class="line">[root@centos7 netfilter]<span class="comment"># ls</span></span><br><span class="line">ipset                          xt_connlimit.ko.xz</span><br><span class="line">ipvs                           xt_connmark.ko.xz</span><br><span class="line">nf_conntrack_amanda.ko.xz      xt_CONNSECMARK.ko.xz</span><br><span class="line">nf_conntrack_broadcast.ko.xz   xt_conntrack.ko.xz</span><br><span class="line">nf_conntrack_ftp.ko.xz         xt_cpu.ko.xz</span><br><span class="line">nf_conntrack_h323.ko.xz        xt_CT.ko.xz</span><br><span class="line">nf_conntrack_irc.ko.xz         xt_dccp.ko.xz</span><br><span class="line">nf_conntrack.ko.xz             xt_devgroup.ko.xz</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">查看某表中的规则</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -t filter -vnL</span></span><br><span class="line"></span><br><span class="line">将某表中的INPUT链计数器置零</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -t filter -Z INPUT</span></span><br><span class="line"></span><br><span class="line">规则显示详情</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -t filter -vnL</span></span><br><span class="line"> pkts(报文数) bytes(字节数) target（目标）     prot（协议） opt（选项） <span class="keyword">in</span>（报文流入的接口）     out（报文流出的接口）     <span class="built_in">source</span>（源地址）               destination（目标地址）         </span><br><span class="line"></span><br><span class="line">显示iptables表的本文和自己的精确的显示以及行号的显示</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -t filter -vxnL --line-numbers</span></span><br><span class="line"></span><br><span class="line">-N 自定义规则链（见名知意）</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -N web_rules</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -vnL</span></span><br><span class="line">Chain web_rules (0 references) 0个引用</span><br><span class="line"> pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination   </span><br><span class="line"></span><br><span class="line">-E 修改自定义的规则链名称（改名通常适用于修改自定义规则连0引用的规则链）</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -E web_rules cifs_rules</span></span><br><span class="line"></span><br><span class="line">-X 删除自定义的规则链：计数为0，若不为0 可以将主链中的调用删除再进行清空删除</span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -F cifs_rules</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># iptables -X cifs_rules</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">内部规则：</span><br><span class="line">    Chain OUTPUT (policy ACCEPT 1 packets, 356 bytes)具有规则链和接收器</span><br></pre></td></tr></table></figure>
+<p>范例：使得iptables定义的规则永久有效<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令：内核中定义的规则标准输出至屏幕</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables-save</span></span><br><span class="line">    将标准的输入重定向到文件中</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables-save &gt; /data/iptables.txt</span></span><br><span class="line">    模拟清空防火墙规则</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -F</span></span><br><span class="line">    还原防火墙的规则</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables-restore /data/iptables.txt</span></span><br></pre></td></tr></table></figure></p>
+<p>范例：如何将定义的防火墙规则开机自动生效<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install iptables-services -y</span><br><span class="line"></span><br><span class="line">服务方式管理的iptables</span><br><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># /usr/libexec/iptables/iptables.init restrt</span></span><br><span class="line">Usage: iptables &#123;start|stop|reload|restart|condrestart|status|panic|save&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="显示扩展"><a href="#显示扩展" class="headerlink" title="显示扩展"></a>显示扩展</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">1：multiport显示扩展：匹配多个源、目标端口</span><br><span class="line">    定义入栈规则</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT -p tcp -m multiport --dports 21:22,80,139,445</span></span><br><span class="line">    定义出栈规则</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I OUTPUT -p tcp -m multiport --sports 21:22,80,139,445</span></span><br><span class="line"></span><br><span class="line">    删除入栈规则的第<span class="comment">#条</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -D INPUT #</span></span><br><span class="line"></span><br><span class="line">2：iprange扩展：匹配ip地址的连续范围（仅开放给有限的地址去怕ping）</span><br><span class="line">    入栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT 4 -p icmp --icmp-type 8 -m iprange --src-range 192.168.10.10-192.168.10.20 -j ACCEPT</span></span><br><span class="line"></span><br><span class="line">    出栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I OUTPUT 4 -p icmp --icmp-type 0 -m iprange --dst-range 192.168.10.10-192.168.10.20 -j ACCEPT</span></span><br><span class="line"></span><br><span class="line">3：<span class="built_in">set</span>扩展:非连续的ip地址，人为定义ip地址集后续调用</span><br><span class="line">    安装</span><br><span class="line">    [root@centos7 ~]<span class="comment"># yum install ipset -y</span></span><br><span class="line">    查看帮助用法</span><br><span class="line">    ipset -h </span><br><span class="line"></span><br><span class="line">    创建集合ip哈希表</span><br><span class="line">    [root@centos7 ~]<span class="comment"># ipset create pinghosts hash:ip  (如果为多个网段hash:net)</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># ipset list</span></span><br><span class="line">    Name: pinghosts</span><br><span class="line">    Type: <span class="built_in">hash</span>:ip</span><br><span class="line">    Revision: 1</span><br><span class="line">    Header: family inet hashsize 1024 maxelem 65536</span><br><span class="line">    Size <span class="keyword">in</span> memory: 16528</span><br><span class="line">    References: 0</span><br><span class="line">    Members:</span><br><span class="line"></span><br><span class="line">    向集合中添加允许的主机地址</span><br><span class="line">    [root@centos7 ~]<span class="comment"># ipset add pinghosts 192.168.10.10</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># ipset add pinghosts 192.168.10.20</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># ipset list</span></span><br><span class="line">    Name: pinghosts</span><br><span class="line">    Type: <span class="built_in">hash</span>:ip</span><br><span class="line">    Revision: 1</span><br><span class="line">    Header: family inet hashsize 1024 maxelem 65536</span><br><span class="line">    Size <span class="keyword">in</span> memory: 16560</span><br><span class="line">    References: 0</span><br><span class="line">    Members:</span><br><span class="line">    192.168.10.20</span><br><span class="line">    192.168.10.10</span><br><span class="line"></span><br><span class="line">    设置规则允许集合表中的主机对本机进行ping</span><br><span class="line">    入栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT 4 -p icmp --icmp-type 8 -m set --match-set pinghosts src -j ACCEPT</span></span><br><span class="line">    出栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I OUTPUT 4 -p icmp --icmp-type 0 -m set --match-set pinghosts dst -j ACCEPT</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -vnL</span></span><br><span class="line"></span><br><span class="line">4：string扩展：对报文的应用层数据做字符串匹配检测</span><br><span class="line">    假设web网页中的敏感字体进行字符串匹配检测</span><br><span class="line"></span><br><span class="line">    入栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT -m string --string "敏感字" --algo bm -j REJECT</span></span><br><span class="line">    出栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I OUTPUT -m srting --string "敏感字" --algo bm -j REJECT</span></span><br><span class="line"></span><br><span class="line">多个扩展可一起使用，与的关系，满足所有的条件</span><br><span class="line">time扩展 ： 根据报文到达的时间与指定的时间范围进行匹配度检测</span><br><span class="line"></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT 5 -p icmp --icmp-type 8 -m set --match-set pinghosts src -m time --timestart 08:00:00 --timestop 14:00:00 --weekdays Tue,Thu,Sat --kerneltz -j ACCEPT</span></span><br><span class="line"></span><br><span class="line">5：connlimit扩展：并发连接数限制</span><br><span class="line">    根据每个客户端ip做并发连接数数量匹配，可防止CC攻击。</span><br><span class="line">    --connlimit-upto <span class="comment"># :连接的数量小于等于#时匹配</span></span><br><span class="line">    --connlimit-above <span class="comment"># : 连接的数量大于#时匹配</span></span><br><span class="line">    通常分别与默认的拒绝或允许策略配合使用（默认的意思并非默认规则，而是定义的规则已经有允许，在此基础上做连接数量限制，定义在已经有的允许的规则之前）</span><br><span class="line"></span><br><span class="line">    限制ssh连接本机的连接数限制</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT 2 -p tcp --dport 22 -m connlimit --connlimit-above 2 -j REJECT</span></span><br><span class="line"></span><br><span class="line">6：<span class="built_in">limit</span>扩展</span><br><span class="line">    基于收发报文的速度做匹配(报文传输速率限制)</span><br><span class="line">    令牌桶过滤器</span><br><span class="line">    --<span class="built_in">limit</span> <span class="comment"># [/second|/minute|/hour|/day]</span></span><br><span class="line">    --<span class="built_in">limit</span>-burst number</span><br><span class="line"></span><br><span class="line">    允许别人ping自己仅能按照特定的速率进行ping</span><br><span class="line">    出去的速率无需控制，仅控制本机进来的速率</span><br><span class="line">    限制ping速率为每3秒钟一个，限制突发速率为5个</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT -p icmp --icmmp-type 8 -s 192.168.52.177 -d 192.168.52.182 -m limit --limit 20/minute --limit-burst 5 -j ACCEPT</span></span><br><span class="line"></span><br><span class="line">7：state状态扩展</span><br><span class="line">    根据“连续追踪机制”去检查连接的状态，较消耗资源</span><br><span class="line">    - conntrack机制：追踪本机上的请求和响应之间的关系</span><br><span class="line">        状态有如下几种：</span><br><span class="line">            - NEW：新发出的请求，连接追踪信息库中不存在此链接的相关信息条目，因此，将其识别为第一次触发的请求（新人）</span><br><span class="line">            - ESTABLISHED:NEW状态之后，连接追踪信息库中为其建立的条目失效之前期间内所进行的通讯状态（熟人）</span><br><span class="line">            - RELATED:新发起的但与已有连接相关的连接，如：ftp协议中的数据连接与命令连接之间的关系（熟人的熟人）</span><br><span class="line">            - INVALID:无效的连接，如flag标记不正确（识别不出的连接）</span><br><span class="line">            - UNTRACKED:未进行的追踪的连接，如raw表中关闭追踪（未追踪的）</span><br><span class="line">            - SNAT:源地址转换</span><br><span class="line">            - DNAT:目标地址转换</span><br><span class="line">    示例： </span><br><span class="line">    iptables -A INPUT -d 172.16.1.10 -p tcp -m multiport --dports 22,80 -m state --state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">    iptables -A OUTPUT -s 172.16.1.10 -p tcp -m multiport --sports 22,80 -m state --state ESTABLISHED -j ACCEPT </span><br><span class="line">    </span><br><span class="line">    已经追踪到的并记录下来的连接信息库 </span><br><span class="line">    /proc/net/nf_conntrack </span><br><span class="line">    调整连接追踪功能所能够容纳的最大连接数量 </span><br><span class="line"></span><br><span class="line">    /proc/sys/net/nf_conntrack_max </span><br><span class="line">        永久生效修改的所能够容纳的最大的连接数量</span><br><span class="line">        [root@centos7 ~]<span class="comment"># vim /etc/sysctl.d/nf_conntrack_max.conf</span></span><br><span class="line">        net.nf_conntrack_max = 10000000</span><br><span class="line">        [root@centos7 ~]<span class="comment"># sysctl -p /etc/sysctl.d/nf_conntrack_max.conf</span></span><br><span class="line">        net.nf_conntrack_max = 100000</span><br><span class="line">        [root@centos7 ~]<span class="comment"># cat /proc/sys/net/nf_conntrack_max </span></span><br><span class="line">        100000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    不同的协议的连接追踪时长 /proc/sys/net/netfilter/ </span><br><span class="line">    注意：CentOS7 需要加载模块： modprobe nf_conntrack</span><br><span class="line"></span><br><span class="line">范例：</span><br><span class="line">    允许所有已经连结果的请求入栈出栈</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -A INPUT  -m state --state ESTABLISHED -j ACCEPT</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -A OUTPUT  -m state --state ESTABLISHED -j ACCEPT</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -A INPUT  -p tcp -m multiport --dports 21:22,80 -m state --state NEW -j ACCEPT</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -A OUTPUT ! -i lo -j REJECT</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -A OUTPUT ! -o lo -j REJECT</span></span><br><span class="line"></span><br><span class="line">    服务端开放客户端ftp服务，客户端主动访问服务端，服务端数据端口为随机端口，在客户端添加规则</span><br><span class="line">    [root@centos7 ~]<span class="comment"># iptables -I INPUT 2 -p tcp -m state --state RELATED -j ACCEPT</span></span><br><span class="line">    实现ftp RELATED 需要手动载入一个模块</span><br><span class="line">    [root@centos7 ~]<span class="comment"># modprobe nf_conntrack</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># modinfo nf_conntrack</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># lsmod | grep nf_conntrack</span></span><br><span class="line">        手动载入的模块，重启后失效，大量的ftp服务就会被肆意的放行，如何让ftp连接状态iptabless开机继续生效（自动装入模块）</span><br><span class="line">        方法1：</span><br><span class="line">        [root@centos7 ~]<span class="comment"># vim /etc/sysconfig/iptables-config </span></span><br><span class="line">        第六行</span><br><span class="line">        IPTABLES_MODULES=<span class="string">"nf-conntrack_ftp"</span></span><br><span class="line">        方法2：</span><br><span class="line">        [root@centos7 ~]<span class="comment"># vim /etc/sysconfig/modules/nf_conntrack.mudules</span></span><br><span class="line">        <span class="comment">#!/bin/bash</span></span><br><span class="line">        /sbin/modprobe nf_conntrack_ftp</span><br><span class="line">        [root@centos7 ~]<span class="comment"># chmod +x /etc/sysconfig/modules/nf_conntrack.mudules </span></span><br><span class="line">        前提是已经安装启动iptables.services</span><br><span class="line">        [root@centos7 ~]<span class="comment"># systemctl restart iptables</span></span><br><span class="line">        [root@centos7 ~]<span class="comment"># systemctl enable iptables</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+      <div>
+    
+        <div style="text-align:center;color: #FF0000;font-size:16px;">-------------------码字不易<i class="fa fa-heart"></i>尊重原创<i class="fa fa-heart"></i>转载标注<i class="fa fa-heart"></i>不胜感激-------------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+      
+</div>
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Coffee or Tea？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="唐憎洗发 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="唐憎洗发 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iptables防火墙/" rel="tag"># iptables防火墙</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/旧事-大好河山/" rel="next" title="旧事-大好河山">
+                <i class="fa fa-chevron-left"></i> 旧事-大好河山
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/mysql安装和基本操作/" rel="prev" title="mysql">
+                mysql <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/haha.gif" alt="唐憎洗发">
+            
+              <p class="site-author-name" itemprop="name">唐憎洗发</p>
+              <p class="site-description motion-element" itemprop="description">More than that</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" title="Weibo &rarr; https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1301458825" title="CloudMusic &rarr; https://music.163.com/#/user/home?id=1301458825" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>CloudMusic</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux防火墙"><span class="nav-number">1.</span> <span class="nav-text">linux防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">本章内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全技术"><span class="nav-number">1.2.</span> <span class="nav-text">安全技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙的分类"><span class="nav-number">1.3.</span> <span class="nav-text">防火墙的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络型防火墙"><span class="nav-number">1.4.</span> <span class="nav-text">网络型防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层防火墙"><span class="nav-number">1.5.</span> <span class="nav-text">应用层防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables的基本认识"><span class="nav-number">1.6.</span> <span class="nav-text">iptables的基本认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables的基本认识-1"><span class="nav-number">1.7.</span> <span class="nav-text">iptables的基本认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#历史"><span class="nav-number">1.8.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netfilter表和链对应的关系"><span class="nav-number">1.9.</span> <span class="nav-text">Netfilter表和链对应的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据包过滤匹配流程"><span class="nav-number">1.10.</span> <span class="nav-text">数据包过滤匹配流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令的使用格式"><span class="nav-number">1.11.</span> <span class="nav-text">命令的使用格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示扩展"><span class="nav-number">1.12.</span> <span class="nav-text">显示扩展</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">唐憎洗发</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">75k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:08</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<center>
+                <font size="4" color="#FF0000">Coool's Blog已运行:<span id="run_time" style="color:#DB70DB"></span></font>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("June 01,2017");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    str = yearsold + "年";
+                    str += daysold-365 + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="255,0,0" opacity="1" zindex="-1" count="230" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'dSJsYJFvGkHjdapdMEMXCnfL-gzGzoHsz',
+        appKey: 'yOLhPLlsxYBFYhhzjWECUdsf',
+        placeholder: '留言送iphone xs',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
