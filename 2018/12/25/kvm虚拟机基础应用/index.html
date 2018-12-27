@@ -155,7 +155,7 @@
 <meta property="og:image" content="https://9527dz.top/2018/12/25/kvm虚拟机基础应用/本地1.png">
 <meta property="og:image" content="https://9527dz.top/2018/12/25/kvm虚拟机基础应用/本地2.png">
 <meta property="og:image" content="https://9527dz.top/2018/12/25/kvm虚拟机基础应用/本地3.png">
-<meta property="og:updated_time" content="2018-12-25T06:18:34.726Z">
+<meta property="og:updated_time" content="2018-12-25T13:58:11.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kvm虚拟机基础应用">
 <meta name="twitter:description" content="kvm虚拟机基础应用">
@@ -320,7 +320,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
 
   </li>
         
@@ -358,7 +358,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
 
   </li>
         
@@ -586,7 +586,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.9k</span>
+                <span title="本文字数">6k</span>
               
 
               
@@ -660,6 +660,19 @@
 <p>以下操作在远程远程连接的主机上<br>使用pxe安装环境<br><img src="/2018/12/25/kvm虚拟机基础应用/virt-manager.png" alt=""><br><img src="/2018/12/25/kvm虚拟机基础应用/第一步.png" alt=""><br><img src="/2018/12/25/kvm虚拟机基础应用/第二步.png" alt=""></p>
 <p><img src="/2018/12/25/kvm虚拟机基础应用/pxe.png" alt=""><br><img src="/2018/12/25/kvm虚拟机基础应用/第三步.png" alt=""><br>使用本地的镜像（导入现有磁盘映像）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># ls</span></span><br><span class="line">cirros-0.3.0-x86_64-disk.img</span><br><span class="line">[root@centos7 ~]<span class="comment"># mkdir /vms</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># mv cirros-0.3.0-x86_64-disk.img /vms/</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /vms/</span></span><br><span class="line">[root@centos7 vms]<span class="comment"># ls</span></span><br><span class="line">cirros-0.3.0-x86_64-disk.img</span><br><span class="line">[root@centos7 vms]<span class="comment"># cp cirros-0.3.0-x86_64-disk.img pc1.img</span></span><br><span class="line">[root@centos7 vms]<span class="comment"># cp cirros-0.3.0-x86_64-disk.img pc2.img</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/12/25/kvm虚拟机基础应用/本地1.png" alt=""><br><img src="/2018/12/25/kvm虚拟机基础应用/本地2.png" alt=""><br>点击Browse Local本地浏览<br><img src="/2018/12/25/kvm虚拟机基础应用/本地3.png" alt=""></p>
+<ul>
+<li>本机客户端访问外部网络<ul>
+<li>SNAT源地址转换适用于隐藏客户端地址<ul>
+<li>主要原因是ipv4地址不够用，私网的地址在互联网没办法被路由。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>本机服务端，放在互联网被客户访问。<ul>
+<li>DNET目标地址转换，仅考虑请求报文，不考虑响应报文，适用于隐藏服务端的地址</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -793,7 +806,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/nfs服务器/" rel="next" title="">
+              <a href="/2018/12/22/网络基础/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -881,7 +894,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -921,7 +934,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1022,7 +1037,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">33k</span>
+    <span title="站点总字数">66k</span>
   
 
   
@@ -1033,7 +1048,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">1:01</span>
   
 </div>
 
