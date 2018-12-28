@@ -1,7 +1,7 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
  $("body").click(function(e) {
- var a = new Array("钓鱼岛是中国的！", "支持华为", "我是谁？","我在哪？","我要做什么？","富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善","shuinoo是大家的！");
+ var a = new Array("加油", "继续", "你能","相信","坚持","成功", "壮志", "激励", "奋进", "团结", "认真", "追求" ,"刻苦", "奋斗", "鼓励", "勤奋", "恒心","毅力");
  var $i = $("<span/>").text(a[a_idx]);
  a_idx = (a_idx + 1) % a.length;
  var x = e.pageX,

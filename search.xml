@@ -55,9 +55,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[redis缓存2]]></title>
+    <url>%2F2017%2F10%2F18%2Fredis%E7%BC%93%E5%AD%982%2F</url>
+    <content type="text"><![CDATA[创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1 // 插入音乐 或者 // 表示图片在左边或者右边，中间(left，right，center) // markdown格式测试，就是要测试一下啊啊啊啊a 文本上带一条横线，表示错误 This is an H1 Red Green Blue This is a blockquoteinside a list item. http://example.com/ This is an H2// 插入图片并设置大小两种方法 // 颜色选择 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色]]></content>
+      <categories>
+        <category>linux基础</category>
+      </categories>
+      <tags>
+        <tag>文本三剑客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX18sry3Dr9cHm2Jev4UXI/UG4S6zQD2fGKXrsYiao82+PINZDYVRTehpTUbzhmq+FdKB/xjU9dIAIJeksMLfzYl1D0Hite/Xjs/ySmsQSv3Lqfy5sKh5oMEoiJxfP1y5kD++ugWiBtUxlz4W0XW2snHQgxwXdsHTn5UG1kANIgMWkYHHJ7uBS+BLALqv2XIKAf9WD5HtX2Fq1JTSo2PbxkiLsSLMkyXdpoMlKhYLZhv2VWjCKthl2WNvY67r6xHsFz+uNIBmwmXfFFukYvVLUL64ygkPgXl0lWBtUgm4yAzC2rqRR7uSCCeemBD6IlrNKzfLD4105bd3u3DLc9UnukW/jAYRzYcYP0cydx867zdPNPL6WCvTbxE+]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX186e0utWm8cMQAsal84n9oCgxrNWwkxF3SvDXK68CGad6W/PuOtRQk87nV4rfZOHDbY9f+rzimDOJafdbJkqGucv6umx84kGi7M9VpOB4MVpdzcU+57hWTgjG3/IyjccCLzrm83dIqcq/x8RQ1udux7du428WoVmDNic99gYS++icf9LZ8uSAJlBsJvPMnJwtZw0h8urT8dlHAg/1wngwJcK6auuQDwpX+emMxnvum+lYhw4pp/9iK8iA2BfEjcZWAhK2xM7OFCRSKDAQI97ZxTLo4QLDA8ViDWhPXcKDdGyWfONdgINknqrDKyBvmPmpAenwyJZHBUxAHii4c47rHAstamV2oyex0=]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>
