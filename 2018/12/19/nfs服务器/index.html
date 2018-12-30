@@ -136,21 +136,22 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="title: ftptags: linux服务categories: NFS服务器date:  top: NFS服务">
+  <meta name="description" content="NFS服务器">
+<meta name="keywords" content="NFS服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dai zhe&#39;s notes">
+<meta property="og:title" content="NFS服务器">
 <meta property="og:url" content="https://9527dz.top/2018/12/19/nfs服务器/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="title: ftptags: linux服务categories: NFS服务器date:  top: NFS服务">
+<meta property="og:description" content="NFS服务器">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://9527dz.top/2018/12/19/nfs服务器/nfs标题.png">
 <meta property="og:image" content="https://9527dz.top/2018/12/19/nfs服务器/nfs文件系统.png">
 <meta property="og:image" content="https://9527dz.top/2018/12/19/nfs服务器/nfs工作原理.png">
 <meta property="og:image" content="https://9527dz.top/2018/12/19/nfs服务器/nfs各个版本的对比.png">
-<meta property="og:updated_time" content="2018-12-19T13:35:37.903Z">
+<meta property="og:updated_time" content="2018-12-30T03:00:17.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dai zhe&#39;s notes">
-<meta name="twitter:description" content="title: ftptags: linux服务categories: NFS服务器date:  top: NFS服务">
+<meta name="twitter:title" content="NFS服务器">
+<meta name="twitter:description" content="NFS服务器">
 <meta name="twitter:image" content="https://9527dz.top/2018/12/19/nfs服务器/nfs标题.png">
 
 
@@ -170,7 +171,7 @@
   };
 </script>
 
-  <title> | Dai zhe's notes</title>
+  <title>NFS服务器 | Dai zhe's notes</title>
   
 
 
@@ -312,7 +313,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">9</span></a>
 
   </li>
         
@@ -331,7 +332,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
         
@@ -350,7 +351,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
         
@@ -492,7 +493,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">NFS服务器
               
             
           </h1>
@@ -500,6 +501,10 @@
 
         <div class="post-meta">
                   
+            <i class="fa fa-thumb-tack"></i>
+            <font color="808080">置顶</font>
+            <span class="post-meta-divider">|</span>
+          
           <span class="post-time">
 
             
@@ -524,6 +529,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/NFS服务器/" itemprop="url" rel="index"><span itemprop="name">NFS服务器</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -590,9 +613,7 @@
       
 
       
-        <hr>
-<p>title: ftp<br>tags: linux服务<br>categories: NFS服务器<br>date: </p>
-<h2 id="top"><a href="#top" class="headerlink" title="top: "></a>top: </h2><h2 id="NFS服务"><a href="#NFS服务" class="headerlink" title="NFS服务"></a>NFS服务</h2><p><img src="/2018/12/19/nfs服务器/nfs标题.png" alt=""><br><a id="more"></a></p>
+        <h1 id="NFS服务器"><a href="#NFS服务器" class="headerlink" title="NFS服务器"></a>NFS服务器</h1><p><img src="/2018/12/19/nfs服务器/nfs标题.png" alt=""><br><a id="more"></a></p>
 <p><code>NFS：Network File System 网络文件系统，基于内核的文件系统。</code>Sun公司 开发，通过使用NFS，用户和程序可以像访问本地文件一样访问远端系统上的 文件，基于RPC<code>（Remote Procedure Call Protocol远程过程调用）实现</code> </p>
 <p>RPC采用C/S模式。客户机请求程序调用进程发送一个有进程参数的调用信息 到服务进程，然后等待应答信息。在服务器端，进程保持睡眠状态直到调用 信息到达为止。当一个调用信息到达，服务器获得进程参数，计算结果，发 送答复信息，然后等待下一个调用信息，最后，客户端调用进程接收答复信 息，获得进程结果，然后调用执行继续进行 </p>
 <p>NFS优势：节省本地存储空间，将常用的数据,如home目录,存放在NFS服务 器上且可以通过网络访问，本地终端将可减少自身存储空间的使用 </p>
@@ -679,6 +700,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NFS服务器/" rel="tag"># NFS服务器</a>
+          
+        </div>
       
 
       
@@ -831,7 +858,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -852,7 +879,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -879,7 +910,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -946,7 +981,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#top"><span class="nav-number">1.</span> <span class="nav-text">top: </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS服务"><span class="nav-number">2.</span> <span class="nav-text">NFS服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS文件系统"><span class="nav-number">3.</span> <span class="nav-text">NFS文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工作原理"><span class="nav-number">4.</span> <span class="nav-text">NFS工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS各个版本的对比s"><span class="nav-number">5.</span> <span class="nav-text">NFS各个版本的对比s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS服务介绍"><span class="nav-number">6.</span> <span class="nav-text">NFS服务介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs配置文件"><span class="nav-number">7.</span> <span class="nav-text">nfs配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工具"><span class="nav-number">8.</span> <span class="nav-text">NFS工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端NFS挂载"><span class="nav-number">9.</span> <span class="nav-text">客户端NFS挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动挂载"><span class="nav-number">10.</span> <span class="nav-text">自动挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接匹配"><span class="nav-number">11.</span> <span class="nav-text">直接匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS服务器"><span class="nav-number">1.</span> <span class="nav-text">NFS服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS文件系统"><span class="nav-number">1.1.</span> <span class="nav-text">NFS文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工作原理"><span class="nav-number">1.2.</span> <span class="nav-text">NFS工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS各个版本的对比s"><span class="nav-number">1.3.</span> <span class="nav-text">NFS各个版本的对比s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS服务介绍"><span class="nav-number">1.4.</span> <span class="nav-text">NFS服务介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs配置文件"><span class="nav-number">1.5.</span> <span class="nav-text">nfs配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工具"><span class="nav-number">1.6.</span> <span class="nav-text">NFS工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端NFS挂载"><span class="nav-number">1.7.</span> <span class="nav-text">客户端NFS挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动挂载"><span class="nav-number">1.8.</span> <span class="nav-text">自动挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接匹配"><span class="nav-number">1.9.</span> <span class="nav-text">直接匹配</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -980,7 +1015,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">101k</span>
   
 
   
@@ -991,7 +1026,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:32</span>
   
 </div>
 
