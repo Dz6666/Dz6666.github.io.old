@@ -144,13 +144,15 @@
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="docker容器存储卷">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/docker容器存储卷/图标.png">
-<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/docker容器存储卷/存储卷.png">
-<meta property="og:updated_time" content="2019-01-01T05:35:10.950Z">
+<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/图标.png">
+<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/存储卷.png">
+<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/卷类型.png">
+<meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/docker容器存储卷/2018-12-28_180239.png">
+<meta property="og:updated_time" content="2019-01-01T05:38:39.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker存储卷">
 <meta name="twitter:description" content="docker容器存储卷">
-<meta name="twitter:image" content="https://9527dz.top/2019/01/01/docker存储卷/docker容器存储卷/图标.png">
+<meta name="twitter:image" content="https://9527dz.top/2019/01/01/docker存储卷/图标.png">
 
 
 
@@ -577,7 +579,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">345</span>
+                <span title="本文字数">3.6k</span>
               
 
               
@@ -591,7 +593,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -611,22 +613,56 @@
       
 
       
-        <h1 id="docker容器存储卷"><a href="#docker容器存储卷" class="headerlink" title="docker容器存储卷"></a>docker容器存储卷</h1><p><img src="/2019/01/01/docker存储卷/docker容器存储卷/图标.png" alt=""><br><a id="more"></a></p>
+        <h1 id="docker容器存储卷"><a href="#docker容器存储卷" class="headerlink" title="docker容器存储卷"></a>docker容器存储卷</h1><p><img src="/2019/01/01/docker存储卷/图标.png" alt=""><br><a id="more"></a></p>
 <h2 id="一、什么是存储卷"><a href="#一、什么是存储卷" class="headerlink" title="一、什么是存储卷"></a>一、什么是存储卷</h2><ul>
 <li>Docker镜像由多个只读层叠加而成，启动容器时，Docker会加载只读镜 像层并在镜像栈顶部添加一个读写层 </li>
 <li>如果运行中的容器修改了现有的一个已经存在的文件，那该文件将会 从读写层下面的只读层复制到读写层，该文件的只读版本仍然存在， 只是已经被读写层中该文件的副本所隐藏，此即“写时复制(COW)”机制</li>
 </ul>
-<p><img src="/2019/01/01/docker存储卷/docker容器存储卷/存储卷.png" alt=""></p>
+<p><img src="/2019/01/01/docker存储卷/存储卷.png" alt=""></p>
 <ul>
 <li>关闭并重启容器，其数据不受影响；但删除Docker容器，则其更改将会 全部丢失 </li>
-<li>存在的问题    <ul>
+<li><p>存在的问题    </p>
+<ul>
 <li>存储于联合文件系统中，不易于宿主机访问； •容器间数据共享不便 </li>
 <li>删除容器其数据会丢失 </li>
 <li>解决方案：“卷(volume)” </li>
 <li>“卷”是容器上的一个或多个“目录”，此类目录可绕过联合文件系统，与宿主机 上的某目录“绑定(关联)”</li>
 </ul>
 </li>
+<li><p>Docker有两种类型的卷，每种类型都在容器中存在一个挂载点，但其在 宿主机上的位置有所不同； </p>
+<ul>
+<li><code>绑定挂载的卷</code><ul>
+<li>宿主机上的目录是用户指定的，在容器中的目录也是用户指定的</li>
 </ul>
+</li>
+<li><code>docker管理的卷</code><ul>
+<li>容器中的目录是用户指定的，在宿主机上的目录是在固定目录下自动生成的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>脱离容器的生命周期，也可以脱离节点的生命周期</code></li>
+</ul>
+<h2 id="二-、存储卷实现"><a href="#二-、存储卷实现" class="headerlink" title="二 、存储卷实现"></a><code>二 、存储卷实现</code></h2><p><img src="/2019/01/01/docker存储卷/卷类型.png" alt=""></p>
+<h3 id="1-docker管理的卷"><a href="#1-docker管理的卷" class="headerlink" title="1.docker管理的卷"></a><code>1.docker管理的卷</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#########################################################</span></span><br><span class="line"><span class="comment">#########################docker管理的卷####################</span></span><br><span class="line"><span class="comment">##########################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.容器中的目录是用户指定的，在宿主机上的目录是在固定目录下自动生成的，-v选项指定绑定的卷，自动在容器中创建对应的目录，并且指定的容器中的目录与宿主机上目录建立了关联关系</span></span><br><span class="line"><span class="comment">#2.创建容器的命令行中使用--rm选项则退出容器时删除容器，宿主机上对应的存储卷则也将删除</span></span><br><span class="line"><span class="comment">#3.停止容器宿主机上的存储卷不会被删除</span></span><br><span class="line"><span class="comment">#3.如果使用docker container rm 容器，宿主机上对应的存储卷不会被删除</span></span><br><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc1 -it  -v /mydata busybox</span></span><br><span class="line"> <span class="comment"># ls</span></span><br><span class="line">mydata </span><br><span class="line"></span><br><span class="line"><span class="comment">#可查看pc1容器对应的宿主机上的目录的关联关系</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker volume ls</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container inspect pc1</span></span><br><span class="line">        <span class="string">"Mounts"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"Type"</span>: <span class="string">"volume"</span>,</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"29fd92b6acf728b23323168ff82e7e34b588b46f1698db2adb6fe3d6bc9713d0"</span>,</span><br><span class="line">                <span class="string">"Source"</span>: <span class="string">"/var/lib/docker/volumes/29fd92b6acf728b23323168ff82e7e34b588b46f1698db2adb6fe3d6bc9713d0/_data"</span>,</span><br><span class="line">                <span class="string">"Destination"</span>: <span class="string">"/mydata"</span>,</span><br><span class="line">                <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">                <span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="string">"Propagation"</span>: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#容器中创建文件</span></span><br><span class="line">/ <span class="comment"># cd /mydata/</span></span><br><span class="line">/mydata <span class="comment"># ls</span></span><br><span class="line">/mydata <span class="comment"># touch a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#宿主机在关联的目录中查看文件是否存在</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /var/lib/docker/volumes/29fd92b6acf728b23323168ff82e7e34b588b46f1698db2adb6fe3d6bc9713d0/_data</span></span><br><span class="line">[root@centos7 _data]<span class="comment"># ls</span></span><br><span class="line">a</span><br><span class="line"></span><br><span class="line"><span class="comment">#退出容器</span></span><br><span class="line">/mydata <span class="comment"># exit</span></span><br><span class="line"><span class="comment">#宿主机上查看对应的目录</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container ps -a</span></span><br><span class="line">[root@centos7 _data]<span class="comment"># ls</span></span><br><span class="line">a</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除容器</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container rm pc1</span></span><br><span class="line">pc1</span><br><span class="line"><span class="comment">#宿主机上查看对应的存储卷目录</span></span><br><span class="line">[root@centos7 _data]<span class="comment"># ls</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<h3 id="2-绑定挂载的卷"><a href="#2-绑定挂载的卷" class="headerlink" title="2.绑定挂载的卷"></a><code>2.绑定挂载的卷</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"><span class="comment">#######################绑定挂载的卷#########################</span></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#宿主机上的目录是用户指定的，在容器中的目录也是用户指定的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#宿主上指定目录</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># mkdir /daizhe</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建容器并指定宿主机上的存储卷和指定容器中的目录进行关联</span></span><br><span class="line"><span class="comment">#/daizhe为手动指定的宿主机的目录</span></span><br><span class="line"><span class="comment">#/mydata为手动指定的容器中的目录</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc1 -it -v /daizhe:/mydata busybox</span></span><br><span class="line">/ <span class="comment"># ls</span></span><br><span class="line">mydata</span><br><span class="line"></span><br><span class="line"><span class="comment">#测试</span></span><br><span class="line">/ <span class="comment"># cd /mydata/</span></span><br><span class="line">/mydata <span class="comment"># touch a</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /daizhe/</span></span><br><span class="line">a</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除容器卷不会被删除</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container rm pc1</span></span><br><span class="line">pc1</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /daizhe/</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<h3 id="3-多个容器挂载到宿主机上的同一个存储卷上"><a href="#3-多个容器挂载到宿主机上的同一个存储卷上" class="headerlink" title="3.多个容器挂载到宿主机上的同一个存储卷上"></a><code>3.多个容器挂载到宿主机上的同一个存储卷上</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"><span class="comment">#################多个容器挂载到宿主机上的同一个存储卷上########</span></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"><span class="comment">#创建三个容器，同时容器到宿主机的存储卷指定为同一个目录</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc1 -it -v /daizhe:/mydata busybox</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc2 -it -v /daizhe:/mydata2 busybox</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc3 -it -v /daizhe:/mydata3 busybox</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#测试是否同时挂载上宿主机上的同一个卷</span></span><br><span class="line"><span class="comment">#宿主机在此目录下创建文件</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /daizhe/</span></span><br><span class="line">[root@centos7 daizhe]<span class="comment"># touch a c ddd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检测宿主机上文件是否存在</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container exec pc1 ls /mydata</span></span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">ddd</span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container exec pc2 ls /mydata2</span></span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">ddd</span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container exec pc3 ls /mydata3</span></span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">ddd</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用存储卷实现容器间共享数据</li>
+<li>名称空间共享<ul>
+<li>可共享<ul>
+<li>Net、IPC、UTS</li>
+</ul>
+</li>
+<li>不可共享<ul>
+<li>Mount、User、PID</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>-v,<br>      –volume list                    绑定安装卷<br>      –volume-driver string         容器的可选卷驱动程序<br>      –volumes-from list            从指定安装卷  </p>
+<p><img src="/2019/01/01/docker存储卷/docker容器存储卷/2018-12-28_180239.png" alt=""></p>
 
       
     </div>
@@ -967,7 +1003,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker容器存储卷"><span class="nav-number">1.</span> <span class="nav-text">docker容器存储卷</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是存储卷"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是存储卷</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker容器存储卷"><span class="nav-number">1.</span> <span class="nav-text">docker容器存储卷</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是存储卷"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是存储卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-、存储卷实现"><span class="nav-number">1.2.</span> <span class="nav-text">二 、存储卷实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker管理的卷"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.docker管理的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-绑定挂载的卷"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.绑定挂载的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-多个容器挂载到宿主机上的同一个存储卷上"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.多个容器挂载到宿主机上的同一个存储卷上</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1001,7 +1037,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">140k</span>
+    <span title="站点总字数">143k</span>
   
 
   
@@ -1012,7 +1048,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:07</span>
+    <span title="站点阅读时长">2:10</span>
   
 </div>
 
