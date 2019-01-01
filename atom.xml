@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://9527dz.top/"/>
-  <updated>2018-12-31T13:14:06.267Z</updated>
+  <updated>2019-01-01T05:35:10.950Z</updated>
   <id>https://9527dz.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker存储卷</title>
+    <link href="https://9527dz.top/2019/01/01/docker%E5%AD%98%E5%82%A8%E5%8D%B7/"/>
+    <id>https://9527dz.top/2019/01/01/docker存储卷/</id>
+    <published>2019-01-01T05:33:50.632Z</published>
+    <updated>2019-01-01T05:35:10.950Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="docker容器存储卷"><a href="#docker容器存储卷" class="headerlink" title="docker容器存储卷"></a>docker容器存储卷</h1><p><img src="/2019/01/01/docker存储卷/docker容器存储卷/图标.png" alt=""><br><a id="more"></a></p><h2 id="一、什么是存储卷"><a href="#一、什么是存储卷" class="headerlink" title="一、什么是存储卷"></a>一、什么是存储卷</h2><ul><li>Docker镜像由多个只读层叠加而成，启动容器时，Docker会加载只读镜 像层并在镜像栈顶部添加一个读写层 </li><li>如果运行中的容器修改了现有的一个已经存在的文件，那该文件将会 从读写层下面的只读层复制到读写层，该文件的只读版本仍然存在， 只是已经被读写层中该文件的副本所隐藏，此即“写时复制(COW)”机制</li></ul><p><img src="/2019/01/01/docker存储卷/docker容器存储卷/存储卷.png" alt=""></p><ul><li>关闭并重启容器，其数据不受影响；但删除Docker容器，则其更改将会 全部丢失 </li><li>存在的问题    <ul><li>存储于联合文件系统中，不易于宿主机访问； •容器间数据共享不便 </li><li>删除容器其数据会丢失 </li><li>解决方案：“卷(volume)” </li><li>“卷”是容器上的一个或多个“目录”，此类目录可绕过联合文件系统，与宿主机 上的某目录“绑定(关联)”</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;docker容器存储卷&quot;&gt;&lt;a href=&quot;#docker容器存储卷&quot; class=&quot;headerlink&quot; title=&quot;docker容器存储卷&quot;&gt;&lt;/a&gt;docker容器存储卷&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2019/01/01/docker存储卷/docker容器存储卷/图标.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="https://9527dz.top/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="https://9527dz.top/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>docker网络模型</title>
@@ -243,11 +265,11 @@
     <published>2017-10-01T00:00:00.000Z</published>
     <updated>2018-12-17T02:37:16.866Z</updated>
     
-    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. " /> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX19FDAS1ymgp0H/izS+u4n3wQ/M4Ti2hw1a7So/B/NI1VXG0cGs6gQ35kwbp3g3xpn0lFSiF4Biq/y2T+v+PKSEBC98ASVu1Ys68GkgiwOLieNwqI2UCMYgHEk+gXvh8OGkfSu7p6NVFYl04fzBObiTk46zHKog5rK6Qin+RmHcGCGgRYHJWl6nQvGkagvQVT3AixkwI7YNVyjSxlvKMOACrJc/mwyNJrx1awEjSuEAN7wMgXYYnqXDzTjrDVvw0tzUpFLD1DbY4KYRIf4tldWxdWmCjwPirTMUfdyCpTglN2I0S5yJmycfZF3KPKlxEQ7eJdO1aU1fjBiuckn7RqXhs2r8+tKtIMW1TnuHojUM8LAUcUxr2nssa </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. "> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX19Ljr+utl9erzlDjwzh92WaUYfth+Sr7SJkZYk91PEwml59qy3olDDwWft1/acyGdg8fJY9UMv5Rjj2xux4N1mfeEJXDrvatSa0epepdeIA6oJowCDhD0BrS2ShBkW9TWMlWs/7tVutP0LrtJwci4rXSSTG9GdDh+rOlEdhQVEcLWMKw5Mp5xE25fE/nEy9nWhOsUs3xC03rxB1G75EA2IjMnOlk30enV9ZeY2ivxziuCsUIoZOsQGiCNDt6PV/7l8usrIwnCXbt6FOK3Y2YF65H9f+Q0+ibFxA89pG0PaNaGHurfHnVSI3ggkLnxix4eikdWukN1ez0iNGWLD34ecfcPOZ27UUxjA= </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     
-      &lt;font size=3 color=&quot;#FF0000&quot;&gt;私密文章，需要输入密码.&lt;/font&gt;&lt;/br&gt;
+      &lt;font size=&quot;3&quot; color=&quot;#FF0000&quot;&gt;私密文章，需要输入密码.&lt;/font&gt;&lt;br&gt;
     
     </summary>
     
