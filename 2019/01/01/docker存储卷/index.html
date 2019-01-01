@@ -148,7 +148,7 @@
 <meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/存储卷.png">
 <meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/卷类型.png">
 <meta property="og:image" content="https://9527dz.top/2019/01/01/docker存储卷/docker容器存储卷/2018-12-28_180239.png">
-<meta property="og:updated_time" content="2019-01-01T05:38:39.308Z">
+<meta property="og:updated_time" content="2019-01-01T05:41:01.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker存储卷">
 <meta name="twitter:description" content="docker容器存储卷">
@@ -579,7 +579,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">5.1k</span>
               
 
               
@@ -593,7 +593,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -663,6 +663,10 @@
 </ul>
 <p>-v,<br>      –volume list                    绑定安装卷<br>      –volume-driver string         容器的可选卷驱动程序<br>      –volumes-from list            从指定安装卷  </p>
 <p><img src="/2019/01/01/docker存储卷/docker容器存储卷/2018-12-28_180239.png" alt=""></p>
+<h3 id="4-容器间共享存储卷即容器间复制存储卷"><a href="#4-容器间共享存储卷即容器间复制存储卷" class="headerlink" title="4.容器间共享存储卷即容器间复制存储卷"></a><code>4.容器间共享存储卷即容器间复制存储卷</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建容器，将容器中的/mydata目录与宿主机的/daizhe进行挂载实现存储卷</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc1 -it -v /daizhe:/mydata busybox </span></span><br><span class="line">/ <span class="comment"># ls</span></span><br><span class="line">mydata </span><br><span class="line">/ <span class="comment"># touch /mydata/a c ddd</span></span><br><span class="line">/ <span class="comment"># ls /mydata/</span></span><br><span class="line">a    c    ddd</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个容器命令为pc2复制pc1的存储卷</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker run --name pc2 -it --volumes-from pc1 busybox</span></span><br><span class="line">/ <span class="comment"># ls</span></span><br><span class="line">bin     etc     mydata  root    tmp     var</span><br><span class="line">dev     home    proc    sys     usr</span><br><span class="line">/ <span class="comment"># ls /mydata/</span></span><br><span class="line">a    c    ddd</span><br><span class="line"></span><br><span class="line"><span class="comment">#宿主机上查看</span></span><br><span class="line">[root@centos7 daizhe]<span class="comment"># ls</span></span><br><span class="line">a  c  ddd</span><br></pre></td></tr></table></figure>
+<h3 id="在容器中使用Volumes"><a href="#在容器中使用Volumes" class="headerlink" title="在容器中使用Volumes"></a><code>在容器中使用Volumes</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- 为docker run命令使用-v选项即可使用Volume   </span><br><span class="line">    - Docker-managed volume   </span><br><span class="line">        - ~]<span class="comment"># docker  run  -it  -name bbox1 –v /data  busybox   </span></span><br><span class="line">        - ~]<span class="comment"># docker inspect -f &#123;&#123;.Mounts&#125;&#125; bbox1   </span></span><br><span class="line">- 查看bbox1容器的卷、卷标识符及挂载的主机目录   </span><br><span class="line">    - Bind-mount Volume   </span><br><span class="line">        - ~]<span class="comment"># docker run -it -v HOSTDIR:VOLUMEDIR --name bbox2   busybox   </span></span><br><span class="line">        - ~]<span class="comment"># docker inspect -f &#123;&#123;.Mounts&#125;&#125; bbox2</span></span><br></pre></td></tr></table></figure>
+<p><code>详细信息过滤</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示的文件为json的文件格式</span></span><br><span class="line">- 字段内嵌</span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container inspect pc1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#引用一级字段过滤</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container inspect -f &#123;&#123;.NetworkSettings&#125;&#125; pc1</span></span><br><span class="line">&#123;&#123; c01b6a9b6146da49e5374db58e8aae168286c29b5b2fb0a814673415a4e4d796 <span class="literal">false</span>  0 map[] /var/run/docker/netns/c01b6a9b6146 [] []&#125; &#123;3db3b94ed903cdc6e5dfa72af482b30ff16faf23a08d697e4e3d3f0c01175e42 172.17.0.1  0 172.17.0.2 16  02:42:ac:11:00:02&#125; map[bridge:0xc4205aa000]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#引用二级字段过滤</span></span><br><span class="line">[root@centos7 ~]<span class="comment"># docker container inspect -f &#123;&#123;.NetworkSettings.Networks.bridge.IPAddress&#125;&#125; pc1</span></span><br><span class="line">172.17.0.2</span><br></pre></td></tr></table></figure></p>
+<p><code>josn格式文件美观显示</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># yum install jq -y</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1003,7 +1007,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker容器存储卷"><span class="nav-number">1.</span> <span class="nav-text">docker容器存储卷</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是存储卷"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是存储卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-、存储卷实现"><span class="nav-number">1.2.</span> <span class="nav-text">二 、存储卷实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker管理的卷"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.docker管理的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-绑定挂载的卷"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.绑定挂载的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-多个容器挂载到宿主机上的同一个存储卷上"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.多个容器挂载到宿主机上的同一个存储卷上</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker容器存储卷"><span class="nav-number">1.</span> <span class="nav-text">docker容器存储卷</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是存储卷"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是存储卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-、存储卷实现"><span class="nav-number">1.2.</span> <span class="nav-text">二 、存储卷实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker管理的卷"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.docker管理的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-绑定挂载的卷"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.绑定挂载的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-多个容器挂载到宿主机上的同一个存储卷上"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.多个容器挂载到宿主机上的同一个存储卷上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-容器间共享存储卷即容器间复制存储卷"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.容器间共享存储卷即容器间复制存储卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在容器中使用Volumes"><span class="nav-number">1.2.5.</span> <span class="nav-text">在容器中使用Volumes</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1037,7 +1041,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">143k</span>
+    <span title="站点总字数">145k</span>
   
 
   
@@ -1048,7 +1052,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:10</span>
+    <span title="站点阅读时长">2:12</span>
   
 </div>
 
