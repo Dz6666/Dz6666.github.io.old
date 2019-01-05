@@ -325,13 +325,37 @@
   </entry>
   
   <entry>
+    <title>lvs负载均衡</title>
+    <link href="https://9527dz.top/2017/10/18/lvs%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <id>https://9527dz.top/2017/10/18/lvs负载均衡/</id>
+    <published>2017-10-18T00:00:00.000Z</published>
+    <updated>2018-09-01T00:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>创建文章的默认模板，可根据实际情况修改</p><p><blockquote class="blockquote-center">Till I reach the end, then I’ll start again<br>《Try Everything》<br></blockquote><br><!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --></p><p><blockquote class="blockquote-center">1</blockquote><br><a id="more"></a></p><p>// 插入音乐</p><p><audio id="audio" controls preload="none"><br>      <source id="mp3" src="http://other.web.ri01.sycdn.kuwo.cn/resource/n3/1/70/780373770.mp3"><br></audio><br>或者</p><div align="center"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30375690&auto=1&height=66"></iframe></div><p>// 表示图片在左边或者右边，中间(left，right，center)<br><img src="/2017/10/18/lvs负载均衡/文本三剑客之awk/111.gif" div="" align="right"></p><p>// markdown格式<br><del>测试，就是要测试一下啊啊啊啊a</del> 文本上带一条横线，表示错误</p><h1 id="This-is-an-H1"><a href="#This-is-an-H1" class="headerlink" title="This is an H1"></a>This is an H1</h1><ul><li>Red</li><li>Green</li><li>Blue<blockquote><p>This is a blockquote<br>inside a list item.</p></blockquote></li></ul><hr><p><a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a></p><h3 id="This-is-an-H2"><a href="#This-is-an-H2" class="headerlink" title="This is an H2"></a>This is an H2</h3><p>// 插入图片并设置大小两种方法</p><p><img src="/2017/10/18/lvs负载均衡/旧事-大好河山/纳木错.JPG" alt="Pulpit rock" width="800" height="800"><br><img src="/2017/10/18/lvs负载均衡/旧事-大好河山/纳木错.JPG" width="60%" height="60%"><br><img src="/2017/10/18/lvs负载均衡/旧事-大好河山/纳木错.JPG" alt=""></p><p>// 颜色选择</p><font size="3" color="#FF0000"> size定义字体大小，color定义颜色</font><br><font size="3" color="#70DB93"> size定义字体大小，color定义颜色</font><br><font size="3" color="#9F5F9F"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D9D919"> size定义字体大小，color定义颜色</font><br><font size="3" color="#FF7F00"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D98719"> size定义字体大小，color定义颜色</font><br><font size="3" color="#2ae0c8"> size定义字体大小，color定义颜色</font><br><font size="3" color="#fad8be"> size定义字体大小，color定义颜色</font><br><font size="3" color="#cbf5fb"> size定义字体大小，color定义颜色</font><br><font size="3" color="#acf6ef"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D9D919"> size定义字体大小，color定义颜色</font><br><font size="3" color="#70DB93"> size定义字体大小，color定义颜色</font><br><font size="3" color="#BC8F8F"> size定义字体大小，color定义颜色</font><br><font size="3" color="#DB70DB"> size定义字体大小，color定义颜色</font><br><font size="3" color="#CFB53B"> size定义字体大小，color定义颜色</font><br><font size="3" color="#FF2400"> size定义字体大小，color定义颜色</font><br><font size="3" color="#CD7F32"> size定义字体大小，color定义颜色</font><br><font size="3" color="#23238E"> size定义字体大小，color定义颜色</font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;创建文章的默认模板，可根据实际情况修改&lt;/p&gt;
+&lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;Till I reach the end, then I’ll start again&lt;br&gt;《Try Everything》&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;1&lt;/blockquote&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="linux基础" scheme="https://9527dz.top/categories/linux%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="文本三剑客" scheme="https://9527dz.top/tags/%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>旧事-大好河山</title>
     <link href="https://9527dz.top/2017/10/01/%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1/"/>
     <id>https://9527dz.top/2017/10/01/旧事-大好河山/</id>
     <published>2017-10-01T00:00:00.000Z</published>
     <updated>2018-12-17T02:37:16.866Z</updated>
     
-    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. "> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX19ZXkahcIurMHg/OsEhjPw0OiKRXYjwwmRf45byQ7xvowPMdAZDsb5+ZC1mOFtACkKA6PJQvbqQ4Ax66e5SFN3cQV1ckMHcFziAAkHCzIbDSevyUb1Txxhkl6qJkRfzFq51pPGBBSBW67Rp4goAKngBPxbaGqtHns6SXzOjFRrmPxCMSczvJ7hbIi5wIVMMnLPeo2yzsp+SG7SqMrelE++4PvdKz/PzOs3ob3PLm7qdpMxqF77VkK01BQTiFKp0Hvev5bBi28gcouHx/1WB3jAxCdEG+qzjEPg5HScrFjM7WT8vDWIWsvk/f2XArV6z7VjNCigvISoIZCqpfDkhZp+JmnsYmmzA51Y= </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. "> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX1/A4is1pAvr2p0Q+BA+D09lAlDsA8TyfFwj/z0I3mdFghcRsYZSHGq8D6jhwUhG+VTdYNWmAZoRqnp8QBRgvRR5RQWd9hqK/ntPJoHqiypMGH7ggclGxoGRXXpetB4GTL9wL70E7B19EfKj7V2yuyfo9VUUYKiXhnhvahvuJphNv0HNsTaF150dOuv93voxZRmBr1eif00/+QhNQRoQQQOmubmc95wBxJZWkOqqsFq6oHFJeZaX58Ah1jXBjQv1FnxUk+lu54TEMwzH1xB3L15ZLYh0uOLRFuNdH8r2GI44+7cn9Qjz+JPbmCVnDdsBWg2tn6DloZ+eLtbwTAKbjvxb+Fw2uFG2yqc= </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     
