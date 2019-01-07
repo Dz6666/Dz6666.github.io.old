@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://9527dz.top/"/>
-  <updated>2019-01-06T07:19:04.559Z</updated>
+  <updated>2019-01-07T11:57:24.183Z</updated>
   <id>https://9527dz.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx配置和使用基础</title>
+    <link href="https://9527dz.top/2019/01/07/nginx%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80/"/>
+    <id>https://9527dz.top/2019/01/07/nginx配置和使用基础/</id>
+    <published>2019-01-07T11:46:19.581Z</published>
+    <updated>2019-01-07T11:57:24.183Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nginx配置和使用基础"><a href="#nginx配置和使用基础" class="headerlink" title="nginx配置和使用基础"></a>nginx配置和使用基础</h1><p><img src="/2019/01/07/nginx配置和使用基础/标题.png" alt=""><br><a id="more"></a></p><h2 id="Nginx简介"><a href="#Nginx简介" class="headerlink" title="Nginx简介"></a>Nginx简介</h2><p>一、Nginx的产生</p><ul><li><p>Nginx是一款高性能的 HTTP 和反向代理服务器，由俄罗斯人Igor Sysoev（伊戈尔·赛索耶夫）为俄罗斯网站Rambler.ru开发的，在Rambler.ru网站平稳的运行了四年，而且俄俄罗斯超过20%的虚拟主机平台采用Nginx作为反向代理服务器。</p></li><li><p>在国内，使用nginx网站用户有：百度、京东、金山爱词霸、新浪、校内网、、淘宝、YUPOO相册、豆瓣、迅雷看看、网易、腾讯等。</p></li></ul><p>二、Nginx的优点</p><ul><li>1.高并发量：根据官方给出的数据，能够支持高达 50,000 个并发连接数的响应</li><li>2.内存消耗少：处理静态文件，同样起web 服务，比apache 占用更少的内存及资源，所有它是轻量级的</li><li>3.简单稳定：配置简单，基本在一个conf文件中配置，性能比较稳定，可以7*24小时长时间不间断运行</li><li>4.模块化程度高：Nginx是高度模块化的设计，编写模块相对简单，包括 gzipping, byte ranges, chunked responses,以及 SSI-filter 等 filter，支持 SSL 和 TLSSNI。</li><li>5.支持Rwrite重写规则：能够根据域名、URL的不同， 将HTTP请求分发到不同的后端服务器群组。</li><li>6.低成本：Nginx可以做高并发的负载均衡，且Nginx是开源免费的，如果使用F5等硬件来做负载均衡，硬件成本比较高。 </li><li>7.支持多系统：Nginx代码完全用C语言从头写成，已经移植到许多体系结构和操作系统，包括：Linux、FreeBSD、Solaris、Mac OS X、AIX以及Microsoft Windows，由于Nginx是免费开源的，可以在各系统上编译并使用。</li></ul><p>三、Nginx的缺点</p><ul><li>1.动态处理差：nginx处理静态文件好,耗费内存少，但是处理动态页面则很鸡肋，现在一般前端用nginx作为反向代理抗住压力，apache作为后端处理动态请求。</li><li>2.rewrite弱：虽然nginx支持rewrite功能，但是相比于Apache来说，Apache比nginx 的rewrite 强大。</li></ul><h2 id="nginx特征及基础概念"><a href="#nginx特征及基础概念" class="headerlink" title="nginx特征及基础概念"></a>nginx特征及基础概念</h2><ul><li><p>nginx(web 服务器、web代理、反向代理)</p><ul><li><p>调用libevent:高性能的网络服务程序库</p><ul><li>epoll():基于事件驱动的开发好的库文件</li></ul></li><li><p>nginx特性：</p><ul><li>模块化设计、较好的扩展性</li><li>高可靠(组成部分一个主控进程+多个子进程组成)<ul><li>master—&gt;worker<ul><li>master主控进程负责解析配置文件，启动子进程（读取和验证配置，创建或绑定关闭套接字以及启动终止worker进程以及控制worker进程的个数，无需重新启动进程让新的配置文件加载、完成平滑版本升级等..）</li><li>worker子进程才是真正响应用户请求的进程（worker子进程有多种种类：有的子进程是实现缓存加载多适用于反向代理、接受用户的请求-接收传入并处理客户端的连接请求，cache实现缓存）</li></ul></li></ul></li><li>低内存消耗（一个线程相应多个请求）<ul><li>10000个保持连接状态模式下的连接nginx仅需2.5MB的内存</li></ul></li><li>支持热部署<ul><li>不停机而且更新配置文件、日志文件滚动、升级程序版本</li></ul></li></ul></li><li>nginx的基本功能<ul><li>支持event模型</li><li>支持epool机制</li><li>支持异步IO（事件驱动）</li><li>支持内存映射</li></ul></li><li>基本功能<ul><li>静态资源的web服务器，能缓存打开的文件描述符</li><li>支持http、smtp、pop3协议的反向代理服务器（缓存加速、缓存在本地是基于键值对关系缓存的，键是用户请求的url,值为对应的取得的数据流极大的减轻了后端服务器的压力）<ul><li>反向代理服务器：仅为接受用户请求并且自行到某个有限的服务器上去取内容（只要是把自己扮演成某个特定服务器的样子）</li><li>正向代理：代表客户端出去请求任何网站(把自己扮演成所有服务器的样子)</li></ul></li><li>支持缓存加速、负载均衡机制（反向代理）</li><li>支持fastcgi(fpm,LNMP),uWSGI(python)等</li><li>模块化（非DSO机制）、过滤器zip，SSI（服务器端包含）及图像打大小调整</li><li>支持ssl</li></ul></li><li>扩展功能<ul><li>基于名称和ip和端口的虚拟主机</li><li>支持keepalive</li><li>支持平滑升级</li><li>定制访问日志、支持日志缓冲区</li><li>支持路径别名</li><li>支持基于ip以及用户的访问控制</li><li>支持速率限制、支持并发数限制</li></ul></li><li>nginx的基本架构特性<ul><li>一个master进程，生成一个或者多个worker进程</li><li>事件驱动：epoll（边缘触发）、Kqueue,/dev/poll</li><li>IO复用器<ul><li>select,poll,rt signal(实时信号)</li></ul></li><li>支持sendfile,sendfile64</li><li>支持AIO（异步IO）</li><li>支持非阻塞模型</li><li>支持内存映射（mmap）</li></ul></li><li>nginx工作模式：基于非阻塞、事件驱动、由一个master进程生成多个worker线程，每一个worker响应n个请求<ul><li>一般单机并发3w请求，在反代的情况下会影响其性能</li></ul></li><li>nginx的模块类型<ul><li>核心模块</li><li>标准的http模块（Standard http modules）</li><li>可选的http模块（Optional http modules ）</li><li>邮件模块（Mail modules）</li><li>第三方模块（3rd party modules）</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nginx配置和使用基础&quot;&gt;&lt;a href=&quot;#nginx配置和使用基础&quot; class=&quot;headerlink&quot; title=&quot;nginx配置和使用基础&quot;&gt;&lt;/a&gt;nginx配置和使用基础&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2019/01/07/nginx配置和使用基础/标题.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="https://9527dz.top/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="https://9527dz.top/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>http协议及io模型</title>
@@ -397,11 +419,11 @@
     <published>2017-10-01T00:00:00.000Z</published>
     <updated>2018-12-17T02:37:16.866Z</updated>
     
-    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. " /> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX184N07/z7zyRp7hXuZxkBIkmh2qZlmnav4sodZ7oTvNW78RRD1WMZeSYSnP0i9kzPgMRNwIly5XvzgoBnADY3C1hZoe1mNZHWS75yjZESsj56uUh4zsQEIeO5brPGVsiyj5/3BDmsMR2YoLqboErehTJ1bykMRLdICBQcAG+gXdtzjwgNLEsb5Ge9Nbhp9ylnYm98LbPMQ0FXxPwhFrfPX5X5FsdfJLjivP/IklzU2EEdyH/M3GNULQlBkm5xTqiylo81F6Tg5pzQeqEkcTyGhHJxu5dhcK0Yf2Cy1oYYBpV4TtOqliBqSfB3JpWe3JtS3VXR7ztJ86GSAhKbyLKbGrSP6i9CyDkw4Stss8H7bGYtm1tsURdpcV </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="hbe-security"> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 输入密码,PC:Enter查看,Phone:输入法换行查看. "> <label for="pass"> 输入密码,PC:Enter查看,Phone:输入法换行查看. </label> <div class="bottom-line"></div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX187La1Fnb5DerBbdTUyp2oGbgaw6ws6AubXRVwDaxQOrhcWpEbXMsOhjkpQmld/ceM0Ghcg0mdZFAjQl6UZSBdxAKhGb/pxZdF9ANmkAoKbuH6X+dLbf9FA6osG63U1aBcniyrgDir/aUvVu6o2OzrWPqUiiSKIq7uvf68gaFUHNd02ntOKpw6TZWxj38YuqzQ0kxpAEar9pnEb0DF5YpKuk3blhhGDRPsOYfomBmK+uhF1rWAMrR326uGx7JzT6+MlSbdk42dkCrlBPrCmr3DAP1qXbL3u1X/GMzvK3w2ryRGyGdvRXksDsX7Jwtj+JWSP6nRZS86QLa8PMpR5MjQ1e8t4D8Oz/SY= </div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     
-      &lt;font size=3 color=&quot;#FF0000&quot;&gt;私密文章，需要输入密码.&lt;/font&gt;&lt;/br&gt;
+      &lt;font size=&quot;3&quot; color=&quot;#FF0000&quot;&gt;私密文章，需要输入密码.&lt;/font&gt;&lt;br&gt;
     
     </summary>
     
