@@ -136,20 +136,17 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="nginx的http_upstream模块">
-<meta name="keywords" content="Nginx">
+  <meta name="description" content="More than that">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx的http_upstream模块">
+<meta property="og:title" content="Dai zhe&#39;s notes">
 <meta property="og:url" content="https://9527dz.top/2019/01/12/nginx的http-upstream模块/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="nginx的http_upstream模块">
+<meta property="og:description" content="More than that">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://9527dz.top/2019/01/12/nginx的http-upstream模块/nginx的http-upstream模块/图标.png">
-<meta property="og:updated_time" content="2019-01-13T02:52:37.711Z">
+<meta property="og:updated_time" content="2019-01-13T02:57:32.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx的http_upstream模块">
-<meta name="twitter:description" content="nginx的http_upstream模块">
-<meta name="twitter:image" content="https://9527dz.top/2019/01/12/nginx的http-upstream模块/nginx的http-upstream模块/图标.png">
+<meta name="twitter:title" content="Dai zhe&#39;s notes">
+<meta name="twitter:description" content="More than that">
 
 
 
@@ -168,7 +165,7 @@
   };
 </script>
 
-  <title>nginx的http_upstream模块 | Dai zhe's notes</title>
+  <title> | Dai zhe's notes</title>
   
 
 
@@ -310,7 +307,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
 
   </li>
         
@@ -329,7 +326,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -348,7 +345,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
 
   </li>
         
@@ -490,7 +487,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx的http_upstream模块
+          <h1 class="post-title" itemprop="name headline">
               
             
           </h1>
@@ -498,10 +495,6 @@
 
         <div class="post-meta">
                   
-            <i class="fa fa-thumb-tack"></i>
-            <font color="808080">置顶</font>
-            <span class="post-meta-divider">|</span>
-          
           <span class="post-time">
 
             
@@ -526,24 +519,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -576,7 +551,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.2k</span>
+                <span title="本文字数">0</span>
               
 
               
@@ -590,7 +565,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -610,130 +585,7 @@
       
 
       
-        <h1 id="nginx的http-upstream模块"><a href="#nginx的http-upstream模块" class="headerlink" title="nginx的http_upstream模块"></a>nginx的http_upstream模块</h1><p><img src="nginx的http-upstream模块/图标.png" alt=""><br><a id="more"></a></p>
-<h2 id="nginx的http-upstream模块-1"><a href="#nginx的http-upstream模块-1" class="headerlink" title="nginx的http_upstream模块"></a>nginx的http_upstream模块</h2><ul>
-<li><p>我们知道单台服务器的性能是有上限的，当流量很大时，就需要使用多台服务器来共同提供服务，这就是所谓的集群。</p>
-</li>
-<li><p>负载均衡服务器，就是用来把经过它的流量，按照某种方法，分配到集群中的各台服务器上。这样一来不仅可以承担</p>
-</li>
-<li><p>更大的流量、降低服务的延迟，还可以避免单点故障造成服务不可用。一般的反向代理服务器，都具备负载均衡的功能。</p>
-</li>
-<li><p>负载均衡功能可以由硬件来提供，比如以前的F5设备。也可以由软件来提供，LVS可以提供四层的负载均衡(利用IP和端口)，</p>
-</li>
-<li><p>Haproxy和Nginx可以提供七层的负载均衡(利用应用层信息)。</p>
-</li>
-</ul>
-<pre><code>硬件：F5 BigIP, Citrix NetScaler, A10 A10
-软件：
-    四层调度：lvs, nginx(stream module), haproxy(mode tcp)
-    七层调度：nginx(http_upstream module), haproxy(mode http), httpd, ats, ...
-        mysql: Proxy_SQL, ...
-        ... ...
-
-session sticky：会话粘滞
-    Source IP: sh, persistence
-    Cookie：
-session replication：
-session server：
-</code></pre><hr>
-<h3 id="ngx-http-upstream-module"><a href="#ngx-http-upstream-module" class="headerlink" title="ngx_http_upstream_module"></a><code>ngx_http_upstream_module</code></h3><ul>
-<li>参考文档：<a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/http/ngx_http_upstream_module.html</a></li>
-<li>ngx_http_upstream_module模块用于定义可以由proxy_pass、fastcgi_pass、uwsgi_pass、scgi_pass和memcached_pass指令引用的服务器组。        </li>
-<li><p><code>(1) upstream name { ... }</code></p>
-<ul>
-<li>定义后端服务器组；引入一个新的上下文；只能用于http{}上下文中；<ul>
-<li>默认的调度方法是wrr；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>(2) server address [parameters];</code></p>
-<ul>
-<li>定义服务器地址和相关的参数；</li>
-<li>地址格式：<ul>
-<li>IP[:PORT]</li>
-<li>HOSTNAME[:PORT]</li>
-<li>unix:/PATH/TO/SOME_SOCK_FILE<ul>
-<li>参数：<ul>
-<li>weight=number<ul>
-<li>权重，默认为1；</li>
-</ul>
-</li>
-<li>max_fails=number<ul>
-<li>失败尝试的最大次数；</li>
-</ul>
-</li>
-<li>fail_timeout=time<ul>
-<li>设置服务器为不可用状态的超时时长，默认为10秒；</li>
-</ul>
-</li>
-<li>backup<ul>
-<li>把服务器标记为“备用”状态（sory server 只有所有的服务器全部没办法工作时才会上线）； </li>
-</ul>
-</li>
-<li>down<ul>
-<li>手动标记其为不可用；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server 172.18.135.2 weight=2 backup max_fails=10m;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>(3) least_conn;</p>
-<ul>
-<li>最少连接调度算法； 当server拥有不同的权重时为wlc；当所有后端主机的连接数相同时，则使用wrr进行调度；</li>
-</ul>
-</li>
-<li><p>(4) ip_hash;</p>
-<ul>
-<li>源地址hash算法；能够将来自同一个源IP地址的请求始终发往同一个upstream server；</li>
-</ul>
-</li>
-<li>(5) hash key [consistent];<ul>
-<li>基于指定的key的hash表实现请求调度，此处的key可以文本、变量或二者的组合；<ul>
-<li>consistent：参数，指定使用一致性hash算法；<ul>
-<li>示例：<ul>
-<li>hash $request_uri consistent<ul>
-<li>hash $remote_addr</li>
-<li>hash $cookie_name</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>(6) keepalive connections;<ul>
-<li>可使用长连接的连接数量；每worker与后端服务保持的最大空闲长连接数量；</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="范例：实现nginx调度"><a href="#范例：实现nginx调度" class="headerlink" title="范例：实现nginx调度"></a><code>范例：实现nginx调度</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">三台主机</span><br><span class="line">  client</span><br><span class="line">  nginx_stream_server :yum install nginx -y</span><br><span class="line">  web_server1 :yum install httpd -y</span><br><span class="line">  web_server2 :yum install httpd -y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置两台web_server的页面文件</span><br><span class="line">  <span class="comment">#为了达到负载均衡的web_server网页文件应该是相同的，这里为了演示调度器调度的差别有意的是web_server的网页文件设置有差别</span></span><br><span class="line">  web_server1</span><br><span class="line">  ~]<span class="comment"># echo "web_server1" &gt; /var/www/html/index.html</span></span><br><span class="line"></span><br><span class="line">  web_server2</span><br><span class="line">  ~]<span class="comment"># echo "web_server2" &gt; /var/www/html/index.html</span></span><br><span class="line"></span><br><span class="line">编辑nginx实现负载均衡</span><br><span class="line">  <span class="comment">#在原http配置</span></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;  <span class="comment">#仅能在http上下文使用</span></span><br><span class="line">        upstream staticwebsrvs &#123;  <span class="comment">#定义后端服务器组</span></span><br><span class="line">        server 172.18.135.2;  <span class="comment">#web_server1</span></span><br><span class="line">        server 172.18.135.5;  <span class="comment">#web_server2</span></span><br><span class="line">        &#125;</span><br><span class="line">  ....</span><br><span class="line">  <span class="comment">#server中调用服务器组名称</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">client客户端测试</span><br><span class="line"><span class="comment">#默认1:1轮询算法,支持加权轮询（Round-Robin）</span></span><br><span class="line">  ~]<span class="comment"># while true; do curl http://172.18.135.1:8080; sleep 1;done</span></span><br><span class="line">  web_server1</span><br><span class="line">  web_server2</span><br><span class="line">  web_server1</span><br><span class="line">  web_server2</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="算法：使用加权轮询（wrr）"><a href="#算法：使用加权轮询（wrr）" class="headerlink" title="算法：使用加权轮询（wrr）"></a><code>算法：使用加权轮询（wrr）</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">使用加权轮询(默认权重都为1)</span><br><span class="line">  编辑nginx实现负载均衡</span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">        upstream staticwebsrvs &#123;</span><br><span class="line">        server 172.18.135.2 weight=2; <span class="comment">#将web_server1设置权重比为2</span></span><br><span class="line">        server 172.18.135.5;</span><br><span class="line">  &#125;</span><br><span class="line">    ....</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">lient客户端测试</span><br><span class="line">  ~]<span class="comment"># while true; do curl http://172.18.135.1:8080; sleep 1;done</span></span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server2</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="算法：least-conn做少连接（wlc）"><a href="#算法：least-conn做少连接（wlc）" class="headerlink" title="算法：least_conn做少连接（wlc）"></a><code>算法：least_conn做少连接（wlc）</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#对短链接最好使用：轮询</span></span><br><span class="line"><span class="comment">#对长连接最好使用：wlc</span></span><br><span class="line"></span><br><span class="line">使用least_conn做少连接算法</span><br><span class="line">  编辑nginx实现负载均衡</span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">        upstream staticwebsrvs &#123;</span><br><span class="line">        least_conn;</span><br><span class="line">        server 172.18.135.2 weight=2;</span><br><span class="line">        server 172.18.135.5;</span><br><span class="line">  &#125;</span><br><span class="line">  ....</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">lient客户端测试</span><br><span class="line">  ~]<span class="comment"># while true; do curl http://172.18.135.1:8080; sleep 1;done</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="算法：ip-hash-sh"><a href="#算法：ip-hash-sh" class="headerlink" title="算法：ip_hash (sh)"></a><code>算法：ip_hash (sh)</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">使用ip_hash：bash原ip地址</span><br><span class="line">  编辑nginx实现负载均衡</span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">        upstream staticwebsrvs &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 172.18.135.2 weight=2;</span><br><span class="line">        server 172.18.135.5;</span><br><span class="line">  &#125;</span><br><span class="line">  ....</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">lient客户端测试</span><br><span class="line">  ~]<span class="comment"># while true; do curl http://172.18.135.1:8080; sleep 1;done</span></span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line"></span><br><span class="line">工作方式：</span><br><span class="line"><span class="comment">#对客户端ip做bash计算，把后端服务器按权重bash成静态的数组，而后在数据上取模，取出模几，就映射到第几台服务器上</span></span><br><span class="line">缺点：</span><br><span class="line"><span class="comment">#如果服务器的总数发生了变化则此前的hash结果则发生变动</span></span><br><span class="line"><span class="comment">#当后端服务器宕机后，session会丢失；</span></span><br><span class="line"><span class="comment">#来自同一局域网的客户端会被转发到同一个后端服务器，可能导致负载失衡；</span></span><br><span class="line"><span class="comment">#不适用于CDN网络，不适用于前段还有代理的情况。</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="算法：consistent-bashing-一致性hash"><a href="#算法：consistent-bashing-一致性hash" class="headerlink" title="算法：consistent bashing 一致性hash"></a><code>算法：consistent bashing 一致性hash</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#无论权重怎么变，但是hash算法是不变的，仅对固定的进行bash取模</span></span><br><span class="line"><span class="comment">#bash:可以对任何数据进行hash</span></span><br><span class="line"><span class="comment">#consistent一致性hash,如果不添加则便是静态hash与ip_hash相同</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">hash</span> <span class="variable">$remote_addr</span> consistent;</span><br><span class="line">对原地址进行bash，不过做了一致性<span class="built_in">hash</span></span><br><span class="line">  编辑nginx实现负载均衡</span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">        upstream staticwebsrvs &#123;</span><br><span class="line">        <span class="built_in">hash</span> <span class="variable">$remote_addr</span> consistent;</span><br><span class="line">        server 172.18.135.2 weight=2;</span><br><span class="line">        server 172.18.135.5;</span><br><span class="line">  &#125;</span><br><span class="line">  ....</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">lient客户端测试</span><br><span class="line">  ~]<span class="comment"># while true; do curl http://172.18.135.1:8080; sleep 1;done</span></span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br><span class="line">  web_server1</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">对用户请求的uri进项<span class="built_in">hash</span>(适用于后端服务器为缓存服务器，提高命中率)</span><br><span class="line"><span class="built_in">hash</span> <span class="variable">$request_uri</span> consistent;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">        upstream staticwebsrvs &#123;</span><br><span class="line">        <span class="built_in">hash</span> <span class="variable">$request_uri</span> consistent;</span><br><span class="line">        server 172.18.135.2 weight=2;</span><br><span class="line">        server 172.18.135.5;</span><br><span class="line">  &#125;</span><br><span class="line">  ....</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://staticwebsrvs/;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx+才支持</span><br><span class="line">nginx-sticky-module的使用（基于cookie的会话保持）</span><br><span class="line"></span><br><span class="line">使用sticky_cookie_insert启用会话亲缘关系，这会导致来自同一客户端的请求被传递到一组服务器在同一台服务器。与ip_hash不同之处在于，它不是基于IP来判断客户端的，而是基于cookie来判断。因此可以避免上述ip_hash中来自同一局域网的客户端和前段代理导致负载失衡的情况。</span><br></pre></td></tr></table></figure>
-<hr>
-
+        
       
     </div>
 
@@ -796,12 +648,6 @@ session server：
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
-          
-        </div>
       
 
       
@@ -923,17 +769,8 @@ session server：
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -950,7 +787,7 @@ session server：
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -979,7 +816,9 @@ session server：
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1014,7 +853,9 @@ session server：
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1072,22 +913,6 @@ session server：
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx的http-upstream模块"><span class="nav-number">1.</span> <span class="nav-text">nginx的http_upstream模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的http-upstream模块-1"><span class="nav-number">1.1.</span> <span class="nav-text">nginx的http_upstream模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngx-http-upstream-module"><span class="nav-number">1.1.1.</span> <span class="nav-text">ngx_http_upstream_module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范例：实现nginx调度"><span class="nav-number">1.1.2.</span> <span class="nav-text">范例：实现nginx调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法：使用加权轮询（wrr）"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">算法：使用加权轮询（wrr）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法：least-conn做少连接（wlc）"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">算法：least_conn做少连接（wlc）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法：ip-hash-sh"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">算法：ip_hash (sh)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法：consistent-bashing-一致性hash"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">算法：consistent bashing 一致性hash</span></a></li></ol></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -1115,7 +940,7 @@ session server：
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">270k</span>
+    <span title="站点总字数">265k</span>
   
 
   
@@ -1126,7 +951,7 @@ session server：
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:05</span>
+    <span title="站点阅读时长">4:01</span>
   
 </div>
 
