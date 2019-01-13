@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[nginx的http_upstream模块负载均衡]]></title>
-    <url>%2F2019%2F01%2F13%2Fnginx%E7%9A%84http-upstream%E6%A8%A1%E5%9D%97%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%2F</url>
-    <content type="text"><![CDATA[nginx的http_upstream模块]]></content>
+    <title><![CDATA[nginx的http_upstream模块]]></title>
+    <url>%2F2019%2F01%2F13%2Fnginx%E4%B8%83%E5%B1%82%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[nginx的http_upstream模块（七层调度）]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -256,7 +256,7 @@
   <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX18vRHYyUGRzuNlEOHwdRM+dWBZT1U1Vz41PzrtA+AR2wmPW/MCZboybX0BzdxDVF/XOhdSbKuS9umrGsAZV6oV6PndWAzapApOIlNbjKLcz8XmwZlwDtizybyMxCX8SsX71xEHA6sHm8SybpuWrmS9r/RWFDxHwgtgsbYXgoZfrACH9gjUvKyj+pXN+9zfvyDUmnYQwmAP/S36J8TZ98FhjHhyAGxsiXa9+ekSUVSfD4xRIlHzhE+bz/H3QzVpo+4RVlAr8KIyL268Di3H8LujHiGL7S0fV5PJvvmdR+VOVFkBVw0MQMr5QPfCQz0GD9do+rIInKB1Ga8nwnObk25ENk7cdyCJv1Zw=]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX1+5a9ACM65EoQlRUHskHHZzcURGVxOe5qNTKoDVYHkamNVCYmGVYiKlimwLNZ4hQuiFfNcibDkVx9TZthUvT3dbNOTo+lcfZ7IoqCgM1WbRPE1rGTLYiyR5Leo5gbwaE8fMBmhg0UrMsJcMlndEi/96xlvH9oW6wN/78bqq7zGdcAvRxy5OwJkuUsjpLD5YU+DC5lGUQUXYi7vowoIqqRrNTkkegsz8C0f6foKf3ZFNj34ZmPZIWk7dTWNTB6xts2pJFqZGpsWtQrUzcDcXUd7SyqfgmjL9ZsHrEkNvM2W7OeoYjWUVSpYRwDjtIVB8t22uulFN5M6Wv8sZ65D/ak664ID0sb/N7Ek=]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>

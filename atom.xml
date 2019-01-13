@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://9527dz.top/"/>
-  <updated>2019-01-13T03:10:52.688Z</updated>
+  <updated>2019-01-13T03:18:14.896Z</updated>
   <id>https://9527dz.top/</id>
   
   <author>
@@ -17,17 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>nginx的http_upstream模块负载均衡</title>
-    <link href="https://9527dz.top/2019/01/13/nginx%E7%9A%84http-upstream%E6%A8%A1%E5%9D%97%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
-    <id>https://9527dz.top/2019/01/13/nginx的http-upstream模块负载均衡/</id>
-    <published>2019-01-13T03:05:50.304Z</published>
-    <updated>2019-01-13T03:10:52.688Z</updated>
+    <title>nginx的http_upstream模块</title>
+    <link href="https://9527dz.top/2019/01/13/nginx%E4%B8%83%E5%B1%82%E8%B0%83%E5%BA%A6/"/>
+    <id>https://9527dz.top/2019/01/13/nginx七层调度/</id>
+    <published>2019-01-13T03:17:09.054Z</published>
+    <updated>2019-01-13T03:18:14.896Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="nginx的http-upstream模块"><a href="#nginx的http-upstream模块" class="headerlink" title="nginx的http_upstream模块"></a>nginx的http_upstream模块</h1><p><img src="nginx的http-upstream模块负载均衡/图标.png" alt=""><br><a id="more"></a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="nginx的http-upstream模块（七层调度）"><a href="#nginx的http-upstream模块（七层调度）" class="headerlink" title="nginx的http_upstream模块（七层调度）"></a>nginx的http_upstream模块（七层调度）</h1><p><img src="/2019/01/13/nginx七层调度/图标.png" alt=""><br><a id="more"></a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;nginx的http-upstream模块&quot;&gt;&lt;a href=&quot;#nginx的http-upstream模块&quot; class=&quot;headerlink&quot; title=&quot;nginx的http_upstream模块&quot;&gt;&lt;/a&gt;nginx的http_upstream模块&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;nginx的http-upstream模块负载均衡/图标.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+      &lt;h1 id=&quot;nginx的http-upstream模块（七层调度）&quot;&gt;&lt;a href=&quot;#nginx的http-upstream模块（七层调度）&quot; class=&quot;headerlink&quot; title=&quot;nginx的http_upstream模块（七层调度）&quot;&gt;&lt;/a&gt;nginx的http_upstream模块（七层调度）&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2019/01/13/nginx七层调度/图标.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
