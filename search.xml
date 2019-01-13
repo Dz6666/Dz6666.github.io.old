@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nginx高并发内核优化]]></title>
+    <url>%2F2019%2F01%2F13%2Fnginx%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E6%A0%B8%E4%BC%98%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[nginx高并发内核优化]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[nginx的stream模块]]></title>
     <url>%2F2019%2F01%2F13%2Fnginx%E4%BC%AA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%2F</url>
-    <content type="text"><![CDATA[nginx的stream模块（伪四层负载）]]></content>
+    <content type="text"><![CDATA[nginx的stream模块（伪四层负载） nginx伪四层负载 Nginx 1.9.0版本起支持四层负载均衡，从而使得Nginx变得更加强大。目前，四层软件负载均衡器用得比较多的是HaProxy；而Nginx也支持四层负载均衡。 ngx_stream_core_module ngx_stream_core_module模块从1.9.0版本开始可用。默认情况下，此模块不是构建的，它应该使用-with-stream配置参数启用。 (1) listen address:port [ssl] [udp] [backlog=number] [bind] [ipv6only=on|off] [reuseport] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]]; 监听的端口； 默认为tcp协议； udp: 监听udp协议的端口； ngx_stream_proxy_module ngx_stream_proxy_module模块(1.9.0)允许通过TCP、UDP(1.9.13)和unix域套接字代理数据流。 (1) proxy_pass address; 设置代理服务器的地址。该地址可以指定为域名或IP地址、端口或unix域套接字路径。 (2) proxy_timeout timeout; 设置客户端或代理服务器连接上的两个连续读写操作之间的超时。如果在此时间内没有传输数据，则连接将关闭。- 默认为10m; (3) proxy_connect_timeout time; 定义与代理服务器建立连接的超时。- 设置nginx与被代理的服务器尝试建立连接的超时时长；默认为60s； 参考：http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream 范例：123456789101112131415161718192021222324252627282930313233343536实现nginx_stream代理mysql_server服务器面向客户端提供服务 clent nginx_stream : yum install nginx mysql_server : yum istall mariadb-servermysql_server### 创建账号 MariaDB [(none)]&gt; grant all on *.* to daizhe@'%' identified by 'centos'; 生效权限 MariaDB [(none)]&gt; flush privileges;nginx_server#使用stream四层代理时使用的上下文都在stream &#123;&#125; 上下文当中，不要与http同时使用 ~]# vim /etc/nginx/nginx.conf stream &#123; server &#123; listen 3306; proxy_pass 172.18.135.2:3306; #数据库的地址和端口 &#125; &#125; ~]# nginx -t ~]# nginx -s reload ~]# systemctl restart nginx ~]# ss -tnl LISTEN 0 128 *:3306 client测试 #使用client连接nginx_stream_server服务器验证是否被调度 ~]# mysql -udaizhe -pcentos -h172.18.135.1 #地址为nginx地址 MariaDB [(none)]&gt; 123456789101112131415161718192021222324252627282930313233343536373839404142434445再次启动一个mysql数据库实现客户端访问的负载均衡#模拟两个数据库的效果，为了使客户调度起来无差别感知，使两个mysql授权的账号和数据相同（生产中可以做主从）（后添加）mysql_server### 创建账号 MariaDB [(none)]&gt; grant all on *.* to daizhe@'%' identified by 'centos'; 生效权限 MariaDB [(none)]&gt; flush privileges;配置nginx_stream_server ~]# vim /etc/nginx/nginx.conf stream &#123; upstream dbserver &#123; server 172.18.135.2:3306; server 172.18.135.5:3306; &#125; server &#123; listen 3306; proxy_pass dbserver; &#125; &#125; ~]# nginx -t ~]# nginx -s reloadclient 测试（为了使得看出差别可以在daizhe账号下创建不同的数据库以便看出算法） ~]# while true; do mysql -udaizhe -pcentos -h172.18.135.1 -e "show databases;"; sleep 1 ;done+--------------------+| Database |+--------------------+| information_schema || db1 || mysql || performance_schema |+--------------------++--------------------+| Database |+--------------------+| information_schema || db2 || mysql || performance_schema |+--------------------+]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -256,7 +267,7 @@
   <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX19KWZ+lxXDiFy99isu2jFyG3oJVW+MCtmyox4rE1sCZsobl+CWGEr8qc/V0m70sUeOKrRCHCRUyK7KctmyqqDL0uzbWm3gEvFRHjOLbAckBpemjcF7e47SIWDLvW8RZfzSvEKXr1IpdAVQ4Xq99yyhgrQj+ktHSlekyX7pJnY8QETDNJmVe12DRy4qrBAIXE/0jUmHdfSfMIcBVCumAAQGCYCxjfmlx0Rb7UmMGbCCqGtcxo+3+e58fMljjiqI2UygCrqELJtG+onMHPkqlcS5L8QueufiJ+b09BBbRUUcBKbHJndVj3yfQAUafCyMW6tB9003I5jg89lf28L2DhjhmMehYrcnYju0goFsm+b32DNOO5ZLAuDr4]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX19PTnO0sAqZMGWJDyKi4htYczc/KeIzCwCAMA0IeBEFzpcsNUjc5WPqJJA4GADy0jRxJVlfwUL8L6jz0LBeBXGzZLe7pkbM8Z27Ip8PuFvdMxstPpqaD8HxPIkd7qV7SRh/uz8nsTVz08E2jHbC/WQPinu+SPxXMd2mgywt4d3nAv3f9Mdprcg5ARe4j1XjXLvCZVo/kPa4s2W0vWVXPDmtdQysJNfo+Mfli3GeUSPtJAtGthAOtrEqkEuocAE74LOfK8ekA/mRwTvmqUrwiTJ1urC3oyegeaSMekYJqlp161wEXOGyxEs81UAtGpJXzW2Rmuxw+V5BQYh3BiHnSp37SZHEkRa52540dbVG8UA4avdh5JcgjnNh]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>

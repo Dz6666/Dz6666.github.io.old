@@ -145,7 +145,7 @@
 <meta property="og:description" content="nginx的stream模块（伪四层负载）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://9527dz.top/2019/01/13/nginx伪四层负载/标题.png">
-<meta property="og:updated_time" content="2019-01-13T03:27:58.040Z">
+<meta property="og:updated_time" content="2019-01-13T05:55:25.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx的stream模块">
 <meta name="twitter:description" content="nginx的stream模块（伪四层负载）">
@@ -348,7 +348,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">25</span></a>
 
   </li>
         
@@ -576,7 +576,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">22</span>
+                <span title="本文字数">2.8k</span>
               
 
               
@@ -590,7 +590,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -611,6 +611,49 @@
 
       
         <h1 id="nginx的stream模块（伪四层负载）"><a href="#nginx的stream模块（伪四层负载）" class="headerlink" title="nginx的stream模块（伪四层负载）"></a>nginx的stream模块（伪四层负载）</h1><p><img src="/2019/01/13/nginx伪四层负载/标题.png" alt=""><br><a id="more"></a></p>
+<h2 id="nginx伪四层负载"><a href="#nginx伪四层负载" class="headerlink" title="nginx伪四层负载"></a>nginx伪四层负载</h2><ul>
+<li>Nginx 1.9.0版本起支持四层负载均衡，从而使得Nginx变得更加强大。目前，四层软件负载均衡器用得比较多的是HaProxy；而Nginx也支持四层负载均衡。</li>
+</ul>
+<h3 id="ngx-stream-core-module"><a href="#ngx-stream-core-module" class="headerlink" title="ngx_stream_core_module"></a><code>ngx_stream_core_module</code></h3><ul>
+<li><p>ngx_stream_core_module模块从1.9.0版本开始可用。默认情况下，此模块不是构建的，它应该使用-with-stream配置参数启用。</p>
+</li>
+<li><p><code>(1) listen address:port [ssl] [udp] [backlog=number] [bind] [ipv6only=on|off] [reuseport] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]];</code></p>
+<ul>
+<li>监听的端口；<ul>
+<li>默认为tcp协议；<ul>
+<li>udp: 监听udp协议的端口；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ngx-stream-proxy-module"><a href="#ngx-stream-proxy-module" class="headerlink" title="ngx_stream_proxy_module"></a><code>ngx_stream_proxy_module</code></h3><ul>
+<li>ngx_stream_proxy_module模块(1.9.0)允许通过TCP、UDP(1.9.13)和unix域套接字代理数据流。</li>
+<li><p>(1) proxy_pass address;</p>
+<ul>
+<li>设置代理服务器的地址。该地址可以指定为域名或IP地址、端口或unix域套接字路径。</li>
+</ul>
+</li>
+<li><p>(2) proxy_timeout timeout;</p>
+<ul>
+<li>设置客户端或代理服务器连接上的两个连续读写操作之间的超时。如果在此时间内没有传输数据，则连接将关闭。<pre><code>- 默认为10m; 
+</code></pre></li>
+</ul>
+</li>
+<li><p>(3) proxy_connect_timeout time;</p>
+<ul>
+<li>定义与代理服务器建立连接的超时。<pre><code>- 设置nginx与被代理的服务器尝试建立连接的超时时长；默认为60s；
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>参考：<a href="http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream" target="_blank" rel="noopener">http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream</a></p>
+<p>范例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">实现nginx_stream代理mysql_server服务器面向客户端提供服务</span><br><span class="line"></span><br><span class="line">  clent</span><br><span class="line">  nginx_stream  : yum install nginx</span><br><span class="line">  mysql_server  : yum istall mariadb-server</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql_server</span><br><span class="line"><span class="comment">###</span></span><br><span class="line">  创建账号</span><br><span class="line">  MariaDB [(none)]&gt; grant all on *.* to daizhe@<span class="string">'%'</span> identified by <span class="string">'centos'</span>;</span><br><span class="line">  生效权限</span><br><span class="line">  MariaDB [(none)]&gt; flush privileges;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nginx_server</span><br><span class="line"><span class="comment">#使用stream四层代理时使用的上下文都在stream &#123;&#125; 上下文当中，不要与http同时使用</span></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  stream &#123;</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 3306;</span><br><span class="line">        proxy_pass  172.18.135.2:3306;  <span class="comment">#数据库的地址和端口</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart nginx</span></span><br><span class="line">  ~]<span class="comment"># ss -tnl   </span></span><br><span class="line">    LISTEN      0      128       *:3306  </span><br><span class="line"></span><br><span class="line">client测试</span><br><span class="line">  <span class="comment">#使用client连接nginx_stream_server服务器验证是否被调度</span></span><br><span class="line">  ~]<span class="comment"># mysql -udaizhe -pcentos -h172.18.135.1  #地址为nginx地址</span></span><br><span class="line">  MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">再次启动一个mysql数据库实现客户端访问的负载均衡</span><br><span class="line"><span class="comment">#模拟两个数据库的效果，为了使客户调度起来无差别感知，使两个mysql授权的账号和数据相同（生产中可以做主从）</span></span><br><span class="line"></span><br><span class="line">（后添加）mysql_server</span><br><span class="line"><span class="comment">###</span></span><br><span class="line">  创建账号</span><br><span class="line">  MariaDB [(none)]&gt; grant all on *.* to daizhe@<span class="string">'%'</span> identified by <span class="string">'centos'</span>;</span><br><span class="line">  生效权限</span><br><span class="line">  MariaDB [(none)]&gt; flush privileges;</span><br><span class="line"></span><br><span class="line">配置nginx_stream_server</span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line"></span><br><span class="line">    stream &#123;</span><br><span class="line">        upstream dbserver &#123;</span><br><span class="line">        server 172.18.135.2:3306;</span><br><span class="line">        server 172.18.135.5:3306;</span><br><span class="line">        &#125;</span><br><span class="line">        server &#123;</span><br><span class="line">        listen 3306;</span><br><span class="line">        proxy_pass dbserver;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># nginx -t</span></span><br><span class="line">  ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">client 测试（为了使得看出差别可以在daizhe账号下创建不同的数据库以便看出算法）</span><br><span class="line">   ~]<span class="comment"># while true; do mysql -udaizhe -pcentos -h172.18.135.1 -e "show databases;"; sleep 1 ;done</span></span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| db1                |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">+--------------------+</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| db2                |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">+--------------------+</span><br></pre></td></tr></table></figure>
+<hr>
 
       
     </div>
@@ -754,6 +797,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/01/13/nginx高并发内核优化/" rel="prev" title="nginx高并发内核优化">
+                nginx高并发内核优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -828,7 +875,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -959,7 +1006,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx的stream模块（伪四层负载）"><span class="nav-number">1.</span> <span class="nav-text">nginx的stream模块（伪四层负载）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx的stream模块（伪四层负载）"><span class="nav-number">1.</span> <span class="nav-text">nginx的stream模块（伪四层负载）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx伪四层负载"><span class="nav-number">1.1.</span> <span class="nav-text">nginx伪四层负载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngx-stream-core-module"><span class="nav-number">1.1.1.</span> <span class="nav-text">ngx_stream_core_module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ngx-stream-proxy-module"><span class="nav-number">1.1.2.</span> <span class="nav-text">ngx_stream_proxy_module</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -993,7 +1040,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">270k</span>
+    <span title="站点总字数">273k</span>
   
 
   
@@ -1004,7 +1051,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:05</span>
+    <span title="站点阅读时长">4:08</span>
   
 </div>
 
