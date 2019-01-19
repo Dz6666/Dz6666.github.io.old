@@ -161,7 +161,7 @@
 <meta property="og:image" content="https://9527dz.top/2019/01/16/tomcat配置进阶/虚拟主机.png">
 <meta property="og:image" content="https://9527dz.top/2019/01/16/tomcat配置进阶/虚拟主机1.png">
 <meta property="og:image" content="https://9527dz.top/2019/01/16/tomcat配置进阶/虚拟主机2.png">
-<meta property="og:updated_time" content="2019-01-18T13:00:12.243Z">
+<meta property="og:updated_time" content="2019-01-19T07:30:57.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat配置进阶--热部署">
 <meta name="twitter:description" content="tomcat配置进阶–热部署">
@@ -364,7 +364,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">36</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">37</span></a>
 
   </li>
         
@@ -655,7 +655,7 @@
 <li>自动部署：直接将应用程序放进tomcat,自动实现部署。</li>
 <li>手动部署：将依赖的类库一个个的装载上。</li>
 </ul>
-<p><code>范例:实现Deploy热部署</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">创建目录结构及jsp文件</span><br><span class="line">  ~]<span class="comment"># mkdir /data/mywebs</span></span><br><span class="line">  ~]<span class="comment"># mkdir /data/mywebs</span></span><br><span class="line">  ~]<span class="comment"># cd /data/mywebs/</span></span><br><span class="line">  mywebs]<span class="comment"># mkdir classes lib WEB-INF WETA-INF</span></span><br><span class="line"></span><br><span class="line">mywebs]<span class="comment"># vi index.jsp</span></span><br><span class="line">   &lt;%@ page language=<span class="string">"java"</span> %&gt;</span><br><span class="line">   &lt;html&gt;</span><br><span class="line">      &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">       &lt;body&gt;</span><br><span class="line">         &lt;h1&gt;&lt;font color=<span class="string">"red"</span>&gt;TomcatA.magedu.com&lt;/font&gt;&lt;/h1&gt;</span><br><span class="line">            &lt;table align=<span class="string">"centre"</span> border=<span class="string">"1"</span>&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">              &lt;td&gt;Session ID&lt;/td&gt;</span><br><span class="line">            &lt;% session.setAttribute(<span class="string">"a.com"</span>,<span class="string">"a.com"</span>); %&gt;</span><br><span class="line">              &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;</span><br><span class="line">             &lt;/tr&gt;</span><br><span class="line">             &lt;tr&gt;</span><br><span class="line">         &lt;td&gt;Created on&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">   &lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>范例:实现Deploy热部署</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">创建目录结构及jsp文件</span><br><span class="line">  ~]<span class="comment"># mkdir /data/mywebs</span></span><br><span class="line">  ~]<span class="comment"># mkdir /data/mywebs</span></span><br><span class="line">  ~]<span class="comment"># cd /data/mywebs/</span></span><br><span class="line">  mywebs]<span class="comment"># mkdir classes lib WEB-INF WETA-INF</span></span><br><span class="line"></span><br><span class="line">mywebs]<span class="comment"># vi index.jsp</span></span><br><span class="line">   &lt;%@ page language=<span class="string">"java"</span> %&gt;</span><br><span class="line">   &lt;html&gt;</span><br><span class="line">      &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">       &lt;body&gt;</span><br><span class="line">         &lt;h1&gt;&lt;font color=<span class="string">"red"</span>&gt;TomcatA.daizhe.com&lt;/font&gt;&lt;/h1&gt;</span><br><span class="line">            &lt;table align=<span class="string">"centre"</span> border=<span class="string">"1"</span>&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">              &lt;td&gt;Session ID&lt;/td&gt;</span><br><span class="line">            &lt;% session.setAttribute(<span class="string">"a.com"</span>,<span class="string">"a.com"</span>); %&gt;</span><br><span class="line">              &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;</span><br><span class="line">             &lt;/tr&gt;</span><br><span class="line">             &lt;tr&gt;</span><br><span class="line">         &lt;td&gt;Created on&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">   &lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <p><code>热部署(重启tomcat也不会配置有影响，虽然不会出现在配置文件中，但是也是持久有效的)</code></p>
 <p><img src="/2019/01/16/tomcat配置进阶/部署1.png" alt=""><br><img src="/2019/01/16/tomcat配置进阶/部署2.png" alt=""><br><img src="/2019/01/16/tomcat配置进阶/部署3.png" alt=""></p>
 <hr>
@@ -811,8 +811,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/18/tomcat配置进阶2/" rel="prev" title="tomcat配置进阶--热部署">
-                tomcat配置进阶--热部署 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/18/tomcat配置进阶2/" rel="prev" title="tomcat配置进阶--反代">
+                tomcat配置进阶--反代 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -889,7 +889,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1062,7 +1062,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">360k</span>
+    <span title="站点总字数">369k</span>
   
 
   
@@ -1073,7 +1073,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">5:28</span>
+    <span title="站点阅读时长">5:35</span>
   
 </div>
 
