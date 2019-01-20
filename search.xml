@@ -419,9 +419,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[session一致性架构设计实践]]></title>
+    <url>%2F2017%2F10%2F18%2Fsession%E4%B8%80%E8%87%B4%E6%80%A7%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%2F</url>
+    <content type="text"><![CDATA[创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1 // 插入音乐 或者 // 表示图片在左边或者右边，中间(left，right，center) // markdown格式测试，就是要测试一下啊啊啊啊a 文本上带一条横线，表示错误 This is an H1 Red Green Blue This is a blockquoteinside a list item. http://example.com/ This is an H2// 插入图片并设置大小两种方法 // 颜色选择 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色]]></content>
+      <categories>
+        <category>linux基础</category>
+      </categories>
+      <tags>
+        <tag>文本三剑客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX19p+dvDleAzBAfzuar8xKu9F6GUXYINcWUXFL6bXwI16Z4iDWhHF/G34Y1f2LILKlgKr85mKPyhtJuG8Q2+10zfNkFbRisfWXnNFuJ6tcqKDUUTpKe6p4ca2QsUA0dajHJDDvfT5ep88A1crd2WMkYattzMxbOguE64vIxdCMS6gcgD1dlFrEjXmceG5VePn0ZfmTMRvJJ2jErD6+SSx2/1fq4vXpSqlZmR08dBueLeFv7yW61bp3K4pdb7lNpzv+JFaJGlEmeKDSau/tEcVMnL7+wlkyehyRkaGlUBXmHPm1YIDCR2G1n8WgMBI2Uw75keSNcKKEHfTb+yGmkw/DMYZgfeSIODRbg=]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX1+jbLk2wP72G8c+7fdYqSi96sDROslv+Xkx7mbIyWIIOYBwhszkx6bT6C+UKng7JNq/Mfbs+JmpPOBtqAx8RKhoOxwJ80bcH8FivXRH0EC1RMM4fyLJF8LFzMP8lrUqscILHO84aBVxEdhpNgh5riSgkJ4zBYIxD7RD1hsoi5kdrh6cw09UFMK6zq12O5oHwzxF0CzLK9ksJaWvuW431f+80HtNu7YeVz8TkN+flwqMsXW45nQ/RCe5LYeJwViiNO1eCRZeYUgXHZ1Gfcz3BNB70Yl2mk8bsJrYi5a1vdMyy3wxUOazFdtJSAGqCJR882+l8OjxZZntR9QuVuHAmg+5r2zH9iH2EvyWBd//KDQBzm04uyg3XYb0]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>

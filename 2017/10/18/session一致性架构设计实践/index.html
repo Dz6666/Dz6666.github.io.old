@@ -139,20 +139,20 @@
   <meta name="description" content="创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1">
 <meta name="keywords" content="文本三剑客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx的stream模块及简单的优化">
-<meta property="og:url" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/index.html">
+<meta property="og:title" content="session一致性架构设计实践">
+<meta property="og:url" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/文本三剑客之awk/111.gif">
-<meta property="og:image" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG">
-<meta property="og:image" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG">
-<meta property="og:image" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG">
+<meta property="og:image" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/文本三剑客之awk/111.gif">
+<meta property="og:image" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG">
+<meta property="og:image" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG">
+<meta property="og:image" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG">
 <meta property="og:updated_time" content="2018-09-01T00:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx的stream模块及简单的优化">
+<meta name="twitter:title" content="session一致性架构设计实践">
 <meta name="twitter:description" content="创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1">
-<meta name="twitter:image" content="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/文本三剑客之awk/111.gif">
+<meta name="twitter:image" content="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/文本三剑客之awk/111.gif">
 
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <link rel="canonical" href="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/">
+  <link rel="canonical" href="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/">
 
 
 
@@ -171,7 +171,7 @@
   };
 </script>
 
-  <title>nginx的stream模块及简单的优化 | Dai zhe's notes</title>
+  <title>session一致性架构设计实践 | Dai zhe's notes</title>
   
 
 
@@ -313,7 +313,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
 
   </li>
         
@@ -332,7 +332,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">11</span></a>
 
   </li>
         
@@ -351,7 +351,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">40</span></a>
 
   </li>
         
@@ -476,7 +476,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://9527dz.top/2017/10/18/nginx的stream模块及简单的优化/">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2017/10/18/session一致性架构设计实践/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哆啦A梦">
@@ -493,7 +493,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx的stream模块及简单的优化
+          <h1 class="post-title" itemprop="name headline">session一致性架构设计实践
               
             
           </h1>
@@ -556,8 +556,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/18/nginx的stream模块及简单的优化/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/10/18/nginx的stream模块及简单的优化/" itemprop="commentCount"></span>
+                <a href="/2017/10/18/session一致性架构设计实践/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/10/18/session一致性架构设计实践/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -620,7 +620,7 @@
 <p><audio id="audio" controls preload="none"><br>      <source id="mp3" src="http://other.web.ri01.sycdn.kuwo.cn/resource/n3/1/70/780373770.mp3"><br></audio><br>或者</p>
 <div align="center"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30375690&auto=1&height=66"></iframe></div>
 
-<p>// 表示图片在左边或者右边，中间(left，right，center)<br><img src="/2017/10/18/nginx的stream模块及简单的优化/文本三剑客之awk/111.gif" div="" align="right"></p>
+<p>// 表示图片在左边或者右边，中间(left，right，center)<br><img src="/2017/10/18/session一致性架构设计实践/文本三剑客之awk/111.gif" div="" align="right"></p>
 <p>// markdown格式<br><del>测试，就是要测试一下啊啊啊啊a</del> 文本上带一条横线，表示错误</p>
 <h1 id="This-is-an-H1"><a href="#This-is-an-H1" class="headerlink" title="This is an H1"></a>This is an H1</h1><ul>
 <li>Red</li>
@@ -633,7 +633,7 @@
 <hr>
 <p><a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a></p>
 <h3 id="This-is-an-H2"><a href="#This-is-an-H2" class="headerlink" title="This is an H2"></a>This is an H2</h3><p>// 插入图片并设置大小两种方法</p>
-<p><img src="/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG" alt="Pulpit rock" width="800" height="800"><br><img src="/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG" width="60%" height="60%"><br><img src="/2017/10/18/nginx的stream模块及简单的优化/旧事-大好河山/纳木错.JPG" alt=""></p>
+<p><img src="/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG" alt="Pulpit rock" width="800" height="800"><br><img src="/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG" width="60%" height="60%"><br><img src="/2017/10/18/session一致性架构设计实践/旧事-大好河山/纳木错.JPG" alt=""></p>
 <p>// 颜色选择</p>
 <font size="3" color="#FF0000"> size定义字体大小，color定义颜色</font><br><font size="3" color="#70DB93"> size定义字体大小，color定义颜色</font><br><font size="3" color="#9F5F9F"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D9D919"> size定义字体大小，color定义颜色</font><br><font size="3" color="#FF7F00"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D98719"> size定义字体大小，color定义颜色</font><br><font size="3" color="#2ae0c8"> size定义字体大小，color定义颜色</font><br><font size="3" color="#fad8be"> size定义字体大小，color定义颜色</font><br><font size="3" color="#cbf5fb"> size定义字体大小，color定义颜色</font><br><font size="3" color="#acf6ef"> size定义字体大小，color定义颜色</font><br><font size="3" color="#D9D919"> size定义字体大小，color定义颜色</font><br><font size="3" color="#70DB93"> size定义字体大小，color定义颜色</font><br><font size="3" color="#BC8F8F"> size定义字体大小，color定义颜色</font><br><font size="3" color="#DB70DB"> size定义字体大小，color定义颜色</font><br><font size="3" color="#CFB53B"> size定义字体大小，color定义颜色</font><br><font size="3" color="#FF2400"> size定义字体大小，color定义颜色</font><br><font size="3" color="#CD7F32"> size定义字体大小，color定义颜色</font><br><font size="3" color="#23238E"> size定义字体大小，color定义颜色</font>
 
@@ -857,7 +857,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -888,7 +888,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -925,7 +929,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1026,7 +1034,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">271k</span>
+    <span title="站点总字数">386k</span>
   
 
   
@@ -1037,7 +1045,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:06</span>
+    <span title="站点阅读时长">5:51</span>
   
 </div>
 
