@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://daizhe.net.cn/"/>
-  <updated>2019-01-22T06:05:41.952Z</updated>
+  <updated>2019-01-22T06:09:45.412Z</updated>
   <id>https://daizhe.net.cn/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://daizhe.net.cn/2019/01/22/HAproxy%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"/>
     <id>https://daizhe.net.cn/2019/01/22/HAproxy调度算法/</id>
     <published>2019-01-22T05:55:02.863Z</published>
-    <updated>2019-01-22T06:05:41.952Z</updated>
+    <updated>2019-01-22T06:09:45.412Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="HAproxy基本配置"><a href="#HAproxy基本配置" class="headerlink" title="HAproxy基本配置"></a>HAproxy基本配置</h1><p><img src="/2019/01/22/HAproxy调度算法/标题.gif" alt=""><br><a id="more"></a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="HAproxy调度算法"><a href="#HAproxy调度算法" class="headerlink" title="HAproxy调度算法"></a>HAproxy调度算法</h1><p><img src="/2019/01/22/HAproxy调度算法/标题.gif" alt=""><br><a id="more"></a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;HAproxy基本配置&quot;&gt;&lt;a href=&quot;#HAproxy基本配置&quot; class=&quot;headerlink&quot; title=&quot;HAproxy基本配置&quot;&gt;&lt;/a&gt;HAproxy基本配置&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2019/01/22/HAproxy调度算法/标题.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+      &lt;h1 id=&quot;HAproxy调度算法&quot;&gt;&lt;a href=&quot;#HAproxy调度算法&quot; class=&quot;headerlink&quot; title=&quot;HAproxy调度算法&quot;&gt;&lt;/a&gt;HAproxy调度算法&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2019/01/22/HAproxy调度算法/标题.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
