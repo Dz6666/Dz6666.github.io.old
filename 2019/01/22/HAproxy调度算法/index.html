@@ -145,7 +145,15 @@
 <meta property="og:description" content="HAproxy调度算法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/标题.gif">
-<meta property="og:updated_time" content="2019-01-22T06:09:45.412Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/static1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/static1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/static2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/first.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/url.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/url1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/头部.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/头部2.png">
+<meta property="og:updated_time" content="2019-01-22T09:56:19.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAproxy调度算法">
 <meta name="twitter:description" content="HAproxy调度算法">
@@ -348,7 +356,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">43</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
 
   </li>
         
@@ -572,7 +580,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">12</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -586,7 +594,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -607,6 +615,101 @@
 
       
         <h1 id="HAproxy调度算法"><a href="#HAproxy调度算法" class="headerlink" title="HAproxy调度算法"></a>HAproxy调度算法</h1><p><img src="/2019/01/22/HAproxy调度算法/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="HAProxy-调度算法使用的生效字段："><a href="#HAProxy-调度算法使用的生效字段：" class="headerlink" title="HAProxy 调度算法使用的生效字段："></a>HAProxy 调度算法使用的生效字段：</h2><ul>
+<li>defaults</li>
+<li>listen</li>
+<li>backend</li>
+</ul>
+<h2 id="HAProxy-静态调度算法"><a href="#HAProxy-静态调度算法" class="headerlink" title="HAProxy 静态调度算法"></a>HAProxy 静态调度算法</h2><ul>
+<li>balance： 指明对后端服务器的调度算法，配置在listen或backend<br>静态算法：按照事先定义好的规则轮询公平调度，不关心后端服务器的当前负载、链接数和相应速度等，且无法实时修改权重，只能重启后生效。<ul>
+<li>static-rr：基于权重的轮询调度，不支持权重的运行时调整及后端服务器慢启动，其后端主机数量没有限制</li>
+<li>first：根据服务器在列表中的位置，自上而下进行调度，但是其只会当第一台服务器的连接数达到上限，新请求才会分配给下一台服务，因此会忽略服务器的权重设置。</li>
+</ul>
+</li>
+</ul>
+<p><code>范例：静态调度--&gt;static-rr:基于权重的轮询调度</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">roundrobin最大后端主机为4096</span><br><span class="line">static-rr 最大后端主机不上限</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#weight 设置权重</span></span><br><span class="line"><span class="comment">#这里设置的172.18.135.1权重为2，172.18.135.5权重为1</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line"><span class="comment">#httpd_server调度</span></span><br><span class="line">frontend web-port-80</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        use_backend web_host</span><br><span class="line"></span><br><span class="line">backend web_host</span><br><span class="line">        balance static-rr</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/01/22/HAproxy调度算法/static1.png" alt=""><br><img src="/2019/01/22/HAproxy调度算法/static1.png" alt=""><br><img src="/2019/01/22/HAproxy调度算法/static2.png" alt=""></p>
+<p><code>范例：静态调度--&gt;first:根据服务器在列表中的位置，自上而下进行调度即优先使用第一台，当第一台的连接数上限时，才会调度到其他的主机上</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># maxconn 10  设置主机的最大连接数</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line"><span class="comment">#httpd_server调度</span></span><br><span class="line">frontend web-port-80</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        use_backend web_host</span><br><span class="line"></span><br><span class="line">backend web_host</span><br><span class="line">        balance first</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 maxconn 10 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/01/22/HAproxy调度算法/first.png" alt=""></p>
+<h2 id="HAProxy-动态调度算法"><a href="#HAProxy-动态调度算法" class="headerlink" title="HAProxy 动态调度算法"></a>HAProxy 动态调度算法</h2><ul>
+<li>动态算法：基于后端服务器 状态进行调度适当调整，比如优先调度至当前负载较低的服务器，且权重可以在haproxy运行时动态调整无需重启。<ul>
+<li>roundrobin：基于权重的轮询动态调度算法，支持权重的运行时调整，不等于lvs 的rr，支持慢启动即新加的服务器会逐渐增加转发数，每个后端backend中最多支持4095个server，此为默认调度算法，server 权重设置 weight</li>
+<li>leastconn： 加权的最少连接的动态，支持权重的运行时调整和慢启动，即当前后端服务器连接最少的优先调度，比较适合长连接的场景使用，比如MySQL等场景。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认动态算法roundrobin：基于权重的轮询动态调度算法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#roundrobin 适用于无状态的连接，如果做过session会话共享或者会话绑定也可以使用</span></span><br></pre></td></tr></table></figure>
+<h2 id="HAProxy-调度算法-source"><a href="#HAProxy-调度算法-source" class="headerlink" title="HAProxy 调度算法-source"></a>HAProxy 调度算法-source</h2><ul>
+<li>source：源地址hash，基于用户源地址hash并将请求转发到后端服务器，默认为静态即取模方式，但是可以通过hash-type支持的选项更改，后续同一个源地址请求将被转发至同一个后端web服务器，比较适用于session保持等场景。<ul>
+<li>map-based：取模法，基于服务器权重的hash数组取模，该hash是静态的即不支持在线调整权重，不支持慢启动，其对后端服务器调度均衡，缺点是当服务器的总权重发生变化时，即有服务器上线或下线，都会因权重发生变化而导致调度结果整体改变。</li>
+<li>consistent：一致性哈希，该hash是动态的，支持在线调整权重，支持慢启动，优点在于当服务器的总权重发生变化时，对调度结果影响是局部的，不会引起大的变动，该算法很容易导致后端服务器负载不均衡，但是比较适合session保持。</li>
+</ul>
+</li>
+</ul>
+<h2 id="HAproxy-服务器动态上下线"><a href="#HAproxy-服务器动态上下线" class="headerlink" title="HAproxy 服务器动态上下线"></a>HAproxy 服务器动态上下线</h2><ul>
+<li>静态算法：无法动态上下线</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  ~]<span class="comment"># useradd  haproxy -s /sbin/nologin  #编译安装的需要创建账号，yum安装的则不需要创建账号</span></span><br><span class="line">  ~]<span class="comment"># mkdir  /var/lib/haproxy</span></span><br><span class="line">  ~]<span class="comment"># chown  haproxy.haproxy /var/lib/haproxy/ -R</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  global</span><br><span class="line">  4行</span><br><span class="line">  stats socket /var/lib/haproxy/haproxy.sock mode 600 level admin   <span class="comment">#主要是基于socket文件对服务器进行动态修改</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  frontend web-port-80</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        use_backend web_host</span><br><span class="line"></span><br><span class="line">  backend web_host</span><br><span class="line">        balance static-rr</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">负载上安装支持的依赖包</span><br><span class="line">  ~]<span class="comment"># yum install socat -y    #输入重定向的工具</span></span><br><span class="line"></span><br><span class="line">查看使用帮助</span><br><span class="line">  ~]<span class="comment"># echo "show info" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  ~]<span class="comment"># echo "help" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line"></span><br><span class="line">基于socat动态对话负载haproxy</span><br><span class="line">  <span class="comment">#动态修改主机的权重</span></span><br><span class="line">  ~]<span class="comment"># echo "set weight " | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  Require <span class="string">'backend/server'</span>.   <span class="comment">#指明backend名称以及server名称</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># echo "set weight web_host/172.18.135.1 4" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  Backend is using a static LB algorithm and only accepts weights <span class="string">'0%'</span> and <span class="string">'100%'</span>.</span><br><span class="line"></span><br><span class="line">  <span class="comment">#提示不可以设置为4的权重，因为是使用的静态的算法只能设置为0%或者为100%（在线或者下线）</span></span><br><span class="line"></span><br><span class="line">查看权重</span><br><span class="line">  ~]<span class="comment"># echo "get weight web_host/172.18.135.1" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  2 (initial 2)</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>动态算法：支持动态上下线<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用consistent：一致性哈希</span></span><br><span class="line"></span><br><span class="line">方式1：</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line"><span class="comment">#httpd_server调度</span></span><br><span class="line">frontend web-port-80</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        use_backend web_host</span><br><span class="line"></span><br><span class="line">backend web_host</span><br><span class="line">        balance <span class="built_in">source</span></span><br><span class="line">        <span class="built_in">hash</span>-type consistent</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">方式2：listen</span><br><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line"><span class="comment">#httpd_server调度</span></span><br><span class="line">listen web-port-80</span><br><span class="line">  <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">  balance <span class="built_in">source</span></span><br><span class="line">  <span class="built_in">hash</span>-type consistent</span><br><span class="line">  server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">  server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">动态修改权重（1.8版本的那个太修改权重有BUG，1.5版本就没问题）</span><br><span class="line">  ~]<span class="comment"># echo "set weight web_host/172.18.135.5 3" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  ~]<span class="comment"># echo "get weight web_host/172.18.135.5 3" | socat stdio /var/lib/haproxy/haproxy.sock</span></span><br><span class="line">  2019/01/22 16:42:40 socat[15995] E connect(5, AF=1 <span class="string">"/var/lib/haproxy/haproxy.sock"</span>, 31): Connection refused</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HAProxy-调度算法-uri"><a href="#HAProxy-调度算法-uri" class="headerlink" title="HAProxy 调度算法-uri"></a>HAProxy 调度算法-uri</h2><ul>
+<li>uri：基于对用户请求的uri做hash并将请求转发到后端指定服务器<ul>
+<li>map-based：取模法</li>
+<li>consistent：一致性哈希<ul>
+<li><a href="http://example.org/absolute/URI/with/absolute/path/to/resource.txt" target="_blank" rel="noopener">http://example.org/absolute/URI/with/absolute/path/to/resource.txt</a>  #URI/URL</li>
+<li><a href="ftp://example.org/resource.txt" target="_blank" rel="noopener">ftp://example.org/resource.txt</a>   #URI/URL</li>
+<li>/relative/URI/with/absolute/path/to/resource.txt   #URI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>uri: uniform resource identifier，统一资源标识符,是一个用于标识某一互联网资源名称的字符串</li>
+</ul>
+<p><img src="/2019/01/22/HAproxy调度算法/url.png" alt=""></p>
+<p>范例：uri调度算法示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">前提：</span><br><span class="line">  <span class="comment">#协议必须是http，不支持tcp，会切换到tcp的roundrobin负载模式</span></span><br><span class="line">  <span class="comment">#七层调度：应用层</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  listen web-port-80</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        balance uri</span><br><span class="line">        <span class="built_in">hash</span>-type consistent</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">客户端请求测试（已经实现基于uri绑定调度）</span><br><span class="line">  ~]<span class="comment"># curl http://172.18.135.2/</span></span><br><span class="line">  172.18.135.1</span><br><span class="line">   ~]<span class="comment"># curl http://172.18.135.2/index1.html</span></span><br><span class="line">  172.18.135.2/2</span><br></pre></td></tr></table></figure></p>
+<h2 id="HAProxy-调度算法-url-param"><a href="#HAProxy-调度算法-url-param" class="headerlink" title="HAProxy 调度算法-url_param"></a>HAProxy 调度算法-url_param</h2><ul>
+<li>url_param：<ul>
+<li><code>对用户请求的url中的&lt;params&gt;部分中的参数name作hash计算，并由服务器总权重相除以后派发至某挑出的服务器；通常用于追踪用户，以确保来自同一个用户的请求始终发往同一个Backend Server</code></li>
+<li>假设url = <a href="http://www.magedu.com/foo/bar/index.php?k1=v1&amp;k2=v2" target="_blank" rel="noopener">http://www.magedu.com/foo/bar/index.php?k1=v1&amp;k2=v2</a> </li>
+</ul>
+</li>
+</ul>
+<p>范例：根据用户请求的url_param做调度<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line"><span class="comment">#httpd_server调度</span></span><br><span class="line">listen web-port-80</span><br><span class="line">      <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">      balance url-param name</span><br><span class="line">      <span class="built_in">hash</span>-type consistent</span><br><span class="line">      server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">      server 172.18.135.5 172.18.135.5:8080 weight 1</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/01/22/HAproxy调度算法/url1.png" alt=""></p>
+<h2 id="HAProxy-调度算法-hdr"><a href="#HAProxy-调度算法-hdr" class="headerlink" title="HAProxy 调度算法-hdr"></a>HAProxy 调度算法-hdr</h2><ul>
+<li><code>hdr(&lt;name&gt;)：针对用户每个http头部(header)请求中的指定信息做hash，此处由&lt;name&gt;指定的http首部将会被取出并做hash计算，然后由服务器总权重相除以后派发至某挑出的服务器，假如无有效的值，则会被轮询调度</code><ul>
+<li>hdr( Cookie、 User-Agent、host )</li>
+</ul>
+</li>
+</ul>
+<p>范例：调度算法-hdr：针对用户每个http头部<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可以获取报文头部的所有数据因为实在应用层</span></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        balance hdr(User-Agent)</span><br><span class="line">        <span class="built_in">hash</span>-type consistent</span><br><span class="line">        server 172.18.135.1 172.18.135.1:8080 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.5:8080 weight 1</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure></p>
+<p>测试：基于不同的浏览器做访问</p>
+<p><img src="/2019/01/22/HAproxy调度算法/头部.png" alt=""><br><img src="/2019/01/22/HAproxy调度算法/头部2.png" alt=""></p>
+<h2 id="算法总结及适用场景"><a href="#算法总结及适用场景" class="headerlink" title="算法总结及适用场景"></a>算法总结及适用场景</h2><ul>
+<li>static-rr</li>
+<li>first</li>
+<li>source:会话保持，小型业务或者用户源地址非集中访问</li>
+<li>uri:缓存</li>
+<li>roundrobin:无状态，session共享或者会话保持</li>
+<li>url_param:</li>
+<li>hdr:</li>
+</ul>
+<hr>
+<ul>
+<li>roundrobin——–&gt;tcp/http 动态</li>
+<li>leastconn———–&gt;tcp/http 动态</li>
+<li>static-rr————–&gt;tcp/http  静态</li>
+<li>first——————–&gt;tcp/http  静态</li>
+<li>source—————-&gt;tcp/http</li>
+<li>uri———————-&gt;http</li>
+<li>url_param———-&gt;http                取决于</li>
+<li>hash_type是否consistent</li>
+<li>hdr———————&gt;http</li>
+<li>rdp-cookie———&gt;tcp</li>
+</ul>
 
       
     </div>
@@ -750,6 +853,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/01/22/HAproxyIP地址透传/" rel="prev" title="IP地址透传">
+                IP地址透传 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -824,7 +931,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -973,7 +1080,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy调度算法"><span class="nav-number">1.</span> <span class="nav-text">HAproxy调度算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy调度算法"><span class="nav-number">1.</span> <span class="nav-text">HAproxy调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法使用的生效字段："><span class="nav-number">1.1.</span> <span class="nav-text">HAProxy 调度算法使用的生效字段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-静态调度算法"><span class="nav-number">1.2.</span> <span class="nav-text">HAProxy 静态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-动态调度算法"><span class="nav-number">1.3.</span> <span class="nav-text">HAProxy 动态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-source"><span class="nav-number">1.4.</span> <span class="nav-text">HAProxy 调度算法-source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAproxy-服务器动态上下线"><span class="nav-number">1.5.</span> <span class="nav-text">HAproxy 服务器动态上下线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-uri"><span class="nav-number">1.6.</span> <span class="nav-text">HAProxy 调度算法-uri</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-url-param"><span class="nav-number">1.7.</span> <span class="nav-text">HAProxy 调度算法-url_param</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-hdr"><span class="nav-number">1.8.</span> <span class="nav-text">HAProxy 调度算法-hdr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法总结及适用场景"><span class="nav-number">1.9.</span> <span class="nav-text">算法总结及适用场景</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1007,7 +1114,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">404k</span>
+    <span title="站点总字数">412k</span>
   
 
   
@@ -1018,7 +1125,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:08</span>
+    <span title="站点阅读时长">6:14</span>
   
 </div>
 
