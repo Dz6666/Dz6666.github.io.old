@@ -144,12 +144,12 @@
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="nginx作为负载均衡器高并发内核优化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/13/nginx高并发内核优化/图标.png">
-<meta property="og:updated_time" content="2019-01-22T01:43:20.935Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/13/nginx高并发内核优化/标题.gif">
+<meta property="og:updated_time" content="2019-01-22T12:24:06.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx高并发内核优化">
 <meta name="twitter:description" content="nginx作为负载均衡器高并发内核优化">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/13/nginx高并发内核优化/图标.png">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/13/nginx高并发内核优化/标题.gif">
 
 
 
@@ -606,7 +606,7 @@
       
 
       
-        <h1 id="nginx作为负载均衡器高并发内核优化"><a href="#nginx作为负载均衡器高并发内核优化" class="headerlink" title="nginx作为负载均衡器高并发内核优化"></a>nginx作为负载均衡器高并发内核优化</h1><p><img src="/2019/01/13/nginx高并发内核优化/图标.png" alt=""><br><a id="more"></a></p>
+        <h1 id="nginx作为负载均衡器高并发内核优化"><a href="#nginx作为负载均衡器高并发内核优化" class="headerlink" title="nginx作为负载均衡器高并发内核优化"></a>nginx作为负载均衡器高并发内核优化</h1><p><img src="/2019/01/13/nginx高并发内核优化/标题.gif" alt=""><br><a id="more"></a></p>
 <h2 id="实现nginx高并发linux内核优化"><a href="#实现nginx高并发linux内核优化" class="headerlink" title="实现nginx高并发linux内核优化"></a>实现nginx高并发linux内核优化</h2><ul>
 <li><p>由于默认的linux内核的参数考虑的是最通用的场景，这明显不符合用于支持高并发访问的web服务器的定义，所以需要修改linux内核的参数，是的nginx可以拥有更高的性能，根据业务的特点来进行调整，当nginx作为静态web内容服务器、反向代理或者提供压缩服务器的服务器时，其内核的参数调整通常都是不同的，这里针对最通用的、使用nginx支持更多并发请求的tcp网络参数做简单的配置，修改/etc/sysctl.conf来更改内核的参数</p>
 <ul>

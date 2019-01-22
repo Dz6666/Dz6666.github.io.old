@@ -144,15 +144,15 @@
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="NFS服务器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/nfs标题.png">
+<meta property="og:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/标题.gif">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/nfs文件系统.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/nfs工作原理.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/nfs各个版本的对比.png">
-<meta property="og:updated_time" content="2019-01-22T01:43:26.292Z">
+<meta property="og:updated_time" content="2019-01-22T12:27:23.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NFS服务器">
 <meta name="twitter:description" content="NFS服务器">
-<meta name="twitter:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/nfs标题.png">
+<meta name="twitter:image" content="https://daizhe.net.cn/2018/12/19/nfs服务器/标题.gif">
 
 
 
@@ -609,8 +609,8 @@
       
 
       
-        <h1 id="NFS服务器"><a href="#NFS服务器" class="headerlink" title="NFS服务器"></a>NFS服务器</h1><p><img src="/2018/12/19/nfs服务器/nfs标题.png" alt=""><br><a id="more"></a></p>
-<p><code>NFS：Network File System 网络文件系统，基于内核的文件系统。</code>Sun公司 开发，通过使用NFS，用户和程序可以像访问本地文件一样访问远端系统上的 文件，基于RPC<code>（Remote Procedure Call Protocol远程过程调用）实现</code> </p>
+        <h1 id="NFS服务器"><a href="#NFS服务器" class="headerlink" title="NFS服务器"></a>NFS服务器</h1><p><img src="/2018/12/19/nfs服务器/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><p><code>NFS：Network File System 网络文件系统，基于内核的文件系统。</code>Sun公司 开发，通过使用NFS，用户和程序可以像访问本地文件一样访问远端系统上的 文件，基于RPC<code>（Remote Procedure Call Protocol远程过程调用）实现</code> </p>
 <p>RPC采用C/S模式。客户机请求程序调用进程发送一个有进程参数的调用信息 到服务进程，然后等待应答信息。在服务器端，进程保持睡眠状态直到调用 信息到达为止。当一个调用信息到达，服务器获得进程参数，计算结果，发 送答复信息，然后等待下一个调用信息，最后，客户端调用进程接收答复信 息，获得进程结果，然后调用执行继续进行 </p>
 <p>NFS优势：节省本地存储空间，将常用的数据,如home目录,存放在NFS服务 器上且可以通过网络访问，本地终端将可减少自身存储空间的使用 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">常用系统的驱动查看模块</span><br><span class="line">[root@centos7 ~]<span class="comment"># locate xfs.ko</span></span><br><span class="line">/usr/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/xfs/xfs.ko.xz</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /usr/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/</span></span><br><span class="line">binfmt_misc.ko.xz  cifs    ext4     gfs2   mbcache.ko.xz  nls        udf</span><br><span class="line">btrfs              cramfs  fat      isofs  nfs            overlayfs  xfs</span><br><span class="line">cachefiles         dlm     fscache  jbd2   nfs_common     pstore</span><br><span class="line">ceph               exofs   fuse     lockd  nfsd           squashfs</span><br><span class="line"></span><br><span class="line">linux内核默认已经安装nfs文件系统，已经加载驱动模块</span><br><span class="line">[root@centos7 ~]<span class="comment"># locate nfs.ko</span></span><br><span class="line">/usr/lib/modules/3.10.0-862.el7.x86_64/kernel/drivers/xen/xenfs/xenfs.ko.xz</span><br><span class="line">/usr/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/nfs/nfs.ko.xz</span><br></pre></td></tr></table></figure>
@@ -1003,7 +1003,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS服务器"><span class="nav-number">1.</span> <span class="nav-text">NFS服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS文件系统"><span class="nav-number">1.1.</span> <span class="nav-text">NFS文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工作原理"><span class="nav-number">1.2.</span> <span class="nav-text">NFS工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS各个版本的对比s"><span class="nav-number">1.3.</span> <span class="nav-text">NFS各个版本的对比s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS服务介绍"><span class="nav-number">1.4.</span> <span class="nav-text">NFS服务介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs配置文件"><span class="nav-number">1.5.</span> <span class="nav-text">nfs配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工具"><span class="nav-number">1.6.</span> <span class="nav-text">NFS工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端NFS挂载"><span class="nav-number">1.7.</span> <span class="nav-text">客户端NFS挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动挂载"><span class="nav-number">1.8.</span> <span class="nav-text">自动挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接匹配"><span class="nav-number">1.9.</span> <span class="nav-text">直接匹配</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS服务器"><span class="nav-number">1.</span> <span class="nav-text">NFS服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS"><span class="nav-number">1.1.</span> <span class="nav-text">NFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS文件系统"><span class="nav-number">1.2.</span> <span class="nav-text">NFS文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工作原理"><span class="nav-number">1.3.</span> <span class="nav-text">NFS工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS各个版本的对比s"><span class="nav-number">1.4.</span> <span class="nav-text">NFS各个版本的对比s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS服务介绍"><span class="nav-number">1.5.</span> <span class="nav-text">NFS服务介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs配置文件"><span class="nav-number">1.6.</span> <span class="nav-text">nfs配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS工具"><span class="nav-number">1.7.</span> <span class="nav-text">NFS工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端NFS挂载"><span class="nav-number">1.8.</span> <span class="nav-text">客户端NFS挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动挂载"><span class="nav-number">1.9.</span> <span class="nav-text">自动挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接匹配"><span class="nav-number">1.10.</span> <span class="nav-text">直接匹配</span></a></li></ol></li></ol></div>
             
 
           </div>
