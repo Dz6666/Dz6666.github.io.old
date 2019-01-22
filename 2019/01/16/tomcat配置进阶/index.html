@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
 <meta property="og:description" content="tomcat配置进阶–热部署">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/标题.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/标题.gif">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/界面.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/认证.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/访问.png">
@@ -161,11 +161,11 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/虚拟主机.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/虚拟主机1.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/虚拟主机2.png">
-<meta property="og:updated_time" content="2019-01-22T01:43:06.131Z">
+<meta property="og:updated_time" content="2019-01-22T12:07:38.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat配置进阶--热部署">
 <meta name="twitter:description" content="tomcat配置进阶–热部署">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/标题.png">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/16/tomcat配置进阶/标题.gif">
 
 
 
@@ -364,7 +364,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">45</span></a>
 
   </li>
         
@@ -622,7 +622,7 @@
       
 
       
-        <h1 id="tomcat配置进阶–热部署"><a href="#tomcat配置进阶–热部署" class="headerlink" title="tomcat配置进阶–热部署"></a>tomcat配置进阶–热部署</h1><p><img src="/2019/01/16/tomcat配置进阶/标题.png" alt=""><br><a id="more"></a></p>
+        <h1 id="tomcat配置进阶–热部署"><a href="#tomcat配置进阶–热部署" class="headerlink" title="tomcat配置进阶–热部署"></a>tomcat配置进阶–热部署</h1><p><img src="/2019/01/16/tomcat配置进阶/标题.gif" alt=""><br><a id="more"></a></p>
 <h2 id="tomcat配置进阶–热部署-1"><a href="#tomcat配置进阶–热部署-1" class="headerlink" title="tomcat配置进阶–热部署"></a>tomcat配置进阶–热部署</h2><p><code>范例：Valve组件（过滤器）</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">一、</span><br><span class="line">  ~]<span class="comment"># vim /etc/tomcat/server.xml </span></span><br><span class="line">  &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">      prefix=<span class="string">"localhost_access_log."</span> suffix=<span class="string">".txt"</span></span><br><span class="line">      pattern=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#AccessLogValve 定义记录访问日志</span></span><br><span class="line"><span class="comment">#directory  日志记录的路径，默认使用的是相对路径</span></span><br><span class="line"><span class="comment">#prefix 日志文件的前缀，默认情况下，一天滚动一次（日志的前后缀可以按需求定义）</span></span><br><span class="line"><span class="comment">#suffix 日志文件的后缀    （yum安装的生成的日志存放路径： /var/log/tomcat/）</span></span><br><span class="line"><span class="comment">#pattern  日志文件所记录的日志格式</span></span><br><span class="line">  <span class="comment">#%h远程客户端地址</span></span><br><span class="line">  <span class="comment">#%l登陆的用户名</span></span><br><span class="line">  <span class="comment">#%t访问时间</span></span><br><span class="line">  <span class="comment">#%r请求报文的起始行（请求方法，请求的url,协议报文）</span></span><br><span class="line">  <span class="comment">#%s响应码</span></span><br><span class="line">  <span class="comment">#%b响应的版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#一般而言Valve日志是host级别的，每一个虚拟主机有一个单独专用的日志</span></span><br><span class="line"></span><br><span class="line">将自己定义的主机也有自己单独的日志</span><br><span class="line">  ~]<span class="comment"># vim /etc/tomcat/server.xml </span></span><br><span class="line">  &lt;/Host&gt;</span><br><span class="line">  &lt;Host name=<span class="string">"www.centos.com"</span> appBase=<span class="string">"/data/webapps/"</span> unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span>&gt;</span><br><span class="line">  &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">               prefix=<span class="string">"centos.com_log."</span> suffix=<span class="string">".log"</span></span><br><span class="line">               pattern=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/Host&gt;</span><br><span class="line"></span><br><span class="line">查看是否生成单独的虚拟主机的日志文件</span><br><span class="line">  ~]<span class="comment"># systemctl restart tomcat</span></span><br><span class="line">  ~]<span class="comment"># ls /var/log/tomcat/</span></span><br><span class="line">  a_log.2019-01-16.txt   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">二、</span><br><span class="line">将tomcat的访问日志转化为json格式 </span><br><span class="line">  修改tomcat的server.xml文件</span><br><span class="line">    &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">      prefix=<span class="string">"localhost_access_log"</span> suffix=<span class="string">".log"</span></span><br><span class="line">      pattern=<span class="string">"&#123;&amp;quot;client&amp;quot;:&amp;quot;%h&amp;quot;,  &amp;quot;client user&amp;quot;:&amp;quot;%l&amp;quot;,   &amp;quot;authenticated&amp;quot;:&amp;quot;%u&amp;quot;,   &amp;quot;access time&amp;quot;:&amp;quot;%t&amp;quot;,     &amp;quot;method&amp;quot;:&amp;quot;%r&amp;quot;,   &amp;quot;status&amp;quot;:&amp;quot;%s&amp;quot;,  &amp;quot;send bytes&amp;quot;:&amp;quot;%b&amp;quot;,  &amp;quot;Query?string&amp;quot;:&amp;quot;%q&amp;quot;,  &amp;quot;partner&amp;quot;:&amp;quot;%&#123;Referer&#125;i&amp;quot;,  &amp;quot;Agent version&amp;quot;:&amp;quot;%&#123;User-Agent&#125;i&amp;quot;&#125;"</span>/&gt;</span><br><span class="line"></span><br><span class="line">三、</span><br><span class="line">Valve存在多种类型：（根据客户端原地址做访问控制）</span><br><span class="line">	定义访问日志：org.apache.catalina.valves.AccessLogValve</span><br><span class="line">			定义访问控制：org.apache.catalina.valves.RemoteAddrValve </span><br><span class="line">				</span><br><span class="line">	&lt;Valve className=<span class="string">"org.apache.catalina.valves.RemoteAddrValve"</span> deny=<span class="string">"172\.16\.100\.67"</span>/&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#禁止172.16.100.67此台主机对tomcat的访问（黑名单）</span></span><br><span class="line"><span class="comment">#可以使用deny与allow做访问控制，可以只用同配符</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="默认界面分析"><a href="#默认界面分析" class="headerlink" title="默认界面分析"></a>默认界面分析</h2><p><img src="/2019/01/16/tomcat配置进阶/界面.png" alt=""></p>
@@ -885,7 +885,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1068,7 +1068,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">412k</span>
+    <span title="站点总字数">413k</span>
   
 
   
@@ -1079,7 +1079,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:14</span>
+    <span title="站点阅读时长">6:15</span>
   
 </div>
 
