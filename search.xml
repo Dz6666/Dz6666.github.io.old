@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[IP地址透传]]></title>
     <url>%2F2019%2F01%2F22%2FHAproxyIP%E5%9C%B0%E5%9D%80%E9%80%8F%E4%BC%A0%2F</url>
-    <content type="text"><![CDATA[IP地址透传（七层）]]></content>
+    <content type="text"><![CDATA[IP地址透传（七层） 四层负载 mode http 七层负载 mode tcp 七层地址透传123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960实验准备： haproxy_server 172.18.135.2模拟私网地址 nginx_server 172.18.135.5模拟公网地址 windows_firefox 172.18.88.88模拟客户端浏览器模拟： haproxy_server和windows_firefox 为私网地址 nginx_server 为公网地址#windows_firefox通过haporxy_server的地址透传（NAT）,实现windows_firefox通过访问haporxy_server的地址从跳转至私网地址nginx_server服务器上进行访问haproxy_server配置haproxy实现透传 ~]# yum install haproxy -y ~]# vim /etc/haproxy/haproxy.cfg #七层地址透传 listen web-port-80 mode http bind 172.18.135.2:80 #此地址为调度器的地址 balance hdr(User-Agent) hash-type consistent server web1 www.daizhe.net.cn:80 weight 2 check inter 2000 fall 3 rise 5 ~]# systemctl restart haproxy ~]# curl -I 172.18.135.2:80windown_firefox客户端浏览器访问haproxy_server地址 http://172.18.135.2/nginx_server查看web服务器的访问日志 ~]# yum install nginx -y ~]# vim /etc/nginx/nginx.conf http &#123; # log_format main '$remote_addr - $remote_user [$time_local] "$request" ' # '$status $body_bytes_sent "$http_referer" ' # '"$http_user_agent" "$http_x_forwarded_for"'; log_format json '&#123;"@timestamp":"$time_iso8601",' '"host":"$server_addr",' '"clientip":"$remote_addr",' '"size":$body_bytes_sent,' '"responsetime":$request_time,' '"upstreamtime":"$upstream_response_time",' '"upstreamhost":"$upstream_addr",' '"http_host":"$host",' '"url":"$uri",' '"referer":"$http_referer",' '"agent":"$http_user_agent",' '"xff":"$http_x_forwarded_for",' '"status":"$status"&#125;'; access_log /var/log/nginx/access_json json; ~]# systemctl start nginx ~]# cat /var/log/nginx/access_json &#123;"@timestamp":"2019-01-22T22:00:54+08:00","host":"172.18.135.5","clientip":"172.18.135.2","size":0,"responsetime":0.000,"upstreamtime":"-","upstreamhost":"-","http_host":"172.18.135.2","url":"/poweredby.png","referer":"http://172.18.135.2/","agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0","xff":"172.18.88.88","status":"304"&#125;]]></content>
       <categories>
         <category>HAproxy</category>
       </categories>
@@ -487,7 +487,7 @@
   <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX183H0f/R1ynaZYbLAqLOhFd9rPBi3f9GvSGfdjNYWTlFtQCg3E7OccI1Up9uMHqURLEnRIz7jjrJ17XFXo7LizpnLIj8DB0/+BrxFU0wOWP1DQRl1+n9xBhQ1+uKIP+lznNBK8abHVYmXDZIBEsSouBXfvW1/SvnqPjwL0e5lJyDC7Tz+ucDTp9d0a2I6xGTqWEGwQtBFO/UMFq/OeiIcXOR+bajkCknQBcCx5XQF0p8tIjKQ29g5mhIlkoIrxUU8AI0acbxVZX3iWDE+kv4O3UFH0K2PxTFBaHjKdjIYx/m82RTHQMjoR5HsnrE8f3urPmO3FsglhjbPHQ0by04vGUh9urdIVH4aoXeL+rS8l34+xbsil1y3hl]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX1+s2wVskXh3vKJoAFW7DGz4VvM+w/CEPdOPkZ4+XSj5xXRtJiiKj+a+3G0Ge03Kf1s8e624Sw/0WY+sXUfkpy9G8uy6I8/5/7l0D79vDREGMD4qvkSxf1YbE0OF+iamhec50w/VFBpeJ3RuyHpE3JEZFVeJ9NbLSY/VmY+sXFKCsQ+/Xbn9XS3XmuIsxN5YJXB7U4GP9mrgTltBTWEwmQO0gnMlf9loIdjfDUSbIhT5eKa2zGVrNU+EMzMvZ5duKnsT05wDCm8TbdGEY6zang/06hE/NAb+TNFRHX2E+X/GRAHqA0qpzF885uL4yn5FWKaaqi9v5xiw/OpGFBYIxPC8G4W3Rd+0IRp/G/4Fp9hByWRzO1ogZUaF]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>
