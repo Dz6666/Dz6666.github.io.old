@@ -136,19 +136,21 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="IP地址透传（七层）">
+  <meta name="description" content="HAproxy IP地址透传（七层/四层）">
 <meta name="keywords" content="HAproxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IP地址透传">
+<meta property="og:title" content="HAproxy IP地址透传">
 <meta property="og:url" content="https://daizhe.net.cn/2019/01/22/HAproxyIP地址透传/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="IP地址透传（七层）">
+<meta property="og:description" content="HAproxy IP地址透传（七层/四层）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxyIP地址透传/标题.gif">
-<meta property="og:updated_time" content="2019-01-22T14:07:52.891Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxyIP地址透传/七层.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxyIP地址透传/四层.png">
+<meta property="og:updated_time" content="2019-01-23T12:18:58.280Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IP地址透传">
-<meta name="twitter:description" content="IP地址透传（七层）">
+<meta name="twitter:title" content="HAproxy IP地址透传">
+<meta name="twitter:description" content="HAproxy IP地址透传（七层/四层）">
 <meta name="twitter:image" content="https://daizhe.net.cn/2019/01/22/HAproxyIP地址透传/标题.gif">
 
 
@@ -168,7 +170,7 @@
   };
 </script>
 
-  <title>IP地址透传 | Dai zhe's notes</title>
+  <title>HAproxy IP地址透传 | Dai zhe's notes</title>
   
 
 
@@ -348,7 +350,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">45</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
 
   </li>
         
@@ -490,7 +492,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">IP地址透传
+          <h1 class="post-title" itemprop="name headline">HAproxy IP地址透传
               
             
           </h1>
@@ -572,7 +574,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">3.3k</span>
               
 
               
@@ -586,7 +588,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -606,7 +608,7 @@
       
 
       
-        <h1 id="IP地址透传（七层）"><a href="#IP地址透传（七层）" class="headerlink" title="IP地址透传（七层）"></a>IP地址透传（七层）</h1><p><img src="/2019/01/22/HAproxyIP地址透传/标题.gif" alt=""><br><a id="more"></a></p>
+        <h1 id="HAproxy-IP地址透传（七层-四层）"><a href="#HAproxy-IP地址透传（七层-四层）" class="headerlink" title="HAproxy IP地址透传（七层/四层）"></a>HAproxy IP地址透传（七层/四层）</h1><p><img src="/2019/01/22/HAproxyIP地址透传/标题.gif" alt=""><br><a id="more"></a></p>
 <ul>
 <li>四层负载<ul>
 <li>mode http</li>
@@ -617,7 +619,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="七层地址透传"><a href="#七层地址透传" class="headerlink" title="七层地址透传"></a>七层地址透传</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">实验准备：</span><br><span class="line">  haproxy_server  172.18.135.2模拟私网地址</span><br><span class="line">  nginx_server     172.18.135.5模拟公网地址</span><br><span class="line">  windows_firefox   172.18.88.88模拟客户端浏览器</span><br><span class="line"></span><br><span class="line">模拟：</span><br><span class="line">  haproxy_server和windows_firefox  为私网地址</span><br><span class="line">  nginx_server 为公网地址</span><br><span class="line"></span><br><span class="line"><span class="comment">#windows_firefox通过haporxy_server的地址透传（NAT）,实现windows_firefox通过访问haporxy_server的地址从跳转至私网地址nginx_server服务器上进行访问</span></span><br><span class="line"></span><br><span class="line">haproxy_server</span><br><span class="line">配置haproxy实现透传</span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">  <span class="comment">#七层地址透传</span></span><br><span class="line">  listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80    <span class="comment">#此地址为调度器的地址</span></span><br><span class="line">        balance hdr(User-Agent)</span><br><span class="line">        <span class="built_in">hash</span>-type consistent</span><br><span class="line">        server web1 www.daizhe.net.cn:80 weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line">  ~]<span class="comment"># curl -I 172.18.135.2:80</span></span><br><span class="line"></span><br><span class="line">windown_firefox客户端浏览器访问haproxy_server地址</span><br><span class="line">  http://172.18.135.2/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nginx_server</span><br><span class="line">查看web服务器的访问日志</span><br><span class="line">  ~]<span class="comment"># yum install nginx -y</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">  http &#123;</span><br><span class="line">  <span class="comment">#    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">  <span class="comment">#                      '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">  <span class="comment">#                      '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">  log_format json <span class="string">'&#123;"@timestamp":"$time_iso8601",'</span></span><br><span class="line">                 <span class="string">'"host":"$server_addr",'</span></span><br><span class="line">                 <span class="string">'"clientip":"$remote_addr",'</span></span><br><span class="line">                 <span class="string">'"size":$body_bytes_sent,'</span></span><br><span class="line">                 <span class="string">'"responsetime":$request_time,'</span></span><br><span class="line">                 <span class="string">'"upstreamtime":"$upstream_response_time",'</span></span><br><span class="line">                 <span class="string">'"upstreamhost":"$upstream_addr",'</span></span><br><span class="line">                 <span class="string">'"http_host":"$host",'</span></span><br><span class="line">                 <span class="string">'"url":"$uri",'</span></span><br><span class="line">                 <span class="string">'"referer":"$http_referer",'</span></span><br><span class="line">                 <span class="string">'"agent":"$http_user_agent",'</span></span><br><span class="line">                 <span class="string">'"xff":"$http_x_forwarded_for",'</span></span><br><span class="line">                 <span class="string">'"status":"$status"&#125;'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access_json  json;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl start nginx  </span></span><br><span class="line">   ~]<span class="comment"># cat /var/log/nginx/access_json </span></span><br><span class="line">   &#123;<span class="string">"@timestamp"</span>:<span class="string">"2019-01-22T22:00:54+08:00"</span>,<span class="string">"host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"clientip"</span>:<span class="string">"172.18.135.2"</span>,<span class="string">"size"</span>:0,<span class="string">"responsetime"</span>:0.000,<span class="string">"upstreamtime"</span>:<span class="string">"-"</span>,<span class="string">"upstreamhost"</span>:<span class="string">"-"</span>,<span class="string">"http_host"</span>:<span class="string">"172.18.135.2"</span>,<span class="string">"url"</span>:<span class="string">"/poweredby.png"</span>,<span class="string">"referer"</span>:<span class="string">"http://172.18.135.2/"</span>,<span class="string">"agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0"</span>,<span class="string">"xff"</span>:<span class="string">"172.18.88.88"</span>,<span class="string">"status"</span>:<span class="string">"304"</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实验准备"><a href="#实验准备" class="headerlink" title="实验准备"></a>实验准备</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line"><span class="comment">#如果客户端访问的地址为公网地址上的一个网站，如果客户端用的是NAT方式出去上网的，则后端的nginx查看的日志信息源ip地址应该是客户端通过NAT方式出去的地址</span></span><br><span class="line"></span><br><span class="line">实验准备：</span><br><span class="line">  haproxy_server   172.18.135.2模拟私网地址</span><br><span class="line">  nginx_server     172.18.135.5模拟公网地址</span><br><span class="line">  windows_firefox  172.18.88.88模拟客户端浏览器</span><br><span class="line"></span><br><span class="line">模拟：</span><br><span class="line">  haproxy_server和windows_firefox  为私网地址</span><br><span class="line">  nginx_server 为公网地址</span><br><span class="line"></span><br><span class="line"><span class="comment">#windows_firefox通过haporxy_server的地址透传（NAT）,实现windows_firefox通过访问haporxy_server的地址从跳转至私网地址nginx_server服务器上进行访问</span></span><br></pre></td></tr></table></figure>
+<h3 id="七层地址透传-http"><a href="#七层地址透传-http" class="headerlink" title="七层地址透传(http)"></a>七层地址透传(http)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br><span class="line">配置haproxy实现透传</span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">  <span class="comment">#七层地址透传</span></span><br><span class="line">  listen web-port-80</span><br><span class="line">        mode http         <span class="comment">#此透传仅支持http协议，在tcp协议上不影响haproxy启动，但是nginx日志中会写出记录不到真实访问的地址</span></span><br><span class="line">        option forwardfor   <span class="comment">#如果后端服务器需要获得客户端的真实IP需要配置此参数，将可以从HttpHeader中获得客户端IP</span></span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80    <span class="comment">#此地址为调度器的地址</span></span><br><span class="line">        server web1 172.18.135.5:80 weight 2 check inter 2000 fall 3 rise 5   <span class="comment">#web1为定义后端主机的名称</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line">  ~]<span class="comment"># curl -I 172.18.135.2:80</span></span><br><span class="line"></span><br><span class="line">windown_firefox客户端浏览器访问haproxy_server地址</span><br><span class="line">  http://172.18.135.2/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nginx_server</span><br><span class="line">查看web服务器的访问日志</span><br><span class="line">  ~]<span class="comment"># yum install nginx -y</span></span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf     #定义nginx的日志文件为json格式输出，并可以查看到真实的客户端的地址（这里值得是windows_firefox）</span></span><br><span class="line">  http &#123;</span><br><span class="line">  log_format json <span class="string">'&#123;"@timestamp":"$time_iso8601",'</span></span><br><span class="line">                 <span class="string">'"host":"$server_addr",'</span></span><br><span class="line">                 <span class="string">'"clientip":"$remote_addr",'</span></span><br><span class="line">                 <span class="string">'"size":$body_bytes_sent,'</span></span><br><span class="line">                 <span class="string">'"responsetime":$request_time,'</span></span><br><span class="line">                 <span class="string">'"upstreamtime":"$upstream_response_time",'</span></span><br><span class="line">                 <span class="string">'"upstreamhost":"$upstream_addr",'</span></span><br><span class="line">                 <span class="string">'"http_host":"$host",'</span></span><br><span class="line">                 <span class="string">'"url":"$uri",'</span></span><br><span class="line">                 <span class="string">'"referer":"$http_referer",'</span></span><br><span class="line">                 <span class="string">'"agent":"$http_user_agent",'</span></span><br><span class="line">                 <span class="string">'"xff":"$http_x_forwarded_for",'</span></span><br><span class="line">                 <span class="string">'"status":"$status"&#125;'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access_json  json;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl start nginx  </span></span><br><span class="line">   ~]<span class="comment"># cat /var/log/nginx/access_json </span></span><br><span class="line">   &#123;<span class="string">"@timestamp"</span>:<span class="string">"2019-01-22T22:00:54+08:00"</span>,<span class="string">"host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"clientip"</span>:<span class="string">"172.18.135.2"</span>,<span class="string">"size"</span>:0,<span class="string">"responsetime"</span>:0.000,<span class="string">"upstreamtime"</span>:<span class="string">"-"</span>,<span class="string">"upstreamhost"</span>:<span class="string">"-"</span>,<span class="string">"http_host"</span>:<span class="string">"172.18.135.2"</span>,<span class="string">"url"</span>:<span class="string">"/poweredby.png"</span>,<span class="string">"referer"</span>:<span class="string">"http://172.18.135.2/"</span>,<span class="string">"agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0"</span>,<span class="string">"xff"</span>:<span class="string">"172.18.88.88"</span>,<span class="string">"status"</span>:<span class="string">"304"</span>&#125;   <span class="comment">#可以查看到真实访问的windiws_firefox的真实地址</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/22/HAproxyIP地址透传/七层.png" alt=""></p>
+<h3 id="四层地址透传-tcp"><a href="#四层地址透传-tcp" class="headerlink" title="四层地址透传(tcp)"></a>四层地址透传(tcp)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  listen web-port-80</span><br><span class="line">        mode tcp</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        option forwardfor</span><br><span class="line">        server web1 172.18.135.5:80 send-proxy weight 2 check inter 2000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">nginx_server</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">      server &#123;</span><br><span class="line">        listen       80 proxy_protocol;   <span class="comment">#TCP获取客户端真实IP日志格式</span></span><br><span class="line">  <span class="comment">#        listen       [::]:80 default_server;</span></span><br><span class="line">        server_name  _;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart nginx </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">客户端访查看nginx日志</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/22/HAproxyIP地址透传/四层.png" alt=""></p>
+
       
     </div>
 
@@ -838,7 +845,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -987,7 +994,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IP地址透传（七层）"><span class="nav-number">1.</span> <span class="nav-text">IP地址透传（七层）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#七层地址透传"><span class="nav-number">1.1.</span> <span class="nav-text">七层地址透传</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy-IP地址透传（七层-四层）"><span class="nav-number">1.</span> <span class="nav-text">HAproxy IP地址透传（七层/四层）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验准备"><span class="nav-number">1.1.</span> <span class="nav-text">实验准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#七层地址透传-http"><span class="nav-number">1.1.1.</span> <span class="nav-text">七层地址透传(http)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四层地址透传-tcp"><span class="nav-number">1.1.2.</span> <span class="nav-text">四层地址透传(tcp)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1021,7 +1028,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">415k</span>
+    <span title="站点总字数">418k</span>
   
 
   
@@ -1032,7 +1039,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:17</span>
+    <span title="站点阅读时长">6:20</span>
   
 </div>
 
