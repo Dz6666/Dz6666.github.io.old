@@ -136,28 +136,20 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="HAproxy日志配置及报文操作">
+  <meta name="description" content="HAproxy的ACL过滤器">
 <meta name="keywords" content="HAproxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HAproxy日志配置及报文操作">
-<meta property="og:url" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/index.html">
+<meta property="og:title" content="HAproxyACL">
+<meta property="og:url" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="HAproxy日志配置及报文操作">
+<meta property="og:description" content="HAproxy的ACL过滤器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/标题.gif">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/1.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/2.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/3.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/4.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/5.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/6.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/7.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/8.png">
-<meta property="og:updated_time" content="2019-01-24T04:09:21.083Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/标题.gif">
+<meta property="og:updated_time" content="2019-01-24T08:58:21.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HAproxy日志配置及报文操作">
-<meta name="twitter:description" content="HAproxy日志配置及报文操作">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/标题.gif">
+<meta name="twitter:title" content="HAproxyACL">
+<meta name="twitter:description" content="HAproxy的ACL过滤器">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/标题.gif">
 
 
 
@@ -166,7 +158,7 @@
 
 
 
-  <link rel="canonical" href="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/">
+  <link rel="canonical" href="https://daizhe.net.cn/2019/01/24/HAproxyACL/">
 
 
 
@@ -176,7 +168,7 @@
   };
 </script>
 
-  <title>HAproxy日志配置及报文操作 | Dai zhe's notes</title>
+  <title>HAproxyACL | Dai zhe's notes</title>
   
 
 
@@ -481,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/01/24/HAproxyACL/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哆啦A梦">
@@ -498,7 +490,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HAproxy日志配置及报文操作
+          <h1 class="post-title" itemprop="name headline">HAproxyACL
               
             
           </h1>
@@ -524,7 +516,7 @@
                 
               
 
-              <time title="创建时间：2019-01-23 20:49:55" itemprop="dateCreated datePublished" datetime="2019-01-23T20:49:55+08:00">2019-01-23</time>
+              <time title="创建时间：2019-01-24 12:12:51" itemprop="dateCreated datePublished" datetime="2019-01-24T12:12:51+08:00">2019-01-24</time>
             
 
             
@@ -557,8 +549,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/23/HAproxy日志配置及报文操作/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/23/HAproxy日志配置及报文操作/" itemprop="commentCount"></span>
+                <a href="/2019/01/24/HAproxyACL/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/24/HAproxyACL/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -580,7 +572,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -594,7 +586,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -614,99 +606,106 @@
       
 
       
-        <h1 id="HAproxy日志配置及报文操作"><a href="#HAproxy日志配置及报文操作" class="headerlink" title="HAproxy日志配置及报文操作"></a>HAproxy日志配置及报文操作</h1><p><img src="/2019/01/23/HAproxy日志配置及报文操作/标题.gif" alt=""><br><a id="more"></a></p>
-<h2 id="一、配置HAProxy状态页"><a href="#一、配置HAProxy状态页" class="headerlink" title="一、配置HAProxy状态页"></a>一、配置HAProxy状态页</h2><h3 id="1-haproxy状态页面开启"><a href="#1-haproxy状态页面开启" class="headerlink" title="1.haproxy状态页面开启"></a>1.haproxy状态页面开启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">paproxy_server</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999     <span class="comment">#默认监听的地址为0.0.0.0,最好不要监听本机的所有地址。监听的端口不要和现有的业务冲突</span></span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status       <span class="comment">#默认访问状态页面的uri（可以自己定义）</span></span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys    <span class="comment">#默认访问uri的用户名和密码</span></span><br><span class="line">    stats auth    daizhe:123456        <span class="comment">#指定用户访问此uri提供的用户名和密码</span></span><br><span class="line">    stats realm HAPorxy\ Stats\ Page      <span class="comment">#设置用户访问uri时提示输入密码的提示信息</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/1.png" alt=""></p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/2.png" alt=""></p>
-<hr>
-<h3 id="2-开启管理状态页面"><a href="#2-开启管理状态页面" class="headerlink" title="2.开启管理状态页面"></a>2.开启管理状态页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999</span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status</span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys</span><br><span class="line">    stats auth    admin:123456</span><br><span class="line">    stats realm HAPorxy\ Stats\ Page</span><br><span class="line">    stats admin <span class="keyword">if</span> TRUE       <span class="comment">#如果登陆的是daizhe这个用户则打开状态管理页面</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/3.png" alt=""></p>
-<hr>
-<h3 id="3-隐藏管理状态页面的haproxy的版本号"><a href="#3-隐藏管理状态页面的haproxy的版本号" class="headerlink" title="3.隐藏管理状态页面的haproxy的版本号"></a>3.隐藏管理状态页面的haproxy的版本号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999</span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status</span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys</span><br><span class="line">    stats auth    admin:123456</span><br><span class="line">    stats realm HAPorxy\ Stats\ Page</span><br><span class="line">    stats admin <span class="keyword">if</span> TRUE      </span><br><span class="line">    stats hide-version  <span class="comment">#隐藏版本号</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/4.png" alt=""></p>
-<hr>
-<h2 id="二、HAproxy修改报文首部-http模式"><a href="#二、HAproxy修改报文首部-http模式" class="headerlink" title="二、HAproxy修改报文首部(http模式)"></a>二、HAproxy修改报文首部(http模式)</h2><ul>
-<li><h4 id="在请求报文尾部添加指定首部"><a href="#在请求报文尾部添加指定首部" class="headerlink" title="在请求报文尾部添加指定首部"></a>在请求报文尾部添加指定首部</h4><ul>
-<li><code>reqadd  &lt;string&gt; [{if | unless} &lt;cond&gt;]</code></li>
-</ul>
-</li>
-<li><h4 id="在响应报文尾部添加指定首部"><a href="#在响应报文尾部添加指定首部" class="headerlink" title="在响应报文尾部添加指定首部"></a>在响应报文尾部添加指定首部</h4><ul>
-<li><code>rspadd &lt;string&gt; [{if | unless} &lt;cond&gt;]</code><ul>
-<li>示例：rspadd X-Via:\ HAPorxy    </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">客户端中可以查看到响应是通过haproxy调度器调度响应的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy      <span class="comment">####</span></span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        option forwardfor</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 172.18.135.5:8080 cookie web1 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.1:8080 cookie web2 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/5.png" alt=""></p>
+        <h1 id="HAproxy的ACL过滤器"><a href="#HAproxy的ACL过滤器" class="headerlink" title="HAproxy的ACL过滤器"></a>HAproxy的ACL过滤器</h1><p><img src="/2019/01/24/HAproxyACL/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="ACL过滤器（七层http模式下）"><a href="#ACL过滤器（七层http模式下）" class="headerlink" title="ACL过滤器（七层http模式下）"></a>ACL过滤器（七层http模式下）</h2><ul>
+<li><p>acl：对接收到的报文进行匹配和过滤，基于请求报文头部中的源地址、源端口、目标地址、目标端口、请求方法、URL、文件后缀等信息内容进行匹配并执行进一步操作（基于类型的调度决策）。</p>
 <ul>
-<li><h4 id="从请求报文中删除匹配正则表达式的首部"><a href="#从请求报文中删除匹配正则表达式的首部" class="headerlink" title="从请求报文中删除匹配正则表达式的首部"></a>从请求报文中删除匹配正则表达式的首部</h4><ul>
-<li><code>reqdel  &lt;search&gt; [{if | unless} &lt;cond&gt;]</code></li>
-<li><code>reqidel &lt;search&gt; [{if | unless} &lt;cond&gt;] 不分大小写</code></li>
+<li><code>acl &lt;aclname&gt;  &lt;criterion&gt;   [flags]           [operator]        [&lt;value&gt;]</code></li>
+<li>acl   &ensp;&ensp;   名称    &ensp;&ensp;&ensp;&ensp;          过滤条件   &ensp;&ensp; &ensp;&ensp;     条件标记位   &ensp;&ensp;   具体操作符   &ensp;&ensp;   操作对象类型</li>
 </ul>
 </li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">删除响应报文中的server字段的信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        rspdel Server:*</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        option forwardfor</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 172.18.135.5:8080 cookie web1 check inter 2000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/6.png" alt=""></p>
+<li><p>acl   image_service hdr_dom(host)   -i   img.daizhe.net.cn</p>
 <ul>
-<li><h4 id="从响应报文中删除匹配正则表达式的首部"><a href="#从响应报文中删除匹配正则表达式的首部" class="headerlink" title="从响应报文中删除匹配正则表达式的首部"></a>从响应报文中删除匹配正则表达式的首部</h4><ul>
-<li><code>rspdel  &lt;search&gt; [{if | unless} &lt;cond&gt;]</code></li>
-<li><code>rspidel &lt;search&gt; [{if | unless} &lt;cond&gt;]</code><ul>
-<li>示例： rspidel  server.* #从相应报文删除server信息<ul>
-<li>rspidel X-Powered-By:.*  #从响应报文删除X-Powered-By信息</li>
+<li>hdr_dom(host)：客户端请求的头部的域名<ul>
+<li>用hots做匹配条件的好处，可以将ip地址复用，对一个ip进行监听，当用户请求进行请求时，可以将一个地址对应多个A记录解析的域名（一个ip地址监听多个公网的域名）。</li>
+</ul>
+</li>
+<li>hdr_dom(User-Agent) ：客户端请求使用的浏览器的类型<ul>
+<li>可以根据客户使用的类型，将客户发来的请求做处理转发。调度器转发后其他后端的提供服务的服务器上。</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>ACL名称，可以使用大字母A-Z、小写字母a-z、数字0-9、冒号：、点.、中横线和下划线，并且严格区分大小写，必须Image_site和image_site完全是两个acl(严格区分大小写)。</li>
 </ul>
-</li>
-</ul>
-<h2 id="三、HAProxy-日志配置"><a href="#三、HAProxy-日志配置" class="headerlink" title="三、HAProxy 日志配置"></a>三、HAProxy 日志配置</h2><ul>
-<li>在default配置项定义：<ul>
-<li>log 127.0.0.1  local{1-7} info #基于syslog记录日志到指定设备，级别有(err、warning、info、debug)</li>
-</ul>
-</li>
-</ul>
-<p>范例：基于rsyslog配置收集haproxy日志信息(udp)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">开启haproxy服务器上的rsyslog功能</span><br><span class="line">     ~]<span class="comment"># vim /etc/rsyslog.conf </span></span><br><span class="line">    15~16行</span><br><span class="line">    <span class="variable">$ModLoad</span> imudp</span><br><span class="line">    <span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">    74行</span><br><span class="line">    local3.*    /var/<span class="built_in">log</span>/haproxy.log</span><br><span class="line"></span><br><span class="line">配置haproxy配置文件</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    global</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">log</span> 127.0.0.1 local3 info</span><br><span class="line"></span><br><span class="line">重启服务</span><br><span class="line">    ~]<span class="comment"># systemctl restart rsyslog haproxy</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">客户访问后端web_server 查看haproxy日志</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/7.png" alt=""></p>
-<p>范例：可以将haproxy日志格式使用tcp/http记录在rsyslog日志中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">配置HAProxy：</span><br><span class="line">listen  web_port</span><br><span class="line"> <span class="built_in">bind</span> 127.0.0.1:80</span><br><span class="line"> mode http</span><br><span class="line"> <span class="built_in">log</span> global</span><br><span class="line">option tcplog</span><br><span class="line"> server web1  127.0.0.1:8080  check inter 3000 fall 2 rise 5</span><br></pre></td></tr></table></figure></p>
-<p>详细日志参考手册：<a href="http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#8.1" target="_blank" rel="noopener">http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#8.1</a></p>
-<h2 id="四、自定义paproxy记录日志"><a href="#四、自定义paproxy记录日志" class="headerlink" title="四、自定义paproxy记录日志"></a>四、自定义paproxy记录日志</h2><ul>
-<li><p>将特定信息记录在日志中</p>
+<h4 id="Criterion-ACL-定义ACL标准"><a href="#Criterion-ACL-定义ACL标准" class="headerlink" title="Criterion_ACL(定义ACL标准)"></a>Criterion_ACL(定义ACL标准)</h4><ul>
+<li><p><code>&lt;criterion&gt; ：匹配条件</code></p>
 <ul>
-<li><code>capture cookie &lt;name&gt; len &lt;length&gt; #捕获请求和响应报文中的 cookie并记录日志</code></li>
-<li><code>capture request header &lt;name&gt; len &lt;length&gt; #捕获请求报文中指定的首部内容和长度并记录日志</code></li>
-<li><code>capture response header &lt;name&gt; len &lt;length&gt; #捕获响应报文中指定的内容和长度首部并记录日志</code></li>
+<li><code>dst         目标IP</code></li>
+<li><code>dst_port       目标PORT</code></li>
+<li><code>src            源IP</code></li>
+<li><code>src_port      源PORT</code></li>
 </ul>
 </li>
-<li><p>示例：配置haproxy配置文件，注意配置字段和生效的位置（最好设置单独的listen中，仅对一组server生效）</p>
+<li><p><code>hdr &lt;string&gt;用于测试请求头部首部指定内容</code></p>
 <ul>
-<li>capture request  header Host len  256 </li>
-<li>capture request header User-Agent len 512     <h2 id="五、压缩功能"><a href="#五、压缩功能" class="headerlink" title="五、压缩功能"></a>五、压缩功能</h2></li>
+<li><code>hdr_dom(host)  请求的host名称，如 www.daizhe.net.cn</code></li>
+<li><code>hdr_beg(host)  请求的host开头，如 www. img. video. download. ftp.</code></li>
+<li><code>hdr_end(host)  请求的host结尾，如 .com .net .cn</code></li>
+<li><code>path_beg   请求的URL开头，如/static、/images、/img、/css</code></li>
+<li><code>path_end   请求的URL中资源的结尾，如 .gif  .png  .css  .js .jpg .jpeg</code></li>
 </ul>
 </li>
-<li>compression algo   #启用http协议中的压缩机制，常用算法有gzip deflate</li>
-<li><p>compression type  #要压缩的类型</p>
+</ul>
+<h4 id="flags（条件标记位）"><a href="#flags（条件标记位）" class="headerlink" title="flags（条件标记位）"></a>flags（条件标记位）</h4><ul>
+<li><code>&lt;flags&gt;-条件标记</code><ul>
+<li>-i 不区分大小写(域名经过haproxy调度时不区分域名的字符大小写)</li>
+<li>-m 使用指定的pattern匹配方法</li>
+<li>-n 不做DNS解析<ul>
+<li>-u 禁止acl重名，否则多个同名ACL匹配或关系(调度器上定义acl的名称尽量不要重名，如果有重名，默认隐含的是或的关系)</li>
+<li>–  强制flag结束. 当字符串和某个flag相似时使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="operator（具体操作符）"><a href="#operator（具体操作符）" class="headerlink" title="operator（具体操作符）"></a>operator（具体操作符）</h4><ul>
+<li>[operator]-操作符：<ul>
+<li>整数比较：eq、ge、gt、le、lt<br>字符比较：</li>
+<li>exact match     (-m str) :字符串必须完全匹配模式</li>
+<li>substring match (-m sub) :在提取的字符串中查找模式，如果其中任何一个被发现，ACL将匹配</li>
+<li>prefix match    (-m beg) :在提取的字符串首部中查找模式，如果其中任何一个被发现，ACL将匹配</li>
+<li>suffix match    (-m end) :将模式与提取字符串的尾部进行比较，如果其中任何一个匹配，则ACL进行匹配</li>
+<li>subdir match    (-m dir) :查看提取出来的用斜线分隔（“/”）的字符串，如果其中任何一个匹配，则ACL进行匹配</li>
+<li>domain match    (-m dom) :查找提取的用点（“.”）分隔字符串，如果其中任何一个匹配，则ACL进行匹配    </li>
+</ul>
+</li>
+</ul>
+<h4 id="value（操作对象类型）"><a href="#value（操作对象类型）" class="headerlink" title="value（操作对象类型）"></a>value（操作对象类型）</h4><ul>
+<li><code>&lt;value&gt;的类型：</code><ul>
+<li>Boolean #布尔值</li>
+<li>integer or integer range #整数或整数范围，比如用于匹配端口范围</li>
+<li>IP address / network #IP地址或IP范围</li>
+<li>string    （字符串的方式制定域名）</li>
+<li>exact –精确比较</li>
+<li>substring—子串    </li>
+<li>prefix-前缀比较</li>
+<li>subdir-路径， /wp-includes/js/jquery/jquery.js</li>
+<li>domain-域名，daizhe.net.cn</li>
+<li>regular expression  #正则表达式</li>
+<li>hex block   #16进制</li>
+</ul>
+</li>
+</ul>
+<h2 id="Acl定义与调用"><a href="#Acl定义与调用" class="headerlink" title="Acl定义与调用"></a>Acl定义与调用</h2><ul>
+<li><p>acl作为条件时的逻辑关系：</p>
+<ul>
+<li>与：隐式（默认）使用</li>
+<li>或：使用“or” 或 “||”表示</li>
+<li>否定：使用“!“ 表示    </li>
+</ul>
 </li>
 <li><p>示例：</p>
 <ul>
-<li>compression algo gzip</li>
-<li>compression type compression type text/plain text/html text/css text/xml text/javascript application/javascript</li>
+<li>if   invalid_src invalid_port      与关系</li>
+<li>if invalid_src || invalid_port      或<ul>
+<li>if ! invalid_src             非</li>
 </ul>
 </li>
 </ul>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/8.png" alt=""></p>
-<h2 id="Web服务器状态监测"><a href="#Web服务器状态监测" class="headerlink" title="Web服务器状态监测"></a>Web服务器状态监测</h2><ul>
-<li>option httpchk</li>
-<li><code>option httpchk &lt;uri&gt;</code></li>
-<li><code>option httpchk &lt;method&gt; &lt;uri&gt;</code></li>
-<li><code>option httpchk &lt;method&gt; &lt;uri&gt; &lt;version&gt;</code></li>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">listen  web_prot_http_nodes</span><br><span class="line">    <span class="built_in">bind</span>  192.168.7.102:80</span><br><span class="line">    mode  http</span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    option httpchk GET /wp-includes/js/jquery/jquery.js?ver=1.12.4 HTTP/1.0  <span class="comment">#基于指定URL</span></span><br><span class="line">    <span class="comment">#option httpchk HEAD /wp-includes/js/jquery/jquery.js?ver=1.12.4 HTTP/1.0\r\nHost:\ 192.168.7.102 #通过request获取的头部信息进行匹配进行健康检测</span></span><br><span class="line">     server 192.168.7.102  blogs.studylinux.net:80   check inter 3000 fall 3 rise 5</span><br><span class="line">     server 192.168.7.101 192.168.7.101:8080  cookie web1 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
+<p>范例：调度器拒绝172.18.88.88/24的主机访问即调度器检测到此地址段的主机则不今次那个调度到后端的主机上<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -840,8 +839,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/HAproxy基于cookie会话保持/" rel="next" title="HAproxy基于cookie会话保持">
-                <i class="fa fa-chevron-left"></i> HAproxy基于cookie会话保持
+              <a href="/2019/01/23/HAproxy日志配置及报文操作/" rel="next" title="HAproxy日志配置及报文操作">
+                <i class="fa fa-chevron-left"></i> HAproxy日志配置及报文操作
               </a>
             
           </div>
@@ -849,10 +848,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/24/HAproxyACL/" rel="prev" title="HAproxyACL">
-                HAproxyACL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1077,7 +1072,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy日志配置及报文操作"><span class="nav-number">1.</span> <span class="nav-text">HAproxy日志配置及报文操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置HAProxy状态页"><span class="nav-number">1.1.</span> <span class="nav-text">一、配置HAProxy状态页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-haproxy状态页面开启"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.haproxy状态页面开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-开启管理状态页面"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.开启管理状态页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-隐藏管理状态页面的haproxy的版本号"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.隐藏管理状态页面的haproxy的版本号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、HAproxy修改报文首部-http模式"><span class="nav-number">1.2.</span> <span class="nav-text">二、HAproxy修改报文首部(http模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在请求报文尾部添加指定首部"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">在请求报文尾部添加指定首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在响应报文尾部添加指定首部"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">在响应报文尾部添加指定首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从请求报文中删除匹配正则表达式的首部"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">从请求报文中删除匹配正则表达式的首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从响应报文中删除匹配正则表达式的首部"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">从响应报文中删除匹配正则表达式的首部</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、HAProxy-日志配置"><span class="nav-number">1.3.</span> <span class="nav-text">三、HAProxy 日志配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、自定义paproxy记录日志"><span class="nav-number">1.4.</span> <span class="nav-text">四、自定义paproxy记录日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、压缩功能"><span class="nav-number">1.5.</span> <span class="nav-text">五、压缩功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web服务器状态监测"><span class="nav-number">1.6.</span> <span class="nav-text">Web服务器状态监测</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy的ACL过滤器"><span class="nav-number">1.</span> <span class="nav-text">HAproxy的ACL过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACL过滤器（七层http模式下）"><span class="nav-number">1.1.</span> <span class="nav-text">ACL过滤器（七层http模式下）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Criterion-ACL-定义ACL标准"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Criterion_ACL(定义ACL标准)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flags（条件标记位）"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">flags（条件标记位）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#operator（具体操作符）"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">operator（具体操作符）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#value（操作对象类型）"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">value（操作对象类型）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Acl定义与调用"><span class="nav-number">1.2.</span> <span class="nav-text">Acl定义与调用</span></a></li></ol></div>
             
 
           </div>
