@@ -146,7 +146,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/31/docker网络模型及存储卷/图标.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/31/docker网络模型及存储卷/2018-12-28_161058.png">
-<meta property="og:updated_time" content="2019-01-22T01:43:40.323Z">
+<meta property="og:updated_time" content="2019-01-27T04:09:40.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker网络模型">
 <meta name="twitter:description" content="docker网络模型">
@@ -609,6 +609,14 @@
       
         <h1 id="docker网络模型"><a href="#docker网络模型" class="headerlink" title="docker网络模型"></a>docker网络模型</h1><p><img src="/2018/12/31/docker网络模型及存储卷/图标.png" alt=""><br><a id="more"></a></p>
 <h2 id="Docker网络模型详解"><a href="#Docker网络模型详解" class="headerlink" title="Docker网络模型详解"></a>Docker网络模型详解</h2><ul>
+<li><code>docker安装完会修改默认的防火墙规则</code><ul>
+<li>将FORWARD链默认的accept修改为drop</li>
+<li>如果用到转发的功能可以修改docker的启动文件如下</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">修改docker的启动文件</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="comment"># the default is not to use systemd for cgroups because the delegate issues still</span></span><br><span class="line"><span class="comment"># exists and systemd currently does not support the cgroup feature set required</span></span><br><span class="line"><span class="comment"># for containers run by docker</span></span><br><span class="line"></span><br><span class="line">ExecStartPost=/usr/sbin/iptables -P FORWARD ACCEPT</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/bin/dockerd -H unix://</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">TimeoutSec=0</span><br><span class="line">RestartSec=2</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># systemctl daemon-reload</span></span><br><span class="line">~]<span class="comment"># systemctl restart docker</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># iptables -vnL</span></span><br><span class="line">Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)</span><br></pre></td></tr></table></figure>
+<ul>
 <li><code>四种网络</code><ul>
 <li>桥网络bridge：<ul>
 <li>默认docker0 NET桥</li>
@@ -1093,7 +1101,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">425k</span>
+    <span title="站点总字数">426k</span>
   
 
   

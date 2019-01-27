@@ -149,7 +149,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/21/HAproxy简介/公有云架构.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/21/HAproxy简介/LB.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/21/HAproxy简介/应用场景.png">
-<meta property="og:updated_time" content="2019-01-25T13:06:23.186Z">
+<meta property="og:updated_time" content="2019-01-27T03:03:35.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAproxy简介">
 <meta name="twitter:description" content="HAproxy简介">
@@ -576,7 +576,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.2k</span>
+                <span title="本文字数">8.4k</span>
               
 
               
@@ -590,7 +590,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -682,7 +682,7 @@
 </li>
 </ul>
 <h2 id="四、HAProxy介绍"><a href="#四、HAProxy介绍" class="headerlink" title="四、HAProxy介绍"></a>四、HAProxy介绍</h2><ul>
-<li>HAProxy: 是法国开发者Willy Tarreau开发的一个开源软件，是一款具备高并发、高性能的TCP和HTTP负载均衡器，支持基于cookie的持久性，自动故障切换，支持正则表达式及web状态统计。</li>
+<li>HAProxy: 是法国开发者Willy Tarreau开发的一个开源软件，是一款具备高并发、高性能的TCP和HTTP负载均衡器，支持基于cookie的持久性，自动故障切换，支持正则表达式为基础的控制运行时间基本web的报表，高级日志记录以帮助排除故障的应用或网络及其他功能。</li>
 <li><p><code>LB Cluster:</code></p>
 <ul>
 <li><code>四层：lvs, nginx(stream模式且nginx1.9.0或更新版本)，haproxy(mode tcp)</code></li>
@@ -699,7 +699,8 @@
 </li>
 </ul>
 <h2 id="五、HAProxy功能"><a href="#五、HAProxy功能" class="headerlink" title="五、HAProxy功能"></a>五、HAProxy功能</h2><ul>
-<li>HAProxy是TCP / HTTP反向代理服务器，尤其适合于高可用性高并发环境<ul>
+<li><p>HAProxy是TCP / HTTP反向代理服务器，尤其适合于高可用性高并发环境</p>
+<ul>
 <li>可以针对HTTP请求添加cookie，进行路由后端服务器</li>
 <li>可平衡负载至后端服务器，并支持持久连接</li>
 <li>支持基于cookie进行调度</li>
@@ -709,6 +710,13 @@
 <li>可以在双向添加，修改或删除HTTP报文首部</li>
 <li>支持基于pattern实现连接请求的访问控制</li>
 <li>通过特定的URI为授权用户提供详细的状态信息</li>
+</ul>
+</li>
+<li><p>HAproxy工作场景：七层http/四层tcp</p>
+<ul>
+<li>工作于七层:解析http请求，可以完成对用户请求的按照内容的类型进行分别调度</li>
+<li>工作于四层：模拟对其他tcp/udp协议传输的应用层服务的调度转发</li>
+<li>工作于前端: 作为https的卸载器</li>
 </ul>
 </li>
 </ul>
@@ -1141,7 +1149,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">425k</span>
+    <span title="站点总字数">426k</span>
   
 
   
