@@ -136,21 +136,21 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="nginx的fastcgi模块">
-<meta name="keywords" content="Nginx">
+  <meta name="description" content="keepalived配置多VIP及实现双主模式">
+<meta name="keywords" content="keepalived">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx的fastcgi模块">
-<meta property="og:url" content="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/index.html">
+<meta property="og:title" content="keepalived配置多VIP及实现双主模式">
+<meta property="og:url" content="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="nginx的fastcgi模块">
+<meta property="og:description" content="keepalived配置多VIP及实现双主模式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/标题.gif">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/fpm.png">
-<meta property="og:updated_time" content="2019-01-22T12:26:32.031Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/标题.gif">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/1.png">
+<meta property="og:updated_time" content="2019-01-29T07:28:31.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx的fastcgi模块">
-<meta name="twitter:description" content="nginx的fastcgi模块">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/标题.gif">
+<meta name="twitter:title" content="keepalived配置多VIP及实现双主模式">
+<meta name="twitter:description" content="keepalived配置多VIP及实现双主模式">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/标题.gif">
 
 
 
@@ -159,7 +159,7 @@
 
 
 
-  <link rel="canonical" href="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/">
+  <link rel="canonical" href="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/">
 
 
 
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>nginx的fastcgi模块 | Dai zhe's notes</title>
+  <title>keepalived配置多VIP及实现双主模式 | Dai zhe's notes</title>
   
 
 
@@ -474,7 +474,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/01/12/nginx的fastcgi模块/">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/01/29/keepalived配置多VIP及实现双主模式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哆啦A梦">
@@ -491,7 +491,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx的fastcgi模块
+          <h1 class="post-title" itemprop="name headline">keepalived配置多VIP及实现双主模式
               
             
           </h1>
@@ -517,7 +517,7 @@
                 
               
 
-              <time title="创建时间：2019-01-12 13:51:45" itemprop="dateCreated datePublished" datetime="2019-01-12T13:51:45+08:00">2019-01-12</time>
+              <time title="创建时间：2019-01-29 10:33:58" itemprop="dateCreated datePublished" datetime="2019-01-29T10:33:58+08:00">2019-01-29</time>
             
 
             
@@ -535,7 +535,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/keepalived/" itemprop="url" rel="index"><span itemprop="name">keepalived</span></a></span>
 
                 
                 
@@ -550,8 +550,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/12/nginx的fastcgi模块/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/12/nginx的fastcgi模块/" itemprop="commentCount"></span>
+                <a href="/2019/01/29/keepalived配置多VIP及实现双主模式/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/29/keepalived配置多VIP及实现双主模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -573,7 +573,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.1k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -587,7 +587,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -607,55 +607,28 @@
       
 
       
-        <h1 id="nginx的fastcgi模块"><a href="#nginx的fastcgi模块" class="headerlink" title="nginx的fastcgi模块"></a>nginx的fastcgi模块</h1><p><img src="/2019/01/12/nginx的fastcgi模块/标题.gif" alt=""><br><a id="more"></a></p>
-<h2 id="nginx的fastcgi模块-1"><a href="#nginx的fastcgi模块-1" class="headerlink" title="nginx的fastcgi模块"></a>nginx的fastcgi模块</h2><p>1.1　什么是 FastCGI</p>
-<ul>
-<li><p>FastCGI是一个可伸缩地、高速地在HTTP server和动态脚本语言间通信的接口。多数流行的HTTP server都支持FastCGI，包括Apache、Nginx和lighttpd等。同时，FastCGI也被许多脚本语言支持，其中就有PHP。</p>
+        <h1 id="keepalived配置多VIP及实现双主模式"><a href="#keepalived配置多VIP及实现双主模式" class="headerlink" title="keepalived配置多VIP及实现双主模式"></a>keepalived配置多VIP及实现双主模式</h1><p><img src="/2019/01/29/keepalived配置多VIP及实现双主模式/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="一、Keepalived安装"><a href="#一、Keepalived安装" class="headerlink" title="一、Keepalived安装"></a>一、Keepalived安装</h2><ul>
+<li><p>yum源安装：版本1.3.5</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">同步时间</span><br><span class="line">安装keepalived</span><br><span class="line">  ~]<span class="comment"># yum install keepalived -y </span></span><br><span class="line">  ~]<span class="comment"># rpm -ql keepalived</span></span><br><span class="line">  /etc/keepalived/keepalived.conf   <span class="comment">#主配置文件</span></span><br><span class="line">  /etc/sysconfig/keepalived   <span class="comment">#环境初始化的配置文件</span></span><br><span class="line">  /usr/sbin/keepalived    <span class="comment">#二进制的可执行程序</span></span><br><span class="line">  /usr/lib/systemd/system/keepalived.service  <span class="comment">#程序启动脚本</span></span><br><span class="line"></span><br><span class="line">查看启动脚本</span><br><span class="line">  ~]<span class="comment"># cat /usr/lib/systemd/system/keepalived.service</span></span><br><span class="line">  [Unit]  </span><br><span class="line">  Description=LVS and VRRP High Availability Monitor</span><br><span class="line">  After=syslog.target network-online.target</span><br><span class="line"></span><br><span class="line">  [Service]</span><br><span class="line">  Type=forking</span><br><span class="line">  PIDFile=/var/run/keepalived.pid</span><br><span class="line">  KillMode=process</span><br><span class="line">  EnvironmentFile=-/etc/sysconfig/keepalived</span><br><span class="line">  ExecStart=/usr/sbin/keepalived <span class="variable">$KEEPALIVED_OPTIONS</span></span><br><span class="line">  ExecReload=/bin/<span class="built_in">kill</span> -HUP <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">  [Install]</span><br><span class="line">  WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>FastCGI是从CGI发展改进而来的。传统CGI接口方式的主要缺点是性能很差，因为每次HTTP服务器遇到动态程序时都需要重新启动脚本解析器来执行解析，然后将结果返回给HTTP服务器。这在处理高并发访问时几乎是不可用的。另外传统的CGI接口方式安全性也很差，现在已经很少使用了。</p>
-</li>
-<li><p>FastCGI接口方式采用C/S结构，可以将HTTP服务器和脚本解析服务器分开，同时在脚本解析服务器上启动一个或者多个脚本解析守护进程。当HTTP服务器每次遇到动态程序时，可以将其直接交付给FastCGI进程来执行，然后将得到的结果返回给浏览器。这种方式可以让HTTP服务器专一地处理静态请求或者将动态脚本服务器的结果返回给客户端，这在很大程度上提高了整个应用系统的性能。</p>
-</li>
-</ul>
-<p>1.2　Nginx+FastCGI运行原理(nginx+fcgi_module–&gt;fpm(php))=NMP</p>
-<ul>
-<li>Nginx不支持对外部程序的直接调用或者解析，所有的外部程序（包括PHP）必须通过FastCGI接口来调用。FastCGI接口在Linux下是socket（这个socket可以是文件socket，也可以是ip socket）。为了调用CGI程序，还需要一个FastCGI的wrapper（wrapper可以理解为用于启动另一个程序的程序），这个wrapper绑定在某个固定socket上，如端口或者文件socket。当Nginx将CGI请求发送给这个socket的时候，通过FastCGI接口，wrapper接收到请求，然后派生出一个新的线程，这个线程调用解释器或者外部程序处理脚本并读取返回数据；接着，wrapper再将返回的数据通过FastCGI接口，沿着固定的socket传递给Nginx；最后，Nginx将返回的数据发送给客户端。这就是Nginx+FastCGI的整个运作过程，</li>
-</ul>
-<p><img src="/2019/01/12/nginx的fastcgi模块/fpm.png" alt=""></p>
-<h2 id="ngx-http-fastcgi-module模块："><a href="#ngx-http-fastcgi-module模块：" class="headerlink" title="ngx_http_fastcgi_module模块："></a>ngx_http_fastcgi_module模块：</h2><ul>
-<li><p><code>1、fastcgi_pass address;</code></p>
-<ul>
-<li>address为fastcgi server的地址；    location, if in location；</li>
-</ul>
-</li>
-<li><p><code>2、fastcgi_index name;</code></p>
-<ul>
-<li>fastcgi默认的主页资源; </li>
-</ul>
-</li>
-<li><p><code>3、fastcgi_param parameter value [if_not_empty];</code></p>
-<ul>
-<li>设置应该传递给FastCGI服务器的参数。该值可以包含文本、变量及其组合。(用于向后端的fastcgi或者fpm_server来传递参数)        </li>
-</ul>
+<li><p>keepalived安装及配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">源码编译安装keepalived</span><br><span class="line">  ~]<span class="comment"># cd /usr/local/src/</span></span><br><span class="line">  src]<span class="comment"># wget http://www.keepalived.org/software/keepalived-1.3.4.tar.gz</span></span><br><span class="line">  src]<span class="comment"># tar xvf keepalived-1.3.4.tar.gz</span></span><br><span class="line">  src]<span class="comment"># cd keepalived-1.3.4/</span></span><br><span class="line">  keepalived-1.3.4]<span class="comment"># yum install libnfnetlink-devel libnfnetlink ipvsadm  libnl libnl-devel  libnl3 libnl3-devel   lm_sensors-libs net-snmp-agent-libs net-snmp-libs  openssh-server openssh-clients  openssl  openssl-devel automake iproute </span></span><br><span class="line"></span><br><span class="line">  keepalived-1.3.4]<span class="comment">#  ./configure --prefix=/usr/local/keepalived --disable-fwmark   #指定禁用防火墙策略，如果yum安装只能在后期的配置文件中手动修改</span></span><br><span class="line">  keepalived-1.3.4]<span class="comment"># make &amp;&amp; amke install</span></span><br><span class="line"></span><br><span class="line">复制相关配置文件及启动脚本：</span><br><span class="line">  keepalived-1.3.4]<span class="comment"># cp /usr/local/src/keepalived-1.3.4/keepalived/etc/init.d/keepalived.rh.init /etc/sysconfig/keepalived.sysconfig</span></span><br><span class="line">  keepalived-1.3.4]<span class="comment"># cp /usr/local/src/keepalived-1.3.4/keepalived/keepalived.service  /usr/lib/systemd/system/</span></span><br><span class="line">  keepalived-1.3.4]<span class="comment"># cp  /usr/local/src/keepalived-1.3.4/bin/keepalived  /usr/sbin/</span></span><br><span class="line"></span><br><span class="line">准备一个简单的配置文件：</span><br><span class="line">  keepalived-1.3.4]<span class="comment"># mkdir /etc/keepalived</span></span><br><span class="line">  keepalived-1.3.4]<span class="comment"># vim /etc/keepalived/keepalived.conf</span></span><br><span class="line">  ! Configuration File <span class="keyword">for</span> keepalived</span><br><span class="line">  global_defs &#123;</span><br><span class="line">   notification_email &#123;</span><br><span class="line">     acassen@firewall.loc</span><br><span class="line">     failover@firewall.loc</span><br><span class="line">     sysadmin@firewall.loc</span><br><span class="line">     &#125;</span><br><span class="line">  notification_email_from Alexandre.Cassen@firewall.loc</span><br><span class="line">   smtp_server 192.168.200.1</span><br><span class="line">   smtp_connect_timeout 30</span><br><span class="line">   router_id LVS_DEVEL</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 80</span><br><span class="line">    priority 100</span><br><span class="line">    advert_int 1</span><br><span class="line">    <span class="comment">#unicast_src_ip 172.10.1.37</span></span><br><span class="line">    <span class="comment">#unicast_peer &#123;</span></span><br><span class="line">    <span class="comment">#    172.10.1.38</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.10.15 dev eth0 label eth0:0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装完nginx时在目录中就有fastcgi_paeams文件，里面装的时nginx给fpm服务传递的参数，（每个默认的参数都要启动生效，每一个默认值fastcgi服务端执行fpm服务时要配置启用的参数的默认设定）</span></span><br><span class="line">    ~]<span class="comment"># ls /etc/nginx/</span></span><br><span class="line">    fastcgi_params </span><br><span class="line"></span><br><span class="line">两台主机</span><br><span class="line">    client</span><br><span class="line">    proxy_nginx_server    :yum install nginx -y</span><br><span class="line">    fpm_server          :yum install php-fpm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑代理nginx_server</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line">    </span><br><span class="line">        location  ~* \.php$  &#123;</span><br><span class="line">        fastcgi_pass 172.18.135.2:9000;  <span class="comment">#定义如果客户端请求的资源为.php结尾的文件转发到fpm_server服务器上</span></span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  /data<span class="variable">$fastcgi_script_name</span>;  <span class="comment">#/data是在fpm_server上</span></span><br><span class="line">        include        fastcgi_params;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    ~]<span class="comment"># nginx -t</span></span><br><span class="line">    ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">fpm_server创建.php文件供客户端访问</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cat /data/info.php </span></span><br><span class="line">    &lt;?php</span><br><span class="line">	phpinfo();</span><br><span class="line">    ?&gt;</span><br><span class="line">    编辑fpm的配置文件的允许监听的地址</span><br><span class="line">    ~]<span class="comment"># vim /etc/php-fpm.d/www.conf</span></span><br><span class="line">    listen = 172.18.135.2:9000</span><br><span class="line">    listen.allowed_clients = any</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart php-fpm</span></span><br><span class="line"></span><br><span class="line">client访问</span><br><span class="line">    http://172.18.135.1/info.php</span><br></pre></td></tr></table></figure>
+<p>测试keepalived能否正常启动并绑定VIP到本地网卡<br><img src="/2019/01/29/keepalived配置多VIP及实现双主模式/1.png" alt=""></p>
 <hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">使用压测工具进行压测（ab）</span><br><span class="line">     ~]<span class="comment"># yum install httpd-tools -y</span></span><br><span class="line">        ab 命令（n&gt;c）</span><br><span class="line">            -c 模拟并发的数量</span><br><span class="line">            -n 指定请求的个数</span><br><span class="line"></span><br><span class="line">对nginx调度器进行压测</span><br><span class="line">    ~]<span class="comment"># ab -c 100 -n 1000 http://172.18.135.1/infp.php</span></span><br><span class="line">    Requests per second:    2389.18 [<span class="comment">#/sec] (mean)</span></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">对nginx调度器的fastcgi模块启用缓存</span><br><span class="line"><span class="comment">#http上下文定义键</span></span><br><span class="line">    ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">    http &#123;</span><br><span class="line">        fastcgi_cache_path /var/cache/fastcgi       levels=1:1:2 keys_zone=fastcgi:10m     max_size=2G;</span><br><span class="line">    ....</span><br><span class="line">    <span class="comment">#调用http定义的键</span></span><br><span class="line">       server &#123;</span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        location  ~* \.php$  &#123;</span><br><span class="line">        fastcgi_pass 172.18.135.2:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  /data<span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">        fastcgi_cache     fastcgi;</span><br><span class="line">        fastcgi_cache_key <span class="variable">$request_uri</span>;</span><br><span class="line">        fastcgi_cache_valid 200 302 10m;</span><br><span class="line">        fastcgi_cache_valid 301   1h;</span><br><span class="line">        fastcgi_cache_valid any   1m;</span><br><span class="line">        fastcgi_cache_methods GET HEAD;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># mkdir -p /var/cache/fastcgi</span></span><br><span class="line">    ~]<span class="comment"># nginx -t</span></span><br><span class="line">    ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">再次访问测试验证是否加速</span><br><span class="line">    ~]<span class="comment"># ab -c 100 -n 1000 http://172.18.135.1/infp.php  #第一次访问生成缓存</span></span><br><span class="line">    [root@centos7 ~]<span class="comment"># tree /var/cache/fastcgi/</span></span><br><span class="line">    /var/cache/fastcgi/</span><br><span class="line">    └── 5</span><br><span class="line">      └── 6</span><br><span class="line">          └── af</span><br><span class="line">             └── 48fe86dcef16714ba3e4f82bba2daf65</span><br><span class="line">    3 directories, 1 file</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># ab -c 100 -n 1000 http://172.18.135.1/infp.php</span></span><br><span class="line">    Requests per second:    10657.12 [<span class="comment">#/sec] (mean)</span></span><br></pre></td></tr></table></figure>
-<p>4、fastcgi_cache_path path [levels=levels] [use_temp_path=on|off] keys_zone=name:size [inactive=time] [max_size=size] [manager_files=number] [manager_sleep=time] [manager_threshold=time] [loader_files=number] [loader_sleep=time] [loader_threshold=time] [purger=on|off] [purger_files=number] [purger_sleep=time] [purger_threshold=time];</p>
-<ul>
-<li><p>定义fastcgi的缓存；缓存位置为磁盘上的文件系统，由path所指定路径来定义；</p>
-<ul>
-<li>levels=levels：缓存目录的层级数量，以及每一级的目录数量；levels=ONE:TWO:THREE</li>
-<li>leves=1:2:2</li>
-<li>keys_zone=name:size<ul>
-<li>k/v映射的内存空间的名称及大小<ul>
-<li>inactive=time<ul>
-<li>非活动时长</li>
-</ul>
-</li>
-<li>max_size=size<ul>
-<li>磁盘上用于缓存数据的缓存空间上限</li>
+<h2 id="二、KeepAlived配置"><a href="#二、KeepAlived配置" class="headerlink" title="二、KeepAlived配置"></a>二、KeepAlived配置</h2><ul>
+<li>配置文件组件部分：</li>
+<li>TOP HIERACHY<ul>
+<li>GLOBAL CONFIGURATION     #定义通知以及全局配置<ul>
+<li>Global definitions    <ul>
+<li>VRRPD CONFIGURATION      #实例相关的配置</li>
+<li>VRRP synchronization group(s)：vrrp同步组</li>
+<li>VRRP instance(s)：即一个vrrp虚拟路由器</li>
+<li>LVS CONFIGURATION        #lvs配置相关可有可无</li>
+<li>Virtual server group(s)</li>
+<li>Virtual server(s)：ipvs集群的vs和rs</li>
 </ul>
 </li>
 </ul>
@@ -663,40 +636,10 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>5、fastcgi_cache zone | off;</p>
-<ul>
-<li>调用指定的缓存空间来缓存数据；http, server, location</li>
-</ul>
-</li>
-<li><p>6、fastcgi_cache_key string;</p>
-<ul>
-<li>定义用作缓存项的key的字符串；</li>
-</ul>
-</li>
-<li><p>7、fastcgi_cache_methods GET | HEAD | POST …;</p>
-<ul>
-<li>为哪些请求方法使用缓存；</li>
-</ul>
-</li>
-<li><p>8、fastcgi_cache_min_uses number;</p>
-<ul>
-<li>缓存空间中的缓存项在inactive定义的非活动时间内至少要被访问到此处所指定的次数方可被认作活动项；</li>
-</ul>
-</li>
-<li><p>9、fastcgi_cache_valid [code …] time;</p>
-<ul>
-<li>不同的响应码各自的缓存时长；</li>
-</ul>
-</li>
-<li><p>10、fastcgi_keep_conn on | off;</p>
-<ul>
-<li>默认情况下，FastCGI服务器会在发送响应后立即关闭连接。但是，当这个指令被设置为on时，nginx将指示FastCGI服务器保持连接打开。    </li>
-</ul>
-</li>
-</ul>
-<p>范例：fastcgi模块内键有两个url可以输出fastcgi健康状态以及健康页面信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_server配置文件中开启两个内建的url(这两个url的输出默认使用的fastcgi协议)</span><br><span class="line">    ~]<span class="comment"># vim /etc/php-fpm.d/www.conf </span></span><br><span class="line">    121 pm.status_path = /pm_status</span><br><span class="line">    133 ping.path = /ping   <span class="comment">#ping·pong</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart php-fpm</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑nginx代理</span><br><span class="line">    ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        location ~* ^/(pm_status|ping)$ &#123;</span><br><span class="line">        fastcgi_pass 172.18.135.2:9000;</span><br><span class="line">         fastcgi_param  SCRIPT_FILENAME  <span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">     ~]<span class="comment"># nginx -t</span></span><br><span class="line">     ~]<span class="comment"># nginx -s reload</span></span><br><span class="line"></span><br><span class="line">客户端访问测试</span><br><span class="line">    ~]<span class="comment"># curl 172.18.135.1/pm_status</span></span><br><span class="line">    pool:                 www</span><br><span class="line">    process manager:      dynamic</span><br><span class="line">    start time:           12/Jan/2019:17:09:39 +0800</span><br><span class="line">    start since:          57</span><br><span class="line">    accepted conn:        1</span><br><span class="line">    listen queue:         0</span><br><span class="line">    max listen queue:     0</span><br><span class="line">    listen queue len:     128</span><br><span class="line">    idle processes:       4</span><br><span class="line">    active processes:     1</span><br><span class="line">    total processes:      5</span><br><span class="line">    max active processes: 1</span><br><span class="line">    max children reached: 0</span><br><span class="line">    slow requests:        0</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># curl 172.18.135.1/ping</span></span><br><span class="line">    pong</span><br></pre></td></tr></table></figure></p>
-
+<hr>
+<h3 id="1、安装mail邮箱"><a href="#1、安装mail邮箱" class="headerlink" title="1、安装mail邮箱"></a>1、安装mail邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">安装邮箱</span><br><span class="line"> ~]<span class="comment"># yum install mailx -y</span></span><br><span class="line"></span><br><span class="line">测试是否可以发出邮箱</span><br><span class="line">  ~]<span class="comment"># echo "hellow heihei" | mail -s "test1" 1284808408@qq.com</span></span><br><span class="line"></span><br><span class="line">此时qq邮箱已经收到邮件信息</span><br></pre></td></tr></table></figure>
+<h3 id="2、编辑keepalived的配置文件"><a href="#2、编辑keepalived的配置文件" class="headerlink" title="2、编辑keepalived的配置文件"></a>2、编辑keepalived的配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]<span class="comment"># vim /etc/keepalived/keepalived.conf </span></span><br><span class="line">! Configuration File <span class="keyword">for</span> keepalived</span><br><span class="line"></span><br><span class="line">global_defs &#123;</span><br><span class="line">   notification_email &#123;   </span><br><span class="line">     <span class="comment">#定义通知的邮箱</span></span><br><span class="line">    1284808408@qq.com</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from <span class="built_in">test</span>@smtp.example.com   </span><br><span class="line">   <span class="comment">#通知邮箱是从哪里发送出来的即邮件中查看到的发信人</span></span><br><span class="line">   smtp_server 127.0.0.1      </span><br><span class="line">   <span class="comment">#smtp服务器的地址，这里邮件使用的本地的mail,默认监听在本的127.0.0.1</span></span><br><span class="line">   smtp_connect_timeout 30    </span><br><span class="line">   <span class="comment">#smtp服务器默认超时时长</span></span><br><span class="line">   router_id  <span class="built_in">test</span>@smtp.example.com            </span><br><span class="line">   <span class="comment">#可以直接不写，因为默认是使用的是主机名</span></span><br><span class="line">   vrrp_mcast_group 224.0.0.18  </span><br><span class="line">   <span class="comment">#vrrp组播相关的配置（默认的组播地址为224.0.0.18）</span></span><br><span class="line">   vrrp_skip_check_adv_addr  </span><br><span class="line">   <span class="comment">#如果收到的报文和上一个报文是同一个路由器则跳过检查报文中的源地址</span></span><br><span class="line">   vrrp_strict  </span><br><span class="line">   <span class="comment">#严格遵守VRRP协议,不允许状况:1,没有VIP地址,2.单播邻居,3.在VRRP版本2中有IPv6地址.</span></span><br><span class="line">   vrrp_garp_interval 0 </span><br><span class="line">   <span class="comment">#ARP报文发送延迟</span></span><br><span class="line">   vrrp_gna_interval 0  </span><br><span class="line">   <span class="comment">#消息发送延迟</span></span><br><span class="line">   vrrp_iptables </span><br><span class="line">   <span class="comment">#yum 安装的keepalived ，启动时会自动在INPUT链拒绝所有的连接，此配置字段适用于yum安装的keepalived，会将启动时默认在INPUT链上生成的规则清空</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;    </span><br><span class="line">  <span class="comment">#vrrp实例相关的配置，VI_1为默认的自定义实例的名称，可以自己定义</span></span><br><span class="line">    state MASTER    </span><br><span class="line">    <span class="comment"># 当前高可用节点的在集群中的初始状态信息（MASTER/BACKUP）</span></span><br><span class="line">    interface eth0</span><br><span class="line">    <span class="comment">#指定当前的keepalived的，启动后监听的端口，arrp通告广播的消息都是从此网络接口中流出（如果选择了此网络接口就要在 virtual_ipaddress字段中配置的地址就都是在次网络接口网段的地址）</span></span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    <span class="comment">#标识此节点在整个keepalived集群当中的唯一标识，且0~255之间</span></span><br><span class="line">    priority 100</span><br><span class="line">    <span class="comment">#标识此节点在整个keepalived集群中的优先级，数字越大，优先级越高</span></span><br><span class="line">    advert_int 1</span><br><span class="line">    <span class="comment">#探测时长，默认为1秒发送一次广播报文，默认发向组播地址</span></span><br><span class="line">    authentication &#123;</span><br><span class="line">    <span class="comment">#定义认证方式（官方使用简单的认证）</span></span><br><span class="line">        auth_type PASS</span><br><span class="line">        <span class="comment">#指定设置密码</span></span><br><span class="line">        auth_pass 1111</span><br><span class="line">        <span class="comment">#默认密码为1111，如果人为指定的还最多支持的位数为前8位</span></span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    <span class="comment">#vip相关的配置，设置的vip一定是interface eth0网络接口中的地址在同一网段中</span></span><br><span class="line">        192.168.200.16</span><br><span class="line">        192.168.200.17</span><br><span class="line">        192.168.200.18</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -762,7 +705,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+            <a href="/tags/keepalived/" rel="tag"># keepalived</a>
           
         </div>
       
@@ -829,8 +772,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/10/nginx的proxy模块/" rel="next" title="nginx的proxy模块">
-                <i class="fa fa-chevron-left"></i> nginx的proxy模块
+              <a href="/2019/01/28/keepalived简介/" rel="next" title="keepalived简介">
+                <i class="fa fa-chevron-left"></i> keepalived简介
               </a>
             
           </div>
@@ -838,10 +781,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/13/nginx七层调度/" rel="prev" title="nginx的http_upstream模块">
-                nginx的http_upstream模块 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1070,7 +1009,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx的fastcgi模块"><span class="nav-number">1.</span> <span class="nav-text">nginx的fastcgi模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的fastcgi模块-1"><span class="nav-number">1.1.</span> <span class="nav-text">nginx的fastcgi模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-fastcgi-module模块："><span class="nav-number">1.2.</span> <span class="nav-text">ngx_http_fastcgi_module模块：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#keepalived配置多VIP及实现双主模式"><span class="nav-number">1.</span> <span class="nav-text">keepalived配置多VIP及实现双主模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Keepalived安装"><span class="nav-number">1.1.</span> <span class="nav-text">一、Keepalived安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、KeepAlived配置"><span class="nav-number">1.2.</span> <span class="nav-text">二、KeepAlived配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装mail邮箱"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、安装mail邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、编辑keepalived的配置文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、编辑keepalived的配置文件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
