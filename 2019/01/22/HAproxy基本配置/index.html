@@ -147,7 +147,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy基本配置/标题.gif">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy基本配置/2.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy基本配置/3.png">
-<meta property="og:updated_time" content="2019-01-23T12:27:52.393Z">
+<meta property="og:updated_time" content="2019-01-28T02:55:25.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAproxy基本配置">
 <meta name="twitter:description" content="HAproxy基本配置">
@@ -312,7 +312,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span></a>
 
   </li>
         
@@ -331,7 +331,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">14</span></a>
 
   </li>
         
@@ -350,7 +350,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
 
   </li>
         
@@ -574,7 +574,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.3k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -588,7 +588,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -667,7 +667,7 @@
 <li><p><code>backend  &lt;name&gt; #后端服务器组，等于nginx的upstream
 listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p>
 </li>
-<li><p><code>注：name字段只能使用”-”、”_”、”.”、和”:”，并且严格区分大小写，例如：Web和web是完全不同的两组服务器</code></p>
+<li><p><code>注：name字段只能使用”-”、”_”、”.”、和”:”，并且严格区分大小写，例如：Web和web是完全不同的两组服务器即是区分大小写的</code></p>
 </li>
 </ul>
 <h4 id="Proxies配置-defaults（默认配置项）"><a href="#Proxies配置-defaults（默认配置项）" class="headerlink" title="Proxies配置- defaults（默认配置项）"></a>Proxies配置- defaults（默认配置项）</h4><ul>
@@ -691,7 +691,7 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
 <li><p>示例：</p>
 <ul>
 <li>frontend  WEB_PORT<ul>
-<li>bind :80,:8080</li>
+<li>bind :80,:8080    #支持以逗号分隔的列表格式指定监听的地址以及端口多个套接字</li>
 <li>bind 192.168.7.102:10080,192.168.7.102:10043</li>
 <li>use_backend backend_name </li>
 </ul>
@@ -699,12 +699,16 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
 </ul>
 </li>
 </ul>
-<h2 id="范例：使用haproxy实现调度apache"><a href="#范例：使用haproxy实现调度apache" class="headerlink" title="范例：使用haproxy实现调度apache"></a>范例：使用haproxy实现调度apache</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模拟httpd_server不直接对外服务，通过haproxy负载对外进程调度服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置haproxy实现基客户端第一次请求服务端保留的cookie进行调度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实验准备</span><br><span class="line">  三台主机：</span><br><span class="line">    haproxy_server :  yum install haproxy -y</span><br><span class="line">    httpd_serverA : yum install httpd -y</span><br><span class="line">    httpd_serverB : yum install httpd -y</span><br><span class="line"></span><br><span class="line">配置httpd_server测试页面</span><br><span class="line">  httpd_serverA</span><br><span class="line">  ~]<span class="comment"># echo "172.18.135.1" &gt; /var/www/html/index.html</span></span><br><span class="line">  ~]<span class="comment"># systemctl start httpd</span></span><br><span class="line">  修改端口8080</span><br><span class="line"></span><br><span class="line">  httpd_serverB</span><br><span class="line">  ~]<span class="comment"># echo "172.18.135.5" &gt; /var/www/html/index.html</span></span><br><span class="line">  ~]<span class="comment"># systemctl start httpd</span></span><br><span class="line">  修改端口8080</span><br><span class="line"></span><br><span class="line">配置haproxy负载</span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line">  ~]<span class="comment"># cat  /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  global</span><br><span class="line">  maxconn 100000</span><br><span class="line">  chroot /usr/<span class="built_in">local</span>/haproxy</span><br><span class="line">  <span class="comment">#stats socket /var/lib/haproxy/haproxy.sock mode 600 level admin</span></span><br><span class="line">  uid 1111</span><br><span class="line">  gid 1111</span><br><span class="line">  daemon</span><br><span class="line">  nbproc 4</span><br><span class="line">  cpu-map 1 0</span><br><span class="line">  cpu-map 2 1</span><br><span class="line">  pidfile /usr/<span class="built_in">local</span>/haproxy/run/haproxy.pid</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local3 info</span><br><span class="line"></span><br><span class="line">  defaults</span><br><span class="line">  option http-keep-alive</span><br><span class="line">  option  forwardfor</span><br><span class="line">  maxconn 100000</span><br><span class="line">  mode http</span><br><span class="line">  timeout connect 300000ms</span><br><span class="line">  timeout client  300000ms</span><br><span class="line">  timeout server  300000ms</span><br><span class="line"></span><br><span class="line">  listen stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:9999</span><br><span class="line">  stats <span class="built_in">enable</span></span><br><span class="line">  <span class="built_in">log</span> global</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats auth    haadmin:q1w2e3r4ys</span><br><span class="line"></span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  frontend web-port-80                      <span class="comment">#web-port-80指定的此分组的名称</span></span><br><span class="line">	  <span class="built_in">bind</span> 172.18.135.2:80                    <span class="comment">#绑定在调度器本地的地址和端口</span></span><br><span class="line">  	use_backend web_host                    <span class="comment">#web_hos 定义的服务的主机组</span></span><br><span class="line"></span><br><span class="line">  backend web_host                          <span class="comment">#调用web_hos主机组</span></span><br><span class="line">  	server 172.18.135.1 172.18.135.1:80     <span class="comment"># 172.18.135.1为定义的主机的名称，172.18.135.1:80 定义的后端的主机的地址及服务的端口</span></span><br><span class="line">	  server 172.18.135.5 172.18.135.5:80</span><br><span class="line"></span><br><span class="line">启动查看端口 </span><br><span class="line">  ~]<span class="comment"># systemctl start haproxy</span></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  9999   </span><br><span class="line">  172.18.135.2:80</span><br></pre></td></tr></table></figure>
+<h2 id="范例：使用haproxy实现调度apache"><a href="#范例：使用haproxy实现调度apache" class="headerlink" title="范例：使用haproxy实现调度apache"></a>范例：使用haproxy实现调度apache</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模拟httpd_server不直接对外服务，通过haproxy负载对外进程调度服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置haproxy实现基客户端第一次请求服务端保留的cookie进行调度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实验准备</span><br><span class="line">  三台主机：</span><br><span class="line">    haproxy_server :  yum install haproxy -y</span><br><span class="line">    httpd_serverA : yum install httpd -y</span><br><span class="line">    httpd_serverB : yum install httpd -y</span><br><span class="line"></span><br><span class="line">配置httpd_server测试页面</span><br><span class="line">  httpd_serverA</span><br><span class="line">  ~]<span class="comment"># echo "172.18.135.1" &gt; /var/www/html/index.html</span></span><br><span class="line">  ~]<span class="comment"># systemctl start httpd</span></span><br><span class="line">  修改端口8080</span><br><span class="line"></span><br><span class="line">  httpd_serverB</span><br><span class="line">  ~]<span class="comment"># echo "172.18.135.5" &gt; /var/www/html/index.html</span></span><br><span class="line">  ~]<span class="comment"># systemctl start httpd</span></span><br><span class="line">  修改端口8080</span><br><span class="line"></span><br><span class="line">配置haproxy负载</span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line">  ~]<span class="comment"># cat  /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  global</span><br><span class="line">  maxconn 100000</span><br><span class="line">  chroot /usr/<span class="built_in">local</span>/haproxy</span><br><span class="line">  <span class="comment">#stats socket /var/lib/haproxy/haproxy.sock mode 600 level admin</span></span><br><span class="line">  uid 1111</span><br><span class="line">  gid 1111</span><br><span class="line">  daemon</span><br><span class="line">  nbproc 4</span><br><span class="line">  cpu-map 1 0</span><br><span class="line">  cpu-map 2 1</span><br><span class="line">  pidfile /usr/<span class="built_in">local</span>/haproxy/run/haproxy.pid</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local3 info</span><br><span class="line"></span><br><span class="line">  defaults</span><br><span class="line">  option http-keep-alive</span><br><span class="line">  option  forwardfor</span><br><span class="line">  maxconn 100000</span><br><span class="line">  mode http</span><br><span class="line">  timeout connect 300000ms</span><br><span class="line">  timeout client  300000ms</span><br><span class="line">  timeout server  300000ms</span><br><span class="line"></span><br><span class="line">  listen stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:9999</span><br><span class="line">  stats <span class="built_in">enable</span></span><br><span class="line">  <span class="built_in">log</span> global</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats auth    haadmin:q1w2e3r4ys</span><br><span class="line"></span><br><span class="line">  <span class="comment">#httpd_server调度</span></span><br><span class="line">  frontend web-port-80                      <span class="comment">#web-port-80指定的此分组的名称</span></span><br><span class="line">	  <span class="built_in">bind</span> 172.18.135.2:80                    <span class="comment">#绑定在调度器本地的地址和端口</span></span><br><span class="line">  	use_backend web_host                    <span class="comment">#web_hos 定义的服务的主机组</span></span><br><span class="line"></span><br><span class="line">  backend web_host                          <span class="comment">#调用web_hos主机组</span></span><br><span class="line">  	server 172.18.135.1 172.18.135.1:80     <span class="comment"># 172.18.135.1为定义的主机的名称，172.18.135.1:80 定义的后端的主机的地址及服务的端口</span></span><br><span class="line">	  server 172.18.135.5 172.18.135.5:80</span><br><span class="line"></span><br><span class="line">启动查看端口 </span><br><span class="line">  ~]<span class="comment"># systemctl start haproxy</span></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  9999   </span><br><span class="line">  172.18.135.2:80 </span><br><span class="line"></span><br><span class="line">-----------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">haproxy的配置文件中调用主机中也可以写为 <span class="comment">#此处制定默认的backend，适用于backend少的情况下使用</span></span><br><span class="line">frontend myweb *:80</span><br><span class="line">  default_backend webserver</span><br><span class="line"></span><br><span class="line">backend webserver</span><br><span class="line">  server web1 后端主机地址A check</span><br><span class="line">  server web1 后端主机地址B check</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------------------------------</span><br><span class="line">也可以使用listen的方式指定</span><br><span class="line">listen myweb </span><br><span class="line">  <span class="built_in">bind</span></span><br><span class="line">  server web1 后端主机的地址A check</span><br><span class="line">  server web2 后端主机的地址B check</span><br></pre></td></tr></table></figure>
 <p>测试：访问调度器地址验证是否调度成功</p>
 <ul>
 <li>默认的调度算法为轮询</li>
 </ul>
 <p><img src="/2019/01/22/HAproxy基本配置/2.png" alt=""><br><img src="/2019/01/22/HAproxy基本配置/3.png" alt=""></p>
+<ul>
+<li>也可以使用下面命令的用法来验证调度是否成功</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># while true; do curl http://172.18.135.2/; sleep .5; done</span></span><br></pre></td></tr></table></figure>
 <h4 id="Proxies配置-backend配置参数"><a href="#Proxies配置-backend配置参数" class="headerlink" title="Proxies配置- backend配置参数"></a>Proxies配置- backend配置参数</h4><ul>
 <li>mode  http/tcp/health     #指定负载协议类型</li>
 <li>option  #配置选项</li>
@@ -953,7 +957,7 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -992,7 +996,9 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1035,7 +1041,9 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1136,7 +1144,7 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">426k</span>
+    <span title="站点总字数">430k</span>
   
 
   
@@ -1147,7 +1155,7 @@ listen   &lt;name&gt;      #将frontend和backend合并在一起配置</code></p
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:27</span>
+    <span title="站点阅读时长">6:31</span>
   
 </div>
 

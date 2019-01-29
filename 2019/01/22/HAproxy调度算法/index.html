@@ -156,7 +156,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/rdb.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/区别.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/22/HAproxy调度算法/抓包.png">
-<meta property="og:updated_time" content="2019-01-22T11:54:34.757Z">
+<meta property="og:updated_time" content="2019-01-28T08:26:33.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAproxy调度算法">
 <meta name="twitter:description" content="HAproxy调度算法（四层）">
@@ -321,7 +321,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span></a>
 
   </li>
         
@@ -340,7 +340,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">14</span></a>
 
   </li>
         
@@ -359,7 +359,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
 
   </li>
         
@@ -583,7 +583,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.8k</span>
+                <span title="本文字数">8k</span>
               
 
               
@@ -624,6 +624,17 @@
 <li>backend</li>
 </ul>
 <hr>
+<h2 id="动态算法和静态算法"><a href="#动态算法和静态算法" class="headerlink" title="动态算法和静态算法"></a>动态算法和静态算法</h2><ul>
+<li>静态算法（算法仅根据算法本身与请求报文特征进行调度 起点公平）<ul>
+<li>不支持运行时动态调整，不支持慢启动</li>
+</ul>
+</li>
+<li>动态算法（额外考虑后端各RS的当前的负载的状态 结果公平）<ul>
+<li>支持运行时调整，支持慢启动</li>
+</ul>
+</li>
+</ul>
+<hr>
 <h2 id="HAProxy-静态调度算法"><a href="#HAProxy-静态调度算法" class="headerlink" title="HAProxy 静态调度算法"></a>HAProxy 静态调度算法</h2><ul>
 <li>balance： 指明对后端服务器的调度算法，配置在listen或backend<br>静态算法：按照事先定义好的规则轮询公平调度，不关心后端服务器的当前负载、链接数和相应速度等，且无法实时修改权重，只能重启后生效。<ul>
 <li>static-rr：基于权重的轮询调度，不支持权重的运行时调整及后端服务器慢启动，其后端主机数量没有限制</li>
@@ -637,7 +648,7 @@
 <p><img src="/2019/01/22/HAproxy调度算法/first.png" alt=""></p>
 <hr>
 <h2 id="HAProxy-动态调度算法"><a href="#HAProxy-动态调度算法" class="headerlink" title="HAProxy 动态调度算法"></a>HAProxy 动态调度算法</h2><ul>
-<li>动态算法：基于后端服务器 状态进行调度适当调整，比如优先调度至当前负载较低的服务器，且权重可以在haproxy运行时动态调整无需重启。<ul>
+<li>动态算法：基于后端服务器 状态进行调度适当调整，比如优先调度至当前负载较低的服务器，且权重可以在haproxy运行时动态调整无需重启(支持缓慢启动，实现慢慢的将流量均匀的分配到其他的后端服务器上,也支持运行时重载配置文件)。<ul>
 <li>roundrobin：基于权重的轮询动态调度算法，支持权重的运行时调整，不等于lvs 的rr，支持慢启动即新加的服务器会逐渐增加转发数，每个后端backend中最多支持4095个server，此为默认调度算法，server 权重设置 weight</li>
 <li>leastconn： 加权的最少连接的动态，支持权重的运行时调整和慢启动，即当前后端服务器连接最少的优先调度，比较适合长连接的场景使用，比如MySQL等场景。</li>
 </ul>
@@ -664,7 +675,7 @@
 </ul>
 <hr>
 <h2 id="HAProxy-调度算法-uri"><a href="#HAProxy-调度算法-uri" class="headerlink" title="HAProxy 调度算法-uri"></a>HAProxy 调度算法-uri</h2><ul>
-<li>uri：基于对用户请求的uri做hash并将请求转发到后端指定服务器<ul>
+<li>uri：基于对用户请求的uri做hash并将请求转发到后端指定服务器(多适用于缓存服务器，会使得后端的服务器更好的命中缓存的结果例如缓存服务器 Varnish)<ul>
 <li>map-based：取模法</li>
 <li>consistent：一致性哈希<ul>
 <li><a href="http://example.org/absolute/URI/with/absolute/path/to/resource.txt" target="_blank" rel="noopener">http://example.org/absolute/URI/with/absolute/path/to/resource.txt</a>  #URI/URL</li>
@@ -966,7 +977,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1005,7 +1016,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1048,7 +1061,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1115,7 +1130,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy调度算法（四层）"><span class="nav-number">1.</span> <span class="nav-text">HAproxy调度算法（四层）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法使用的生效字段："><span class="nav-number">1.1.</span> <span class="nav-text">HAProxy 调度算法使用的生效字段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-静态调度算法"><span class="nav-number">1.2.</span> <span class="nav-text">HAProxy 静态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-动态调度算法"><span class="nav-number">1.3.</span> <span class="nav-text">HAProxy 动态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-source"><span class="nav-number">1.4.</span> <span class="nav-text">HAProxy 调度算法-source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAproxy-服务器动态上下线"><span class="nav-number">1.5.</span> <span class="nav-text">HAproxy 服务器动态上下线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-uri"><span class="nav-number">1.6.</span> <span class="nav-text">HAProxy 调度算法-uri</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-url-param"><span class="nav-number">1.7.</span> <span class="nav-text">HAProxy 调度算法-url_param</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-hdr"><span class="nav-number">1.8.</span> <span class="nav-text">HAProxy 调度算法-hdr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-rdp-cookie-几乎不用"><span class="nav-number">1.9.</span> <span class="nav-text">HAProxy 调度算法- rdp-cookie(几乎不用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法总结及适用场景"><span class="nav-number">1.10.</span> <span class="nav-text">算法总结及适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四层与七层的区别："><span class="nav-number">1.11.</span> <span class="nav-text">四层与七层的区别：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy调度算法（四层）"><span class="nav-number">1.</span> <span class="nav-text">HAproxy调度算法（四层）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法使用的生效字段："><span class="nav-number">1.1.</span> <span class="nav-text">HAProxy 调度算法使用的生效字段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态算法和静态算法"><span class="nav-number">1.2.</span> <span class="nav-text">动态算法和静态算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-静态调度算法"><span class="nav-number">1.3.</span> <span class="nav-text">HAProxy 静态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-动态调度算法"><span class="nav-number">1.4.</span> <span class="nav-text">HAProxy 动态调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-source"><span class="nav-number">1.5.</span> <span class="nav-text">HAProxy 调度算法-source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAproxy-服务器动态上下线"><span class="nav-number">1.6.</span> <span class="nav-text">HAproxy 服务器动态上下线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-uri"><span class="nav-number">1.7.</span> <span class="nav-text">HAProxy 调度算法-uri</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-url-param"><span class="nav-number">1.8.</span> <span class="nav-text">HAProxy 调度算法-url_param</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-hdr"><span class="nav-number">1.9.</span> <span class="nav-text">HAProxy 调度算法-hdr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy-调度算法-rdp-cookie-几乎不用"><span class="nav-number">1.10.</span> <span class="nav-text">HAProxy 调度算法- rdp-cookie(几乎不用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法总结及适用场景"><span class="nav-number">1.11.</span> <span class="nav-text">算法总结及适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四层与七层的区别："><span class="nav-number">1.12.</span> <span class="nav-text">四层与七层的区别：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1149,7 +1164,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">426k</span>
+    <span title="站点总字数">430k</span>
   
 
   
@@ -1160,7 +1175,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:27</span>
+    <span title="站点阅读时长">6:31</span>
   
 </div>
 
