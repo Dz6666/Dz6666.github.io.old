@@ -136,19 +136,20 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="HAproxy的ACL过滤器">
+  <meta name="description" content="HAproxy的ACL过滤器及自定义错误页">
 <meta name="keywords" content="HAproxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HAproxyACL">
 <meta property="og:url" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="HAproxy的ACL过滤器">
+<meta property="og:description" content="HAproxy的ACL过滤器及自定义错误页">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/标题.gif">
-<meta property="og:updated_time" content="2019-01-24T08:58:21.699Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/1.png">
+<meta property="og:updated_time" content="2019-02-02T08:18:37.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAproxyACL">
-<meta name="twitter:description" content="HAproxy的ACL过滤器">
+<meta name="twitter:description" content="HAproxy的ACL过滤器及自定义错误页">
 <meta name="twitter:image" content="https://daizhe.net.cn/2019/01/24/HAproxyACL/标题.gif">
 
 
@@ -572,7 +573,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -586,7 +587,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -606,8 +607,8 @@
       
 
       
-        <h1 id="HAproxy的ACL过滤器"><a href="#HAproxy的ACL过滤器" class="headerlink" title="HAproxy的ACL过滤器"></a>HAproxy的ACL过滤器</h1><p><img src="/2019/01/24/HAproxyACL/标题.gif" alt=""><br><a id="more"></a></p>
-<h2 id="ACL过滤器（七层http模式下）"><a href="#ACL过滤器（七层http模式下）" class="headerlink" title="ACL过滤器（七层http模式下）"></a>ACL过滤器（七层http模式下）</h2><ul>
+        <h1 id="HAproxy的ACL过滤器及自定义错误页"><a href="#HAproxy的ACL过滤器及自定义错误页" class="headerlink" title="HAproxy的ACL过滤器及自定义错误页"></a>HAproxy的ACL过滤器及自定义错误页</h1><p><img src="/2019/01/24/HAproxyACL/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="一、ACL过滤器（七层http模式下）"><a href="#一、ACL过滤器（七层http模式下）" class="headerlink" title="一、ACL过滤器（七层http模式下）"></a>一、ACL过滤器（七层http模式下）</h2><ul>
 <li><p>acl：对接收到的报文进行匹配和过滤，基于请求报文头部中的源地址、源端口、目标地址、目标端口、请求方法、URL、文件后缀等信息内容进行匹配并执行进一步操作（基于类型的调度决策）。</p>
 <ul>
 <li><code>acl &lt;aclname&gt;  &lt;criterion&gt;   [flags]           [operator]        [&lt;value&gt;]</code></li>
@@ -680,7 +681,7 @@
 <li>exact –精确比较</li>
 <li>substring—子串    </li>
 <li>prefix-前缀比较</li>
-<li>subdir-路径， /wp-includes/js/jquery/jquery.js</li>
+<li>subdir-路径， /wp-includes/js/jquery/jquery.js    #匹配子路径</li>
 <li>domain-域名，daizhe.net.cn</li>
 <li>regular expression  #正则表达式</li>
 <li>hex block   #16进制</li>
@@ -705,8 +706,76 @@
 </ul>
 </li>
 </ul>
-<p>范例：调度器拒绝172.18.88.88/24的主机访问即调度器检测到此地址段的主机则不今次那个调度到后端的主机上<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br></pre></td></tr></table></figure></p>
-
+<p><code>范例：调度器拒绝192.16.52.175的主机访问即调度器检测到此地址段的主机则不今次那个调度到后端的主机上</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        acl huaidan src 192.168.52.175  <span class="comment">####</span></span><br><span class="line">        block <span class="keyword">if</span> huaidan            <span class="comment">####</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        option forwardfor        server web1 192.168.52.162:80 cookie web1 check inter 2000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">     ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">使用192.16.52.175的主机充当客户端访问调度器验证是否可进行后端服务器的调度</span><br><span class="line">    ~]<span class="comment"># curl 192.168.52.175:8888</span></span><br><span class="line">    &lt;html&gt;&lt;body&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;</span><br><span class="line">    Request forbidden by administrative rules.</span><br><span class="line">    &lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>范例：acl中与关系的体现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#acl bad_curl hdr_sub(User-Agent) -i curl</span></span><br><span class="line"><span class="comment">#block if bad_curl	</span></span><br><span class="line">定义客户端的请求报文中如果首部User-Agent的值有一个子字串，中是否存在curl命令，</span><br><span class="line"></span><br><span class="line">这里是两个条件一起判断则两个acl是与的关系，表示为来自192.16.52.175地址的主机并且是用curl命令请求数据，通过调度器转后端服务器时才被拒绝</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        acl huaidan src 192.168.52.175  <span class="comment">####</span></span><br><span class="line">        acl bad_curl hdr_sub(User-Agent) -i curl    <span class="comment">####</span></span><br><span class="line">        block <span class="keyword">if</span> huaidan bad_curl   <span class="comment">####</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line"></span><br><span class="line">使用192.16.52.175的主机充当客户端访问调度器验证是否可进行后端服务器的调度</span><br><span class="line">    <span class="comment"># 使用wget命令测试</span></span><br><span class="line">    ~]<span class="comment"># wget -O - -q http://192.168.52.175:8888</span></span><br><span class="line">    web1</span><br><span class="line">    <span class="comment"># 使用curl命令测试</span></span><br><span class="line">    ~]<span class="comment"># curl 192.168.52.175:8888</span></span><br><span class="line">    &lt;html&gt;&lt;body&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;</span><br><span class="line">    Request forbidden by administrative rules.</span><br><span class="line">    &lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>范例：acl中或关系的体现<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">frontend web-port-80</span><br><span class="line">    mode http</span><br><span class="line">    rspadd X-Via:\ HAPorxy</span><br><span class="line">    <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">    default_backend websrvs</span><br><span class="line">    acl huaidan src 192.168.52.175</span><br><span class="line">    acl bad_curl hdr_sub(User-Agent) -i curl</span><br><span class="line">    block <span class="keyword">if</span> huaidan || bad_curl    <span class="comment">####</span></span><br><span class="line">backend websrvs</span><br><span class="line">    cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">    server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">    server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="二、自定义错误页"><a href="#二、自定义错误页" class="headerlink" title="二、自定义错误页"></a>二、自定义错误页</h2><ul>
+<li><p><code>errorfile &lt;code&gt; &lt;file&gt;</code></p>
+<ul>
+<li><p>返回文件内容，而不是HAProxy生成的错误</p>
+</li>
+<li><p><code>&lt;code&gt;:HTTP状态代码。目前，HAProxy能够生成代码200、400、403、408、500、502、503和504。</code></p>
+</li>
+<li><code>&lt;file&gt;:指定一个文件包含完整的HTTP响应。</code></li>
+</ul>
+</li>
+</ul>
+<p>范例：自定义错误页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">haproxy设置acl过滤器</span><br><span class="line"></span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        acl huaidan src 192.168.0.106</span><br><span class="line">        acl huandan1 hdr(User-Agent) -m sub -i chrome       <span class="comment">#定义客户段请求是通过chrome浏览器进行访问则拒绝</span></span><br><span class="line">        block <span class="keyword">if</span> huaidan || huaidan1        <span class="comment">#或的关系</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure></p>
+<p>192.168.0.106客户端的windows主机进行访问测试<br>显示的为内建默认的错误页<br><img src="/2019/01/24/HAproxyACL/1.png" alt=""></p>
+<p>自己定义错误页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">创建存放错误页面的路径</span><br><span class="line">    ~]<span class="comment"># mkdir /etc/haproxy/err_pages</span></span><br><span class="line"></span><br><span class="line">创建一个错误响应403调用的页面</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/err_pages/403.forbiddeng.html</span></span><br><span class="line">    &lt;h1&gt;403&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">haproxy_server</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        acl huaidan src 192.168.0.106</span><br><span class="line">        acl huandan1 hdr(User-Agent) -m sub -i chrome</span><br><span class="line">        block <span class="keyword">if</span> huaidan || huaidan1</span><br><span class="line">        errorfile 403 /etc/haproxy/err_pages/403.forbiddeng.html    <span class="comment">####</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>定义将错误的页面进行其他网站或者其他的url的跳转<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">   frontend web-port-80</span><br><span class="line">       mode http</span><br><span class="line">       rspadd X-Via:\ HAPorxy</span><br><span class="line">       <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">       default_backend websrvs</span><br><span class="line">       acl huaidan src 192.168.0.106</span><br><span class="line">       acl huandan1 hdr(User-Agent) -m sub -i chrome</span><br><span class="line">       block <span class="keyword">if</span> huaidan || huaidan1</span><br><span class="line">       errorloc302 403 https://www.daizhe.net.cn/    <span class="comment">####</span></span><br><span class="line">   backend websrvs</span><br><span class="line">       cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">       server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">       server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、acl-根据客户端请求的资源path进行acl过滤-user-backend"><a href="#三、acl-根据客户端请求的资源path进行acl过滤-user-backend" class="headerlink" title="三、acl (根据客户端请求的资源path进行acl过滤  user_backend)"></a>三、acl (根据客户端请求的资源path进行acl过滤  user_backend)</h2><ul>
+<li>path     : exact string match</li>
+<li>path_beg : prefix match</li>
+<li>path_dir : subdir match</li>
+<li>path_dom : domain match</li>
+<li>path_end : suffix match</li>
+<li>path_len : length match</li>
+<li>path_reg : regex match</li>
+<li>path_sub : substring match</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">定义客户的请求path中路径的内容，来进行调度</span><br><span class="line"></span><br><span class="line">frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs     <span class="comment">#默认的后端主机组</span></span><br><span class="line">        acl images path -m end -i .jpg .jpeg .png .gif      </span><br><span class="line">        <span class="comment">#如果客户请求的url资源是以这些文件类型结尾的</span></span><br><span class="line">        acl images path -m beg /images  </span><br><span class="line">        <span class="comment">#且请求的文件的路径是来自后端服务器中/images文件夹中</span></span><br><span class="line">        user_backend imagsrvs <span class="keyword">if</span> images   </span><br><span class="line">        <span class="comment">#如果满足上所述两个条则则全部归类到images，如果客户端请求的是images这类的文件则使用后端的imagsrvs 中的后端服务器组响应，反之则使用默认的服务器响应</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">    backend imagsrvs</span><br><span class="line">        server web3 192.168.62.88:80 check</span><br></pre></td></tr></table></figure>
+<h2 id="四、http-request-七层负载acl"><a href="#四、http-request-七层负载acl" class="headerlink" title="四、http-request 七层负载acl"></a>四、http-request 七层负载acl</h2><ul>
+<li><code>http-request { allow | deny } [ { if | unless } &lt;condition&gt; ]</code><ul>
+<li>7层请求的访问控制<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">haproxy_server</span><br><span class="line"></span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        acl haoren src 192.168.52.100   <span class="comment">####</span></span><br><span class="line">        http-request allow <span class="keyword">if</span> haoren  <span class="comment">####  </span></span><br><span class="line">        <span class="comment">#定义了一个白名单仅允许192.168.52.100主机通过调度器访问后端的主机，来自其他源地址的主机则拒绝访问后端的主机</span></span><br><span class="line">        http-request deny   <span class="comment">####</span></span><br><span class="line">    backend websrvs</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、tcp-request-四层负载acl"><a href="#五、tcp-request-四层负载acl" class="headerlink" title="五、tcp-request 四层负载acl"></a>五、tcp-request 四层负载acl</h2><ul>
+<li><code>tcp-request connection {accept|reject}  [{if | unless} &lt;condition&gt;]</code><ul>
+<li>根据第4层条件对传入连接执行操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、url-（根据客户端请求的资源url进行acl过滤）"><a href="#六、url-（根据客户端请求的资源url进行acl过滤）" class="headerlink" title="六、url （根据客户端请求的资源url进行acl过滤）"></a>六、url （根据客户端请求的资源url进行acl过滤）</h2><ul>
+<li>url     : exact string match</li>
+<li>url_beg : prefix match</li>
+<li>url_dir : subdir match</li>
+<li>url_dom : domain match</li>
+<li>url_end : suffix match</li>
+<li>url_len : length match</li>
+<li>url_reg : regex match</li>
+<li><p>url_sub : substring match</p>
+</li>
+<li><p>url包括：</p>
+<ul>
+<li>协议</li>
+<li>服务器</li>
+<li>地址</li>
+<li>端口</li>
+<li>path</li>
+</ul>
+</li>
+<li><p>url的范围要比path限制acl更广泛</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">定义合法的引用，如果为合法的引用则调度器则将客户端的请求调度到后端的服务器上，如果不为合法的引用则不进行调度</span><br><span class="line"></span><br><span class="line"><span class="comment">#仅允许来自daizhe字段的域名的外链的地址用户可以访问后端的服务器</span></span><br><span class="line"><span class="comment">#如果不符合此条件直接拒绝</span></span><br><span class="line"></span><br><span class="line">hproxy_server</span><br><span class="line">    </span><br><span class="line">    frontend web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        <span class="built_in">bind</span> 0.0.0.0:8888</span><br><span class="line">        default_backend websrvs</span><br><span class="line">        acl hefadeyinyong（定义的acl名称） hdr(Referer) -m dom -i daizhe</span><br><span class="line">        block <span class="keyword">if</span> ! hefayinyong</span><br><span class="line"></span><br><span class="line">    backend websrvs</span><br><span class="line">        server web1 192.168.52.162:80 check inter 2000 fall 3 rise 5</span><br><span class="line">        server web2 192.168.0.105:80 check inter 3000 fall 3 rise 5</span><br><span class="line"></span><br><span class="line">访问测试</span><br><span class="line">    直接访问调度器</span><br><span class="line">    ~]<span class="comment"># curl http: http://haproxy ip</span></span><br><span class="line">    403</span><br><span class="line">    模拟外链跳转来的访问</span><br><span class="line">    ~]<span class="comment"># curl -e "http://www.daizhe.net.cn http://haproxy ip"</span></span><br><span class="line">    200</span><br></pre></td></tr></table></figure>
+<h2 id="七、内建的acl"><a href="#七、内建的acl" class="headerlink" title="七、内建的acl"></a>七、内建的acl</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Pre-defined ACLs</span><br><span class="line">	ACL name	Equivalent to	Usage</span><br><span class="line">	FALSE	always_false	never match</span><br><span class="line">	HTTP	req_proto_http	match <span class="keyword">if</span> protocol is valid HTTP</span><br><span class="line">	HTTP_1.0	req_ver 1.0	match HTTP version 1.0</span><br><span class="line">	HTTP_1.1	req_ver 1.1	match HTTP version 1.1</span><br><span class="line">	HTTP_CONTENT	hdr_val(content-length) gt 0	match an existing content-length</span><br><span class="line">	HTTP_URL_ABS	url_reg ^[^/:]*://	match absolute URL with scheme</span><br><span class="line">	HTTP_URL_SLASH	url_beg /	match URL beginning with <span class="string">"/"</span></span><br><span class="line">	HTTP_URL_STAR	url *	match URL equal to <span class="string">"*"</span></span><br><span class="line">	LOCALHOST	src 127.0.0.1/8	match connection from <span class="built_in">local</span> host</span><br><span class="line">	METH_CONNECT	method CONNECT	match HTTP CONNECT method</span><br><span class="line">	METH_GET	method GET HEAD	match HTTP GET or HEAD method</span><br><span class="line">	METH_HEAD	method HEAD	match HTTP HEAD method</span><br><span class="line">	METH_OPTIONS	method OPTIONS	match HTTP OPTIONS method</span><br><span class="line">	METH_POST	method POST	match HTTP POST method</span><br><span class="line">	METH_TRACE	method TRACE	match HTTP TRACE method</span><br><span class="line">	RDP_COOKIE	req_rdp_cookie_cnt gt 0	match presence of an RDP cookie</span><br><span class="line">	REQ_CONTENT	req_len gt 0	match data <span class="keyword">in</span> the request buffer</span><br><span class="line">	TRUE	always_true	always match</span><br><span class="line">	WAIT_END	wait_end	<span class="built_in">wait</span> <span class="keyword">for</span> end of content analysis</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1080,7 +1149,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy的ACL过滤器"><span class="nav-number">1.</span> <span class="nav-text">HAproxy的ACL过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACL过滤器（七层http模式下）"><span class="nav-number">1.1.</span> <span class="nav-text">ACL过滤器（七层http模式下）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Criterion-ACL-定义ACL标准"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Criterion_ACL(定义ACL标准)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flags（条件标记位）"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">flags（条件标记位）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#operator（具体操作符）"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">operator（具体操作符）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#value（操作对象类型）"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">value（操作对象类型）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Acl定义与调用"><span class="nav-number">1.2.</span> <span class="nav-text">Acl定义与调用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy的ACL过滤器及自定义错误页"><span class="nav-number">1.</span> <span class="nav-text">HAproxy的ACL过滤器及自定义错误页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、ACL过滤器（七层http模式下）"><span class="nav-number">1.1.</span> <span class="nav-text">一、ACL过滤器（七层http模式下）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Criterion-ACL-定义ACL标准"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Criterion_ACL(定义ACL标准)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flags（条件标记位）"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">flags（条件标记位）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#operator（具体操作符）"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">operator（具体操作符）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#value（操作对象类型）"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">value（操作对象类型）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Acl定义与调用"><span class="nav-number">1.2.</span> <span class="nav-text">Acl定义与调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、自定义错误页"><span class="nav-number">1.3.</span> <span class="nav-text">二、自定义错误页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、acl-根据客户端请求的资源path进行acl过滤-user-backend"><span class="nav-number">1.4.</span> <span class="nav-text">三、acl (根据客户端请求的资源path进行acl过滤  user_backend)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、http-request-七层负载acl"><span class="nav-number">1.5.</span> <span class="nav-text">四、http-request 七层负载acl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、tcp-request-四层负载acl"><span class="nav-number">1.6.</span> <span class="nav-text">五、tcp-request 四层负载acl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、url-（根据客户端请求的资源url进行acl过滤）"><span class="nav-number">1.7.</span> <span class="nav-text">六、url （根据客户端请求的资源url进行acl过滤）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、内建的acl"><span class="nav-number">1.8.</span> <span class="nav-text">七、内建的acl</span></a></li></ol></div>
             
 
           </div>
@@ -1114,7 +1183,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">435k</span>
+    <span title="站点总字数">443k</span>
   
 
   
@@ -1125,7 +1194,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:35</span>
+    <span title="站点阅读时长">6:43</span>
   
 </div>
 
