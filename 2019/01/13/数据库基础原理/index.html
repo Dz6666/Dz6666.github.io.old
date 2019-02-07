@@ -146,7 +146,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/13/数据库基础原理/标题.gif">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/13/数据库基础原理/图.png">
-<meta property="og:updated_time" content="2019-02-01T13:57:13.461Z">
+<meta property="og:updated_time" content="2019-02-02T13:54:02.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库基础原理">
 <meta name="twitter:description" content="mysql数据库基础原理">
@@ -311,7 +311,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
 
   </li>
         
@@ -330,7 +330,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">14</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
 
   </li>
         
@@ -349,7 +349,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">49</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">50</span></a>
 
   </li>
         
@@ -705,11 +705,11 @@
 </ul>
 <h2 id="实体-联系模型E-R"><a href="#实体-联系模型E-R" class="headerlink" title="实体-联系模型E-R"></a>实体-联系模型E-R</h2><ul>
 <li>实体Entity：客观存在并可以相互区分的客观事物或抽象事件称为实体   <ul>
-<li>在E-R图中用矩形框表示实体，把实体名写在框内   <ul>
-<li>属性：实体所具有的特征或性质   </li>
-<li>联系：联系是数据之间的关联集合，是客观存在的应用语义链    </li>
+<li>在E-R图中用矩形框表示实体，把实体名写在框内   </li>
 </ul>
 </li>
+<li>属性：实体所具有的特征或性质   </li>
+<li>联系：联系是数据之间的关联集合，是客观存在的应用语义链    <ul>
 <li>实体内部的联系：指组成实体的各属性之间的联系。如职工实体中，职工号和 部门经理号之间有一种关联关系   </li>
 <li>实体之间的联系：指不同实体之间联系。例：学生选课实体和学生基本信息实 体之间   </li>
 <li>实体之间的联系用菱形框表示   </li>
@@ -729,8 +729,8 @@
 </ul>
 </li>
 <li>数据的约束条件 ：是一组完整性规则的集合   <ul>
-<li>实体（行）完整性 Entity integrity   </li>
-<li>域（列）完整性 Domain Integrity   </li>
+<li>实体（行）完整性 Entity integrity  （每一条记录都与众不同，可以使用主键来限定每条记录的与众不同） </li>
+<li>域（列）完整性 Domain Integrity）  </li>
 <li>参考完整性 Referential Integrity </li>
 </ul>
 </li>
@@ -766,7 +766,8 @@
 <li>说明：第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF） 的数据库就不是关系数据库   </li>
 </ul>
 </li>
-<li><code>2NF：属性完全依赖于主键，第二范式必须先满足第一范式，要求表中的每个 行必须可以被唯一地区分。通常为表加上一个列，以存储各个实例的唯一标识 PK，非PK的字段需要与整个PK有直接相关性</code> </li>
+<li><p><code>2NF：属性完全依赖于主键，第二范式必须先满足第一范式，要求表中的每个 行必须可以被唯一地区分。通常为表加上一个列，以存储各个实例的唯一标识 PK，非PK的字段需要与整个PK有直接相关性</code> </p>
+</li>
 <li><code>3NF：属性不依赖于其它非主属性，满足第三范式必须先满足第二范式。第三 范式要求一个数据库表中不包含已在其它表中已包含的非主关键字信息，非PK 的字段间不能有从属关系</code>  </li>
 </ul>
 <h2 id="SQL概念"><a href="#SQL概念" class="headerlink" title="SQL概念"></a>SQL概念</h2><ul>
@@ -1027,7 +1028,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1068,7 +1069,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1113,7 +1118,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1214,7 +1221,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">443k</span>
+    <span title="站点总字数">445k</span>
   
 
   
@@ -1225,7 +1232,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:43</span>
+    <span title="站点阅读时长">6:44</span>
   
 </div>
 

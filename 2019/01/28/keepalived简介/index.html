@@ -149,7 +149,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/28/keepalived简介/1.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/28/keepalived简介/4.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/28/keepalived简介/3.png">
-<meta property="og:updated_time" content="2019-01-29T03:41:51.491Z">
+<meta property="og:updated_time" content="2019-02-04T09:26:18.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="keepalived简介">
 <meta name="twitter:description" content="keepalived简介">
@@ -314,7 +314,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
 
   </li>
         
@@ -333,7 +333,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">14</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
 
   </li>
         
@@ -352,7 +352,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">49</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">50</span></a>
 
   </li>
         
@@ -576,7 +576,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.8k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -612,12 +612,12 @@
       
         <h1 id="keepalived简介"><a href="#keepalived简介" class="headerlink" title="keepalived简介"></a>keepalived简介</h1><p><img src="/2019/01/28/keepalived简介/标题.gif" alt=""><br><a id="more"></a></p>
 <ul>
-<li>HA 即（high available）高可用，又被叫做双机热备，用于关键性业务。</li>
+<li>HA 即（high available）高可用，又被叫做双机热备，用于关键性业务（冗余）。</li>
 </ul>
 <h2 id="高可用集群概念"><a href="#高可用集群概念" class="headerlink" title="高可用集群概念"></a>高可用集群概念</h2><ul>
 <li>集群类型：<ul>
 <li>LB     lvs/nginx（http/upstream, stream/upstream）</li>
-<li>HA     高可用性<ul>
+<li>HA     高可用性（多适用于接入层的高可用）<ul>
 <li>SPoF: Single Point of Failure，单点故障</li>
 </ul>
 </li>
@@ -720,7 +720,7 @@
 <p><img src="/2019/01/28/keepalived简介/1.png" alt=""></p>
 <h2 id="高可用集群-gt-网络层实现高可用（VRRP）"><a href="#高可用集群-gt-网络层实现高可用（VRRP）" class="headerlink" title="高可用集群-&gt;网络层实现高可用（VRRP）"></a>高可用集群-&gt;网络层实现高可用（VRRP）</h2><p><img src="/2019/01/28/keepalived简介/4.png" alt=""></p>
 <h2 id="Keepalived简介"><a href="#Keepalived简介" class="headerlink" title="Keepalived简介"></a>Keepalived简介</h2><ul>
-<li>Keepalived软件主要是通过VRRP协议实现高可用功能的。VRRP是Virtual Router RedundancyProtocol(虚拟路由器冗余协议）的缩写，VRRP出现的目的就是为了解决静态路由单点故障问题的，它能够保证当个别节点宕机时，整个网络可以不间断地运行。</li>
+<li><code>Keepalived软件主要是通过VRRP协议实现高可用功能的。VRRP是Virtual Router RedundancyProtocol(虚拟路由器冗余协议）的缩写，VRRP出现的目的就是为了解决静态路由单点故障问题的，它能够保证当个别节点宕机时，整个网络可以不间断地运行。</code></li>
 <li>重要作用<ul>
 <li>管理LVS负载均衡软件</li>
 <li>实现LVS集群节点的健康检查中</li>
@@ -804,6 +804,30 @@
 <li>主/主：主/备（虚拟路由器1），备/主（虚拟路由器2）</li>
 </ul>
 </li>
+</ul>
+<hr>
+<h2 id="vrrp协议的工作流程"><a href="#vrrp协议的工作流程" class="headerlink" title="vrrp协议的工作流程"></a>vrrp协议的工作流程</h2><ul>
+<li><p>vrrp（虚拟路由冗余协议）是一种容错协议，他保证当主机的吓一跳路由器出现故障时，由另一台路由器来代替出现故障的路由器进行工作，从而保持网络通讯的连续性和可靠性。</p>
+</li>
+<li><p>vrrp具有如下优点：</p>
+<ul>
+<li>简化网络管理。在具有多播或广播能力的局域网（如以太网）中，借助vrrp能在某台设备出现故障时仍然提供高可靠的缺省链路，有效避免单一链路发生的故障后网络终端的问题，而无需修改动态路由协议，路由发现协议等配置信息，也无需修改主机的默认的网关配置。</li>
+<li>适应性强。vrrp报文封装在ip报文中，支持各种上层协议。</li>
+<li>网络开销小，vrrp只定义了一种报文—vrrp通告报文，并且只有处于master状态的路由器可以发送vrrp报文</li>
+</ul>
+</li>
+</ul>
+<h2 id="vrrp协议中的相关的术语"><a href="#vrrp协议中的相关的术语" class="headerlink" title="vrrp协议中的相关的术语"></a>vrrp协议中的相关的术语</h2><ul>
+<li>虚拟路由器：由一个master路由器和多个backup路由器组成，主机将虚拟路由器当作默认网关。</li>
+<li>vrid：虚拟路由器的标识，有相同vrid的一组路由器构成一个虚拟路由器。</li>
+<li>master路由器：虚拟路由器中承担报文转发任务的路由器。</li>
+<li>backup路由器：master路由器出现故障时，能够代替master路由器工作的路由器。</li>
+<li>虚拟ip地址：虚拟路由器的ip地址，一个虚拟路由器可以拥有一个或者多个ip地址。</li>
+<li>ip地址拥有者：接口ip地址与虚拟ip地址相同的路由器被称之为ip地址拥有者。</li>
+<li>虚拟mac地址：一个虚拟路由器拥有一个虚拟mac地址。虚拟mac地址的合适为00-00-5E-00-01-{VRID}。通常情况下，虚拟路由器回应ARP请求使用的时虚拟MAC地址，只有虚拟路由器做特殊配置的时候，才会赢接口的真实的MAC地址。</li>
+<li>优先级：VRRP根据优先级来确定虚拟路由器中每台路由器的地位。</li>
+<li>非抢占方式：如果backup路由器工作在非抢占方式下，则只要master路由器没有出现故障，backup路由器即使随后被配置了更高的优先级也不会为master路由器。</li>
+<li>抢占方式：如果backup路由器工作在抢占方式下，当它收到vrrp报文后，会将自己的优先级与通告报文中的优先级进行比较。如果自己的优先级比当前master路由器的优先级高，就会主动抢占成为master路由器；否则，将保持backup状态。</li>
 </ul>
 
       
@@ -948,8 +972,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/29/keepalived配置多VIP及实现双主模式/" rel="prev" title="keepalived配置多VIP及实现双主模式">
-                keepalived配置多VIP及实现双主模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/04/keepalived使用基础/" rel="prev" title="keepalived使用基础">
+                keepalived使用基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1026,7 +1050,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1067,7 +1091,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1112,7 +1140,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1179,7 +1209,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#keepalived简介"><span class="nav-number">1.</span> <span class="nav-text">keepalived简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群概念"><span class="nav-number">1.1.</span> <span class="nav-text">高可用集群概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-后端存储"><span class="nav-number">1.2.</span> <span class="nav-text">高可用集群-&gt;后端存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-后端存储-1"><span class="nav-number">1.3.</span> <span class="nav-text">高可用集群-&gt;后端存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-网络层实现高可用（VRRP）"><span class="nav-number">1.4.</span> <span class="nav-text">高可用集群-&gt;网络层实现高可用（VRRP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keepalived简介"><span class="nav-number">1.5.</span> <span class="nav-text">Keepalived简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keepalived："><span class="nav-number">1.6.</span> <span class="nav-text">keepalived：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#keepalived简介"><span class="nav-number">1.</span> <span class="nav-text">keepalived简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群概念"><span class="nav-number">1.1.</span> <span class="nav-text">高可用集群概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-后端存储"><span class="nav-number">1.2.</span> <span class="nav-text">高可用集群-&gt;后端存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-后端存储-1"><span class="nav-number">1.3.</span> <span class="nav-text">高可用集群-&gt;后端存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用集群-gt-网络层实现高可用（VRRP）"><span class="nav-number">1.4.</span> <span class="nav-text">高可用集群-&gt;网络层实现高可用（VRRP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keepalived简介"><span class="nav-number">1.5.</span> <span class="nav-text">Keepalived简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keepalived："><span class="nav-number">1.6.</span> <span class="nav-text">keepalived：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vrrp协议的工作流程"><span class="nav-number">1.7.</span> <span class="nav-text">vrrp协议的工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vrrp协议中的相关的术语"><span class="nav-number">1.8.</span> <span class="nav-text">vrrp协议中的相关的术语</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1213,7 +1243,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">443k</span>
+    <span title="站点总字数">445k</span>
   
 
   
@@ -1224,7 +1254,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:43</span>
+    <span title="站点阅读时长">6:44</span>
   
 </div>
 
