@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[zabbix自定义监控深入之系统内置监控项]]></title>
     <url>%2F2019%2F02%2F11%2Fzabbix%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E6%B7%B1%E5%85%A5%E4%B9%8B%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE%E7%9B%91%E6%8E%A7%E9%A1%B9%2F</url>
-    <content type="text"><![CDATA[第二章：zabbix自定义监控深入之系统内置监控项]]></content>
+    <content type="text"><![CDATA[第二章：zabbix自定义监控深入之系统内置监控项 1.所有的主机必须统一监控项 nginx.conf,tomcat.conf 2.将监控项进行分类，然后配置不同模板 手动一个个的当以监控项–&gt;加入nginx模板 3.不同的主机引用不同模板 nginx这台主机–&gt;关联–&gt;nginx模板 系统自带的监控项的意义（zabbix客户端 被动模式） 如果查看此监控项对用的agent值123456789101112131415可以在zabbix-server端查看agent键值1.重启agent客户端，验证是否已经添加到监控项 ~]# systemctl restart zabbix-agent ~]# zabbix_agentd -p | grep IO IO [t|2.53] #如果此处出现IO [t| IO commond not found] 表示这个iostat命令未安装2.zabbix-server验证zabbix-agent是否有对应的监控项 ~]# yum install zabbix-get -y zabbix-get -s 指定agent ip地址 -k 指定定义在agent监控项的名称 -p 指定agent 端口 ，默认为10050 ~]# zabbix_get -s 172.20.139.70 -k IO 2.25 1234系统自带监控项是有些是支持传递参数的~]# zabbix_get -s 172.20.139.70 -k 'net.tcp.port[&lt;ip&gt;,port]~]# zabbix_get -s 172.20.139.70 -k 'net.tcp.port[&lt;172.20.139.70&gt;,22]']]></content>
       <categories>
         <category>zabbix</category>
       </categories>
@@ -573,9 +573,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[zabbix自定义监控深入之列表详解实战]]></title>
+    <url>%2F2017%2F10%2F18%2Fzabbix%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E6%B7%B1%E5%85%A5%E4%B9%8B%E5%88%97%E8%A1%A8%E8%AF%A6%E8%A7%A3%E5%AE%9E%E6%88%98%2F</url>
+    <content type="text"><![CDATA[创建文章的默认模板，可根据实际情况修改 Till I reach the end, then I’ll start again《Try Everything》 1 // 插入音乐 或者 // 表示图片在左边或者右边，中间(left，right，center) // markdown格式测试，就是要测试一下啊啊啊啊a 文本上带一条横线，表示错误 This is an H1 Red Green Blue This is a blockquoteinside a list item. http://example.com/ This is an H2// 插入图片并设置大小两种方法 // 颜色选择 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色 size定义字体大小，color定义颜色]]></content>
+      <categories>
+        <category>linux基础</category>
+      </categories>
+      <tags>
+        <tag>文本三剑客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[旧事-大好河山]]></title>
     <url>%2F2017%2F10%2F01%2F%E6%97%A7%E4%BA%8B-%E5%A4%A7%E5%A5%BD%E6%B2%B3%E5%B1%B1%2F</url>
-    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX1+hr8IcRYtIN+B1/HGTeNazh3Bhrv0k2F9pyUp4ce6fWAGeRJvQpDLwXWcO8DGWqFjEUD07vnEhZNpIsss/Kv5/Pi69iXBzErLSViE7LU1RJVWR/mt/dw+EyOiMAeJdPnZGMGo1MABFOFE1RZG8nYO6tGbDVSb/Z6OepsXNtBbkQPj15Zie4pOU3G0nLYY35PBaIp0XQKqM1X61bgmgsX7mk/sB9xiWLMWx5eEyB/cVg7ivlynTkM+oW8BObADZ4IiK6zDFN5LYUJw6fugRc9T79tRbRdRojFyN+717o0doiHtx6/pP0AwN6DHT2Nz/snEyXCc6ROP+5ZC9kj4symnvj/0QY4b9f8T0ROsoQmumecUTOwyiqahA]]></content>
+    <content type="text"><![CDATA[输入密码,PC:Enter查看,Phone:输入法换行查看. U2FsdGVkX1+r2yU/Y7IUdGBME4K2Oenpewz5YsIocy9SJuN9MURD01srRU9Ir6nM51V0W5nNmNtPjoOpWmQob2uCiA4gpGPdeEc2xZeM931hAJIYXI25mT7cfCWnth++mU2t6Ik5BTjdDqtyBjuuldiy+EoJtDBdQ/vcbsQQqPMEH9ufIN/kckF0qiR87pe2yZYVjplZ80wazaLVHx+wQGnaEMXYeRCjesbKUSHHWkdDx5g0+rBzIttSgm00AassirUTr9THKqUa0EzxmHvv439aNcb5GMKymXlqOPUDMFBAO0nIkLHlq+Ur7VhHjOtfNpcUAfPrtheqHIC1813EDybHC9Q1YjXFaneIDjI0xHbPzmavoweaEhRrJRnKflAN]]></content>
       <categories>
         <category>旧事，杂记</category>
       </categories>

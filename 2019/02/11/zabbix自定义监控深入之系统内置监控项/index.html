@@ -145,7 +145,11 @@
 <meta property="og:description" content="第二章：zabbix自定义监控深入之系统内置监控项">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之系统内置监控项/标题.gif">
-<meta property="og:updated_time" content="2019-02-11T03:09:53.592Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之系统内置监控项/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之系统内置监控项/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之系统内置监控项/3.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之系统内置监控项/4.png">
+<meta property="og:updated_time" content="2019-02-11T06:03:43.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix自定义监控深入之系统内置监控项">
 <meta name="twitter:description" content="第二章：zabbix自定义监控深入之系统内置监控项">
@@ -310,7 +314,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
 
   </li>
         
@@ -329,7 +333,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
 
   </li>
         
@@ -348,7 +352,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">54</span></a>
 
   </li>
         
@@ -572,7 +576,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">26</span>
+                <span title="本文字数">825</span>
               
 
               
@@ -607,6 +611,26 @@
 
       
         <h1 id="第二章：zabbix自定义监控深入之系统内置监控项"><a href="#第二章：zabbix自定义监控深入之系统内置监控项" class="headerlink" title="第二章：zabbix自定义监控深入之系统内置监控项"></a>第二章：zabbix自定义监控深入之系统内置监控项</h1><p><img src="/2019/02/11/zabbix自定义监控深入之系统内置监控项/标题.gif" alt=""><br><a id="more"></a></p>
+<ul>
+<li>1.所有的主机必须统一监控项<ul>
+<li>nginx.conf,tomcat.conf</li>
+</ul>
+</li>
+<li>2.将监控项进行分类，然后配置不同模板<ul>
+<li>手动一个个的当以监控项–&gt;加入nginx模板</li>
+</ul>
+</li>
+<li>3.不同的主机引用不同模板<ul>
+<li>nginx这台主机–&gt;关联–&gt;nginx模板</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>系统自带的监控项的意义（zabbix客户端 被动模式）<br><img src="/2019/02/11/zabbix自定义监控深入之系统内置监控项/1.png" alt=""><br><img src="/2019/02/11/zabbix自定义监控深入之系统内置监控项/2.png" alt=""><br><img src="/2019/02/11/zabbix自定义监控深入之系统内置监控项/3.png" alt=""><br><img src="/2019/02/11/zabbix自定义监控深入之系统内置监控项/4.png" alt=""></p>
+<hr>
+<p>如果查看此监控项对用的agent值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">可以在zabbix-server端查看agent键值</span><br><span class="line"></span><br><span class="line">1.重启agent客户端，验证是否已经添加到监控项</span><br><span class="line">    ~]<span class="comment"># systemctl restart zabbix-agent</span></span><br><span class="line">    ~]<span class="comment"># zabbix_agentd -p | grep IO</span></span><br><span class="line">        IO       [t|2.53]       <span class="comment">#如果此处出现IO       [t| IO commond not found] 表示这个iostat命令未安装</span></span><br><span class="line"></span><br><span class="line">2.zabbix-server验证zabbix-agent是否有对应的监控项</span><br><span class="line">    ~]<span class="comment"># yum install zabbix-get -y</span></span><br><span class="line">    zabbix-get</span><br><span class="line">        -s 指定agent ip地址</span><br><span class="line">        -k 指定定义在agent监控项的名称</span><br><span class="line">        -p 指定agent 端口 ，默认为10050</span><br><span class="line">    ~]<span class="comment"># zabbix_get -s 172.20.139.70 -k IO</span></span><br><span class="line">        2.25</span><br></pre></td></tr></table></figure></p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">系统自带监控项是有些是支持传递参数的</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># zabbix_get -s 172.20.139.70 -k 'net.tcp.port[&lt;ip&gt;,port]</span></span><br><span class="line">~]<span class="comment"># zabbix_get -s 172.20.139.70 -k 'net.tcp.port[&lt;172.20.139.70&gt;,22]'</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -824,7 +848,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -869,7 +893,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -916,7 +942,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1017,7 +1045,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">455k</span>
   
 
   
@@ -1028,7 +1056,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:53</span>
   
 </div>
 
