@@ -171,7 +171,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之内存百分比实战/23.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之内存百分比实战/24.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/11/zabbix自定义监控深入之内存百分比实战/26.png">
-<meta property="og:updated_time" content="2019-02-12T03:45:30.091Z">
+<meta property="og:updated_time" content="2019-02-12T03:48:32.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix自定义监控深入之内存百分比实战">
 <meta name="twitter:description" content="第二章：zabbix自定义监控深入之内存百分比实战">
@@ -598,7 +598,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.3k</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -666,6 +666,13 @@
 <p>3.在zabbix-web端创建监控项<br><img src="/2019/02/11/zabbix自定义监控深入之内存百分比实战/21.png" alt=""><br><img src="/2019/02/11/zabbix自定义监控深入之内存百分比实战/22.png" alt=""></p>
 <p>4.在zabbix-web端创建多条件的触发器<br><img src="/2019/02/11/zabbix自定义监控深入之内存百分比实战/23.png" alt=""><br><img src="/2019/02/11/zabbix自定义监控深入之内存百分比实战/24.png" alt=""></p>
 <p>5.已经定义多条件的触发器（满足内存低于30%规则，并且同时满足swap使用率超过5%则报警）<br><img src="/2019/02/11/zabbix自定义监控深入之内存百分比实战/26.png" alt=""></p>
+<h2 id="常用的触发器表达式，常用的函数"><a href="#常用的触发器表达式，常用的函数" class="headerlink" title="常用的触发器表达式，常用的函数"></a>常用的触发器表达式，常用的函数</h2><ul>
+<li>and 并且</li>
+<li>or  或者</li>
+<li>last() 最新的值</li>
+<li>avg()  解决波动报警，流量在多少分钟平均达到多少报警</li>
+<li>nodata() 收不到数据进行报警</li>
+</ul>
 
       
     </div>
@@ -1046,7 +1053,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章：zabbix自定义监控深入之内存百分比实战"><span class="nav-number">1.</span> <span class="nav-text">第二章：zabbix自定义监控深入之内存百分比实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#取内存的百分比"><span class="nav-number">1.1.</span> <span class="nav-text">取内存的百分比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形展示乱码处理"><span class="nav-number">1.2.</span> <span class="nav-text">图形展示乱码处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种解决字体乱码的方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">第二种解决字体乱码的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器深入实战"><span class="nav-number">1.3.</span> <span class="nav-text">触发器深入实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现既监控内存的使用的情况又监控swap的剩余的使用的内存-多条触发器规则"><span class="nav-number">1.4.</span> <span class="nav-text">实现既监控内存的使用的情况又监控swap的剩余的使用的内存(多条触发器规则)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章：zabbix自定义监控深入之内存百分比实战"><span class="nav-number">1.</span> <span class="nav-text">第二章：zabbix自定义监控深入之内存百分比实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#取内存的百分比"><span class="nav-number">1.1.</span> <span class="nav-text">取内存的百分比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形展示乱码处理"><span class="nav-number">1.2.</span> <span class="nav-text">图形展示乱码处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种解决字体乱码的方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">第二种解决字体乱码的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器深入实战"><span class="nav-number">1.3.</span> <span class="nav-text">触发器深入实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现既监控内存的使用的情况又监控swap的剩余的使用的内存-多条触发器规则"><span class="nav-number">1.4.</span> <span class="nav-text">实现既监控内存的使用的情况又监控swap的剩余的使用的内存(多条触发器规则)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的触发器表达式，常用的函数"><span class="nav-number">1.5.</span> <span class="nav-text">常用的触发器表达式，常用的函数</span></a></li></ol></li></ol></div>
             
 
           </div>
