@@ -173,7 +173,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/12/zabbix自定义内容报警图形及模板/24.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/12/zabbix自定义内容报警图形及模板/27.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/12/zabbix自定义内容报警图形及模板/28.png">
-<meta property="og:updated_time" content="2019-02-13T12:58:49.051Z">
+<meta property="og:updated_time" content="2019-02-15T08:33:44.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix自定义内容报警图形及模板">
 <meta name="twitter:description" content="第二章：zabbix自定义内容报警图形及模板">
@@ -682,7 +682,7 @@
 </li>
 <li>githun解释文档及手册：<a href="https://github.com/OneOaaS/graphtrees" target="_blank" rel="noopener">https://github.com/OneOaaS/graphtrees</a></li>
 </ul>
-<p>安装:如果您已经安装了zabbix web RPM repo  ＃从未使用过3.0.1的补丁<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">zabbix-server端</span><br><span class="line"></span><br><span class="line">    安装Graphtree</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cd /usr/share/zabbix</span></span><br><span class="line">    zabbix]<span class="comment"># wget https://raw.githubusercontent.com/OneOaaS/graphtrees/master/graphtree3.0.4.patch</span></span><br><span class="line">    ~]<span class="comment"># yum install -y patch</span></span><br><span class="line"></span><br><span class="line">    导入补丁包</span><br><span class="line"></span><br><span class="line">    zabbix]<span class="comment"># patch  -Np0 &lt;graphtree3.0.4.patch </span></span><br><span class="line">    zabbix]<span class="comment"># chown -R apache.apache oneoaas</span></span><br><span class="line"></span><br><span class="line">    修改apache配置文件</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/httpd/conf.d/zabbix.conf</span></span><br><span class="line">    Alias /oneoaas /usr/share/zabbix/oneoaas</span><br><span class="line">    Alias /zabbix /user/share/zabbix</span><br><span class="line"></span><br><span class="line">    重启apache</span><br><span class="line">    ~]<span class="comment"># systemctl restart httpd</span></span><br></pre></td></tr></table></figure></p>
+<p>安装:如果您已经安装了zabbix web RPM repo  ＃从未使用过3.0.1的补丁<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">zabbix-server端</span><br><span class="line"></span><br><span class="line">    安装Graphtree</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cd /usr/share/zabbix</span></span><br><span class="line">    zabbix]<span class="comment"># wget https://raw.githubusercontent.com/OneOaaS/graphtrees/master/graphtree3.0.4.patch</span></span><br><span class="line">    ~]<span class="comment"># yum install -y patch</span></span><br><span class="line"></span><br><span class="line">    导入补丁包</span><br><span class="line"></span><br><span class="line">    zabbix]<span class="comment"># patch  -Np0 &lt;graphtree3.0.4.patch </span></span><br><span class="line">    zabbix]<span class="comment"># chown -R apache.apache oneoaas</span></span><br><span class="line"></span><br><span class="line">    修改apache配置文件</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/httpd/conf.d/zabbix.conf</span></span><br><span class="line">    最后一行添加</span><br><span class="line">    Alias /oneoaas /usr/share/zabbix/oneoaas</span><br><span class="line">    Alias /zabbix /user/share/zabbix</span><br><span class="line"></span><br><span class="line">    重启apache</span><br><span class="line">    ~]<span class="comment"># systemctl restart httpd</span></span><br></pre></td></tr></table></figure></p>
 <p>刷新zabbix-web查看</p>
 <p><img src="/2019/02/12/zabbix自定义内容报警图形及模板/15.png" alt=""><br><img src="/2019/02/12/zabbix自定义内容报警图形及模板/16.png" alt=""></p>
 <hr>
@@ -1119,7 +1119,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">475k</span>
+    <span title="站点总字数">480k</span>
   
 
   
@@ -1130,7 +1130,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:12</span>
+    <span title="站点阅读时长">7:16</span>
   
 </div>
 
