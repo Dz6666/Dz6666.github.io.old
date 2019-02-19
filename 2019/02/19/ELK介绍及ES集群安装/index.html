@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "Infinity"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="ELK介绍及集群安装">
+<meta name="keywords" content="ELK Stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK介绍及ES集群安装">
+<meta property="og:url" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/index.html">
+<meta property="og:site_name" content="Dai zhe&#39;s notes">
+<meta property="og:description" content="ELK介绍及集群安装">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/标题.gif">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/3.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/4.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/19.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/5.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/6.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/7.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/8.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/9.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/10.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/12.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/ELK介绍及集群安装/13.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/14.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/15.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/16.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/17.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/18.png">
+<meta property="og:updated_time" content="2019-02-19T07:09:39.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK介绍及ES集群安装">
+<meta name="twitter:description" content="ELK介绍及集群安装">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/标题.gif">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Dai zhe's notes" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ELK介绍及ES集群安装 | Dai zhe's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dai zhe's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just Du It</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-card"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-相册">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单&music">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/shudan/" rel="section"><i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br>书单&music</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    <a href="https://github.com/Dz6666" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+      </a>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/02/19/ELK介绍及ES集群安装/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哆啦A梦">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ELK介绍及ES集群安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-19 10:29:35" itemprop="dateCreated datePublished" datetime="2019-02-19T10:29:35+08:00">2019-02-19</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ELK-Stack/" itemprop="url" rel="index"><span itemprop="name">ELK Stack</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/19/ELK介绍及ES集群安装/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/02/19/ELK介绍及ES集群安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">23k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">20 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ELK介绍及集群安装"><a href="#ELK介绍及集群安装" class="headerlink" title="ELK介绍及集群安装"></a>ELK介绍及集群安装</h1><p><img src="/2019/02/19/ELK介绍及ES集群安装/标题.gif" alt=""><br><a id="more"></a></p>
+<h1 id="介绍ELK"><a href="#介绍ELK" class="headerlink" title="介绍ELK"></a>介绍ELK</h1><h2 id="什么是ELK？"><a href="#什么是ELK？" class="headerlink" title="什么是ELK？"></a>什么是ELK？</h2><ul>
+<li>通俗来讲，ELK是由Elasticsearch、Logstash、Kibana 、filebeat三个开源软件的组成的一个组合体，这三个软件当中，每个软件用于完成不同的功能，ELK 又称为ELK stack，官方域名为stactic.co，ELK stack的主要优点有如下几个：<ul>
+<li><code>1.处理方式灵活： elasticsearch是实时全文索引，具有强大的搜索功能</code></li>
+<li><code>2.配置相对简单：elasticsearch全部使用JSON 接口，logstash使用模块配置，kibana的配置文件部分更简单。</code></li>
+<li><code>3.检索性能高效：基于优秀的设计，虽然每次查询都是实时，但是也可以达到百亿级数据的查询秒级响应。</code></li>
+<li><code>4.集群线性扩展：elasticsearch和logstash都可以灵活线性扩展</code></li>
+<li><code>5.前端操作绚丽：kibana的前端设计比较绚丽，而且操作简单（前端前端展示界面）</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是Elasticsearch："><a href="#什么是Elasticsearch：" class="headerlink" title="什么是Elasticsearch："></a>什么是Elasticsearch：</h2><ul>
+<li>是一个高度可扩展的开源全文搜索和分析引擎，它可实现数据的实时全文搜索搜索、支持分布式可实现高可用、提供API接口，可以处理大规模日志数据，比如Nginx、Tomcat、系统日志等功能。</li>
+</ul>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/1.png" alt=""></p>
+<h2 id="什么是Logstash"><a href="#什么是Logstash" class="headerlink" title="什么是Logstash"></a>什么是Logstash</h2><ul>
+<li>可以通过插件实现日志收集和转发，支持日志过滤，支持普通log、自定义json格式的日志解析。</li>
+</ul>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/2.png" alt=""></p>
+<h2 id="什么是kibana："><a href="#什么是kibana：" class="headerlink" title="什么是kibana："></a>什么是kibana：</h2><ul>
+<li>主要是通过接口调用elasticsearch的数据，并进行前端数据可视化的展现。</li>
+</ul>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/3.png" alt=""></p>
+<h2 id="为什么使用-ELK？"><a href="#为什么使用-ELK？" class="headerlink" title="为什么使用 ELK？"></a>为什么使用 ELK？</h2><ul>
+<li><p>ELK组件在海量日志系统的运维中，可用于解决以下主要问题：</p>
+<ul>
+<li>分布式日志数据统一收集，实现集中式查询和管理</li>
+<li>故障排查</li>
+<li>安全信息和事件管理</li>
+<li>报表功能</li>
+</ul>
+</li>
+<li><p>ELK组件在大数据运维系统中，主要可解决的问题如下：</p>
+<ul>
+<li>日志查询，问题排查，故障恢复，故障自愈</li>
+<li>应用日志分析，错误报警</li>
+<li>性能分析，用户行为分析</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="ELK使用场景"><a href="#ELK使用场景" class="headerlink" title="ELK使用场景"></a>ELK使用场景</h2><p><img src="/2019/02/19/ELK介绍及ES集群安装/4.png" alt=""></p>
+<hr>
+<h1 id="ELK–-gt-elasticsearch（ES）"><a href="#ELK–-gt-elasticsearch（ES）" class="headerlink" title="ELK–&gt;elasticsearch（ES）"></a>ELK–&gt;elasticsearch（ES）</h1><h2 id="Host1和Host2主机-elasticsearch（ES）部署：（es-java环境）"><a href="#Host1和Host2主机-elasticsearch（ES）部署：（es-java环境）" class="headerlink" title="Host1和Host2主机 elasticsearch（ES）部署：（es+java环境）"></a>Host1和Host2主机 elasticsearch（ES）部署：（es+java环境）</h2><p><img src="/2019/02/19/ELK介绍及ES集群安装/19.png" alt=""></p>
+<p>1：环境初始化：</p>
+<ul>
+<li>最小化安装 Centos 7.2 x86_64操作系统的虚拟机，vcpu 2，内存4G或更多，操作系统盘50G，主机名设置规则为linux-hostX.exmaple.com，其中host1和host2为elasticsearch服务器，为保证效果特额外添加一块单独的数据磁盘大小为50G并格式化挂载。</li>
+</ul>
+<p>2：host1和host2添加磁盘格式化挂载：</p>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/5.png" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">查看原有磁盘数量</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># lsblk</span></span><br><span class="line">    NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">    sda      8:0    0  200G  0 disk </span><br><span class="line"></span><br><span class="line">新添加的磁盘在不重启主机的情况下扫描发现新的磁盘</span><br><span class="line">    ~]<span class="comment"># echo "- - -" &gt; /sys/class/scsi_host/host0(TAB)/scan</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># lsblk</span></span><br><span class="line">    NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">    sda      8:0    0  200G  0 disk </span><br><span class="line">    sdb      8:16   0   50G  0 disk</span><br><span class="line"></span><br><span class="line">格式化新的磁盘（用于存放收集的日志）</span><br><span class="line">    </span><br><span class="line">    ~]<span class="comment"># mkfs.xfs /dev/sdb </span></span><br><span class="line"></span><br><span class="line">挂载新的磁盘，/data/esdata目录用来存放elasticsearch存储数据</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># mkdir -p /data/&#123;esdata,eslogs&#125;</span></span><br><span class="line">    ~]<span class="comment"># mount /dev/sdb /data/</span></span><br><span class="line">    ~]<span class="comment"># lsblk</span></span><br><span class="line">    sdb      8:16   0   50G  0 disk /data/</span><br><span class="line"></span><br><span class="line">设置开机自动挂载</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/fstab </span></span><br><span class="line">    <span class="comment">#最好使用uuid进行挂载。使用blkid /dev/sdb查看磁盘的uuid</span></span><br><span class="line">    /dev/sdb /data xfs defaults 0 0</span><br></pre></td></tr></table></figure>
+<p>3：host1和host2防火墙和selinux：</p>
+<ul>
+<li>关闭防所有服务器的火墙和selinux，包括web服务器、redis和logstash服务器的防火墙和selinux全部关闭，此步骤是为了避免出现因为防火墙策略或selinux安全权限引起的各种未知问题，以下只显示了host1和host2的命令，但是其他服务器都要执行。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl  disable  firewalld</span></span><br><span class="line">~]<span class="comment"># systemctl  disable NetworkManager</span></span><br><span class="line">~]<span class="comment"># sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config</span></span><br><span class="line">~]<span class="comment"># echo "* soft nofile 65536" &gt;&gt; /etc/security/limits.conf</span></span><br><span class="line">~]<span class="comment"># echo "* hard nofile 65536" &gt;&gt; /etc/security/limits.conf</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>4：host1和host2设置epel源、安装基本操作命令并同步时间以及各服务器配置本地域名解析：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">各服务器配置本地域名解析</span><br><span class="line"></span><br><span class="line">主机名立即生效</span><br><span class="line">~]<span class="comment">#vim /etc/hostname</span></span><br><span class="line">~]<span class="comment">#hostname es1.com #退出重新登陆则生效</span></span><br><span class="line"></span><br><span class="line">host1和host2 ~]<span class="comment"># vim /etc/hosts</span></span><br><span class="line">192.168.15.11 linux-host1.exmaple.com</span><br><span class="line">192.168.15.12 linux-host2.exmaple.com</span><br><span class="line">192.168.15.13 linux-host3.exmaple.com</span><br><span class="line">192.168.15.14 linux-host4.exmaple.com</span><br><span class="line">192.168.15.15 linux-host5.exmaple.com</span><br><span class="line">192.168.15.16 linux-host6.exmaple.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">获取epel源</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span></span><br><span class="line"></span><br><span class="line">安装依赖包</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># yum install -y net-tools vim lrzsz tree screen lsof tcpdump wget ntpdate</span></span><br><span class="line"></span><br><span class="line">设置时间同步并设置计划任务定时同步时间</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime </span></span><br><span class="line">    ~]<span class="comment"># echo "*/5 * * * *  ntpdate time1.aliyun.com &amp;&gt; /dev/null &amp;&amp; hwclock -w" &gt;&gt; /var/spool/cron/root</span></span><br><span class="line">    ~]<span class="comment"># systemctl  restart crond</span></span><br><span class="line">    ~]<span class="comment"># reboot  #重启检查各项配置是否生效，没有问题的话给虚拟机做快照以方便后期还原</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>5：在host1和host2分别安装elasticsearch：</p>
+<p>5.1：在两台服务器准备java环境：</p>
+<ul>
+<li>因为elasticsearch服务运行需要java环境，因此两台elasticsearch服务器需要安装java环境，可以使用以下方式安装：</li>
+</ul>
+<p>方式一：直接使用yum安装openjdk<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># yum install  java-1.8.0*</span></span><br></pre></td></tr></table></figure></p>
+<p>方式二：本地安装在oracle官网下载rpm安装包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># yum  localinstall jdk-8u92-linux-x64.rpm</span></span><br></pre></td></tr></table></figure></p>
+<p>方式三：下载二进制包自定义profile环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">下载地址：http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># tar xvf jdk-8u121-linux-x64.tar.gz  -C /usr/local/</span></span><br><span class="line">    ~]<span class="comment"># ln -sv /usr/local/jdk1.8.0_121 /usr/local/jdk</span></span><br><span class="line">    ~]<span class="comment"># vim /etc/profile</span></span><br><span class="line">    <span class="built_in">export</span> HISTTIMEFORMAT=<span class="string">"%F %T `whoami` "</span></span><br><span class="line">    <span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk</span><br><span class="line">    <span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/jre/lib/rt.jar:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br><span class="line">    <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line">    ~]<span class="comment"># source  /etc/profile</span></span><br><span class="line">    ~]<span class="comment"># java -version</span></span><br><span class="line">    java version <span class="string">"1.8.0_121"</span> <span class="comment">#确认可以出现当前的java版本号</span></span><br><span class="line">    Java(TM) SE Runtime Environment (build 1.8.0_121-b13)</span><br><span class="line">    Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)</span><br></pre></td></tr></table></figure></p>
+<p>这里采用rpm包方式安装JDK<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># ls</span></span><br><span class="line">jdk-8u192-linux-x64.rpm </span><br><span class="line">~]<span class="comment"># rpm -ivh jdk-8u192-linux-x64.rpm</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>5.2：官网下载elasticsearch RPM包并安装：<br>下载地址：<a href="https://www.elastic.co/downloads/elasticsearch，当前最新版本5.3.0" target="_blank" rel="noopener">https://www.elastic.co/downloads/elasticsearch，当前最新版本5.3.0</a></p>
+<p>host1和host2两台服务器分别安装elasticsearch:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># rpm -ivh elasticsearch-5.6.13.rpm </span></span><br><span class="line">~]<span class="comment"># rpm -ql elasticsearch </span></span><br><span class="line"><span class="comment">#主配置文件</span></span><br><span class="line">/etc/elasticsearch/elasticsearch.yml    </span><br><span class="line"><span class="comment">#调优的配置文件</span></span><br><span class="line">/etc/elasticsearch/jvm.options</span><br><span class="line"><span class="comment">#启动程序文件（默认定义的启动程序的身份为elasticsearch用户）</span></span><br><span class="line">/usr/lib/systemd/system/elasticsearch.service   </span><br><span class="line"></span><br><span class="line"><span class="comment">#主要使用.jar文件实现模块化的扩展</span></span><br></pre></td></tr></table></figure></p>
+<p>6：目录权限更改：<br>host1和host2各服务器创建数据和日志目录并修改目录权限为elasticsearch：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># mkdir /data/&#123;esdata,eslogs&#125;</span></span><br><span class="line">~]<span class="comment"># chown -R elasticsearch.elasticsearch /data</span></span><br></pre></td></tr></table></figure></p>
+<p>7：编辑host1和host2各elasticsearch服务器的服务配置文件解析：<br>配置的官方帮助文档：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/index.html</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#未特殊标注的host1和host2主机的配置相同</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/elasticsearch/elasticsearch.yml </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#ELK的集群名称，名称相同即属于是同一个集群（集群名称是各个ES服务端一致的）</span></span><br><span class="line">    17 cluster.name: ELK-Cluster    <span class="comment">#将host1节点和host2节点集群名称保持一致</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#本机在集群内的节点名称（各ES节点的node.name不可重复）</span></span><br><span class="line">    23 node.name: elk-node1    <span class="comment">#host1名称elk-node1 #host2名称elk-node2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#数据保存目录</span></span><br><span class="line">    33 path.data: /data/esdata </span><br><span class="line"></span><br><span class="line">    <span class="comment">#日志保存目录 </span></span><br><span class="line">    37 path.logs: /data/eslogs</span><br><span class="line"></span><br><span class="line">    <span class="comment">#服务启动的时候锁定足够的内存，防止数据写入swap   </span></span><br><span class="line">    <span class="comment">#43 bootstrap.memory_lock: true </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#监听IP，默认监听本机的所有地址</span></span><br><span class="line">    55 network.host: 0.0.0.0 </span><br><span class="line"></span><br><span class="line">    <span class="comment">#客户端端口，提供Logstash向elasticsearch写上缴日志数据时使用(还有一个9300,elasticsearch集群中同步数据以及集群间状态选举通讯使用)</span></span><br><span class="line">    59 http.port: 9200 </span><br><span class="line"></span><br><span class="line">    <span class="comment">#集群几点状态发现使用，默认在整个网段中做广播，改为组播的方式，指定哪些机器发送数据包（设置尽在host1主机和host2主机间发送组播）</span></span><br><span class="line">    68 discovery.zen.ping.unicast.hosts: [<span class="string">"host1地址"</span>, <span class="string">"host2地址"</span>]</span><br><span class="line"></span><br><span class="line">    生产参考配置项</span><br><span class="line"></span><br><span class="line">    <span class="comment">#discovery.zen.minimum_master_nodes: 3    </span></span><br><span class="line">    <span class="comment">#设置这个参数来保证集群中的节点可以知道其它N个有</span></span><br><span class="line">    <span class="comment">#master资格的节点，默认为1，当集群多余三个节点时，可以设置大一点的值(2-4)</span></span><br><span class="line"></span><br><span class="line">    生产配置项：了解即可</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gateway.recover_after_nodes: 3    </span></span><br><span class="line">    <span class="comment">#在完全重新启动集群后阻塞初始恢复，直到启动N个节点:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#node.max_local_storage_nodes: 1</span></span><br><span class="line">    <span class="comment">#默认情况下，多个节点可以在同一个安装路径启动，如果你想让你的Elasticsearch只启动一个节点，在这合理设置。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#设置是否可以通过正则或者_all删除或者关闭索引。</span></span><br><span class="line">    <span class="comment">#action.destructive_requires_name: true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">host1配置主文件</span><br><span class="line">    ~]<span class="comment"># grep "^[a-Z]" /etc/elasticsearch/elasticsearch.yml</span></span><br><span class="line">    cluster.name: ELK-Cluster</span><br><span class="line">    node.name: elk-node1</span><br><span class="line">    path.data: /data/esdata</span><br><span class="line">    path.logs: /data/eslogs</span><br><span class="line">    network.host: 0.0.0.0</span><br><span class="line">    http.port: 9200</span><br><span class="line">    discovery.zen.ping.unicast.hosts: [<span class="string">"host1地址"</span>, <span class="string">"host2地址"</span>]</span><br><span class="line"></span><br><span class="line">host2配置文件</span><br><span class="line">    ~]<span class="comment"># grep "^[a-Z]" /etc/elasticsearch/elasticsearch.yml</span></span><br><span class="line">    cluster.name: ELK-Cluster</span><br><span class="line">    node.name: elk-node2</span><br><span class="line">    path.data: /data/esdata</span><br><span class="line">    path.logs: /data/eslogs</span><br><span class="line">    bootstrap.memory_lock: <span class="literal">true</span></span><br><span class="line">    network.host: 0.0.0.0</span><br><span class="line">    http.port: 9200</span><br><span class="line">    discovery.zen.ping.unicast.hosts: [<span class="string">"host1地址"</span>, <span class="string">"host2地址"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>8：host1和host2启动elasticsearch服务并验证，端口监听是否成功：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl  restart elasticsearch</span></span><br><span class="line">~]<span class="comment"># systemctl  enable elasticsearch</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># tail -f /data/eslogs/ELK-Cluster.log </span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># ss -tnl</span></span><br><span class="line">:::9200       <span class="comment">#用户访问的接口                                               </span></span><br><span class="line">:::9300       <span class="comment">#集群内部通讯的端口</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># ps -ef | grep elasticsearch</span></span><br><span class="line"><span class="comment">#默认的可使用的最大内存和最小内存未2G</span></span><br><span class="line">elastic+  15756      1 10 14:04 ?        00:00:31 /bin/java -Xms2g -Xmx2g</span><br></pre></td></tr></table></figure></p>
+<p>9：通过浏览器访问elasticsearch服务端口：</p>
+<p>9.1：访问host1主机</p>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/6.png" alt=""></p>
+<p>9.2：访问host2主机</p>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/7.png" alt=""></p>
+<hr>
+<p>10：host1和host2修改启动脚本，修改内存限制，并同步配置文件：</p>
+<h4 id="这里为测试场景不需要修改"><a href="#这里为测试场景不需要修改" class="headerlink" title="这里为测试场景不需要修改"></a>这里为测试场景不需要修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">编辑elasticsearch启动脚本声明启动时都内存不做限制</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /usr/lib/systemd/system/elasticsearch.service #修改内存限制</span></span><br><span class="line">    40 LimitMEMLOCK=infinity  <span class="comment">#最大化使用内存</span></span><br><span class="line"></span><br><span class="line">编辑修改elasticsearch节点中的内存限制配置文件</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/elasticsearch/jvm.options </span></span><br><span class="line">    22 -Xms2g</span><br><span class="line">    23 -Xmx2g <span class="comment">#最小和最大内存限制，为什么最小和最大设置一样大？(不可设置为浮点数，只可以设置为整数)</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl daemon-reload</span></span><br><span class="line">    ~]<span class="comment"># systemctl  start elasticsearch</span></span><br></pre></td></tr></table></figure>
+<p>官方配置文档最大建议30G以内：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html</a></p>
+<h4 id="后面安装elasticsearch插件之head-由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。"><a href="#后面安装elasticsearch插件之head-由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。" class="headerlink" title="后面安装elasticsearch插件之head,由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。"></a>后面安装elasticsearch插件之head,由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。</h4><p><img src="/2019/02/19/ELK介绍及ES集群安装/8.png" alt=""><br><img src="/2019/02/19/ELK介绍及ES集群安装/9.png" alt=""></p>
+<hr>
+<h1 id="ES插件"><a href="#ES插件" class="headerlink" title="ES插件"></a>ES插件</h1><h2 id="安装elasticsearch插件之head"><a href="#安装elasticsearch插件之head" class="headerlink" title="安装elasticsearch插件之head"></a>安装elasticsearch插件之head</h2><p>1：安装elasticsearch插件之head：</p>
+<ul>
+<li>插件是为了完成不同的功能，官方提供了一些插件但大部分是收费的，另外也有一些开发爱好者提供的插件，可以实现对elasticsearch集群的状态监控与管理配置等功能。<br>1.4.1：安装5.x版本的head插件： </li>
+<li>在elasticsearch 5.x版本以后不再支持直接安装head插件，而是需要通过启动一个服务方式，</li>
+<li>github托管地址：<a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="noopener">https://github.com/mobz/elasticsearch-head</a></li>
+</ul>
+<p>2：host1和host2服务放置安装elasticsearch插件之head<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># yum install -y npm</span></span><br><span class="line"><span class="comment"># NPM的全称是Node Package Manager，是随同NodeJS一起安装的包管理和分发工具，它很方便让JavaScript开发者下载、安装、上传以及管理已经安装的包。</span></span><br><span class="line">~]<span class="comment"># cd /usr/local/src/</span></span><br><span class="line">src]<span class="comment">#git clone git://github.com/mobz/elasticsearch-head.git </span></span><br><span class="line">src]<span class="comment"># cd elasticsearch-head/</span></span><br><span class="line">elasticsearch-head]<span class="comment"># yum install npm -y</span></span><br><span class="line">elasticsearch-head]<span class="comment"># npm install grunt -save</span></span><br><span class="line">elasticsearch-head]<span class="comment"># ll node_modules/grunt  #确认生成文件</span></span><br><span class="line">elasticsearch-head]<span class="comment"># npm install #执行安装</span></span><br><span class="line"> </span><br><span class="line">elasticsearch-head]<span class="comment"># npm run start  &amp;  #后台启动服务</span></span><br></pre></td></tr></table></figure></p>
+<p>2.1：host1和host2修改elasticsearch服务配置文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">开启跨域访问支持，然后重启elasticsearch服务：</span><br><span class="line">    ~]<span class="comment"># vim /etc/elasticsearch/elasticsearch.yml </span></span><br><span class="line">    http.cors.enabled: <span class="literal">true</span> </span><br><span class="line">    http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line">    ~]<span class="comment"># /etc/init.d/elasticsearch  restart</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>3：host1和host2docker安装elasticsearch插件之head<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">安装docker</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cd /etc/yum.repos.d/</span></span><br><span class="line">    yum.repos.d]<span class="comment"># wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line"></span><br><span class="line">安装时如果报这种错误并解决</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># yum install docker-ce -y</span></span><br><span class="line">    You could try using --skip-broken to work around the problem</span><br><span class="line">    You could try running: rpm -Va --nofiles --nodigest</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># yum install http://vault.centos.org/centos/7.3.1611/extras/x86_64/Packages/container-selinux-2.9-4.el7.noarch.rpm</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># yum install docker-ce -y</span></span><br><span class="line"></span><br><span class="line">启动docker并加入开机启动项</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl  start docker &amp;&amp; systemctl  enable docker</span></span><br><span class="line"></span><br><span class="line">使用dicker 下载head镜像</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># docker pull mobz/elasticsearch-head:5</span></span><br><span class="line"></span><br><span class="line">以容器的方式运行elasticsearch插件head，并映射端口到宿主机</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># docker run -d  -p 9100:9100 mobz/elasticsearch-head:5</span></span><br><span class="line"></span><br><span class="line">查看容器的状态</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># docker ps -a</span></span><br><span class="line">    CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">    ca48d7d13e87        mobz/elasticsearch-head:5   <span class="string">"/bin/sh -c 'grunt s…"</span>   34 seconds ago      Up 31 seconds       0.0.0.0:9100-&gt;9100/tcp   compassionate_williamson</span><br></pre></td></tr></table></figure></p>
+<p>3.1：host1和host2修改elasticsearch服务配置文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">开启跨域访问支持，然后重启elasticsearch服务：</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># vim /etc/elasticsearch/elasticsearch.yml </span></span><br><span class="line">    <span class="comment">#可以添加至配置文件的最后一行中</span></span><br><span class="line">    http.cors.enabled: <span class="literal">true</span> </span><br><span class="line">    http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line"></span><br><span class="line">重启启动elasticsearch</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart elasticsearch.service</span></span><br></pre></td></tr></table></figure></p>
+<p>4：通过浏览器访问host1和host2主机elasticsearch组件head,映射宿主机的端口为9100<br><img src="/2019/02/19/ELK介绍及ES集群安装/10.png" alt=""></p>
+<p>5：Master与Slave的区别：</p>
+<ul>
+<li>Master的职责：<ul>
+<li>统计各node节点状态信息、集群状态信息统计、索引的创建和删除、索引分配的管理、关闭node节点等</li>
+</ul>
+</li>
+<li>Slave的职责：<ul>
+<li>从master同步数据、等待机会成为Master</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>6：导入本地的docker镜像：</p>
+<h4 id="本章外"><a href="#本章外" class="headerlink" title="本章外"></a>本章外</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># docker save docker.io/mobz/elasticsearch-head &gt; /opt/elasticsearch-head-docker.tar.gz #导出镜像</span></span><br><span class="line">src]<span class="comment"># docker load &lt; /opt/elasticsearch-head-docker.tar.gz #导入</span></span><br><span class="line">src]<span class="comment"># docker images#验证</span></span><br><span class="line">REPOSITORY                          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/mobz/elasticsearch-head   5                   b19a5c98e43b        4 months ago        823.9 MB</span><br><span class="line">src]<span class="comment"># docker run -d  -p 9100:9100 --name elastic docker.io/mobz/elasticsearch-head:5  #从本地docker images 启动容器</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="1-4-2：elasticsearch插件之kopf"><a href="#1-4-2：elasticsearch插件之kopf" class="headerlink" title="1.4.2：elasticsearch插件之kopf"></a>1.4.2：elasticsearch插件之kopf</h2><p>1：elasticsearch插件之kopf：<br>2：kopf(已经无人维护)：</p>
+<ul>
+<li>Git地址:<a href="https://github.com/lmenezes/elasticsearch-kopf" target="_blank" rel="noopener">https://github.com/lmenezes/elasticsearch-kopf</a></li>
+<li>但是目前还不支持5.x版本的elasticsearch，但是可以安装在elasticsearc 1.x或2.x的版本安装。</li>
+</ul>
+<hr>
+<h1 id="ELK集群监控"><a href="#ELK集群监控" class="headerlink" title="ELK集群监控"></a>ELK集群监控</h1><h2 id="使用AIP接口（curl）状态查看"><a href="#使用AIP接口（curl）状态查看" class="headerlink" title="使用AIP接口（curl）状态查看"></a>使用AIP接口（curl）状态查看</h2><p>1：监控elasticsearch集群状态：<br>2：通过shell命令/python脚本获取集群状态（使用zabbix监控集群状态结合python脚本）：</p>
+<ul>
+<li>获取到的是一个json格式的返回值，那就可以通过python对其中的信息进行分析，例如对status进行分析，如果等于green(绿色)就是运行在正常，等于yellow(黄色)表示副本分片丢失，red(红色)表示主分片丢失</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sXGET  http://192.168.15.211:9200/_cluster/health?pretty=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/12.png" alt=""></p>
+<h2 id="对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下："><a href="#对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下：" class="headerlink" title="对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下："></a>对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下：</h2><p>1.python脚本：取出集群的状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-host1 ~]<span class="comment"># cat  els-cluster-monitor.py </span></span><br><span class="line">[root@es1 ~]<span class="comment"># cat  es.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="comment">#Author Zhang Jie</span></span><br><span class="line"></span><br><span class="line">import smtplib</span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line">from email.utils import formataddr</span><br><span class="line">import subprocess</span><br><span class="line">body = <span class="string">""</span></span><br><span class="line"><span class="literal">false</span>=<span class="string">"false"</span></span><br><span class="line">obj = subprocess.Popen((<span class="string">"curl -sXGET http://192.168.15.211:9200/_cluster/health?pretty=true"</span>),shell=True, stdout=subprocess.PIPE)</span><br><span class="line">data =  obj.stdout.read()</span><br><span class="line">data1 = <span class="built_in">eval</span>(data)</span><br><span class="line">status = data1.get(<span class="string">"status"</span>)</span><br><span class="line"><span class="keyword">if</span> status == <span class="string">"green"</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"50"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"100"</span>)</span><br><span class="line"></span><br><span class="line">[root@elk-s1 ~]<span class="comment"># chmod  a+x /etc/zabbix/zabbix_agentd.d/els_status.py</span></span><br><span class="line"></span><br><span class="line">脚本执行结果：</span><br><span class="line">~]<span class="comment"># python els-cluster-monitor.py </span></span><br><span class="line">50</span><br></pre></td></tr></table></figure></p>
+<p>2.zabbix 添加监控<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">配置zabbix-agent配置文件导入自定义配置文件：</span><br><span class="line"></span><br><span class="line">[root@elk-s1 ~]<span class="comment"># vim /etc/zabbix/zabbix_agentd.conf</span></span><br><span class="line">Include=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line"></span><br><span class="line">自定义配置文件：</span><br><span class="line"></span><br><span class="line">[root@elk-s1 ~]<span class="comment"># vim /etc/zabbix/zabbix_agentd.d/els_status.conf</span></span><br><span class="line"></span><br><span class="line">UserParameter=els.status,/usr/bin/python /etc/zabbix/zabbix_agentd.d/els_status.py</span><br><span class="line"></span><br><span class="line">[root@elk-s1 ~]<span class="comment"># systemctl  restart zabbix-agent</span></span><br></pre></td></tr></table></figure></p>
+<p>3.zabbix-server端测试能否获取到值，获取到100表示集群正常运行，否则表示出现问题需要排查：<br><img src="/2019/02/19/ELK介绍及ES集群安装/ELK介绍及集群安装/13.png" alt=""></p>
+<p>4.在zabbix-serve的对应的elasticsearch服务器r端添加监控项：<br><img src="/2019/02/19/ELK介绍及ES集群安装/14.png" alt=""></p>
+<p>5.创建触发器<br><img src="/2019/02/19/ELK介绍及ES集群安装/15.png" alt=""></p>
+<p>6.创建图形<br><img src="/2019/02/19/ELK介绍及ES集群安装/16.png" alt=""></p>
+<p>7.查看图形<br><img src="/2019/02/19/ELK介绍及ES集群安装/17.png" alt=""></p>
+<p>8.关闭一个elasticsearch服务器测试能否触发邮件报警：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@els-s2 tianqi]<span class="comment"># systemctl   stop  elasticsearch #在elasticsearch服务器关闭</span></span><br><span class="line">[root@Zabbix tianqi]<span class="comment"># zabbix_get  -s 192.168.0.33  -k els.status #在zabbix-server测试获取的返回值是否为50</span></span><br><span class="line">50</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/02/19/ELK介绍及ES集群安装/18.png" alt=""></p>
+<p>9.关于elasticsearch存储index的定期删除，elasticsearch存储的日志较多的时候会影响搜索性能，因此建议定期清理，脚本如下，这次是shell脚本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">DATE=`date -d <span class="string">"2 days ago"</span> +%Y.%m.%d`</span><br><span class="line">LOG_NAME=<span class="string">"api4-systemlog"</span></span><br><span class="line">FILE_NAME=<span class="variable">$&#123;LOG_NAME&#125;</span>-<span class="variable">$&#123;DATE&#125;</span></span><br><span class="line">curl -XDELETE  http://hfelk.chinacloudapp.cn:9200/<span class="variable">$&#123;FILE_NAME&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;FILE_NAME&#125;</span> delete success"</span></span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># chmod  a+x /root/els_delete.sh </span></span><br><span class="line"></span><br><span class="line">测试执行：</span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># bash -x /root/els_delete.sh</span></span><br><span class="line">++ date -d <span class="string">'30 days ago'</span> +%Y.%m.%d</span><br><span class="line">+ DATE=2016.08.05</span><br><span class="line">+ LOG_NAME=api4-systemlog</span><br><span class="line">+ FILE_NAME=api4-systemlog-2016.08.05</span><br><span class="line">+ curl -XDELETE http://hfelk.chinacloudapp.cn:9200/api4-systemlog-2016.08.05</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>&#125;+ <span class="built_in">echo</span> <span class="string">'api4-systemlog-2016.08.05 delete success'</span></span><br><span class="line">api4-systemlog-2016.08.05 delete success</span><br><span class="line"></span><br><span class="line">添加任务计定期执行即可：</span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># crontab  -e</span></span><br><span class="line">1 * * * * /root/els_delete.sh <span class="comment">#每天凌晨一点清除一月之前的日志</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>列出集群中所有节点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># curl -X  GET "http://172.18.135.1:9200/_cat/nodes "</span></span><br><span class="line">172.18.135.1  9 70 1 0.00 0.05 0.16 mdi * es1.com</span><br><span class="line">172.18.135.2 15 52 0 0.04 0.31 0.59 mdi - es2.com   <span class="comment"># mdi m es2.com此处的m表示可以成为备用master节点</span></span><br></pre></td></tr></table></figure></p>
+<p>查看集群索引状态：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment">#  curl -X  GET "http://172.18.135.1:9200/_cat/nodes?v"</span></span><br><span class="line">ip           heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name</span><br><span class="line">172.18.135.1           10          81   0    0.03    0.07     0.13 mdi       *      es1.com</span><br><span class="line">172.18.135.2           15          52   1    0.33    0.22     0.40 mdi       -      es2.com</span><br></pre></td></tr></table></figure></p>
+<p>查看现在集群中哪个是主节点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># curl -X  GET "http://172.18.135.1:9200/_cat/master"</span></span><br><span class="line">u5qBvduFQ3GOa5CjROsWOQ 172.18.135.1 172.18.135.1 es1.com</span><br></pre></td></tr></table></figure></p>
+<p>_cat API来查看集群状态：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">集群状态：</span><br><span class="line">    green  正常</span><br><span class="line">    red    不可用</span><br><span class="line">    yellow  修复状态</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># curl -X  GET http://172.18.135.1:9200/_cat/health</span></span><br><span class="line">1550496241 21:24:01 ES green 2 2 0 0 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure></p>
+<p>_cat API帮助：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># curl -X  GET http://172.18.135.1:9200/_cat/nodes?help</span></span><br><span class="line"><span class="built_in">help</span>下面你发现了好多可选，比如说我想看<span class="built_in">help</span>下的 uptime，我应该用h= uptime的语法来看 </span><br><span class="line">~]<span class="comment"># curl -X  GET http://172.18.135.1:9200/_cat/nodes?h=uptime</span></span><br><span class="line">27.2m</span><br><span class="line">23.8m</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-5-2-cluster-API-分类总结"><a href="#1-5-2-cluster-API-分类总结" class="headerlink" title="1.5.2:cluster API 分类总结"></a>1.5.2:cluster API 分类总结</h3><p>1）_cluster/health 来显示集群状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># curl -X  GET "172.18.135.1:9200/_cluster/health?pretty"</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"ES"</span>,</span><br><span class="line">  <span class="string">"status"</span> : <span class="string">"green"</span>,</span><br><span class="line">  <span class="string">"timed_out"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"number_of_nodes"</span> : 2,</span><br><span class="line">  <span class="string">"number_of_data_nodes"</span> : 2,</span><br><span class="line">  <span class="string">"active_primary_shards"</span> : 0,</span><br><span class="line">  <span class="string">"active_shards"</span> : 0,</span><br><span class="line">  <span class="string">"relocating_shards"</span> : 0,</span><br><span class="line">  <span class="string">"initializing_shards"</span> : 0,</span><br><span class="line">  <span class="string">"unassigned_shards"</span> : 0,</span><br><span class="line">  <span class="string">"delayed_unassigned_shards"</span> : 0,</span><br><span class="line">  <span class="string">"number_of_pending_tasks"</span> : 0,</span><br><span class="line">  <span class="string">"number_of_in_flight_fetch"</span> : 0,</span><br><span class="line">  <span class="string">"task_max_waiting_in_queue_millis"</span> : 0,</span><br><span class="line">  <span class="string">"active_shards_percent_as_number"</span> : 100.0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2)  _cluster/state API  查看状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment">#  curl -XGET "http://172.18.135.1:9200/_cluster/state/nodes?pretty"</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"ES"</span>,</span><br><span class="line">  <span class="string">"nodes"</span> : &#123;</span><br><span class="line">    <span class="string">"u5qBvduFQ3GOa5CjROsWOQ"</span> : &#123;</span><br><span class="line">      <span class="string">"name"</span> : <span class="string">"es1.com"</span>,</span><br><span class="line">      <span class="string">"ephemeral_id"</span> : <span class="string">"t7qVHOZSTuyjMa1d7Zhm7w"</span>,</span><br><span class="line">      <span class="string">"transport_address"</span> : <span class="string">"172.18.135.1:9300"</span>,</span><br><span class="line">      <span class="string">"attributes"</span> : &#123; &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"2jAXgTrdQfmZrsaLnDQATA"</span> : &#123;</span><br><span class="line">      <span class="string">"name"</span> : <span class="string">"es2.com"</span>,</span><br><span class="line">      <span class="string">"ephemeral_id"</span> : <span class="string">"BjSFicySSQGsF_X9Aqk0ng"</span>,</span><br><span class="line">      <span class="string">"transport_address"</span> : <span class="string">"172.18.135.2:9300"</span>,</span><br><span class="line">      <span class="string">"attributes"</span> : &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3) _cluster/stats  API（统计）  统计数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">主要来查看索引、分片等</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># curl -XGET "http://172.18.135.1:9200/_cluster/stats?pretty" </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_nodes"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : 2,</span><br><span class="line">    <span class="string">"successful"</span> : 2,</span><br><span class="line">    <span class="string">"failed"</span> : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"ES"</span>,</span><br><span class="line">  <span class="string">"timestamp"</span> : 1550496718730,</span><br><span class="line">  <span class="string">"status"</span> : <span class="string">"green"</span>,</span><br><span class="line">  <span class="string">"indices"</span> : &#123;</span><br><span class="line">    <span class="string">"count"</span> : 0,</span><br><span class="line">    <span class="string">"shards"</span> : &#123; &#125;,</span><br><span class="line">    <span class="string">"docs"</span> : &#123;</span><br><span class="line">      <span class="string">"count"</span> : 0,</span><br><span class="line">      <span class="string">"deleted"</span> : 0</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"store"</span> : &#123;</span><br><span class="line">      <span class="string">"size_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"throttle_time_in_millis"</span> : 0</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"fielddata"</span> : &#123;</span><br><span class="line">      <span class="string">"memory_size_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"evictions"</span> : 0</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"query_cache"</span> : &#123;</span><br><span class="line">      <span class="string">"memory_size_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"total_count"</span> : 0,</span><br><span class="line">      <span class="string">"hit_count"</span> : 0,</span><br><span class="line">      <span class="string">"miss_count"</span> : 0,</span><br><span class="line">      <span class="string">"cache_size"</span> : 0,</span><br><span class="line">      <span class="string">"cache_count"</span> : 0,</span><br><span class="line">      <span class="string">"evictions"</span> : 0</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"completion"</span> : &#123;</span><br><span class="line">      <span class="string">"size_in_bytes"</span> : 0</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"segments"</span> : &#123;</span><br><span class="line">      <span class="string">"count"</span> : 0,</span><br><span class="line">      <span class="string">"memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"terms_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"stored_fields_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"term_vectors_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"norms_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"points_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"doc_values_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"index_writer_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"version_map_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"fixed_bit_set_memory_in_bytes"</span> : 0,</span><br><span class="line">      <span class="string">"max_unsafe_auto_id_timestamp"</span> : -9223372036854775808,</span><br><span class="line">      <span class="string">"file_sizes"</span> : &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"nodes"</span> : &#123;</span><br><span class="line">    <span class="string">"count"</span> : &#123;</span><br><span class="line">      <span class="string">"total"</span> : 2,</span><br><span class="line">      <span class="string">"data"</span> : 2,</span><br><span class="line">      <span class="string">"coordinating_only"</span> : 0,</span><br><span class="line">      <span class="string">"master"</span> : 2,</span><br><span class="line">      <span class="string">"ingest"</span> : 2</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"versions"</span> : [</span><br><span class="line">      <span class="string">"5.6.13"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"os"</span> : &#123;</span><br><span class="line">      <span class="string">"available_processors"</span> : 4,</span><br><span class="line">      <span class="string">"allocated_processors"</span> : 4,</span><br><span class="line">      <span class="string">"names"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"name"</span> : <span class="string">"Linux"</span>,</span><br><span class="line">          <span class="string">"count"</span> : 2</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"mem"</span> : &#123;</span><br><span class="line">        <span class="string">"total_in_bytes"</span> : 6144528384,</span><br><span class="line">        <span class="string">"free_in_bytes"</span> : 2384535552,</span><br><span class="line">        <span class="string">"used_in_bytes"</span> : 3759992832,</span><br><span class="line">        <span class="string">"free_percent"</span> : 39,</span><br><span class="line">        <span class="string">"used_percent"</span> : 61</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"process"</span> : &#123;</span><br><span class="line">      <span class="string">"cpu"</span> : &#123;</span><br><span class="line">        <span class="string">"percent"</span> : 1</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"open_file_descriptors"</span> : &#123;</span><br><span class="line">        <span class="string">"min"</span> : 160,</span><br><span class="line">        <span class="string">"max"</span> : 161,</span><br><span class="line">        <span class="string">"avg"</span> : 160</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"jvm"</span> : &#123;</span><br><span class="line">      <span class="string">"max_uptime_in_millis"</span> : 1998393,</span><br><span class="line">      <span class="string">"versions"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"version"</span> : <span class="string">"1.8.0_131"</span>,</span><br><span class="line">          <span class="string">"vm_name"</span> : <span class="string">"OpenJDK 64-Bit Server VM"</span>,</span><br><span class="line">          <span class="string">"vm_version"</span> : <span class="string">"25.131-b12"</span>,</span><br><span class="line">          <span class="string">"vm_vendor"</span> : <span class="string">"Oracle Corporation"</span>,</span><br><span class="line">          <span class="string">"count"</span> : 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"version"</span> : <span class="string">"1.8.0_161"</span>,</span><br><span class="line">          <span class="string">"vm_name"</span> : <span class="string">"OpenJDK 64-Bit Server VM"</span>,</span><br><span class="line">          <span class="string">"vm_version"</span> : <span class="string">"25.161-b14"</span>,</span><br><span class="line">          <span class="string">"vm_vendor"</span> : <span class="string">"Oracle Corporation"</span>,</span><br><span class="line">          <span class="string">"count"</span> : 1</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"mem"</span> : &#123;</span><br><span class="line">        <span class="string">"heap_used_in_bytes"</span> : 301069112,</span><br><span class="line">        <span class="string">"heap_max_in_bytes"</span> : 2112618496</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"threads"</span> : 58</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"fs"</span> : &#123;</span><br><span class="line">      <span class="string">"total_in_bytes"</span> : 75125227520,</span><br><span class="line">      <span class="string">"free_in_bytes"</span> : 75057504256,</span><br><span class="line">      <span class="string">"available_in_bytes"</span> : 75057504256,</span><br><span class="line">      <span class="string">"spins"</span> : <span class="string">"true"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"plugins"</span> : [ ],</span><br><span class="line">    <span class="string">"network_types"</span> : &#123;</span><br><span class="line">      <span class="string">"transport_types"</span> : &#123;</span><br><span class="line">        <span class="string">"netty4"</span> : 2</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"http_types"</span> : &#123;</span><br><span class="line">        <span class="string">"netty4"</span> : 2</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="补充了解"><a href="#补充了解" class="headerlink" title="补充了解"></a>补充了解</h3><p>_cluster系列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1、查询设置集群状态 </span><br><span class="line">curl -XGET localhost:9200/_cluster/health?pretty=<span class="literal">true</span> </span><br><span class="line">pretty=<span class="literal">true</span>表示格式化输出 </span><br><span class="line">level=indices 表示显示索引状态 </span><br><span class="line">level=shards 表示显示分片信息 </span><br><span class="line">2、curl -XGET localhost:9200/_cluster/stats?pretty=<span class="literal">true</span> </span><br><span class="line">显示集群系统信息，包括CPU JVM等等 </span><br><span class="line">3、curl -XGET localhost:9200/_cluster/state?pretty=<span class="literal">true</span> </span><br><span class="line">集群的详细信息。包括节点、分片等。 </span><br><span class="line">3、curl -XGET localhost:9200/_cluster/pending_tasks?pretty=<span class="literal">true</span> </span><br><span class="line">获取集群堆积的任务 </span><br><span class="line">3、修改集群配置 </span><br><span class="line">举例：</span><br><span class="line"></span><br><span class="line">curl -XPUT localhost:9200/_cluster/settings -d ‘&#123; </span><br><span class="line">“persistent” : &#123; </span><br><span class="line">“discovery.zen.minimum_master_nodes” : 2 </span><br><span class="line">&#125; </span><br><span class="line">&#125;’ </span><br><span class="line">transient 表示临时的，persistent表示永久的 </span><br><span class="line">4、curl -XPOST ‘localhost:9200/_cluster/reroute’ -d ‘xxxxxx’ </span><br><span class="line">对shard的手动控制，参考http://zhaoyanblog.com/archives/687.html </span><br><span class="line">5、关闭节点 </span><br><span class="line">关闭指定192.168.1.1节点 </span><br><span class="line">curl -XPOST ‘http://192.168.1.1:9200/_cluster/nodes/_local/_shutdown’ </span><br><span class="line">curl -XPOST ‘http://localhost:9200/_cluster/nodes/192.168.1.1/_shutdown’ </span><br><span class="line">关闭主节点 </span><br><span class="line">curl -XPOST ‘http://localhost:9200/_cluster/nodes/_master/_shutdown’ </span><br><span class="line">关闭整个集群 </span><br><span class="line">$ curl -XPOST ‘http://localhost:9200/_shutdown?delay=10s’ </span><br><span class="line">$ curl -XPOST ‘http://localhost:9200/_cluster/nodes/_shutdown’ </span><br><span class="line">$ curl -XPOST ‘http://localhost:9200/_cluster/nodes/_all/_shutdown’ </span><br><span class="line">delay=10s表示延迟10秒关闭</span><br></pre></td></tr></table></figure></p>
+<p>_nodes系列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、查询节点的状态 </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/stats?pretty=<span class="literal">true</span>’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/192.168.1.2/stats?pretty=<span class="literal">true</span>’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/process’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/_all/process’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/192.168.1.2,192.168.1.3/jvm,process’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/192.168.1.2,192.168.1.3/info/jvm,process’ </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/192.168.1.2,192.168.1.3/_all </span><br><span class="line">curl -XGET ‘http://localhost:9200/_nodes/hot_threads</span><br></pre></td></tr></table></figure></p>
+<p>索引操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1、获取索引 </span><br><span class="line">curl -XGET ‘http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/&#123;id&#125;’ </span><br><span class="line">2、索引数据 </span><br><span class="line">curl -XPOST ‘http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/&#123;id&#125;’ -d’&#123;“a”:”avalue”,”b”:”bvalue”&#125;’ </span><br><span class="line">3、删除索引 </span><br><span class="line">curl -XDELETE ‘http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/&#123;id&#125;’ </span><br><span class="line">4、设置mapping</span><br><span class="line"></span><br><span class="line">curl -XPUT http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/_mapping -d ‘&#123; </span><br><span class="line">“&#123;<span class="built_in">type</span>&#125;” : &#123; </span><br><span class="line">“properties” : &#123; </span><br><span class="line">“date” : &#123; </span><br><span class="line">“<span class="built_in">type</span>” : “long” </span><br><span class="line">&#125;, </span><br><span class="line">“name” : &#123; </span><br><span class="line">“<span class="built_in">type</span>” : “string”, </span><br><span class="line">“index” : “not_analyzed” </span><br><span class="line">&#125;, </span><br><span class="line">“status” : &#123; </span><br><span class="line">“<span class="built_in">type</span>” : “<span class="built_in">integer</span>” </span><br><span class="line">&#125;, </span><br><span class="line">“<span class="built_in">type</span>” : &#123; </span><br><span class="line">“<span class="built_in">type</span>” : “<span class="built_in">integer</span>” </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125;’ </span><br><span class="line">5、获取mapping </span><br><span class="line">curl -XGET http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/_mapping </span><br><span class="line">6、搜索</span><br><span class="line"></span><br><span class="line">curl -XGET ‘http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/_search’ -d ‘&#123; </span><br><span class="line">“query” : &#123; </span><br><span class="line">“term” : &#123; “user” : “kimchy” &#125; //查所有 “match_all”: &#123;&#125; </span><br><span class="line">&#125;, </span><br><span class="line">“sort” : [&#123; “age” : &#123;“order” : “asc”&#125;&#125;,&#123; “name” : “desc” &#125; ], </span><br><span class="line">“from”:0, </span><br><span class="line">“size”:100 </span><br><span class="line">&#125; </span><br><span class="line">curl -XGET ‘http://localhost:9200/&#123;index&#125;/&#123;<span class="built_in">type</span>&#125;/_search’ -d ‘&#123; </span><br><span class="line">“filter”: &#123;“and”:&#123;“filters”:[&#123;“term”:&#123;“age”:”123”&#125;&#125;,&#123;“term”:&#123;“name”:”张三”&#125;&#125;]&#125;, </span><br><span class="line">“sort” : [&#123; “age” : &#123;“order” : “asc”&#125;&#125;,&#123; “name” : “desc” &#125; ], </span><br><span class="line">“from”:0, </span><br><span class="line">“size”:100 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+      <div>
+    
+        <div style="text-align:center;color: #FF0000;font-size:16px;">-------------------码字不易<i class="fa fa-heart"></i>尊重原创<i class="fa fa-heart"></i>转载标注<i class="fa fa-heart"></i>不胜感激-------------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+      
+</div>
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Yes or no？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="哆啦A梦 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="哆啦A梦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ELK-Stack/" rel="tag"># ELK Stack</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/16/Gitlab介绍及配置/" rel="next" title="Gitlab介绍及配置">
+                <i class="fa fa-chevron-left"></i> Gitlab介绍及配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/19/ELK之Logstash安装及基本语法/" rel="prev" title="ELK之Logstash安装及基本语法">
+                ELK之Logstash安装及基本语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/haha.gif" alt="哆啦A梦">
+            
+              <p class="site-author-name" itemprop="name">哆啦A梦</p>
+              <p class="site-description motion-element" itemprop="description">More than that</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" title="Weibo &rarr; https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1301458825" title="CloudMusic &rarr; https://music.163.com/#/user/home?id=1301458825" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>CloudMusic</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK介绍及集群安装"><span class="nav-number">1.</span> <span class="nav-text">ELK介绍及集群安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍ELK"><span class="nav-number">2.</span> <span class="nav-text">介绍ELK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是ELK？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是ELK？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Elasticsearch："><span class="nav-number">2.2.</span> <span class="nav-text">什么是Elasticsearch：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Logstash"><span class="nav-number">2.3.</span> <span class="nav-text">什么是Logstash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是kibana："><span class="nav-number">2.4.</span> <span class="nav-text">什么是kibana：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用-ELK？"><span class="nav-number">2.5.</span> <span class="nav-text">为什么使用 ELK？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK使用场景"><span class="nav-number">2.6.</span> <span class="nav-text">ELK使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK–-gt-elasticsearch（ES）"><span class="nav-number">3.</span> <span class="nav-text">ELK–&gt;elasticsearch（ES）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Host1和Host2主机-elasticsearch（ES）部署：（es-java环境）"><span class="nav-number">3.1.</span> <span class="nav-text">Host1和Host2主机 elasticsearch（ES）部署：（es+java环境）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这里为测试场景不需要修改"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">这里为测试场景不需要修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后面安装elasticsearch插件之head-由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">后面安装elasticsearch插件之head,由于宿主机内存不足，系统内核会将占用内存最大的进程强制kill掉，以保证系统的正常运行以及其他服务的正常运行。</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#ES插件"><span class="nav-number">4.</span> <span class="nav-text">ES插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装elasticsearch插件之head"><span class="nav-number">4.1.</span> <span class="nav-text">安装elasticsearch插件之head</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本章外"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">本章外</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-2：elasticsearch插件之kopf"><span class="nav-number">4.2.</span> <span class="nav-text">1.4.2：elasticsearch插件之kopf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK集群监控"><span class="nav-number">5.</span> <span class="nav-text">ELK集群监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用AIP接口（curl）状态查看"><span class="nav-number">5.1.</span> <span class="nav-text">使用AIP接口（curl）状态查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下："><span class="nav-number">5.2.</span> <span class="nav-text">对elasticsearch集群状态监控，并结合zabbix实现报警，原理为通过python脚本获取到elasticsearch集群的运行状态并取出status的值，如果状态为green表示正常的值就传递给zabbix一个值为100，如果是其他状态就返回值为50，zabbix根据最后一个值的结果判断，如果不是100就报警，设置如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-cluster-API-分类总结"><span class="nav-number">5.2.1.</span> <span class="nav-text">1.5.2:cluster API 分类总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充了解"><span class="nav-number">5.2.2.</span> <span class="nav-text">补充了解</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-child"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">哆啦A梦</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">512k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">7:45</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<center>
+                <font size="4" color="#FF0000">哆啦A梦已经奔跑:<span id="run_time" style="color:#DB70DB"></span></font>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("December 01,2017");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    str = yearsold + "年";
+                    str += daysold-365 + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="255,0,0" opacity="1" zindex="-1" count="230" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'dSJsYJFvGkHjdapdMEMXCnfL-gzGzoHsz',
+        appKey: 'yOLhPLlsxYBFYhhzjWECUdsf',
+        placeholder: '来了老弟！！！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
