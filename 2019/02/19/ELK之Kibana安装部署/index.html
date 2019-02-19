@@ -145,11 +145,12 @@
 <meta property="og:description" content="ELK之Kibana安装部署">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/标题.gif">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/1.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/2.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/3.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/4.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Kibana安装部署/5.png">
-<meta property="og:updated_time" content="2019-02-19T08:10:38.085Z">
+<meta property="og:updated_time" content="2019-02-19T11:53:08.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK之Kibana安装部署">
 <meta name="twitter:description" content="ELK之Kibana安装部署">
@@ -352,7 +353,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">65</span></a>
 
   </li>
         
@@ -614,6 +615,7 @@
 <h2 id="一句话介绍kibana"><a href="#一句话介绍kibana" class="headerlink" title="一句话介绍kibana"></a>一句话介绍kibana</h2><ul>
 <li>kibana 可以通过图形界面友好的展示你在es中的数据</li>
 </ul>
+<p><img src="/2019/02/19/ELK之Kibana安装部署/1.png" alt=""></p>
 <h2 id="Host4主机-kibana部署及日志收集："><a href="#Host4主机-kibana部署及日志收集：" class="headerlink" title="Host4主机 kibana部署及日志收集："></a>Host4主机 kibana部署及日志收集：</h2><p>1.安装并配置kibana：<br>可以通过rpm包或者二进制的方式进行安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># ls</span></span><br><span class="line">kibana-5.6.13-x86_64.rpm </span><br><span class="line">~]<span class="comment"># rpm -ivh kibana-5.6.13-x86_64.rpm</span></span><br></pre></td></tr></table></figure></p>
 <p>2.编辑Kibana配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#端口默认5601</span></span><br><span class="line">2 server.port: 5601 </span><br><span class="line"></span><br><span class="line"><span class="comment">#指定监听本机的地址</span></span><br><span class="line">7 server.host: <span class="string">"0.0.0.0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#指定ES主机的客户端监听地址</span></span><br><span class="line">21 elasticsearch.url: <span class="string">"http://Host1主机或者Host2主机:9200"</span></span><br></pre></td></tr></table></figure></p>
 <p>3.启动host4主机上的kibana服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl start kibana</span></span><br><span class="line">~]<span class="comment"># systemctl enable kibana</span></span><br><span class="line">~]<span class="comment"># ss -tnl</span></span><br><span class="line">*:5601</span><br></pre></td></tr></table></figure></p>
@@ -763,6 +765,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/" rel="prev" title="ELK之Logstash收集系统日志及tomcat的json日志">
+                ELK之Logstash收集系统日志及tomcat的json日志 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -837,7 +843,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1034,7 +1040,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">512k</span>
+    <span title="站点总字数">514k</span>
   
 
   
@@ -1045,7 +1051,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:45</span>
+    <span title="站点阅读时长">7:48</span>
   
 </div>
 
