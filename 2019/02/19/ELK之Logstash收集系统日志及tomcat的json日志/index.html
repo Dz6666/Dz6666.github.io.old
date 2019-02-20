@@ -145,7 +145,12 @@
 <meta property="og:description" content="ELK之Logstash收集系统日志及tomcat的json日志">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/标题.gif">
-<meta property="og:updated_time" content="2019-02-19T11:56:38.370Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/3.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/4.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/5.png">
+<meta property="og:updated_time" content="2019-02-19T13:44:22.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK之Logstash收集系统日志及tomcat的json日志">
 <meta name="twitter:description" content="ELK之Logstash收集系统日志及tomcat的json日志">
@@ -310,7 +315,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
 
   </li>
         
@@ -348,7 +353,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">65</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">67</span></a>
 
   </li>
         
@@ -572,7 +577,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">33</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -586,7 +591,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -607,6 +612,18 @@
 
       
         <h1 id="ELK之Logstash收集系统日志及tomcat的json日志"><a href="#ELK之Logstash收集系统日志及tomcat的json日志" class="headerlink" title="ELK之Logstash收集系统日志及tomcat的json日志"></a>ELK之Logstash收集系统日志及tomcat的json日志</h1><p><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="通过logtsash收集tomcat和java日志："><a href="#通过logtsash收集tomcat和java日志：" class="headerlink" title="通过logtsash收集tomcat和java日志："></a>通过logtsash收集tomcat和java日志：</h2><ul>
+<li>收集Tomcat服务器的访问日志以及Tomcat错误日志进行实时统计，在kibana页面进行搜索展现，每台Tomcat服务器要安装logstash负责收集日志，然后将日志转发给elasticsearch进行分析，在通过kibana在前端展现，配置过程如下：</li>
+</ul>
+<p><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/1.png" alt=""></p>
+<p>1：安装tomcat(logstash必须和tomcat在同一台主机上才能收集tomcat的日志)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">验证java JDK版本信息</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># java -version</span></span><br><span class="line">  java version <span class="string">"1.8.0_192"</span></span><br><span class="line">  Java(TM) SE Runtime Environment (build 1.8.0_192-b12)</span><br><span class="line">  Java HotSpot(TM) 64-Bit Server VM (build 25.192-b12, mixed mode)</span><br><span class="line"></span><br><span class="line">安装tomcat</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz</span></span><br><span class="line">  ~]<span class="comment"># tar xvf apache-tomcat-8.5.37.tar.gz -C /usr/local/</span></span><br><span class="line">  ~]<span class="comment"># ln -vs /usr/local/apache-tomcat-8.5.37 /usr/local/tomcat （链接形式方便升级）</span></span><br><span class="line"></span><br><span class="line">tomcat不可使用root用户运行</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># useradd tomcat</span></span><br><span class="line">  ~]<span class="comment"># chown -R tomcat.tomcat /usr/local/tomcat/</span></span><br><span class="line">  ~]<span class="comment"># chown -R tomcat.tomcat /usr/local/tomcat/*</span></span><br><span class="line">  ~]<span class="comment"># su - tomcat -c "/usr/local/tomcat/bin/catalina.sh start"</span></span><br><span class="line">    Using CATALINA_BASE:   /usr/<span class="built_in">local</span>/tomcat</span><br><span class="line">    Using CATALINA_HOME:   /usr/<span class="built_in">local</span>/tomcat</span><br><span class="line">    Using CATALINA_TMPDIR: /usr/<span class="built_in">local</span>/tomcat/temp</span><br><span class="line">    Using JRE_HOME:        /usr/bin/default</span><br><span class="line">    Using CLASSPATH:       /usr/<span class="built_in">local</span>/tomcat/bin/bootstrap.jar:/u</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">    LISTEN      0      100             :::8009  (ajp)                                 </span><br><span class="line">    LISTEN      0      100            127.0.0.1:8005  (管理接口)    </span><br><span class="line">    LISTEN      0      100             :::8080 （http）</span><br><span class="line"></span><br><span class="line">tomcat两个重要的日志文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># ll /usr/local/tomcat/logs/host-manager.2019-02-19.log   #每天滚动的日志</span></span><br><span class="line">  ~]<span class="comment"># ll /usr/local/tomcat/logs/catalina.out</span></span><br></pre></td></tr></table></figure></p>
+<p>2：配置编辑logstash配置文件来收集tomcat日志文件catalina.out<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">  ~]<span class="comment"># cd /etc/logstash/conf.d/</span></span><br><span class="line"></span><br><span class="line">  conf.d]<span class="comment"># vim tomcatlog.conf </span></span><br><span class="line"></span><br><span class="line">  input &#123;</span><br><span class="line">    file &#123;</span><br><span class="line">    path =&gt; <span class="string">"/usr/local/tomcat/logs/catalina.out"</span></span><br><span class="line">    <span class="built_in">type</span> =&gt; <span class="string">"tomcatlog"</span></span><br><span class="line">    start_position =&gt; <span class="string">"beginning"</span></span><br><span class="line">    stat_interval =&gt; <span class="string">"3"</span></span><br><span class="line">  &#125; </span><br><span class="line">  </span><br><span class="line">  &#125; </span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line"> <span class="keyword">if</span> [<span class="built_in">type</span>] == <span class="string">"tomcatlog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"172.18.135.1:9200"</span>]</span><br><span class="line">      index =&gt; <span class="string">"tomcat-log-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">修改收集日志的权限也可以将logstash运行身份修改为root，可以在启动脚本中进行修改</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/systemd/system/logstash.service </span></span><br><span class="line"></span><br><span class="line">  [Unit]</span><br><span class="line">  Description=logstash</span><br><span class="line">  [Service]</span><br><span class="line">  Type=simple</span><br><span class="line">  User=root</span><br><span class="line">  Group=root</span><br><span class="line">  EnvironmentFile=-/etc/default/logstash</span><br><span class="line">  EnvironmentFile=-/etc/sysconfig/logstash</span><br><span class="line">  ExecStart=/usr/share/logstash/bin/logstash <span class="string">"--path.settings"</span> <span class="string">"/etc/logstash"</span></span><br><span class="line">  Restart=always</span><br><span class="line">  WorkingDirectory=/</span><br><span class="line">  Nice=19</span><br><span class="line">  LimitNOFILE=16384</span><br><span class="line"></span><br><span class="line">  [Install]</span><br><span class="line">  WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置文件语法检查</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/tomcatlog.conf -t</span></span><br><span class="line"></span><br><span class="line">重启logstash</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart logstash</span></span><br><span class="line">  ~]<span class="comment"># systemctl enable logstash</span></span><br></pre></td></tr></table></figure></p>
+<p>3：web界面确认tomcat可以访问<br><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/2.png" alt=""></p>
+<p>4:将日志索引在kibana中进行图形化展示<br><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/3.png" alt=""></p>
+<p>5:查看是否记录数据<br><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/4.png" alt=""></p>
+<h2 id="将tomcat的日志格式打印为json格式"><a href="#将tomcat的日志格式打印为json格式" class="headerlink" title="将tomcat的日志格式打印为json格式"></a>将tomcat的日志格式打印为json格式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">编辑tomcat的主配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/tomcat/server.xml </span></span><br><span class="line"></span><br><span class="line">  137~140源文件</span><br><span class="line">  &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">               prefix=<span class="string">"localhost_access_log."</span> suffix=<span class="string">".txt"</span></span><br><span class="line">               pattern=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span><br><span class="line"></span><br><span class="line">  修改为</span><br><span class="line"></span><br><span class="line">  &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">                prefix=<span class="string">"tomcat_access_log"</span> suffix=<span class="string">".log"</span></span><br><span class="line">                pattern=<span class="string">"&#123;&amp;quot;clientip&amp;quot;:&amp;quot;%h&amp;quot;,&amp;quot;ClientUser&amp;quot;:&amp;quot;%l&amp;quot;,&amp;quot;authenticated&amp;quot;:&amp;quot;%u&amp;quot;,&amp;quot;AccessTime&amp;quot;:&amp;quot;%t&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;%r&amp;quot;,&amp;quot;status&amp;quot;:&amp;quot;%s&amp;quot;,&amp;quot;SendBytes&amp;quot;:&amp;quot;%b&amp;quot;,&amp;quot;Query?string&amp;quot;:&amp;quot;%q&amp;quot;,&amp;quot;partner&amp;quot;:&amp;quot;%&#123;Referer&#125;i&amp;quot;,&amp;quot;AgentVersion&amp;quot;:&amp;quot;%&#123;User-Agent&#125;i&amp;quot;&#125;"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>重启查看日志<br><img src="/2019/02/19/ELK之Logstash收集系统日志及tomcat的json日志/5.png" alt=""></p>
+<p>验证日志是否json格式：<br><a href="http://www.kjson.com/" target="_blank" rel="noopener">http://www.kjson.com/</a></p>
 
       
     </div>
@@ -750,6 +767,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/20/mysql源码编译多实例和数据库管理/" rel="prev" title="mysql源码编译多实例和数据库管理">
+                mysql源码编译多实例和数据库管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -824,7 +845,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">67</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -920,7 +941,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -987,7 +1010,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集系统日志及tomcat的json日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集系统日志及tomcat的json日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集系统日志及tomcat的json日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集系统日志及tomcat的json日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过logtsash收集tomcat和java日志："><span class="nav-number">1.1.</span> <span class="nav-text">通过logtsash收集tomcat和java日志：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将tomcat的日志格式打印为json格式"><span class="nav-number">1.2.</span> <span class="nav-text">将tomcat的日志格式打印为json格式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1021,7 +1044,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">514k</span>
+    <span title="站点总字数">545k</span>
   
 
   
@@ -1032,7 +1055,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:48</span>
+    <span title="站点阅读时长">8:16</span>
   
 </div>
 
