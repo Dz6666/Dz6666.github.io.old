@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "Infinity"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="mysql之数据库DML语言">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql之数据库DML语言">
+<meta property="og:url" content="https://daizhe.net.cn/2019/02/20/mysql之数据库DML语言/index.html">
+<meta property="og:site_name" content="Dai zhe&#39;s notes">
+<meta property="og:description" content="mysql之数据库DML语言">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/20/mysql之数据库DML语言/标题.gif">
+<meta property="og:updated_time" content="2019-02-20T06:51:45.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql之数据库DML语言">
+<meta name="twitter:description" content="mysql之数据库DML语言">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/02/20/mysql之数据库DML语言/标题.gif">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Dai zhe's notes" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://daizhe.net.cn/2019/02/20/mysql之数据库DML语言/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mysql之数据库DML语言 | Dai zhe's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dai zhe's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just Du It</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-card"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">70</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-相册">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单&music">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/shudan/" rel="section"><i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br>书单&music</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    <a href="https://github.com/Dz6666" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+      </a>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/02/20/mysql之数据库DML语言/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哆啦A梦">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql之数据库DML语言
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 14:50:41" itemprop="dateCreated datePublished" datetime="2019-02-20T14:50:41+08:00">2019-02-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/20/mysql之数据库DML语言/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/02/20/mysql之数据库DML语言/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">20k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">18 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="mysql之数据库DML语言"><a href="#mysql之数据库DML语言" class="headerlink" title="mysql之数据库DML语言"></a>mysql之数据库DML语言</h1><p><img src="/2019/02/20/mysql之数据库DML语言/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="DML语言-增加insert"><a href="#DML语言-增加insert" class="headerlink" title="DML语言 增加insert"></a>DML语言 增加insert</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"> DML语句   </span><br><span class="line">DML: INSERT增加, DELETE删除, UPDATE  改 </span><br><span class="line"></span><br><span class="line">增加insert</span><br><span class="line">查看帮助：MariaDB [studentdb]&gt; <span class="built_in">help</span> insert</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查询当前数据库中的表信息</span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">Empty <span class="built_in">set</span> (0.00 sec)    （为空）</span><br><span class="line"></span><br><span class="line">查询当前表中的记录数 （count 为函数）</span><br><span class="line">MariaDB [studentdb]&gt; select count(*) from student;</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|        0 |</span><br><span class="line">+----------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)  （为空）</span><br><span class="line"></span><br><span class="line">在当前使用的表中添加纪录</span><br><span class="line">首先查看表的结构，查看有哪些字段</span><br><span class="line">MariaDB [studentdb]&gt; desc student;</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">| Field   | Type                | Null | Key | Default | Extra          |</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">| id      | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name    | varchar(10)         | NO   |     | NULL    |                |</span><br><span class="line">| sex     | enum(<span class="string">'f'</span>,<span class="string">'m'</span>)       | YES  |     | m       |                |</span><br><span class="line">| age     | tinyint(3) unsigned | YES  |     | NULL    |                |</span><br><span class="line">| phone   | char(11)            | YES  |     | NULL    |                |</span><br><span class="line">| address | varchar(50)         | YES  |     | NULL    |                |</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在表中添加纪录（赋值字段对应的字段，相对应的值，顺序不可变）（值和字段必须相同）</span><br><span class="line">MariaDB [studentdb]&gt; insert into student (name,age,phone,address) values (<span class="string">'mage'</span>,30,10086,<span class="string">'beijing'</span>), (<span class="string">'daizhe'</span>,20,10010,<span class="string">'tangshan'</span>);</span><br><span class="line">Query OK, 2 rows affected (0.00 sec)</span><br><span class="line">Records: 2  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">查询表中的纪录</span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">| id | name   | sex  | age  | phone | address  |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">|  1 | mage   | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe | m    |   20 | 10010 | tangshan |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; select count(*) from student;</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|        2 |</span><br><span class="line">+----------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">假如上述赋值时手机号忘记了怎么赋值（空值设置方法）</span><br><span class="line">MariaDB [studentdb]&gt; insert into student (age,name,phone,address) values (20,<span class="string">'ma'</span>,null,<span class="string">'shijiahuang'</span>);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+--------+------+------+-------+-------------+</span><br><span class="line">| id | name   | sex  | age  | phone | address     |</span><br><span class="line">+----+--------+------+------+-------+-------------+</span><br><span class="line">|  1 | mage   | m    |   30 | 10086 | beijing     |</span><br><span class="line">|  2 | daizhe | m    |   20 | 10010 | tangshan    |</span><br><span class="line">|  3 | dehua  | m    |   22 | NULL  | tianjin     |</span><br><span class="line">|  4 | ma     | m    |   20 | NULL  | shijiahuang |</span><br><span class="line">+----+--------+------+------+-------+-------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">单独挑出字段来赋值</span><br><span class="line">MariaDB [studentdb]&gt; insert student <span class="built_in">set</span> name=<span class="string">'dehua'</span>,age=22,address=<span class="string">'tianjin'</span>;</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">| id | name   | sex  | age  | phone | address  |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">|  1 | mage   | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe | m    |   20 | 10010 | tangshan |</span><br><span class="line">|  3 | dehua  | m    |   22 | NULL  | tianjin  |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>克隆表结构，并且纪录也被克隆<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">克隆表结构</span><br><span class="line">MariaDB [studentdb]&gt; create table employee select * from student;</span><br><span class="line">Query OK, 2 rows affected (0.01 sec)</span><br><span class="line">Records: 2  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">查看克隆生成的表的结构</span><br><span class="line">MariaDB [studentdb]&gt; desc employee;</span><br><span class="line">+---------+---------------------+------+-----+---------+-------+</span><br><span class="line">| Field   | Type                | Null | Key | Default | Extra |</span><br><span class="line">+---------+---------------------+------+-----+---------+-------+</span><br><span class="line">| id      | int(10) unsigned    | NO   |     | 0       |       |</span><br><span class="line">| name    | varchar(10)         | NO   |     | NULL    |       |</span><br><span class="line">| sex     | enum(<span class="string">'f'</span>,<span class="string">'m'</span>)       | YES  |     | m       |       |</span><br><span class="line">| age     | tinyint(3) unsigned | YES  |     | NULL    |       |</span><br><span class="line">| phone   | char(11)            | YES  |     | NULL    |       |</span><br><span class="line">| address | varchar(50)         | YES  |     | NULL    |       |</span><br><span class="line">+---------+---------------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br><span class="line"></span><br><span class="line">查看数据是否也被克隆，被克隆</span><br><span class="line">MariaDB [studentdb]&gt; select * from employee;</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">| id | name   | sex  | age  | phone | address  |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">|  1 | mage   | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe | m    |   20 | 10010 | tangshan |</span><br><span class="line">+----+--------+------+------+-------+----------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>克隆表结构，并且纪录不被克隆<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [studentdb]&gt; create table haha like student;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; desc haha;</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">| Field   | Type                | Null | Key | Default | Extra          |</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">| id      | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name    | varchar(10)         | NO   |     | NULL    |                |</span><br><span class="line">| sex     | enum(<span class="string">'f'</span>,<span class="string">'m'</span>)       | YES  |     | m       |                |</span><br><span class="line">| age     | tinyint(3) unsigned | YES  |     | NULL    |                |</span><br><span class="line">| phone   | char(11)            | YES  |     | NULL    |                |</span><br><span class="line">| address | varchar(50)         | YES  |     | NULL    |                |</span><br><span class="line">+---------+---------------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; select * from haha</span><br><span class="line">    -&gt; ;</span><br><span class="line">Empty <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>将相同表结构的数据合并<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [studentdb]&gt; select * from haha;</span><br><span class="line">Empty <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; insert haha select * from student;   (将student中的数据导入到haha表中，前提是两张表的表结构是相同的)</span><br><span class="line">Query OK, 4 rows affected (0.01 sec)</span><br><span class="line">Records: 4  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure></p>
+<p>在表的纪录的数据中添加汉字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">添加中文件字段</span><br><span class="line">MariaDB [studentdb]&gt; insert into student (age,name,phone,address) values (19,<span class="string">'星星'</span>,114114,<span class="string">'河北'</span>);</span><br><span class="line"></span><br><span class="line">结果显示为乱码</span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+--------+------+------+--------+-------------+</span><br><span class="line">| id | name   | sex  | age  | phone  | address     |</span><br><span class="line">+----+--------+------+------+--------+-------------+</span><br><span class="line">|  1 | mage   | m    |   30 | 10086  | beijing     |</span><br><span class="line">|  2 | daizhe | m    |   20 | 10010  | tangshan    |</span><br><span class="line">|  3 | dehua  | m    |   22 | NULL   | tianjin     |</span><br><span class="line">|  4 | ma     | m    |   20 | NULL   | shijiahuang |</span><br><span class="line">|  5 | ??     | m    |   19 | 114114 | ??          |</span><br><span class="line">+----+--------+------+------+--------+-------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">乱码原因</span><br><span class="line">当初创建表的时候，用的为在字符集不支持汉字</span><br><span class="line">MariaDB [studentdb]&gt; show create table student;</span><br><span class="line"></span><br><span class="line">| student | CREATE TABLE `student` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(10) NOT NULL,</span><br><span class="line">  `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>) DEFAULT <span class="string">'m'</span>,</span><br><span class="line">  `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">  `phone` char(11) DEFAULT NULL,</span><br><span class="line">  `address` varchar(50) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">创建一个utf8mb4的数据库</span><br><span class="line">MariaDB [studentdb]&gt;  create database db_utf8mb4 character <span class="built_in">set</span>=utf8mb4;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| db_utf8mb4         |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| studentdb          |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">克隆一张，studentdb库中的表student 倒 db_utf8mb4库中，仅克隆表结构</span><br><span class="line">（跨库导入表，库于表之间需要加点）</span><br><span class="line">MariaDB [studentdb]&gt; use db_utf8mb4;</span><br><span class="line">Database changed</span><br><span class="line">MariaDB [db_utf8mb4]&gt; </span><br><span class="line">   跨库克隆</span><br><span class="line">MariaDB [db_utf8mb4]&gt; create table student like studentdb.student</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">查看克隆过来的表的字符集</span><br><span class="line">MariaDB [db_utf8mb4]&gt; show create table student;</span><br><span class="line"></span><br><span class="line">| student | CREATE TABLE `student` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(10) NOT NULL,</span><br><span class="line">  `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>) DEFAULT <span class="string">'m'</span>,</span><br><span class="line">  `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">  `phone` char(11) DEFAULT NULL,</span><br><span class="line">  `address` varchar(50) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1 |</span><br><span class="line"></span><br><span class="line">  此表为latin1也不支持中文，修改表的字符集</span><br><span class="line">MariaDB [db_utf8mb4]&gt; alter table student character <span class="built_in">set</span> = utf8mb4</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)               </span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">MariaDB [db_utf8mb4]&gt; show create table student;</span><br><span class="line">| student | CREATE TABLE `student` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(10) CHARACTER SET latin1 NOT NULL,</span><br><span class="line">  `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>) CHARACTER SET latin1 DEFAULT <span class="string">'m'</span>,</span><br><span class="line">  `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">  `phone` char(11) CHARACTER SET latin1 DEFAULT NULL,</span><br><span class="line">  `address` varchar(50) CHARACTER SET latin1 DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 |</span><br><span class="line"></span><br><span class="line">在此表中手动添加纪录</span><br><span class="line">MariaDB [db_utf8mb4]&gt; insert student (name,age,address) values (<span class="string">'nana'</span>,22,<span class="string">'石家庄'</span>);Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [db_utf8mb4]&gt; select * from status;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'db_utf8mb4.status'</span> doesn<span class="string">'t exist</span></span><br><span class="line"><span class="string">MariaDB [db_utf8mb4]&gt; select * from student;</span></span><br><span class="line"><span class="string">+----+------+------+------+-------+---------+</span></span><br><span class="line"><span class="string">| id | name | sex  | age  | phone | address |</span></span><br><span class="line"><span class="string">+----+------+------+------+-------+---------+</span></span><br><span class="line"><span class="string">|  1 | nana | m    |   22 | NULL  | ？？？  |</span></span><br><span class="line"><span class="string">+----+------+------+------+-------+---------+</span></span><br><span class="line"><span class="string">1 row in set (0.00 sec)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">结果还是乱码</span></span><br><span class="line"><span class="string">查看此库的信息，显示编码不一致（结论客户端和服务端都应该统一编码）</span></span><br><span class="line"><span class="string">MariaDB [db_utf8mb4]&gt; status</span></span><br><span class="line"><span class="string">--------------</span></span><br><span class="line"><span class="string">mysql  Ver 15.1 Distrib 5.5.60-MariaDB, for Linux (x86_64) using readline 5.1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Connection id:		2</span></span><br><span class="line"><span class="string">Current database:	db_utf8mb4</span></span><br><span class="line"><span class="string">Current user:		root@localhost</span></span><br><span class="line"><span class="string">SSL:			Not in use</span></span><br><span class="line"><span class="string">Current pager:		stdout</span></span><br><span class="line"><span class="string">Using outfile:		'</span><span class="string">'</span></span><br><span class="line"><span class="string">Using delimiter:	;</span></span><br><span class="line"><span class="string">Server:			MariaDB</span></span><br><span class="line"><span class="string">Server version:		5.5.60-MariaDB MariaDB Server</span></span><br><span class="line"><span class="string">Protocol version:	10</span></span><br><span class="line"><span class="string">Connection:		Localhost via UNIX socket</span></span><br><span class="line"><span class="string">Insert id:		1</span></span><br><span class="line"><span class="string">Server characterset:	latin1</span></span><br><span class="line"><span class="string">Db     characterset:	utf8mb4</span></span><br><span class="line"><span class="string">Client characterset:	utf8</span></span><br><span class="line"><span class="string">Conn.  characterset:	utf8</span></span><br><span class="line"><span class="string">UNIX socket:		/var/lib/mysql/mysql.sock</span></span><br><span class="line"><span class="string">Uptime:			3 min 21 sec</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Threads: 1  Questions: 14  Slow queries: 0  Opens: 1  Flush tables: 2  Open tables: 27  Queries per second avg: 0.069</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">设置所有的编码都进行统一</span><br><span class="line">  设定之前查看当前数据库字符集，目前客户端和服务端都不一致</span><br><span class="line">  MariaDB [(none)]&gt; status</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 15.1 Distrib 5.5.60-MariaDB, <span class="keyword">for</span> Linux (x86_64) using readline 5.1</span><br><span class="line"></span><br><span class="line">Connection id:		3</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server:			MariaDB</span><br><span class="line">Server version:		5.5.60-MariaDB MariaDB Server</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	utf8</span><br><span class="line">Conn.  characterset:	utf8</span><br><span class="line">UNIX socket:		/var/lib/mysql/mysql.sock</span><br><span class="line">Uptime:			1 min 5 sec</span><br><span class="line"></span><br><span class="line">Threads: 1  Questions: 9  Slow queries: 0  Opens: 0  Flush tables: 2  Open tables: 26  Queries per second avg: 0.138</span><br><span class="line"></span><br><span class="line">编辑配置文件</span><br><span class="line">[root@centos7 ~]<span class="comment"># vim /etc/my.cnf</span></span><br><span class="line">[mysqld]  （服务端添加一行）</span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">[root@centos7 ~]<span class="comment"># vim /etc/my.cnf.d/mysql-clients.cnf </span></span><br><span class="line">[mysql]    （客户端添加）</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># systemctl restart mariadb</span></span><br><span class="line"></span><br><span class="line">查看更改完的字符集</span><br><span class="line">MariaDB [(none)]&gt; status</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 15.1 Distrib 5.5.60-MariaDB, <span class="keyword">for</span> Linux (x86_64) using readline 5.1</span><br><span class="line"></span><br><span class="line">Connection id:		2</span><br><span class="line">Current database:	</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not <span class="keyword">in</span> use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		<span class="string">''</span></span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server:			MariaDB</span><br><span class="line">Server version:		5.5.60-MariaDB MariaDB Server</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	utf8mb4</span><br><span class="line">Db     characterset:	utf8mb4</span><br><span class="line">Client characterset:	utf8mb4</span><br><span class="line">Conn.  characterset:	utf8mb4</span><br><span class="line">UNIX socket:		/var/lib/mysql/mysql.sock</span><br><span class="line">Uptime:			42 sec</span><br><span class="line"></span><br><span class="line">Threads: 1  Questions: 5  Slow queries: 0  Opens: 0  Flush tables: 2  Open tables: 26  Queries per second avg: 0.119</span><br><span class="line"></span><br><span class="line">此时再次可以新创建一个数据库，添加新表，写入字段，添加纪录，则此时已经支持了汉字，创库之前就要统一编码机制</span><br><span class="line"></span><br><span class="line">备份时，系统用什么字符集，备份就用相同的字符集建议使用utf8mb4</span><br><span class="line"></span><br><span class="line">修改统一的字符集，并创建新表</span><br><span class="line">MariaDB [xinbiao2]&gt; create database db2;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [xinbiao2]&gt; show create database db2;</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">| Database | Create Database                                                 |</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">| db2      | CREATE DATABASE `db2` /*!40100 DEFAULT CHARACTER SET utf8mb4 */ |</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [xinbiao2]&gt; use db2;</span><br><span class="line">Database changed</span><br><span class="line">MariaDB [db2]&gt; create table biao (id int,name char(3));</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [db2]&gt; show create table biao;</span><br><span class="line">+-------+--------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| Table | Create Table                                                                                                             |</span><br><span class="line">+-------+--------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| biao  | CREATE TABLE `biao` (</span><br><span class="line">  `id` int(11) DEFAULT NULL,</span><br><span class="line">  `name` char(3) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 |</span><br><span class="line">+-------+--------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [db2]&gt; desc biao;</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| Field | Type    | Null | Key | Default | Extra |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| id    | int(11) | YES  |     | NULL    |       |</span><br><span class="line">| name  | char(3) | YES  |     | NULL    |       |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">全部字段赋值</span><br><span class="line">MariaDB [db2]&gt; insert biao value(1,<span class="string">'星星'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [db2]&gt; select * from biao;</span><br><span class="line">+------+--------+</span><br><span class="line">| id   | name   |</span><br><span class="line">+------+--------+</span><br><span class="line">|    1 | 星星   |</span><br><span class="line">+------+--------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line">已经支持汉字</span><br></pre></td></tr></table></figure>
+<p>字符集：实例可以自己指定，表结构可以指定，字段可以指定（最好统一）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">查看以前创建的表的创建规则，生成一个新字符集的表</span><br><span class="line">MariaDB [db2]&gt; show create table studentdb.student;</span><br><span class="line"></span><br><span class="line">| student | CREATE TABLE `student` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(10) NOT NULL,</span><br><span class="line">  `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>) DEFAULT <span class="string">'m'</span>,</span><br><span class="line">  `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">  `phone` char(11) DEFAULT NULL,</span><br><span class="line">  `address` varchar(50) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 |</span><br><span class="line"></span><br><span class="line">仿照上一个的创建信息，创建一张新的表，默认的字符集为上面设置的。</span><br><span class="line"></span><br><span class="line">MariaDB [db2]&gt; CREATE TABLE `t2` (</span><br><span class="line">    -&gt;   `id` int(10) unsigned NOT NULL DEFAULT <span class="string">'0'</span>,</span><br><span class="line">    -&gt;   `name` varchar(10)  NOT NULL,</span><br><span class="line">    -&gt;   `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>)  DEFAULT <span class="string">'m'</span>,</span><br><span class="line">    -&gt;   `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">    -&gt;   `mobile` char(11)  DEFAULT NULL,</span><br><span class="line">    -&gt;   `address` varchar(50)  DEFAULT NULL</span><br><span class="line">    -&gt; ) ENGINE=InnoDB;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">查看创建信息，在创建时未指定表结构，使用默认的表结构utf8mb4</span><br><span class="line">MariaDB [db2]&gt; show create table t2;</span><br><span class="line">| t2    | CREATE TABLE `t2` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL DEFAULT <span class="string">'0'</span>,</span><br><span class="line">  `name` varchar(10) NOT NULL,</span><br><span class="line">  `sex` enum(<span class="string">'f'</span>,<span class="string">'m'</span>) DEFAULT <span class="string">'m'</span>,</span><br><span class="line">  `age` tinyint(3) unsigned DEFAULT NULL,</span><br><span class="line">  `mobile` char(11) DEFAULT NULL,</span><br><span class="line">  `address` varchar(50) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 |</span><br><span class="line"></span><br><span class="line">在表中插入记录，挑选字段插入</span><br><span class="line">MariaDB [db2]&gt; insert t2 (name,age,address) values(<span class="string">'代哲'</span>,21,<span class="string">'唐山'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [db2]&gt; select * from t2;</span><br><span class="line">+----+--------+------+------+--------+---------+</span><br><span class="line">| id | name   | sex  | age  | mobile | address |</span><br><span class="line">+----+--------+------+------+--------+---------+</span><br><span class="line">|  0 | 代哲   | m    |   21 | NULL   | 唐山    |</span><br><span class="line">+----+--------+------+------+--------+---------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h2 id="DML-语言-删除-delete"><a href="#DML-语言-删除-delete" class="headerlink" title="DML 语言 删除 delete"></a>DML 语言 删除 delete</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">删库：drop database 库名</span><br><span class="line">删表：drop table 表名</span><br><span class="line">删除数据库中的表数据，但不删除表结构，而且不记录日志，效率高，慎用：truncate table 表</span><br><span class="line"></span><br><span class="line">全部删除表中所有内容：</span><br><span class="line">MariaDB [studentdb]&gt; delete from 表名;</span><br><span class="line">使用delete删除指定删除的条件，使用<span class="built_in">where</span>指定条件</span><br><span class="line"></span><br><span class="line">删除表中的单条记录</span><br><span class="line">  查看表中的内容</span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">| id | name    | sex  | age  | phone | address  |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">|  1 | mage    | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe  | m    |   20 | 10010 | tangshan |</span><br><span class="line">|  3 | laowang | m    |   18 | NULL  | tangshan |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">  删除表中的字段，需要定义查询条件</span><br><span class="line">  范例：删除id为3号和三号以后的字段</span><br><span class="line">MariaDB [studentdb]&gt; delete from student <span class="built_in">where</span> id &gt;= 3;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">高版本的数据库版本</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 8</span><br><span class="line">Server version: 10.3.11-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; create database b1;</span><br><span class="line">Query OK, 1 row affected (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use b1;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">MariaDB [b1]&gt; create table t1(id int,name char(3));</span><br><span class="line">Query OK, 0 rows affected (0.007 sec)</span><br><span class="line"></span><br><span class="line">当在高版本的数据库中创建一个库，再创建一个表，查看数据库数据目录</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /var/lib/mysql/b1/</span></span><br><span class="line">db.opt  t1.frm  t1.ibd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">低版本的数据库</span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 4</span><br><span class="line">Server version: 5.5.60-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">当在低版本的数据库中创建一个库，再创建一个表，查看数据库数据目录</span><br><span class="line">[root@centos7 ~]<span class="comment"># ls /var/lib/mysql/studentdb/</span></span><br><span class="line">db.opt  student.frm  xinbiao1.frm  xinbiao.frm</span><br><span class="line">frm文件存放表结构</span><br><span class="line">缺少ibd文件，存放用户的数据，老版本的数据放置再</span><br><span class="line">/var/lib/mysql/ibdata1（所有数据库，以及所有表的数据放在这个文件中）</span><br><span class="line"></span><br><span class="line">可以再老版本中添加选项使得和新版本一样，使得每个数据单独放置</span><br><span class="line">   可以在数据库程序使用系统函数查看</span><br><span class="line">老版本为关闭状态</span><br><span class="line">MariaDB [(none)]&gt; show variables like <span class="string">'%per_table%'</span>;</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| Variable_name         | Value |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| innodb_file_per_table | OFF   |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">新版本为开启状态</span><br><span class="line">MariaDB [b1]&gt; show variables like <span class="string">'%per_table%'</span>;</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| Variable_name         | Value |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| innodb_file_per_table | ON    |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.002 sec)</span><br><span class="line"></span><br><span class="line">可以再老版本的配置文件中加以定义，添加一行，重启服务</span><br><span class="line">重启后，只有再次创建的新 表才会遵循此规则</span><br><span class="line">[root@centos7 ~]<span class="comment"># vim /etc/my.cnf</span></span><br><span class="line">[mysqld]</span><br><span class="line">innodb_file_per_table</span><br></pre></td></tr></table></figure>
+<h2 id="DML-语言-更改-update"><a href="#DML-语言-更改-update" class="headerlink" title="DML 语言 更改 update"></a>DML 语言 更改 update</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">update 进行数据更改时也要使用<span class="built_in">where</span>进行条件匹配</span><br><span class="line">如果不加条件匹配则修改所有的字段</span><br><span class="line"></span><br><span class="line">更改表内容</span><br><span class="line">  先查看下表内容</span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">| id | name    | sex  | age  | phone | address  |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">|  1 | mage    | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe  | m    |   20 | 10010 | tangshan |</span><br><span class="line">|  3 | laowang | m    |   18 | NULL  | tangshan |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">将一号的姓名进行更改</span><br><span class="line">MariaDB [studentdb]&gt; update student <span class="built_in">set</span> name=<span class="string">'aaaa'</span> <span class="built_in">where</span> id=1;</span><br><span class="line"></span><br><span class="line">MariaDB [studentdb]&gt; select * from student;</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">| id | name    | sex  | age  | phone | address  |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line">|  1 | aaaa    | m    |   30 | 10086 | beijing  |</span><br><span class="line">|  2 | daizhe  | m    |   20 | 10010 | tangshan |</span><br><span class="line">|  3 | laowang | m    |   18 | NULL  | tangshan |</span><br><span class="line">+----+---------+------+------+-------+----------+</span><br><span class="line"></span><br><span class="line">防止忘记使用<span class="built_in">where</span>条件判断语句，可以使用</span><br><span class="line">方法1：</span><br><span class="line">mysql选项： -U | --safe-updates </span><br><span class="line">[root@centos7 ~]<span class="comment"># mysql -U</span></span><br><span class="line">MariaDB [studentdb]&gt; update student <span class="built_in">set</span> name=<span class="string">'aaaa'</span>;</span><br><span class="line">ERROR 1175 (HY000): You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column</span><br><span class="line">提示说你使用的是安装更新模式</span><br><span class="line"></span><br><span class="line">方法2：</span><br><span class="line">可以修改配置文件，追加</span><br><span class="line">[root@centos7 ~]<span class="comment"># vim /etc/my.cnf.d/mysql-clients.cnf </span></span><br><span class="line">[mysql]</span><br><span class="line">safe-updates</span><br></pre></td></tr></table></figure>
+<p>字符集更改<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">数据库级的更改</span><br><span class="line">alter database studentdb character <span class="built_in">set</span> utf8;</span><br><span class="line"></span><br><span class="line">表整个所有字段的字符集更改(仅能影响表中后增加的字段)</span><br><span class="line">alter table student character <span class="built_in">set</span> utf8;</span><br><span class="line"></span><br><span class="line">原来的字段想被修改</span><br><span class="line">alter table student chage 原字段name 新字段name varchar(20) character <span class="built_in">set</span> utf8;</span><br><span class="line"></span><br><span class="line">尽量设计表之前就要将客户端和服务端的字符集就要设计好，后期尽量不要修改</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+      <div>
+    
+        <div style="text-align:center;color: #FF0000;font-size:16px;">-------------------码字不易<i class="fa fa-heart"></i>尊重原创<i class="fa fa-heart"></i>转载标注<i class="fa fa-heart"></i>不胜感激-------------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+      
+</div>
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Yes or no？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="哆啦A梦 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="哆啦A梦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/mysql之select多表操作/" rel="next" title="mysql之select多表操作">
+                <i class="fa fa-chevron-left"></i> mysql之select多表操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/haha.gif" alt="哆啦A梦">
+            
+              <p class="site-author-name" itemprop="name">哆啦A梦</p>
+              <p class="site-description motion-element" itemprop="description">More than that</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" title="Weibo &rarr; https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1301458825" title="CloudMusic &rarr; https://music.163.com/#/user/home?id=1301458825" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>CloudMusic</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql之数据库DML语言"><span class="nav-number">1.</span> <span class="nav-text">mysql之数据库DML语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DML语言-增加insert"><span class="nav-number">1.1.</span> <span class="nav-text">DML语言 增加insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML-语言-删除-delete"><span class="nav-number">1.2.</span> <span class="nav-text">DML 语言 删除 delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML-语言-更改-update"><span class="nav-number">1.3.</span> <span class="nav-text">DML 语言 更改 update</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-child"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">哆啦A梦</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">615k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">9:19</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<center>
+                <font size="4" color="#FF0000">哆啦A梦已经奔跑:<span id="run_time" style="color:#DB70DB"></span></font>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("December 01,2017");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    str = yearsold + "年";
+                    str += daysold-365 + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="255,0,0" opacity="1" zindex="-1" count="230" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'dSJsYJFvGkHjdapdMEMXCnfL-gzGzoHsz',
+        appKey: 'yOLhPLlsxYBFYhhzjWECUdsf',
+        placeholder: '来了老弟！！！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
