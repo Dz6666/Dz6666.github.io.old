@@ -145,7 +145,10 @@
 <meta property="og:description" content="ELK之Logstash收集Nginx日志">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集Nginx日志/标题.gif">
-<meta property="og:updated_time" content="2019-02-20T13:21:37.971Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集Nginx日志/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集Nginx日志/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集Nginx日志/3.png">
+<meta property="og:updated_time" content="2019-02-21T02:56:11.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK之Logstash收集Nginx日志">
 <meta name="twitter:description" content="ELK之Logstash收集Nginx日志">
@@ -348,7 +351,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">74</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">75</span></a>
 
   </li>
         
@@ -572,7 +575,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">22</span>
+                <span title="本文字数">3.4k</span>
               
 
               
@@ -586,7 +589,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -607,6 +610,14 @@
 
       
         <h1 id="ELK之Logstash收集Nginx日志"><a href="#ELK之Logstash收集Nginx日志" class="headerlink" title="ELK之Logstash收集Nginx日志"></a>ELK之Logstash收集Nginx日志</h1><p><img src="/2019/02/20/ELK之Logstash收集Nginx日志/标题.gif" alt=""><br><a id="more"></a></p>
+<h2 id="收集nginx访问日志"><a href="#收集nginx访问日志" class="headerlink" title="收集nginx访问日志"></a>收集nginx访问日志</h2><p><img src="/2019/02/20/ELK之Logstash收集Nginx日志/1.png" alt=""></p>
+<p>1.安装nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">编译安装</span><br><span class="line"></span><br><span class="line">    src]<span class="comment"># pwd</span></span><br><span class="line">    /usr/share/src</span><br><span class="line">    src]<span class="comment"># ls</span></span><br><span class="line">    nginx-1.2.9.tar.gz</span><br><span class="line">    src]<span class="comment"># tar xzvf nginx-1.2.9.tar.gz </span></span><br><span class="line"></span><br><span class="line">    nginx-1.2.9]<span class="comment"># pwd</span></span><br><span class="line">    /usr/share/src/nginx-1.2.9</span><br><span class="line"></span><br><span class="line">指定安装位置并编译安装</span><br><span class="line"></span><br><span class="line">    nginx-1.2.9]<span class="comment"># ./configure --prefix=/usr/share/nginx &amp;&amp; make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure></p>
+<p>2：修改nginx日志格式(将输出的日志格式修改为json格式的日志格式)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># cat /usr/share/nginx/conf/nginx.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line">    <span class="comment">#注意定义的日志的位置</span></span><br><span class="line">log_format access_json <span class="string">'&#123;"@timestamp":"$time_iso8601",'</span>        <span class="comment">#定义日志的格式</span></span><br><span class="line">        <span class="string">'"host":"$server_addr",'</span></span><br><span class="line">        <span class="string">'"clientip":"$remote_addr",'</span></span><br><span class="line">        <span class="string">'"size":$body_bytes_sent,'</span></span><br><span class="line">        <span class="string">'"responsetime":$request_time,'</span></span><br><span class="line">        <span class="string">'"upstreamtime":"$upstream_response_time",'</span></span><br><span class="line">        <span class="string">'"upstreamhost":"$upstream_addr",'</span></span><br><span class="line">        <span class="string">'"http_host":"$host",'</span></span><br><span class="line">        <span class="string">'"url":"$uri",'</span></span><br><span class="line">        <span class="string">'"domain":"$host",'</span></span><br><span class="line">        <span class="string">'"xff":"$http_x_forwarded_for",'</span></span><br><span class="line">        <span class="string">'"referer":"$http_referer",'</span></span><br><span class="line">        <span class="string">'"status":"$status"&#125;'</span>;</span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access.log  access_json;         <span class="comment">#调用此日志格式</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">创建对应的保存日志的目录</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># mkdir /var/log/nginx</span></span><br></pre></td></tr></table></figure></p>
+<p>3：启动nginx并访问默认页面查看日志格式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">启动nginx</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># /usr/share/nginx/sbin/nginx -t</span></span><br><span class="line">    nginx: the configuration file /usr/share/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">    nginx: configuration file /usr/share/nginx/conf/nginx.conf <span class="built_in">test</span> is successful</span><br><span class="line">    ~]<span class="comment"># /usr/share/nginx/sbin/nginx</span></span><br><span class="line"></span><br><span class="line">访问默认页面</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># curl 172.20.101.221:80</span></span><br><span class="line"></span><br><span class="line">查看日志格式</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># cat /var/log/nginx/access.log </span></span><br><span class="line">    &#123;<span class="string">"@timestamp"</span>:<span class="string">"2019-02-21T10:44:15+08:00"</span>,<span class="string">"host"</span>:<span class="string">"192.168.35.103"</span>,<span class="string">"clientip"</span>:<span class="string">"172.20.101.221"</span>,<span class="string">"size"</span>:612,<span class="string">"responsetime"</span>:0.000,<span class="string">"upstreamtime"</span>:<span class="string">"-"</span>,<span class="string">"upstreamhost"</span>:<span class="string">"-"</span>,<span class="string">"http_host"</span>:<span class="string">"172.20.101.221"</span>,<span class="string">"url"</span>:<span class="string">"/index.html"</span>,<span class="string">"domain"</span>:<span class="string">"172.20.101.221"</span>,<span class="string">"xff"</span>:<span class="string">"-"</span>,<span class="string">"referer"</span>:<span class="string">"-"</span>,<span class="string">"status"</span>:<span class="string">"200"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4：配置本机上的logstash收集本机的nginx日志<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/logstash/conf.d/nginxlog.conf</span></span><br><span class="line">input &#123;</span><br><span class="line">  file &#123;</span><br><span class="line">    path =&gt; <span class="string">"/var/log/nginx/access.log"</span></span><br><span class="line">    start_position =&gt; <span class="string">"end"</span></span><br><span class="line">    <span class="built_in">type</span> =&gt; <span class="string">"nginx-accesslog"</span></span><br><span class="line">    codec =&gt; json</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"172.18.135.1:9200"</span>]</span><br><span class="line">      index =&gt; <span class="string">"logstash-nginx-accesslog-1516-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">  &#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5：logstash进行配置文件语法检测及重启服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/nginxlog.conf -t</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># systemctl restart logstash</span></span><br></pre></td></tr></table></figure></p>
+<p>6：kibana界面添加索引<br><img src="/2019/02/20/ELK之Logstash收集Nginx日志/2.png" alt=""></p>
+<p>7：kibana界面验证数据<br><img src="/2019/02/20/ELK之Logstash收集Nginx日志/3.png" alt=""></p>
 
       
     </div>
@@ -750,6 +761,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/21/ELK之Logstash收集TCP和UDP日志/" rel="prev" title="ELK之Logstash收集TCP和UDP日志">
+                ELK之Logstash收集TCP和UDP日志 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -824,7 +839,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -989,7 +1004,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集Nginx日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集Nginx日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集Nginx日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集Nginx日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#收集nginx访问日志"><span class="nav-number">1.1.</span> <span class="nav-text">收集nginx访问日志</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1023,7 +1038,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">655k</span>
+    <span title="站点总字数">661k</span>
   
 
   
@@ -1034,7 +1049,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:55</span>
+    <span title="站点阅读时长">10:01</span>
   
 </div>
 

@@ -147,7 +147,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集本机ES服务json类型日志/标题.gif">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集本机ES服务json类型日志/1.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/20/ELK之Logstash收集本机ES服务json类型日志/2.png">
-<meta property="og:updated_time" content="2019-02-20T13:14:46.239Z">
+<meta property="og:updated_time" content="2019-02-20T13:24:07.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK之Logstash收集本机ES服务json类型日志">
 <meta name="twitter:description" content="ELK之Logstash收集本机ES服务json类型日志">
@@ -350,7 +350,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">74</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">75</span></a>
 
   </li>
         
@@ -574,7 +574,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">3.9k</span>
               
 
               
@@ -588,7 +588,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -626,6 +626,7 @@
 <p>4:然后重启一下elasticsearch服务，目前是为了生成新的日志，以验证logstash能否自动收集新生成的日志。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-host1 ~]<span class="comment"># systemctl  restart elasticsearch</span></span><br></pre></td></tr></table></figure></p>
 <p>5：kibana界面添加javalog-1511索引：<br><img src="/2019/02/20/ELK之Logstash收集本机ES服务json类型日志/1.png" alt=""></p>
 <p>6：模拟生成数据查看kibana界面查看数据：<br><img src="/2019/02/20/ELK之Logstash收集本机ES服务json类型日志/2.png" alt=""></p>
+<p>7：关于sincedb：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-host1~]<span class="comment"># cat /var/lib/logstash/plugins/inputs/file/.sincedb_1ced15cfacdbb0380466be84d620085a</span></span><br><span class="line">134219868 0 2064 29465 <span class="comment">#记录了收集文件的inode信息</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -847,7 +848,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1046,7 +1047,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">655k</span>
+    <span title="站点总字数">661k</span>
   
 
   
@@ -1057,7 +1058,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:55</span>
+    <span title="站点阅读时长">10:01</span>
   
 </div>
 
