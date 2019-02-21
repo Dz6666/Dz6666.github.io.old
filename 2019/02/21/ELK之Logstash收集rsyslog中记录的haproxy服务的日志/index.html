@@ -136,28 +136,20 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="HAproxy日志配置及报文操作">
-<meta name="keywords" content="HAproxy">
+  <meta name="description" content="ELK之Logstash收集Nginx日志">
+<meta name="keywords" content="ELK Stack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HAproxy日志配置及报文操作">
-<meta property="og:url" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/index.html">
+<meta property="og:title" content="ELK之Logstash收集">
+<meta property="og:url" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="HAproxy日志配置及报文操作">
+<meta property="og:description" content="ELK之Logstash收集Nginx日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/标题.gif">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/1.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/2.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/3.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/4.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/5.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/6.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/7.png">
-<meta property="og:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/8.png">
-<meta property="og:updated_time" content="2019-02-21T12:39:41.233Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif">
+<meta property="og:updated_time" content="2019-02-21T12:50:00.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HAproxy日志配置及报文操作">
-<meta name="twitter:description" content="HAproxy日志配置及报文操作">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/标题.gif">
+<meta name="twitter:title" content="ELK之Logstash收集">
+<meta name="twitter:description" content="ELK之Logstash收集Nginx日志">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif">
 
 
 
@@ -166,7 +158,7 @@
 
 
 
-  <link rel="canonical" href="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/">
+  <link rel="canonical" href="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/">
 
 
 
@@ -176,7 +168,7 @@
   };
 </script>
 
-  <title>HAproxy日志配置及报文操作 | Dai zhe's notes</title>
+  <title>ELK之Logstash收集 | Dai zhe's notes</title>
   
 
 
@@ -481,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/01/23/HAproxy日志配置及报文操作/">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哆啦A梦">
@@ -498,7 +490,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HAproxy日志配置及报文操作
+          <h1 class="post-title" itemprop="name headline">ELK之Logstash收集
               
             
           </h1>
@@ -524,7 +516,7 @@
                 
               
 
-              <time title="创建时间：2019-01-23 20:49:55" itemprop="dateCreated datePublished" datetime="2019-01-23T20:49:55+08:00">2019-01-23</time>
+              <time title="创建时间：2019-02-21 19:39:18" itemprop="dateCreated datePublished" datetime="2019-02-21T19:39:18+08:00">2019-02-21</time>
             
 
             
@@ -542,7 +534,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/HAproxy/" itemprop="url" rel="index"><span itemprop="name">HAproxy</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ELK-Stack/" itemprop="url" rel="index"><span itemprop="name">ELK Stack</span></a></span>
 
                 
                 
@@ -557,8 +549,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/23/HAproxy日志配置及报文操作/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/23/HAproxy日志配置及报文操作/" itemprop="commentCount"></span>
+                <a href="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -580,7 +572,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">1.9k</span>
               
 
               
@@ -594,7 +586,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -614,99 +606,15 @@
       
 
       
-        <h1 id="HAproxy日志配置及报文操作"><a href="#HAproxy日志配置及报文操作" class="headerlink" title="HAproxy日志配置及报文操作"></a>HAproxy日志配置及报文操作</h1><p><img src="/2019/01/23/HAproxy日志配置及报文操作/标题.gif" alt=""><br><a id="more"></a></p>
-<h2 id="一、配置HAProxy状态页"><a href="#一、配置HAProxy状态页" class="headerlink" title="一、配置HAProxy状态页"></a>一、配置HAProxy状态页</h2><h3 id="1-haproxy状态页面开启"><a href="#1-haproxy状态页面开启" class="headerlink" title="1.haproxy状态页面开启"></a>1.haproxy状态页面开启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">paproxy_server</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg</span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999     <span class="comment">#默认监听的地址为0.0.0.0,最好不要监听本机的所有地址。监听的端口不要和现有的业务冲突</span></span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status       <span class="comment">#默认访问状态页面的uri（可以自己定义）</span></span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys    <span class="comment">#默认访问uri的用户名和密码</span></span><br><span class="line">    stats auth    daizhe:123456        <span class="comment">#指定用户访问此uri提供的用户名和密码</span></span><br><span class="line">    stats realm HAPorxy\ Stats\ Page      <span class="comment">#设置用户访问uri时提示输入密码的提示信息</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/1.png" alt=""></p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/2.png" alt=""></p>
-<hr>
-<h3 id="2-开启管理状态页面"><a href="#2-开启管理状态页面" class="headerlink" title="2.开启管理状态页面"></a>2.开启管理状态页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999</span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status</span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys</span><br><span class="line">    stats auth    admin:123456</span><br><span class="line">    stats realm HAPorxy\ Stats\ Page</span><br><span class="line">    stats admin <span class="keyword">if</span> TRUE       <span class="comment">#如果登陆的是daizhe这个用户则打开状态管理页面（或者也可写为 stats admin if LOCAHOST 表示为如果访问的为本机的主机则允许验证账号授权登陆）</span></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/3.png" alt=""></p>
-<hr>
-<h3 id="3-隐藏管理状态页面的haproxy的版本号"><a href="#3-隐藏管理状态页面的haproxy的版本号" class="headerlink" title="3.隐藏管理状态页面的haproxy的版本号"></a>3.隐藏管理状态页面的haproxy的版本号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    listen stats</span><br><span class="line">    mode http</span><br><span class="line">    <span class="built_in">bind</span> 172.18.135.2:9999</span><br><span class="line">    stats <span class="built_in">enable</span></span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    stats uri     /haproxy-status</span><br><span class="line">    stats auth    haadmin:q1w2e3r4ys</span><br><span class="line">    stats auth    admin:123456</span><br><span class="line">    stats realm HAPorxy\ Stats\ Page</span><br><span class="line">    stats admin <span class="keyword">if</span> TRUE      </span><br><span class="line">    stats hide-version  <span class="comment">#隐藏版本号</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># systemctl restart haproxy</span></span><br></pre></td></tr></table></figure>
-<p>web界面访问查看此状态页面</p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/4.png" alt=""></p>
-<hr>
-<h2 id="二、HAproxy修改报文首部-http模式"><a href="#二、HAproxy修改报文首部-http模式" class="headerlink" title="二、HAproxy修改报文首部(http模式)"></a>二、HAproxy修改报文首部(http模式)</h2><ul>
-<li><h4 id="在请求报文尾部添加指定首部"><a href="#在请求报文尾部添加指定首部" class="headerlink" title="在请求报文尾部添加指定首部"></a>在请求报文尾部添加指定首部</h4><ul>
-<li><code>reqadd  &lt;string&gt; [{if | unless} &lt;cond&gt;]</code></li>
+        <h1 id="ELK之Logstash收集Nginx日志"><a href="#ELK之Logstash收集Nginx日志" class="headerlink" title="ELK之Logstash收集Nginx日志"></a>ELK之Logstash收集Nginx日志</h1><p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif" alt=""><br><a id="more"></a></p>
+<p>1</p>
+<h2 id="过rsyslog收集haproxy日志："><a href="#过rsyslog收集haproxy日志：" class="headerlink" title="过rsyslog收集haproxy日志："></a>过rsyslog收集haproxy日志：</h2><ul>
+<li>在centos 6及之前的版本叫做syslog，centos 7开始叫做rsyslog，根据官方的介绍，rsyslog(2013年版本)可以达到每秒转发百万条日志的级别，官方网址：<a href="http://www.rsyslog.com/，确认系统安装的版本命令如下：" target="_blank" rel="noopener">http://www.rsyslog.com/，确认系统安装的版本命令如下：</a></li>
 </ul>
-</li>
-<li><h4 id="在响应报文尾部添加指定首部"><a href="#在响应报文尾部添加指定首部" class="headerlink" title="在响应报文尾部添加指定首部"></a>在响应报文尾部添加指定首部</h4><ul>
-<li><code>rspadd &lt;string&gt; [{if | unless} &lt;cond&gt;]</code><ul>
-<li>示例：rspadd X-Via:\ HAPorxy    </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">客户端中可以查看到响应是通过haproxy调度器调度响应的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy      <span class="comment">####</span></span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        option forwardfor</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 172.18.135.5:8080 cookie web1 check inter 2000 fall 3 rise 5</span><br><span class="line">        server 172.18.135.5 172.18.135.1:8080 cookie web2 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/5.png" alt=""></p>
-<ul>
-<li><h4 id="从请求报文中删除匹配正则表达式的首部"><a href="#从请求报文中删除匹配正则表达式的首部" class="headerlink" title="从请求报文中删除匹配正则表达式的首部"></a>从请求报文中删除匹配正则表达式的首部</h4><ul>
-<li><code>reqdel  &lt;search&gt; [{if | unless} &lt;cond&gt;]</code></li>
-<li><code>reqidel &lt;search&gt; [{if | unless} &lt;cond&gt;] 不分大小写</code></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">删除响应报文中的server字段的信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">listen web-port-80</span><br><span class="line">        mode http</span><br><span class="line">        rspadd X-Via:\ HAPorxy</span><br><span class="line">        rspdel Server:*</span><br><span class="line">        <span class="built_in">bind</span> 172.18.135.2:80</span><br><span class="line">        option forwardfor</span><br><span class="line">        cookie SERVER-COOKIE insert indirect nocache</span><br><span class="line">        server web1 172.18.135.5:8080 cookie web1 check inter 2000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/6.png" alt=""></p>
-<ul>
-<li><h4 id="从响应报文中删除匹配正则表达式的首部"><a href="#从响应报文中删除匹配正则表达式的首部" class="headerlink" title="从响应报文中删除匹配正则表达式的首部"></a>从响应报文中删除匹配正则表达式的首部</h4><ul>
-<li><code>rspdel  &lt;search&gt; [{if | unless} &lt;cond&gt;]</code></li>
-<li><code>rspidel &lt;search&gt; [{if | unless} &lt;cond&gt;]</code><ul>
-<li>示例： rspidel  server.* #从相应报文删除server信息<ul>
-<li>rspidel X-Powered-By:.*  #从响应报文删除X-Powered-By信息</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、HAProxy-日志配置"><a href="#三、HAProxy-日志配置" class="headerlink" title="三、HAProxy 日志配置"></a>三、HAProxy 日志配置</h2><ul>
-<li>在default配置项定义：<ul>
-<li>log 127.0.0.1  local{1-7} info #基于syslog记录日志到指定设备，级别有(err、warning、info、debug)</li>
-</ul>
-</li>
-</ul>
-<p>范例：基于rsyslog配置收集haproxy日志信息(udp)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">开启haproxy服务器上的rsyslog功能</span><br><span class="line">     ~]<span class="comment"># vim /etc/rsyslog.conf </span></span><br><span class="line">    15~16行</span><br><span class="line">    <span class="variable">$ModLoad</span> imudp</span><br><span class="line">    <span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">    74行</span><br><span class="line">    local3.*    /var/<span class="built_in">log</span>/haproxy.log</span><br><span class="line"></span><br><span class="line">配置haproxy配置文件</span><br><span class="line">    ~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">    global</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">log</span> 127.0.0.1 local3 info</span><br><span class="line"></span><br><span class="line">重启服务</span><br><span class="line">    ~]<span class="comment"># systemctl restart rsyslog haproxy</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">客户访问后端web_server 查看haproxy日志</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/7.png" alt=""></p>
-<p>范例：可以将haproxy日志格式使用tcp/http记录在rsyslog日志中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">配置HAProxy：</span><br><span class="line">listen  web_port</span><br><span class="line"> <span class="built_in">bind</span> 127.0.0.1:80</span><br><span class="line"> mode http</span><br><span class="line"> <span class="built_in">log</span> global</span><br><span class="line">option tcplog</span><br><span class="line"> server web1  127.0.0.1:8080  check inter 3000 fall 2 rise 5</span><br></pre></td></tr></table></figure></p>
-<p>详细日志参考手册：<a href="http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#8.1" target="_blank" rel="noopener">http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#8.1</a></p>
-<h2 id="四、自定义haproxy记录日志"><a href="#四、自定义haproxy记录日志" class="headerlink" title="四、自定义haproxy记录日志"></a>四、自定义haproxy记录日志</h2><ul>
-<li><p>将特定信息记录在日志中</p>
-<ul>
-<li><code>capture cookie &lt;name&gt; len &lt;length&gt; #捕获请求和响应报文中的 cookie并记录日志</code></li>
-<li><code>capture request header &lt;name&gt; len &lt;length&gt; #捕获请求报文中指定的首部内容和长度并记录日志</code></li>
-<li><code>capture response header &lt;name&gt; len &lt;length&gt; #捕获响应报文中指定的内容和长度首部并记录日志</code></li>
-</ul>
-</li>
-<li><p>示例：配置haproxy配置文件，注意配置字段和生效的位置（最好设置单独的listen中，仅对一组server生效）</p>
-<ul>
-<li>capture request  header Host len  256 </li>
-<li>capture request header User-Agent len 512     <h2 id="五、压缩功能"><a href="#五、压缩功能" class="headerlink" title="五、压缩功能"></a>五、压缩功能</h2></li>
-</ul>
-</li>
-<li>compression algo   #启用http协议中的压缩机制，常用算法有gzip deflate</li>
-<li><p>compression type  #要压缩的类型</p>
-</li>
-<li><p>示例：</p>
-<ul>
-<li>compression algo gzip</li>
-<li>compression type compression type text/plain text/html text/css text/xml text/javascript application/javascript</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2019/01/23/HAproxy日志配置及报文操作/8.png" alt=""></p>
-<h2 id="Web服务器状态监测"><a href="#Web服务器状态监测" class="headerlink" title="Web服务器状态监测"></a>Web服务器状态监测</h2><ul>
-<li>option httpchk</li>
-<li><code>option httpchk &lt;uri&gt;</code></li>
-<li><code>option httpchk &lt;method&gt; &lt;uri&gt;</code></li>
-<li><code>option httpchk &lt;method&gt; &lt;uri&gt; &lt;version&gt;</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">listen  web_prot_http_nodes</span><br><span class="line">    <span class="built_in">bind</span>  192.168.7.102:80</span><br><span class="line">    mode  http</span><br><span class="line">    <span class="built_in">log</span> global</span><br><span class="line">    option httpchk GET /wp-includes/js/jquery/jquery.js?ver=1.12.4 HTTP/1.0  <span class="comment">#基于指定URL</span></span><br><span class="line">    <span class="comment">#option httpchk HEAD /wp-includes/js/jquery/jquery.js?ver=1.12.4 HTTP/1.0\r\nHost:\ 192.168.7.102 #通过request获取的头部信息进行匹配进行健康检测</span></span><br><span class="line">     server 192.168.7.102  blogs.studylinux.net:80   check inter 3000 fall 3 rise 5</span><br><span class="line">     server 192.168.7.101 192.168.7.101:8080  cookie web1 check inter 3000 fall 3 rise 5</span><br></pre></td></tr></table></figure>
+<p>1：安装rsyslog和haproxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">安装haproxy</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line"></span><br><span class="line">安装rsyslog</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># yum install rsyslog -y</span></span><br></pre></td></tr></table></figure></p>
+<p>2：编辑rsyslog服务配置文件，打开rsyslog服务用来保存haproxy的日志<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">编辑rsyslog配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/rsyslog.conf </span></span><br><span class="line">  15 <span class="variable">$ModLoad</span> imudp</span><br><span class="line">  16 <span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">  19 <span class="variable">$ModLoad</span> imtcp</span><br><span class="line">  20 <span class="variable">$InputTCPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">  74 local2.*                       /var/<span class="built_in">log</span>/haproxy.log  <span class="comment">#自定义日志级别，将此日志级别的日志存放在本机的此文件中</span></span><br><span class="line">  75 local2.*       @@本机地址:1514       <span class="comment">#端口自定义不和其他服务冲突即可              </span></span><br><span class="line">  <span class="comment">#也将此日志的级别存放在本主机上，定义监听的端口为1514（使用本机的logstash主机监听此地址）#最后面一行添加，local2对应haproxy配置文件定义的local级别</span></span><br><span class="line"></span><br><span class="line">查看haproxy配置文件</span><br><span class="line">  <span class="comment">#20~26行默认的配置文件解释：如果要设置将haproxy的日志记录在本机rsyslog服务器中就要在rsyslog配置文件中添加local2.*                       /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment"># 2) configure local2 events to go to the /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment">#   file. A line like the following can be added to</span></span><br><span class="line">    <span class="comment">#   /etc/sysconfig/syslog</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#    local2.*                       /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="built_in">log</span>         127.0.0.1 local2</span><br></pre></td></tr></table></figure></p>
+<p>3：重新启动haproxy和rsyslog服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl start rsyslog</span></span><br><span class="line">~]<span class="comment"># systemctl enable rsyslog</span></span><br><span class="line">~]<span class="comment"># systemctl start haproxy</span></span><br><span class="line">~]<span class="comment"># systemctl enable haproxy</span></span><br></pre></td></tr></table></figure></p>
+<p>4：配置本机的logstash来监听此端口的日志—&gt;测试标准输出至屏幕<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">编辑配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/logstash/conf.d/rsyslog.conf</span></span><br><span class="line"></span><br><span class="line">  input&#123;</span><br><span class="line">      syslog &#123;</span><br><span class="line">        <span class="built_in">type</span> =&gt; <span class="string">"ststem-rsyslog"</span></span><br><span class="line">        port =&gt; <span class="string">"1514"</span></span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line">  output&#123;</span><br><span class="line">        stdout&#123;</span><br><span class="line">                codec =&gt; rubydebug</span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">检测配置文件启动logstash</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/rsyslog.conf -t</span></span><br><span class="line">  ~]<span class="comment"># systemctl restart logstash</span></span><br><span class="line"></span><br><span class="line">查看logstash收集rsyslogs日志的端口（rsyslog使用本机定义的端口，将haproxy的日志发送到本机logstash上做收集）</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  :::1514   logstash监听（定义的rsyslog使用此端口将haproxy日志发送给本机的logstash中做收集）</span><br><span class="line">  *:514    rsyslog端口</span><br><span class="line">  *:5000   haproxy端口</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -773,7 +681,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HAproxy/" rel="tag"># HAproxy</a>
+            <a href="/tags/ELK-Stack/" rel="tag"># ELK Stack</a>
           
         </div>
       
@@ -840,8 +748,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/HAproxy基于cookie会话保持/" rel="next" title="HAproxy基于cookie会话保持">
-                <i class="fa fa-chevron-left"></i> HAproxy基于cookie会话保持
+              <a href="/2019/02/21/ELK之Logstash收集TCP和UDP日志/" rel="next" title="ELK之Logstash收集TCP和UDP日志">
+                <i class="fa fa-chevron-left"></i> ELK之Logstash收集TCP和UDP日志
               </a>
             
           </div>
@@ -849,10 +757,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/24/HAproxyACL/" rel="prev" title="HAproxyACL">
-                HAproxyACL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1093,7 +997,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HAproxy日志配置及报文操作"><span class="nav-number">1.</span> <span class="nav-text">HAproxy日志配置及报文操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置HAProxy状态页"><span class="nav-number">1.1.</span> <span class="nav-text">一、配置HAProxy状态页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-haproxy状态页面开启"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.haproxy状态页面开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-开启管理状态页面"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.开启管理状态页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-隐藏管理状态页面的haproxy的版本号"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.隐藏管理状态页面的haproxy的版本号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、HAproxy修改报文首部-http模式"><span class="nav-number">1.2.</span> <span class="nav-text">二、HAproxy修改报文首部(http模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在请求报文尾部添加指定首部"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">在请求报文尾部添加指定首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在响应报文尾部添加指定首部"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">在响应报文尾部添加指定首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从请求报文中删除匹配正则表达式的首部"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">从请求报文中删除匹配正则表达式的首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从响应报文中删除匹配正则表达式的首部"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">从响应报文中删除匹配正则表达式的首部</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、HAProxy-日志配置"><span class="nav-number">1.3.</span> <span class="nav-text">三、HAProxy 日志配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、自定义haproxy记录日志"><span class="nav-number">1.4.</span> <span class="nav-text">四、自定义haproxy记录日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、压缩功能"><span class="nav-number">1.5.</span> <span class="nav-text">五、压缩功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web服务器状态监测"><span class="nav-number">1.6.</span> <span class="nav-text">Web服务器状态监测</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集Nginx日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集Nginx日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过rsyslog收集haproxy日志："><span class="nav-number">1.1.</span> <span class="nav-text">过rsyslog收集haproxy日志：</span></a></li></ol></li></ol></div>
             
 
           </div>
