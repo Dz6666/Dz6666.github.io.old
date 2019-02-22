@@ -136,20 +136,27 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="ELK之Logstash收集Nginx日志">
+  <meta name="description" content="ELK之Logstash收集rsyslog中记录的haproxy服务的日志">
 <meta name="keywords" content="ELK Stack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ELK之Logstash收集">
+<meta property="og:title" content="ELK之Logstash收集rsyslog中记录的haproxy服务的日志">
 <meta property="og:url" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="ELK之Logstash收集Nginx日志">
+<meta property="og:description" content="ELK之Logstash收集rsyslog中记录的haproxy服务的日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif">
-<meta property="og:updated_time" content="2019-02-21T12:50:00.251Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/标题.gif">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/3.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/4.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/5.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/6.png">
+<meta property="og:updated_time" content="2019-02-22T09:17:08.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ELK之Logstash收集">
-<meta name="twitter:description" content="ELK之Logstash收集Nginx日志">
-<meta name="twitter:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif">
+<meta name="twitter:title" content="ELK之Logstash收集rsyslog中记录的haproxy服务的日志">
+<meta name="twitter:description" content="ELK之Logstash收集rsyslog中记录的haproxy服务的日志">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/标题.gif">
 
 
 
@@ -168,7 +175,7 @@
   };
 </script>
 
-  <title>ELK之Logstash收集 | Dai zhe's notes</title>
+  <title>ELK之Logstash收集rsyslog中记录的haproxy服务的日志 | Dai zhe's notes</title>
   
 
 
@@ -348,7 +355,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">77</span></a>
 
   </li>
         
@@ -490,7 +497,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ELK之Logstash收集
+          <h1 class="post-title" itemprop="name headline">ELK之Logstash收集rsyslog中记录的haproxy服务的日志
               
             
           </h1>
@@ -572,7 +579,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">3.3k</span>
               
 
               
@@ -586,7 +593,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -606,15 +613,35 @@
       
 
       
-        <h1 id="ELK之Logstash收集Nginx日志"><a href="#ELK之Logstash收集Nginx日志" class="headerlink" title="ELK之Logstash收集Nginx日志"></a>ELK之Logstash收集Nginx日志</h1><p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/ELK之Logstash收集Nginx日志/标题.gif" alt=""><br><a id="more"></a></p>
-<p>1</p>
-<h2 id="过rsyslog收集haproxy日志："><a href="#过rsyslog收集haproxy日志：" class="headerlink" title="过rsyslog收集haproxy日志："></a>过rsyslog收集haproxy日志：</h2><ul>
-<li>在centos 6及之前的版本叫做syslog，centos 7开始叫做rsyslog，根据官方的介绍，rsyslog(2013年版本)可以达到每秒转发百万条日志的级别，官方网址：<a href="http://www.rsyslog.com/，确认系统安装的版本命令如下：" target="_blank" rel="noopener">http://www.rsyslog.com/，确认系统安装的版本命令如下：</a></li>
+        <h1 id="ELK之Logstash收集rsyslog中记录的haproxy服务的日志"><a href="#ELK之Logstash收集rsyslog中记录的haproxy服务的日志" class="headerlink" title="ELK之Logstash收集rsyslog中记录的haproxy服务的日志"></a>ELK之Logstash收集rsyslog中记录的haproxy服务的日志</h1><p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/标题.gif" alt=""><br><a id="more"></a></p>
+<p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/1.png" alt=""></p>
+<h2 id="通过rsyslog收集haproxy日志："><a href="#通过rsyslog收集haproxy日志：" class="headerlink" title="通过rsyslog收集haproxy日志："></a>通过rsyslog收集haproxy日志：</h2><ul>
+<li><code>logstash和rsyslog可以不在同一台主机</code></li>
+<li><p><code>ES和kibana也可以不在同一台主机运行</code></p>
+</li>
+<li><p>在centos 6及之前的版本叫做syslog，centos 7开始叫做rsyslog，根据官方的介绍，rsyslog(2013年版本)可以达到每秒转发百万条日志的级别，官方网址：<a href="http://www.rsyslog.com/，确认系统安装的版本命令如下：" target="_blank" rel="noopener">http://www.rsyslog.com/，确认系统安装的版本命令如下：</a></p>
+</li>
 </ul>
 <p>1：安装rsyslog和haproxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">安装haproxy</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># yum install haproxy -y</span></span><br><span class="line"></span><br><span class="line">安装rsyslog</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># yum install rsyslog -y</span></span><br></pre></td></tr></table></figure></p>
 <p>2：编辑rsyslog服务配置文件，打开rsyslog服务用来保存haproxy的日志<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">编辑rsyslog配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/rsyslog.conf </span></span><br><span class="line">  15 <span class="variable">$ModLoad</span> imudp</span><br><span class="line">  16 <span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">  19 <span class="variable">$ModLoad</span> imtcp</span><br><span class="line">  20 <span class="variable">$InputTCPServerRun</span> 514</span><br><span class="line"></span><br><span class="line">  74 local2.*                       /var/<span class="built_in">log</span>/haproxy.log  <span class="comment">#自定义日志级别，将此日志级别的日志存放在本机的此文件中</span></span><br><span class="line">  75 local2.*       @@本机地址:1514       <span class="comment">#端口自定义不和其他服务冲突即可              </span></span><br><span class="line">  <span class="comment">#也将此日志的级别存放在本主机上，定义监听的端口为1514（使用本机的logstash主机监听此地址）#最后面一行添加，local2对应haproxy配置文件定义的local级别</span></span><br><span class="line"></span><br><span class="line">查看haproxy配置文件</span><br><span class="line">  <span class="comment">#20~26行默认的配置文件解释：如果要设置将haproxy的日志记录在本机rsyslog服务器中就要在rsyslog配置文件中添加local2.*                       /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment"># 2) configure local2 events to go to the /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment">#   file. A line like the following can be added to</span></span><br><span class="line">    <span class="comment">#   /etc/sysconfig/syslog</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#    local2.*                       /var/log/haproxy.log</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="built_in">log</span>         127.0.0.1 local2</span><br></pre></td></tr></table></figure></p>
 <p>3：重新启动haproxy和rsyslog服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl start rsyslog</span></span><br><span class="line">~]<span class="comment"># systemctl enable rsyslog</span></span><br><span class="line">~]<span class="comment"># systemctl start haproxy</span></span><br><span class="line">~]<span class="comment"># systemctl enable haproxy</span></span><br></pre></td></tr></table></figure></p>
-<p>4：配置本机的logstash来监听此端口的日志—&gt;测试标准输出至屏幕<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">编辑配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/logstash/conf.d/rsyslog.conf</span></span><br><span class="line"></span><br><span class="line">  input&#123;</span><br><span class="line">      syslog &#123;</span><br><span class="line">        <span class="built_in">type</span> =&gt; <span class="string">"ststem-rsyslog"</span></span><br><span class="line">        port =&gt; <span class="string">"1514"</span></span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line">  output&#123;</span><br><span class="line">        stdout&#123;</span><br><span class="line">                codec =&gt; rubydebug</span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">检测配置文件启动logstash</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/rsyslog.conf -t</span></span><br><span class="line">  ~]<span class="comment"># systemctl restart logstash</span></span><br><span class="line"></span><br><span class="line">查看logstash收集rsyslogs日志的端口（rsyslog使用本机定义的端口，将haproxy的日志发送到本机logstash上做收集）</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  :::1514   logstash监听（定义的rsyslog使用此端口将haproxy日志发送给本机的logstash中做收集）</span><br><span class="line">  *:514    rsyslog端口</span><br><span class="line">  *:5000   haproxy端口</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试标准输出至屏幕"><a href="#测试标准输出至屏幕" class="headerlink" title="测试标准输出至屏幕"></a>测试标准输出至屏幕</h3><p>4：配置本机的logstash来监听此端口的日志—&gt;测试标准输出至屏幕<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">编辑配置文件</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># vim /etc/logstash/conf.d/rsyslog.conf</span></span><br><span class="line"></span><br><span class="line">  input&#123;</span><br><span class="line">      syslog &#123;</span><br><span class="line">        <span class="built_in">type</span> =&gt; <span class="string">"ststem-rsyslog"</span></span><br><span class="line">        port =&gt; <span class="string">"1514"</span></span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line">  output&#123;</span><br><span class="line">        stdout&#123;</span><br><span class="line">                codec =&gt; rubydebug</span><br><span class="line">  &#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">检测配置文件启动logstash</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/rsyslog.conf -t</span></span><br><span class="line">  ~]<span class="comment"># systemctl restart logstash</span></span><br><span class="line"></span><br><span class="line">查看logstash收集rsyslogs日志的端口（rsyslog使用本机定义的端口，将haproxy的日志发送到本机logstash上做收集）</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  :::1514   logstash监听（定义的rsyslog使用此端口将haproxy日志发送给本机的logstash中做收集）</span><br><span class="line">  *:514    rsyslog端口 UDP协议</span><br><span class="line">  *:5000   haproxy端口</span><br></pre></td></tr></table></figure></p>
+<p>5：开启haproxy的状态页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/haproxy/haproxy.cfg </span></span><br><span class="line">  最后面定义list</span><br><span class="line"></span><br><span class="line">  listen stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:9999</span><br><span class="line">  stats <span class="built_in">enable</span></span><br><span class="line">  <span class="built_in">log</span> global</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats auth    haadmin:q1w2e3r4ys</span><br><span class="line"></span><br><span class="line">重启haproxy</span><br><span class="line"></span><br><span class="line">  ~]<span class="comment"># systemctl restart haproxy</span></span><br><span class="line">  ~]<span class="comment"># ss -tnl</span></span><br><span class="line">  9999  <span class="comment">#自定义haproxy开启的状态页监听端口</span></span><br><span class="line">  5000</span><br></pre></td></tr></table></figure>
+<p>6：客户端web界面访问haproxy状态页面</p>
+<p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/2.png" alt=""></p>
+<p>7:查看本机的命令行页面查看本机的logstash是否收集到rsyslog收集的haproxy日志<br><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/3.png" alt=""></p>
+<h3 id="将logstash收集的rsyslog的日志输出至远端的ES集群中存储"><a href="#将logstash收集的rsyslog的日志输出至远端的ES集群中存储" class="headerlink" title="将logstash收集的rsyslog的日志输出至远端的ES集群中存储"></a>将logstash收集的rsyslog的日志输出至远端的ES集群中存储</h3><p>8：编辑logstash配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/logstash/conf.d/haproxy.conf </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">input&#123;</span><br><span class="line">    syslog &#123;</span><br><span class="line">      <span class="built_in">type</span> =&gt; <span class="string">"ststem-rsyslog"</span></span><br><span class="line">      port =&gt; <span class="string">"1514"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">output&#123;</span><br><span class="line">      <span class="keyword">if</span> [<span class="built_in">type</span>] == <span class="string">"syslog"</span> &#123;</span><br><span class="line">      elasticsearch &#123;</span><br><span class="line">      hosts =&gt; <span class="string">"172.18.135.1:9200"</span>    <span class="comment">#ES主机地址</span></span><br><span class="line">      index =&gt; <span class="string">"rsyslog-7-103-%&#123;+YYYY.MM&#125;"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>9：检测logstash配置文件及启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/haproxy.conf -t</span></span><br><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/haproxy.conf</span></span><br></pre></td></tr></table></figure></p>
+<p>10：客户端web界面访问haproxy状态页面</p>
+<p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/2.png" alt=""></p>
+<p>11：head插件web界面访问haproxy以生成新日志：</p>
+<p><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/4.png" alt=""></p>
+<p>12：kibana界面添加索引<br><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/5.png" alt=""></p>
+<p>13：kibana验证数据<br><img src="/2019/02/21/ELK之Logstash收集rsyslog中记录的haproxy服务的日志/6.png" alt=""></p>
+<hr>
+<h2 id="OUTPUT输出中index查看支持的输出的索引的格式时间格式"><a href="#OUTPUT输出中index查看支持的输出的索引的格式时间格式" class="headerlink" title="OUTPUT输出中index查看支持的输出的索引的格式时间格式"></a>OUTPUT输出中index查看支持的输出的索引的格式时间格式</h2><p>官方文档：<a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-index" target="_blank" rel="noopener">https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-index</a></p>
+<p><a href="https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html" target="_blank" rel="noopener">https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html</a></p>
 
       
     </div>
@@ -758,6 +785,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/22/ELK之Logstash收集日志并写入redis/" rel="prev" title="ELK之Logstash收集日志并写入redis">
+                ELK之Logstash收集日志并写入redis <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -832,7 +863,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -997,7 +1028,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集Nginx日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集Nginx日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过rsyslog收集haproxy日志："><span class="nav-number">1.1.</span> <span class="nav-text">过rsyslog收集haproxy日志：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之Logstash收集rsyslog中记录的haproxy服务的日志"><span class="nav-number">1.</span> <span class="nav-text">ELK之Logstash收集rsyslog中记录的haproxy服务的日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过rsyslog收集haproxy日志："><span class="nav-number">1.1.</span> <span class="nav-text">通过rsyslog收集haproxy日志：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试标准输出至屏幕"><span class="nav-number">1.1.1.</span> <span class="nav-text">测试标准输出至屏幕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将logstash收集的rsyslog的日志输出至远端的ES集群中存储"><span class="nav-number">1.1.2.</span> <span class="nav-text">将logstash收集的rsyslog的日志输出至远端的ES集群中存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OUTPUT输出中index查看支持的输出的索引的格式时间格式"><span class="nav-number">1.2.</span> <span class="nav-text">OUTPUT输出中index查看支持的输出的索引的格式时间格式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1031,7 +1062,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">663k</span>
+    <span title="站点总字数">668k</span>
   
 
   
@@ -1042,7 +1073,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10:03</span>
+    <span title="站点阅读时长">10:07</span>
   
 </div>
 
