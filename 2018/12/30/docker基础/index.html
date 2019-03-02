@@ -151,12 +151,13 @@
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/容器.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/docker概念.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/docker代码.png">
+<meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/30.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/容器VS虚拟机.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/容器与虚拟机总结.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/共存.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/docker实现方式.png">
 <meta property="og:image" content="https://daizhe.net.cn/2018/12/30/docker基础/实现.png">
-<meta property="og:updated_time" content="2019-02-20T07:26:26.398Z">
+<meta property="og:updated_time" content="2019-03-02T06:05:45.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker基础">
 <meta name="twitter:description" content="docker基础即认识docker">
@@ -583,7 +584,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.3k</span>
+                <span title="本文字数">4.5k</span>
               
 
               
@@ -684,7 +685,22 @@
 <ul>
 <li>集装箱</li>
 <li>标准化： ①运输方式、②存储方式、 ③API接口</li>
-<li>隔离</li>
+<li><code>隔离（linux名称空间 Namespace）</code><ul>
+<li><code>IPC：同一主机进程隔离</code><ul>
+<li>隔离系统级同一主机上进程间通讯、消息队列、共享内存（跨主机的通讯套接字通讯）</li>
+</ul>
+</li>
+<li><code>Network：网路名称空间隔离</code><ul>
+<li>隔离网络设备，网络协议栈，端口，使得容器中的程序监听本机的套接字，其他容器中的程序继续可以使用次套接字。</li>
+</ul>
+</li>
+<li><code>Mount：根文件系统隔离</code></li>
+<li><code>PID：进程树--init隔离</code></li>
+<li><code>User：用户和组隔离</code></li>
+<li><code>UTS：主机名和域名</code></li>
+<li><code>Cgroup：将底层的计算资源即cpu、内存、网络IO、磁盘IO，划分为块以后有效的调用在容器之上</code><br><img src="/2018/12/30/docker基础/30.png" alt=""></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Docker容器的特点</p>
@@ -1180,7 +1196,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">677k</span>
+    <span title="站点总字数">678k</span>
   
 
   
