@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "Infinity"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="ELK之filebeat多个文件日志收集">
+<meta name="keywords" content="ELK Stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK之filebeat多个文件日志收集">
+<meta property="og:url" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/index.html">
+<meta property="og:site_name" content="Dai zhe&#39;s notes">
+<meta property="og:description" content="ELK之filebeat多个文件日志收集">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/标题.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/3.png">
+<meta property="og:updated_time" content="2019-03-06T10:49:09.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK之filebeat多个文件日志收集">
+<meta name="twitter:description" content="ELK之filebeat多个文件日志收集">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/标题.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Dai zhe's notes" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ELK之filebeat多个文件日志收集 | Dai zhe's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dai zhe's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just Du It</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-card"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">80</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-相册">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单&music">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/shudan/" rel="section"><i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br>书单&music</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    <a href="https://github.com/Dz6666" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+      </a>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/03/06/ELK之filebeat多个文件日志收集/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哆啦A梦">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ELK之filebeat多个文件日志收集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-06 09:51:36" itemprop="dateCreated datePublished" datetime="2019-03-06T09:51:36+08:00">2019-03-06</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ELK-Stack/" itemprop="url" rel="index"><span itemprop="name">ELK Stack</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/06/ELK之filebeat多个文件日志收集/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/06/ELK之filebeat多个文件日志收集/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">8.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ELK之filebeat多个文件日志收集"><a href="#ELK之filebeat多个文件日志收集" class="headerlink" title="ELK之filebeat多个文件日志收集"></a>ELK之filebeat多个文件日志收集</h1><p><img src="/2019/03/06/ELK之filebeat多个文件日志收集/标题.png" alt=""><br><a id="more"></a></p>
+<h2 id="filebeat日志收集实战："><a href="#filebeat日志收集实战：" class="headerlink" title="filebeat日志收集实战："></a>filebeat日志收集实战：</h2><ul>
+<li>架构规划：<ul>
+<li>在下面的图当中从左向右看，当要访问ELK日志统计平台的时候，首先访问的是两台nginx+keepalived做的负载高可用，访问的地址是keepalived的IP，当一台nginx代理服务器挂掉之后也不影响访问，然后nginx将请求转发到kibana，kibana再去elasticsearch获取数据，elasticsearch是两台做的集群，数据会随机保存在任意一台elasticsearch服务器，redis服务器做数据的临时保存，避免web服务器日志量过大的时候造成的数据收集与保存不一致导致的日志丢失，可以临时保存到redis，redis可以是集群，然后再由logstash服务器在非高峰时期从redis持续的取出即可，另外有一台mysql数据库服务器，用于持久化保存特定的数据，web服务器的日志由filebeat收集之后发送给另外的一台logstash，再有其写入到redis即可完成日志的收集，从图中可以看出，redis服务器处于前端结合的最中间，其左右都要依赖于redis的正常运行，web服务删个日志经过filebeat收集之后通过日志转发层的logstash写入到redis不同的key当中，然后提取层logstash再从redis将数据提取并安按照不同的类型写入到elasticsearch的不同index当中，用户最终通过nginx代理的kibana查看到收集到的日志的具体内容：</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/03/06/ELK之filebeat多个文件日志收集/1.png" alt=""></p>
+<p>1：filebeat收集日志转发至logstash(基于beats模块)</p>
+<p>官方文档：<a href="https://www.elastic.co/guide/en/beats/filebeat/current/logstash-output.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/beats/filebeat/current/logstash-output.html</a></p>
+<p>目前只收集了系统日志，下面将tomcat的访问日志和启动时生成的catalina.txt文件的日志进行收集，另外测试多行匹配，并将输出改为logstash进根据日志类型判断写入到不同的redis key当中，在一个filebeat服务上面同时收集不同类型的日志，比如收集系统日志的时候还要收集tomcat的访问日志，那么直接带来的问题就是要在写入至redis的时候要根据不同的日志类型写入到reids不通的key当中，首先通过logstash监听一个端口，并做标准输出测试，具体配置为：</p>
+<p>配置Logstash配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># cd /etc/logstash/conf.d/</span></span><br><span class="line">conf.d]<span class="comment"># cat beats-test.conf </span></span><br><span class="line">input &#123;</span><br><span class="line">        beats &#123;</span><br><span class="line">        port =&gt; 5044</span><br><span class="line">        codec =&gt; <span class="string">"json"</span> <span class="comment">#指定编码格式</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#将输出改为文件进行临时输出测试</span></span><br><span class="line">output &#123;</span><br><span class="line">  file &#123;</span><br><span class="line">    path =&gt; <span class="string">"/tmp/filebeat.txt"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>logstash配置文件测试语法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conf.d]<span class="comment"># /usr/share/logstash/bin/logstash -f  /etc/logstash/conf.d/beats-test.conf  -t</span></span><br><span class="line">conf.d]<span class="comment"># systemctl  restart  logstash #重启服务</span></span><br></pre></td></tr></table></figure></p>
+<p>2：更改web服务器的filebeat配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置filebeat配置文件，配置收集nginx的访问日志，标准输出至Logstash中</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/filebeat/filebeat.yml </span></span><br><span class="line">12 filebeat.prospectors:</span><br><span class="line"></span><br><span class="line">18 - input_type: <span class="built_in">log</span></span><br><span class="line">21   paths:</span><br><span class="line">22     - /var/<span class="built_in">log</span>/nginx/access.log</span><br><span class="line"></span><br><span class="line">39   fields:</span><br><span class="line">40      <span class="built_in">type</span>: nginx-accesslog</span><br><span class="line"></span><br><span class="line">116 output.logstash:</span><br><span class="line">117   hosts: [<span class="string">"172.18.135.2:5044"</span>] <span class="comment">#logstash 服务器地址，可以是多个</span></span><br><span class="line">118   enabled: <span class="literal">true</span>   <span class="comment">#是否开启输出至logstash，默认即为true</span></span><br><span class="line">119   worker: 1  <span class="comment">#工作线程数</span></span><br><span class="line">120   <span class="comment">#compression_level: 3 #压缩级别，数值越大，压缩比越高（1~9），一般情况下不使用，因为会占用cpu资源</span></span><br><span class="line">121   <span class="comment">#loadbalance: true #多个输出的时候开启负载,在输出到多个logstash时开启此项</span></span><br></pre></td></tr></table></figure></p>
+<p>重启filebeat<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl  restart filebeat</span></span><br></pre></td></tr></table></figure></p>
+<p>3：客户端模拟访问web服务器，logstash查看是记录日志文件<br><img src="/2019/03/06/ELK之filebeat多个文件日志收集/2.png" alt=""></p>
+<p>4：Logstash中配置将filebeat发送来的日志发送到redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">前面配置logstash是将filebeat发来的日志信息，存储到本地的文件中</span><br><span class="line"></span><br><span class="line">编辑logstahs配置文件</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># cd /etc/logstash/conf.d/</span></span><br><span class="line">conf.d]<span class="comment"># cat beats-test.conf </span></span><br><span class="line">input &#123;</span><br><span class="line">        beats &#123;</span><br><span class="line">        port =&gt; 5044</span><br><span class="line">        codec =&gt; <span class="string">"json"</span> <span class="comment">#指定编码格式</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#将输出改为文件进行临时输出测试</span></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [fields] [<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    redis &#123;</span><br><span class="line">      host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis服务器的地址</span></span><br><span class="line">      prot =&gt; <span class="string">"6379"</span></span><br><span class="line">      password =&gt; <span class="string">"123456"</span></span><br><span class="line">      data_type =&gt; <span class="string">"list"</span></span><br><span class="line">      key =&gt; <span class="string">"nginx-accesslog"</span>  <span class="comment">#日志数据存储到redis时的key的名称 </span></span><br><span class="line">      db =&gt; 1</span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>logstash配置文件测试语法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conf.d]<span class="comment"># /usr/share/logstash/bin/logstash -f  /etc/logstash/conf.d/beats-test.conf  -t</span></span><br><span class="line">conf.d]<span class="comment"># systemctl  restart  logstash #重启服务</span></span><br></pre></td></tr></table></figure></p>
+<p>5：在redis上查看是否已经存入1库中</p>
+<p>6：配置logstash从redis中读取键值并存储到ES集群中做日志收集<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/logstash/conf.d/redis-systemlog-es.conf </span></span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">  redis &#123;</span><br><span class="line">    host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis主机地址</span></span><br><span class="line">    password =&gt; <span class="string">"123456"</span></span><br><span class="line">    port =&gt; <span class="string">"6379"</span></span><br><span class="line">    db =&gt; <span class="string">"1"</span></span><br><span class="line">    key =&gt; <span class="string">"nginx-accesslog"</span></span><br><span class="line">    data_type =&gt; <span class="string">"list"</span></span><br><span class="line">    codec =&gt; <span class="string">"json"</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [fields][<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"172.18.135.1:9200"</span>] <span class="comment">#ES集群主机地址</span></span><br><span class="line">      index =&gt; <span class="string">"nginx-log-135-1-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>语法检测并启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/redis-systemlog-es.conf -t</span></span><br><span class="line">~]<span class="comment"># systemctl restart logstash</span></span><br></pre></td></tr></table></figure></p>
+<p>7：ES主机上head插件查看日志索引是否存储</p>
+<p>8：kibana根据定义的索引展示日志记录</p>
+<hr>
+<h2 id="filebeat收集多类型的日志文件"><a href="#filebeat收集多类型的日志文件" class="headerlink" title="filebeat收集多类型的日志文件"></a>filebeat收集多类型的日志文件</h2><p>1：编辑用来收集日志的filebeat配置文件，收集本机的多个日子文件(收集本机上的nginx的访问日志和本机的所有的文件)，发送到Logstash<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># grep -v "#" /etc/filebeat/filebeat.yml | grep -v "^$"</span></span><br><span class="line">filebeat.prospectors:</span><br><span class="line">- input_type: <span class="built_in">log</span></span><br><span class="line">  paths:</span><br><span class="line">    - /var/<span class="built_in">log</span>/nginx/access.log</span><br><span class="line">  fields:</span><br><span class="line">     <span class="built_in">type</span>: nginx-accesslog  <span class="comment">#标识nginx访问日志的类型（需要将nginx的日志类型改为json）</span></span><br><span class="line">     - input_type: <span class="built_in">log</span></span><br><span class="line">  paths:</span><br><span class="line">    - /var/<span class="built_in">log</span>/message</span><br><span class="line">  fields:</span><br><span class="line">     <span class="built_in">type</span>: systemlog  <span class="comment">#标识message日志的类型</span></span><br><span class="line">output.logstash:</span><br><span class="line">  hosts: [<span class="string">"172.18.135.1:5044"</span>]  </span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  worker: 1</span><br><span class="line">  compression_level: 5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2：编辑logstash配置文件，将filebeat发送来的日志信息，根据定义的<span class="built_in">type</span>类型存储到redis中</span><br><span class="line">```bash</span><br><span class="line">~]<span class="comment"># cd /etc/logstash/conf.d/</span></span><br><span class="line">conf.d]<span class="comment"># cat beats-test.conf </span></span><br><span class="line">input &#123;</span><br><span class="line">        beats &#123;</span><br><span class="line">        port =&gt; 5044</span><br><span class="line">        codec =&gt; <span class="string">"json"</span> <span class="comment">#指定编码格式</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#将输出改为文件进行临时输出测试</span></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [fields] [<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    redis &#123;</span><br><span class="line">      host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis服务器的地址</span></span><br><span class="line">      prot =&gt; <span class="string">"6379"</span></span><br><span class="line">      password =&gt; <span class="string">"123456"</span></span><br><span class="line">      data_type =&gt; <span class="string">"list"</span></span><br><span class="line">      key =&gt; <span class="string">"nginx-accesslog"</span>  <span class="comment">#日志数据存储到redis时的key的名称 </span></span><br><span class="line">      db =&gt; 1</span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">    &#125;&#125;</span><br><span class="line">  <span class="keyword">if</span> [fields] [<span class="built_in">type</span>] == <span class="string">"systemlog"</span> &#123;</span><br><span class="line">    redis &#123;</span><br><span class="line">      host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis服务器的地址</span></span><br><span class="line">      prot =&gt; <span class="string">"6379"</span></span><br><span class="line">      password =&gt; <span class="string">"123456"</span></span><br><span class="line">      data_type =&gt; <span class="string">"list"</span></span><br><span class="line">      key =&gt; <span class="string">"systemlog"</span>  <span class="comment">#日志数据存储到redis时的key的名称 </span></span><br><span class="line">      db =&gt; 1</span><br><span class="line">    &#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>语法检测并启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/redis-systemlog-es.conf -t</span></span><br><span class="line">~]<span class="comment"># systemctl restart logstash</span></span><br></pre></td></tr></table></figure></p>
+<p>3：在redis上查看是否已经存入1库中</p>
+<p>4：编辑另一台logstash主机配置文件，从redis中服务日志键值，存储到后端的ES存储集群中，进行日志存储<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/logstash/conf.d/redis-systemlog-es.conf </span></span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">  redis &#123;</span><br><span class="line">    host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis主机地址</span></span><br><span class="line">    password =&gt; <span class="string">"123456"</span></span><br><span class="line">    port =&gt; <span class="string">"6379"</span></span><br><span class="line">    db =&gt; <span class="string">"1"</span></span><br><span class="line">    key =&gt; <span class="string">"nginx-accesslog"</span></span><br><span class="line">    data_type =&gt; <span class="string">"list"</span></span><br><span class="line">    codec =&gt; <span class="string">"json"</span></span><br><span class="line"> &#125;</span><br><span class="line">   redis &#123;</span><br><span class="line">    host =&gt; <span class="string">"172.18.135.2"</span> <span class="comment">#redis主机地址</span></span><br><span class="line">    password =&gt; <span class="string">"123456"</span></span><br><span class="line">    port =&gt; <span class="string">"6379"</span></span><br><span class="line">    db =&gt; <span class="string">"1"</span></span><br><span class="line">    key =&gt; <span class="string">"systemlog"</span></span><br><span class="line">    data_type =&gt; <span class="string">"list"</span></span><br><span class="line">    <span class="comment">#codec =&gt; "json"</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [fields][<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"172.18.135.1:9200"</span>] <span class="comment">#ES集群主机地址</span></span><br><span class="line">      index =&gt; <span class="string">"nginx-log-135-1-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line">  <span class="keyword">if</span> [fields][<span class="built_in">type</span>] == <span class="string">"systemlog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"172.18.135.1:9200"</span>] <span class="comment">#ES集群主机地址</span></span><br><span class="line">      index =&gt; <span class="string">"message-log-135-1-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>语法检测并启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/redis-systemlog-es.conf -t</span></span><br><span class="line">~]<span class="comment"># systemctl restart logstash</span></span><br></pre></td></tr></table></figure></p>
+<p>5：ES主机上head插件查看日志索引是否存储</p>
+<p>6：kibana根据定义的索引展示日志记录</p>
+<hr>
+<h2 id="脚本编写进行监控"><a href="#脚本编写进行监控" class="headerlink" title="脚本编写进行监控"></a>脚本编写进行监控</h2><ul>
+<li>依据判断logstash存储到redis数据的数据长度来判断存储redis数据的logstash程序是否已经宕机</li>
+<li>实际环境当中，可能会出现reids当中堆积了大量的数据而logstash由于种种原因未能及时提取日志，此时会导致redis服务器的内存被大量使用，甚至出现如下内存即将被使用完毕的情景</li>
+</ul>
+<p>1：查看reids中的日志队列长度发现有大量的日志堆积在redis 当中<br><img src="/2019/03/06/ELK之filebeat多个文件日志收集/3.png" alt=""></p>
+<p>2：在写入redis日志信息的logstash主机上编写python脚本（编写python脚本，获取redis中列表长度并返回值）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">~] <span class="comment"># cat redis-llen.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#coding:utf-</span></span><br><span class="line"><span class="comment">#Author Dai zhe</span></span><br><span class="line">import redis</span><br><span class="line">def redis_conn():</span><br><span class="line">    pool=redis.ConnectionPool(host=<span class="string">"Redis主机地址"</span>,port=6379,db=1,password=123456)</span><br><span class="line">    conn = redis.Redis(connection_pool=pool)</span><br><span class="line">    data = conn.llen(<span class="string">'存储在redis的KEY名称'</span>)</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">redis_conn()</span><br></pre></td></tr></table></figure></p>
+<p>3：安装管理模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># yum install python-pip</span></span><br><span class="line">~]<span class="comment"># pip install redis</span></span><br></pre></td></tr></table></figure></p>
+<p>4：执行脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># python redis-llen.py</span></span><br><span class="line">这里显示redia KEY对应的值的大小</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="脚本编写进行ES存储定期清理"><a href="#脚本编写进行ES存储定期清理" class="headerlink" title="脚本编写进行ES存储定期清理"></a>脚本编写进行ES存储定期清理</h2><p>在ES主机上</p>
+<ul>
+<li>关于elasticsearch存储index的定期删除，elasticsearch存储的日志较多的时候会影响搜索性能，因此建议定期清理，脚本如下，这次是shell脚本：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@els-s2 ~]<span class="comment"># vim els_delete.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">DATE=`date -d <span class="string">"2 days ago"</span> +%Y.%m.%d`</span><br><span class="line">LOG_NAME=<span class="string">"api4-systemlog-7-103"</span>   <span class="comment">#索引名称,定义的索引尽量使用含有日期格式的索引</span></span><br><span class="line">FILE_NAME=<span class="variable">$&#123;LOG_NAME&#125;</span>-<span class="variable">$&#123;DATE&#125;</span></span><br><span class="line">curl -XDELETE  http://ES主机地址:9200/<span class="variable">$&#123;FILE_NAME&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;FILE_NAME&#125;</span> delete success"</span></span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># chmod  a+x /root/els_delete.sh </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">测试执行：</span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># bash -x /root/els_delete.sh</span></span><br><span class="line">++ date -d <span class="string">'30 days ago'</span> +%Y.%m.%d</span><br><span class="line">+ DATE=2016.08.05</span><br><span class="line">+ LOG_NAME=api4-systemlog</span><br><span class="line">+ FILE_NAME=api4-systemlog-2016.08.05</span><br><span class="line">+ curl -XDELETE http://hfelk.chinacloudapp.cn:9200/api4-systemlog-2016.08.05</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>&#125;+ <span class="built_in">echo</span> <span class="string">'api4-systemlog-2016.08.05 delete success'</span></span><br><span class="line">api4-systemlog-2016.08.05 delete success</span><br><span class="line">6.2：添加任务计定期执行即可：</span><br><span class="line"></span><br><span class="line">[root@els-s2 ~]<span class="comment"># crontab  -e</span></span><br><span class="line">1 * * * * /root/els_delete.sh <span class="comment">#每天凌晨一点清除一月之前的日志</span></span><br></pre></td></tr></table></figure>
+<p>备注：</p>
+<ul>
+<li>千万不要直接去ES主机上删除数据<ul>
+<li>/data/esdata/nodes</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+      <div>
+    
+        <div style="text-align:center;color: #FF0000;font-size:16px;">-------------------码字不易<i class="fa fa-heart"></i>尊重原创<i class="fa fa-heart"></i>转载标注<i class="fa fa-heart"></i>不胜感激-------------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+      
+</div>
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Yes or no？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="哆啦A梦 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="哆啦A梦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ELK-Stack/" rel="tag"># ELK Stack</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/03/ELK之使用filebeat替换logstash/" rel="next" title="ELK之使用filebeat替换logstash">
+                <i class="fa fa-chevron-left"></i> ELK之使用filebeat替换logstash
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/haha.gif" alt="哆啦A梦">
+            
+              <p class="site-author-name" itemprop="name">哆啦A梦</p>
+              <p class="site-description motion-element" itemprop="description">More than that</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">80</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" title="Weibo &rarr; https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1301458825" title="CloudMusic &rarr; https://music.163.com/#/user/home?id=1301458825" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>CloudMusic</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之filebeat多个文件日志收集"><span class="nav-number">1.</span> <span class="nav-text">ELK之filebeat多个文件日志收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#filebeat日志收集实战："><span class="nav-number">1.1.</span> <span class="nav-text">filebeat日志收集实战：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filebeat收集多类型的日志文件"><span class="nav-number">1.2.</span> <span class="nav-text">filebeat收集多类型的日志文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本编写进行监控"><span class="nav-number">1.3.</span> <span class="nav-text">脚本编写进行监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本编写进行ES存储定期清理"><span class="nav-number">1.4.</span> <span class="nav-text">脚本编写进行ES存储定期清理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-child"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">哆啦A梦</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">700k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">10:37</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<center>
+                <font size="4" color="#FF0000">哆啦A梦已经奔跑:<span id="run_time" style="color:#DB70DB"></span></font>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("December 01,2017");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    str = yearsold + "年";
+                    str += daysold-365 + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="255,0,0" opacity="1" zindex="-1" count="230" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'dSJsYJFvGkHjdapdMEMXCnfL-gzGzoHsz',
+        appKey: 'yOLhPLlsxYBFYhhzjWECUdsf',
+        placeholder: '来了老弟！！！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

@@ -136,19 +136,32 @@
   daovoice('update');
   </script>
 
-  <meta name="description" content="使用filebeat替换logstash">
+  <meta name="description" content="ELK之使用filebeat替换logstash">
 <meta name="keywords" content="ELK Stack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用filebeat替换logstash">
+<meta property="og:title" content="ELK之使用filebeat替换logstash">
 <meta property="og:url" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/index.html">
 <meta property="og:site_name" content="Dai zhe&#39;s notes">
-<meta property="og:description" content="使用filebeat替换logstash">
+<meta property="og:description" content="ELK之使用filebeat替换logstash">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/标题.png">
-<meta property="og:updated_time" content="2019-03-03T03:45:54.132Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/2.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/3.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/11.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/12.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/5.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/6.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/7.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/8.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/9.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/10.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/13.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/14.png">
+<meta property="og:updated_time" content="2019-03-06T08:01:02.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用filebeat替换logstash">
-<meta name="twitter:description" content="使用filebeat替换logstash">
+<meta name="twitter:title" content="ELK之使用filebeat替换logstash">
+<meta name="twitter:description" content="ELK之使用filebeat替换logstash">
 <meta name="twitter:image" content="https://daizhe.net.cn/2019/03/03/ELK之使用filebeat替换logstash/标题.png">
 
 
@@ -168,7 +181,7 @@
   };
 </script>
 
-  <title>使用filebeat替换logstash | Dai zhe's notes</title>
+  <title>ELK之使用filebeat替换logstash | Dai zhe's notes</title>
   
 
 
@@ -348,7 +361,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">80</span></a>
 
   </li>
         
@@ -490,7 +503,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用filebeat替换logstash
+          <h1 class="post-title" itemprop="name headline">ELK之使用filebeat替换logstash
               
             
           </h1>
@@ -572,7 +585,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">21</span>
+                <span title="本文字数">7.5k</span>
               
 
               
@@ -586,7 +599,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -606,7 +619,57 @@
       
 
       
-        <h1 id="使用filebeat替换logstash"><a href="#使用filebeat替换logstash" class="headerlink" title="使用filebeat替换logstash"></a>使用filebeat替换logstash</h1><p><img src="/2019/03/03/ELK之使用filebeat替换logstash/标题.png" alt=""><br><a id="more"></a></p>
+        <h1 id="ELK之使用filebeat替换logstash"><a href="#ELK之使用filebeat替换logstash" class="headerlink" title="ELK之使用filebeat替换logstash"></a>ELK之使用filebeat替换logstash</h1><p><img src="/2019/03/03/ELK之使用filebeat替换logstash/标题.png" alt=""><br><a id="more"></a></p>
+<h2 id="filebeat"><a href="#filebeat" class="headerlink" title="filebeat"></a>filebeat</h2><ul>
+<li>Filebeat是轻量级单用途的日志收集工具，用于在没有安装java的服务器上专门收集日志，可以将日志转发到logstash、elasticsearch或redis及kafka等场景中进行下一步处理。</li>
+<li>官网下载地址：<a href="https://www.elastic.co/downloads/beats/filebeat" target="_blank" rel="noopener">https://www.elastic.co/downloads/beats/filebeat</a></li>
+<li>官方文档：<a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-" target="_blank" rel="noopener">https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-</a></li>
+</ul>
+<h2 id="将本机的json格式的日志通过filebeat收集并标准输出至屏幕"><a href="#将本机的json格式的日志通过filebeat收集并标准输出至屏幕" class="headerlink" title="将本机的json格式的日志通过filebeat收集并标准输出至屏幕"></a>将本机的json格式的日志通过filebeat收集并标准输出至屏幕</h2><ul>
+<li><p>确认日志格式为json格式：<br>先访问web服务器，以产生一定的日志，然后确认是json格式，因为下面的课程中会使用到：</p>
+</li>
+<li><p>这里演示的本机的json日志格式为web服务器tomcat的访问日志格式</p>
+</li>
+</ul>
+<p>1：访问tomcat WEB站点，生成访问日志信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># ab -n100 -c100 http://192.168.15.16:8080/web</span></span><br></pre></td></tr></table></figure></p>
+<p>2：确认日志格式，后续会用日志做统计<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># tail  /usr/local/tomcat/logs/localhost_access_log.2017-04-28.txt </span></span><br><span class="line">&#123;<span class="string">"clientip"</span>:<span class="string">"192.168.15.15"</span>,<span class="string">"ClientUser"</span>:<span class="string">"-"</span>,<span class="string">"authenticated"</span>:<span class="string">"-"</span>,<span class="string">"AccessTime"</span>:<span class="string">"[28/Apr/2017:21:16:46 +0800]"</span>,<span class="string">"method"</span>:<span class="string">"GET /webdir/ HTTP/1.0"</span>,<span class="string">"status"</span>:<span class="string">"200"</span>,<span class="string">"SendBytes"</span>:<span class="string">"12"</span>,<span class="string">"Query?string"</span>:<span class="string">""</span>,<span class="string">"partner"</span>:<span class="string">"-"</span>,<span class="string">"AgentVersion"</span>:<span class="string">"ApacheBench/2.3"</span>&#125;</span><br><span class="line">&#123;<span class="string">"clientip"</span>:<span class="string">"192.168.15.15"</span>,<span class="string">"ClientUser"</span>:<span class="string">"-"</span>,<span class="string">"authenticated"</span>:<span class="string">"-"</span>,<span class="string">"AccessTime"</span>:<span class="string">"[28/Apr/2017:21:16:46 +0800]"</span>,<span class="string">"method"</span>:<span class="string">"GET /webdir/ HTTP/1.0"</span>,<span class="string">"status"</span>:<span class="string">"200"</span>,<span class="string">"SendBytes"</span>:<span class="string">"12"</span>,<span class="string">"Query?string"</span>:<span class="string">""</span>,<span class="string">"partner"</span>:<span class="string">"-"</span>,<span class="string">"AgentVersion"</span>:<span class="string">"ApacheBench/2.3"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3：安装配置filebeat<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    ~]<span class="comment"># systemctl  stop logstash  #停止logstash服务(如果有安装)</span></span><br><span class="line">    src]<span class="comment"># wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.3.2-x86_64.rpm</span></span><br><span class="line">    src]<span class="comment"># yum install filebeat-5.3.2-x86_64.rpm  -y</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>4：配置filebeat收集系统日志<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    ~]<span class="comment"># cd /etc/filebeat/</span></span><br><span class="line">    filebeat~]<span class="comment"># cp filebeat.yml filebeat.yml.bak #备份源配置文件</span></span><br><span class="line"></span><br><span class="line">filebeat收集多个系统日志并输出到本地文件</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># grep -v "#"  /etc/filebeat/filebeat.yml | grep -v "^$"</span></span><br><span class="line">filebeat.prospectors:</span><br><span class="line">- input_type: <span class="built_in">log</span></span><br><span class="line">  paths:</span><br><span class="line">    - /var/<span class="built_in">log</span>/messages</span><br><span class="line">    - /var/<span class="built_in">log</span>/*.<span class="built_in">log</span></span><br><span class="line">  exclude_lines: [<span class="string">"^DBG"</span>,<span class="string">"^$"</span>] <span class="comment">#不收取的</span></span><br><span class="line">  <span class="comment">#include_lines: ["^ERR", "^WARN"]  #只收取的</span></span><br><span class="line">  document_type: system-log-1512 <span class="comment">#类型，会在每条日志中插入标记</span></span><br><span class="line">output.file:</span><br><span class="line">  path: <span class="string">"/tmp"</span></span><br><span class="line">  filename: <span class="string">"filebeat.txt"</span></span><br></pre></td></tr></table></figure></p>
+<p>5：启动filebeat服务并验证本地文件是否有数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filebeat]<span class="comment"># systemctl  start filebeat</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/1.png" alt=""></p>
+<hr>
+<hr>
+<h2 id="使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上"><a href="#使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上" class="headerlink" title="使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上"></a>使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上</h2><p><img src="/2019/03/03/ELK之使用filebeat替换logstash/2.png" alt=""></p>
+<p>Filebeat官方参考手册：<a href="https://www.elastic.co/products/beats" target="_blank" rel="noopener">https://www.elastic.co/products/beats</a></p>
+<p>1：rpm包安装Filebeat<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># ls</span></span><br><span class="line">filebeat-5.6.13-x86_64.rpm</span><br><span class="line">~]<span class="comment"># rpm -ivh filebeat-5.6.13-x86_64.rpm</span></span><br></pre></td></tr></table></figure></p>
+<p>Filebeat配置文件解析<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/filebeat/filebeat.yml  #yml语法格式</span></span><br><span class="line">21  paths:      <span class="comment">#基于path参数，指定收集的哪个日志文件，支持模糊匹配</span></span><br><span class="line">22    - /var/<span class="built_in">log</span>/*.<span class="built_in">log</span></span><br><span class="line">23    <span class="comment">#- c:\programdata\elasticsearch\logs\*    #windows收集windows日志文件语法</span></span><br><span class="line"></span><br><span class="line">27    <span class="comment">#exclude_lines: ["^DBG"]  #排除日志文件中开头以DBU开头的行不做收集</span></span><br><span class="line"></span><br><span class="line">31    <span class="comment">#include_lines: ["^ERR", "^WARN"]     #指定日志文件中只收集的行</span></span><br><span class="line"></span><br><span class="line">35    <span class="comment">#exclude_files: [".gz$"]      #排除文件，范例排除收集压缩的文件</span></span><br><span class="line"></span><br><span class="line">39   <span class="comment">#fields:   </span></span><br><span class="line">40   <span class="comment">#  level: debug    #在收集的每条日志中插入debug</span></span><br><span class="line">41   <span class="comment">#  review: 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 多行合并</span></span><br><span class="line">49   <span class="comment">#multiline.pattern: ^\[</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#================================ Outputs ================================    =====</span></span><br><span class="line"></span><br><span class="line">81 output.elasticsearch:   <span class="comment">#将收集的日志存储到ES主机上格式</span></span><br><span class="line"></span><br><span class="line">83   hosts: [<span class="string">"localhost:9200"</span>]</span><br><span class="line"></span><br><span class="line">86   <span class="comment">#protocol: "https"     #支持安全认证机制</span></span><br><span class="line">87   <span class="comment">#username: "elastic"</span></span><br><span class="line">88   <span class="comment">#password: "changeme"</span></span><br></pre></td></tr></table></figure></p>
+<p>2：编辑配置文件修改nginx日志的格式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">http &#123;</span><br><span class="line"><span class="comment">#    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line"><span class="comment">#                      '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line"><span class="comment">#                      '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    access_log  /var/log/nginx/access.log  main;</span></span><br><span class="line"></span><br><span class="line">log_format access_json <span class="string">'&#123;"@timestamp":"$time_iso8601",'</span>        <span class="comment">#定义日志的格式</span></span><br><span class="line">        <span class="string">'"host":"$server_addr",'</span></span><br><span class="line">        <span class="string">'"clientip":"$remote_addr",'</span></span><br><span class="line">        <span class="string">'"size":$body_bytes_sent,'</span></span><br><span class="line">        <span class="string">'"responsetime":$request_time,'</span></span><br><span class="line">        <span class="string">'"upstreamtime":"$upstream_response_time",'</span></span><br><span class="line">        <span class="string">'"upstreamhost":"$upstream_addr",'</span></span><br><span class="line">        <span class="string">'"http_host":"$host",'</span></span><br><span class="line">        <span class="string">'"url":"$uri",'</span></span><br><span class="line">        <span class="string">'"domain":"$host",'</span></span><br><span class="line">        <span class="string">'"xff":"$http_x_forwarded_for",'</span></span><br><span class="line">        <span class="string">'"referer":"$http_referer",'</span></span><br><span class="line">        <span class="string">'"status":"$status"&#125;'</span>;</span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access.log  access_json;</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># mkdir -p /var/log/nginx/</span></span><br><span class="line">~]<span class="comment"># systemctl start nginx </span></span><br><span class="line">~]<span class="comment"># systemctl enable nginx</span></span><br></pre></td></tr></table></figure></p>
+<p>3：使用filebeat收集nginx访问日志，配置filebeat收集系统日志：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># cd /etc/filebeat/</span></span><br><span class="line">filebeat]<span class="comment"># cp filebeat.yml  filebeat.yml.bak #备份源配置文件</span></span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/filebeat/filebeat.yml </span></span><br><span class="line">21   paths:</span><br><span class="line">22     - /var/<span class="built_in">log</span>/nginx/access.log</span><br><span class="line"></span><br><span class="line">39   fields:        <span class="comment">#定义type</span></span><br><span class="line">40         <span class="built_in">type</span>: nginx-accesslog</span><br><span class="line"></span><br><span class="line">82 output.elasticsearch:    <span class="comment">#指定将filebeat收集来的日志存储在ES中</span></span><br><span class="line">83   <span class="comment"># Array of hosts to connect to.</span></span><br><span class="line">84   hosts: [<span class="string">"172.18.135.1:9200"</span>]</span><br><span class="line">85   index <span class="string">"filebeat-nginx-accesslog"</span>   <span class="comment">#默认的index名称 filebeat-%&#123;+yyyy.MM.DD&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>4：启动filebeat<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl start filebeat</span></span><br><span class="line">~]<span class="comment"># systemctl enable filebeat</span></span><br></pre></td></tr></table></figure></p>
+<p>5：在ES主机上的head插件查看索引  </p>
+<p>6：在kinban展示日志</p>
+<hr>
+<h2 id="filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）"><a href="#filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）" class="headerlink" title="filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）"></a>filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）</h2><p>Filebeat支持将数据直接写入到redis服务器，本步骤为写入到redis当中的一个可以，另外filebeat还支持写入到elasticsearch、logstash等服务器。</p>
+<p>1：filebeat配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim /etc/filebeat/filebeat.yml </span></span><br><span class="line">21   paths:</span><br><span class="line">22     - /var/<span class="built_in">log</span>/nginx/access.log</span><br><span class="line"></span><br><span class="line">39   fields:        <span class="comment">#定义type，格式很重要</span></span><br><span class="line">40         <span class="built_in">type</span>: nginx-accesslog</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">116 output.redis:       <span class="comment">#将日志输出至redis</span></span><br><span class="line">117   hosts: [<span class="string">"172.18.135.5"</span>]       <span class="comment">#redis地址</span></span><br><span class="line">118   password: <span class="string">"123456"</span>            <span class="comment">#redis密码</span></span><br><span class="line">119   key: <span class="string">"system-log-5612"</span>        <span class="comment">#KEY名称（自定义）</span></span><br><span class="line">120   db: 1                         <span class="comment">#存储到redis的库</span></span><br><span class="line">121   timeout: 5                    <span class="comment">#超时时长</span></span><br></pre></td></tr></table></figure></p>
+<p>2：启动filebeat<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># systemctl start filebeat</span></span><br><span class="line">~]<span class="comment"># systemctl enable filebeat</span></span><br></pre></td></tr></table></figure></p>
+<p>3：测试访问nginx 默认的web页面,验证日志的格式是否为json<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># curl 172.18.135.5:80</span></span><br><span class="line"> ~]<span class="comment"># cat /var/log/nginx/access.log </span></span><br><span class="line">&#123;<span class="string">"@timestamp"</span>:<span class="string">"2019-03-03T16:38:24+08:00"</span>,<span class="string">"host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"clientip"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"size"</span>:3700,<span class="string">"responsetime"</span>:0.000,<span class="string">"upstreamtime"</span>:<span class="string">"-"</span>,<span class="string">"upstreamhost"</span>:<span class="string">"-"</span>,<span class="string">"http_host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"url"</span>:<span class="string">"/index.html"</span>,<span class="string">"domain"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"xff"</span>:<span class="string">"-"</span>,<span class="string">"referer"</span>:<span class="string">"-"</span>,<span class="string">"status"</span>:<span class="string">"200"</span>&#125;</span><br><span class="line">&#123;<span class="string">"@timestamp"</span>:<span class="string">"2019-03-03T16:38:25+08:00"</span>,<span class="string">"host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"clientip"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"size"</span>:3700,<span class="string">"responsetime"</span>:0.000,<span class="string">"upstreamtime"</span>:<span class="string">"-"</span>,<span class="string">"upstreamhost"</span>:<span class="string">"-"</span>,<span class="string">"http_host"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"url"</span>:<span class="string">"/index.html"</span>,<span class="string">"domain"</span>:<span class="string">"172.18.135.5"</span>,<span class="string">"xff"</span>:<span class="string">"-"</span>,<span class="string">"referer"</span>:<span class="string">"-"</span>,<span class="string">"status"</span>:<span class="string">"200"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3：验证redis是否有数据(指定查看对用的库)<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/3.png" alt=""></p>
+<p>4：查看redis中的日志数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">注意选择的db是否和filebeat写入一致</span><br><span class="line"></span><br><span class="line">172.18.135.2:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">172.18.135.2:6379[1]&gt; RPOP system-log-5612</span><br><span class="line"><span class="string">"&#123;\"@timestamp\":\"2019-03-03T10:04:39.966Z\",\"beat\":&#123;\"hostname\":\"centos77\",\"name\":\"centos77\",\"version\":\"5.6.13\"&#125;,\"fields\":&#123;\"type\":\"nginx-accesslog\"&#125;,\"input_type\":\"log\",\"message\":\"&#123;\\\"@timestamp\\\":\\\"2019-03-03T18:04:37+08:00\\\",\\\"host\\\":\\\"172.18.135.5\\\",\\\"clientip\\\":\\\"172.18.135.5\\\",\\\"size\\\":3700,\\\"responsetime\\\":0.000,\\\"upstreamtime\\\":\\\"-\\\",\\\"upstreamhost\\\":\\\"-\\\",\\\"http_host\\\":\\\"172.18.135.5\\\",\\\"url\\\":\\\"/index.html\\\",\\\"domain\\\":\\\"172.18.135.5\\\",\\\"xff\\\":\\\"-\\\",\\\"referer\\\":\\\"-\\\",\\\"status\\\":\\\"200\\\"&#125;\",\"offset\":9248,\"source\":\"/var/log/nginx/access.log\",\"type\":\"log\"&#125;"</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/11.png" alt=""></p>
+<p>截图补充：对应关系要对应好<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/12.png" alt=""></p>
+<p>5：配置logstash从redis读取上面的日志<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># vim   /etc/logstash/conf.d/redis-systemlog-es.conf </span></span><br><span class="line">input &#123;</span><br><span class="line">  redis &#123;</span><br><span class="line">    host =&gt; <span class="string">"192.168.15.12"</span>         <span class="comment">#指定redis地址</span></span><br><span class="line">    port =&gt; <span class="string">"6379"</span></span><br><span class="line">    password =&gt; <span class="string">"123456"</span>           <span class="comment">#指定redis密码         </span></span><br><span class="line">    db =&gt; <span class="string">"1"</span>                      <span class="comment">#从redis哪个库中取数据，需要和filebeat存储时指定的库序号保持一致</span></span><br><span class="line">    key =&gt; <span class="string">"system-log-1512"</span>       <span class="comment">#从redis取出的KEY的名称，需要和filebeat存储仅redis时的KEY名称保持一致</span></span><br><span class="line">    data_type =&gt; <span class="string">"list"</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  <span class="keyword">if</span> [fields][<span class="built_in">type</span>] == <span class="string">"nginx-accesslog"</span> &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">      hosts =&gt; [<span class="string">"192.168.15.11:9200"</span>]   <span class="comment">#ES主机地址</span></span><br><span class="line">       index =&gt; <span class="string">"system-log-1512"</span>  <span class="comment">#定义存储的索引名称</span></span><br><span class="line">      codec =&gt; <span class="string">"json"</span></span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># systemctl  restart logstash #重启logstash服务</span></span><br></pre></td></tr></table></figure></p>
+<p>6：查看logstash服务日志<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/5.png" alt=""></p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/6.png" alt=""></p>
+<p>7：查看redis中是否有数据</p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/7.png" alt=""></p>
+<p>8：在ES的head插件验证索引是否创建<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/8.png" alt=""></p>
+<p>9：kibana界面添加索引<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/9.png" alt=""></p>
+<p>10：在kibana验证system日志<br><img src="/2019/03/03/ELK之使用filebeat替换logstash/10.png" alt=""></p>
+<p>11：监控redis数据长度</p>
+<p>实际环境当中，可能会出现reids当中堆积了大量的数据而logstash由于种种原因未能及时提取日志，此时会导致redis服务器的内存被大量使用，甚至出现如下内存即将被使用完毕的情景：</p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/13.png" alt=""></p>
+<p>12：查看reids中的日志队列长度发现有大量的日志堆积在redis 当中</p>
+<p><img src="/2019/03/03/ELK之使用filebeat替换logstash/14.png" alt=""></p>
 
       
     </div>
@@ -750,6 +813,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/06/ELK之filebeat多个文件日志收集/" rel="prev" title="ELK之filebeat多个文件日志收集">
+                ELK之filebeat多个文件日志收集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -824,7 +891,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -989,7 +1056,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用filebeat替换logstash"><span class="nav-number">1.</span> <span class="nav-text">使用filebeat替换logstash</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELK之使用filebeat替换logstash"><span class="nav-number">1.</span> <span class="nav-text">ELK之使用filebeat替换logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#filebeat"><span class="nav-number">1.1.</span> <span class="nav-text">filebeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将本机的json格式的日志通过filebeat收集并标准输出至屏幕"><span class="nav-number">1.2.</span> <span class="nav-text">将本机的json格式的日志通过filebeat收集并标准输出至屏幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上"><span class="nav-number">1.3.</span> <span class="nav-text">使用Filebeat收集本机的Nginx的访问日志并存储到后端的ES主机上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）"><span class="nav-number">1.4.</span> <span class="nav-text">filebeat收集nginx访问日志并写入redis（nginx日志格式需要改为json格式）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1023,7 +1090,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">685k</span>
+    <span title="站点总字数">700k</span>
   
 
   
@@ -1034,7 +1101,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10:22</span>
+    <span title="站点阅读时长">10:37</span>
   
 </div>
 

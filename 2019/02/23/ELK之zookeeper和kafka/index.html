@@ -157,7 +157,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/23/ELK之zookeeper和kafka/10.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/23/ELK之zookeeper和kafka/11.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/02/23/ELK之zookeeper和kafka/12.png">
-<meta property="og:updated_time" content="2019-03-03T03:46:16.108Z">
+<meta property="og:updated_time" content="2019-03-03T04:13:42.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zookeeper和kafka">
 <meta name="twitter:description" content="zookeeper和kafka">
@@ -360,7 +360,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">80</span></a>
 
   </li>
         
@@ -631,7 +631,7 @@
 </li>
 </ul>
 <p><img src="/2019/02/23/ELK之zookeeper和kafka/3.png" alt=""></p>
-<h1 id="zookeeper集群部署"><a href="#zookeeper集群部署" class="headerlink" title="zookeeper集群部署"></a>zookeeper集群部署</h1><h2 id="安装zookeeper："><a href="#安装zookeeper：" class="headerlink" title="安装zookeeper："></a>安装zookeeper：</h2><p>三台服务器：<br>IP分别是：172.18.135.1 &ensp;&ensp;  172.18.135.2  &ensp;&ensp; 172.18.135.5  </p>
+<h1 id="zookeeper集群部署"><a href="#zookeeper集群部署" class="headerlink" title="zookeeper集群部署"></a>zookeeper集群部署</h1><h2 id="安装zookeeper："><a href="#安装zookeeper：" class="headerlink" title="安装zookeeper："></a>安装zookeeper：</h2><p>三台服务器：  备注：也可以将ZK和KF集群安装在6台主机上各三台<br>IP分别是：172.18.135.1 &ensp;&ensp;  172.18.135.2  &ensp;&ensp; 172.18.135.5  </p>
 <p>1：三台服务器分别配置hosts文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/hosts</span><br><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">172.18.135.1  es1.com</span><br><span class="line">172.18.135.2  es2.com</span><br><span class="line">172.18.135.5  es5.com</span><br></pre></td></tr></table></figure></p>
 <p>2：zookeeper的安装是依赖java环境的,三台主机安装java，JDK<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># java -version</span></span><br><span class="line">openjdk version <span class="string">"1.8.0_161"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_161-b14)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.161-b14, mixed mode)</span><br></pre></td></tr></table></figure></p>
 <p>3：下载安装并验证zookeeper：<br>kafka下载地址：<br><a href="http://kafka.apache.org/downloads.html" target="_blank" rel="noopener">http://kafka.apache.org/downloads.html</a>  </p>
@@ -716,6 +716,14 @@
 <p>7：在head插件验证数据<br><img src="/2019/02/23/ELK之zookeeper和kafka/10.png" alt=""></p>
 <p>8：在kibana添加索引<br><img src="/2019/02/23/ELK之zookeeper和kafka/11.png" alt=""></p>
 <p>9：kibana验证数据<br><img src="/2019/02/23/ELK之zookeeper和kafka/12.png" alt=""></p>
+<hr>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><ul>
+<li>也可以将logstash开启两个进程去同时收集日志<ul>
+<li>/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/kafka-es.conf    #systemcd 管理的进程去收集日志</li>
+<li>/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/kafka-es.conf &amp;   # 手动管理的进程去收集日志</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -859,8 +867,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/03/ELK之使用filebeat替换logstash/" rel="prev" title="使用filebeat替换logstash">
-                使用filebeat替换logstash <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/03/ELK之使用filebeat替换logstash/" rel="prev" title="ELK之使用filebeat替换logstash">
+                ELK之使用filebeat替换logstash <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -937,7 +945,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1102,7 +1110,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper和kafka"><span class="nav-number">1.</span> <span class="nav-text">zookeeper和kafka</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kafka及zookeeper简介："><span class="nav-number">2.</span> <span class="nav-text">kafka及zookeeper简介：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper集群部署"><span class="nav-number">3.</span> <span class="nav-text">zookeeper集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装zookeeper："><span class="nav-number">3.1.</span> <span class="nav-text">安装zookeeper：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper简单操作测试"><span class="nav-number">3.2.</span> <span class="nav-text">zookeeper简单操作测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kafka-集群部署"><span class="nav-number">4.</span> <span class="nav-text">kafka 集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将zookeeper和kafka加入开机启动项中"><span class="nav-number">4.1.</span> <span class="nav-text">将zookeeper和kafka加入开机启动项中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper命令测试"><span class="nav-number">4.2.</span> <span class="nav-text">zookeeper命令测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka命令测试消息发送"><span class="nav-number">4.3.</span> <span class="nav-text">kafka命令测试消息发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用logstash测试向kafka写入数据"><span class="nav-number">4.4.</span> <span class="nav-text">使用logstash测试向kafka写入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试使用logstash测试向kafka写入数据"><span class="nav-number">4.4.1.</span> <span class="nav-text">测试使用logstash测试向kafka写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端logstash收集单个Nginx日志文件缓存到zk和KF集群，ZK和KF集群上的logstash再取走存储到ES中"><span class="nav-number">4.4.2.</span> <span class="nav-text">后端logstash收集单个Nginx日志文件缓存到zk和KF集群，ZK和KF集群上的logstash再取走存储到ES中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用logstash收集多日志文件并写入kafka："><span class="nav-number">4.4.3.</span> <span class="nav-text">使用logstash收集多日志文件并写入kafka：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper和kafka"><span class="nav-number">1.</span> <span class="nav-text">zookeeper和kafka</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kafka及zookeeper简介："><span class="nav-number">2.</span> <span class="nav-text">kafka及zookeeper简介：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper集群部署"><span class="nav-number">3.</span> <span class="nav-text">zookeeper集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装zookeeper："><span class="nav-number">3.1.</span> <span class="nav-text">安装zookeeper：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper简单操作测试"><span class="nav-number">3.2.</span> <span class="nav-text">zookeeper简单操作测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kafka-集群部署"><span class="nav-number">4.</span> <span class="nav-text">kafka 集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将zookeeper和kafka加入开机启动项中"><span class="nav-number">4.1.</span> <span class="nav-text">将zookeeper和kafka加入开机启动项中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper命令测试"><span class="nav-number">4.2.</span> <span class="nav-text">zookeeper命令测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka命令测试消息发送"><span class="nav-number">4.3.</span> <span class="nav-text">kafka命令测试消息发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用logstash测试向kafka写入数据"><span class="nav-number">4.4.</span> <span class="nav-text">使用logstash测试向kafka写入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试使用logstash测试向kafka写入数据"><span class="nav-number">4.4.1.</span> <span class="nav-text">测试使用logstash测试向kafka写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端logstash收集单个Nginx日志文件缓存到zk和KF集群，ZK和KF集群上的logstash再取走存储到ES中"><span class="nav-number">4.4.2.</span> <span class="nav-text">后端logstash收集单个Nginx日志文件缓存到zk和KF集群，ZK和KF集群上的logstash再取走存储到ES中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用logstash收集多日志文件并写入kafka："><span class="nav-number">4.4.3.</span> <span class="nav-text">使用logstash收集多日志文件并写入kafka：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充："><span class="nav-number">4.4.4.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1136,7 +1144,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">685k</span>
+    <span title="站点总字数">700k</span>
   
 
   
@@ -1147,7 +1155,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10:22</span>
+    <span title="站点阅读时长">10:37</span>
   
 </div>
 
