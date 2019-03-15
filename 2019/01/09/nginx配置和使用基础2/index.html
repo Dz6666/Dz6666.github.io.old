@@ -148,7 +148,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/09/nginx配置和使用基础2/加密.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/09/nginx配置和使用基础2/压缩.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/01/09/nginx配置和使用基础2/ssl.png">
-<meta property="og:updated_time" content="2019-03-14T12:53:32.214Z">
+<meta property="og:updated_time" content="2019-03-15T00:41:42.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx配置和使用基础--Webserver">
 <meta name="twitter:description" content="Nginx-Webserver:第二章：配置指令">
@@ -313,7 +313,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">24</span></a>
 
   </li>
         
@@ -332,7 +332,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">20</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
 
   </li>
         
@@ -351,7 +351,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">87</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">91</span></a>
 
   </li>
         
@@ -575,7 +575,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">22k</span>
+                <span title="本文字数">23k</span>
               
 
               
@@ -589,7 +589,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">20 分钟</span>
+                <span title="阅读时长">21 分钟</span>
               
             </div>
           
@@ -1121,22 +1121,14 @@
 <p>范例：ssl加密传输nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> 	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen              443 ssl;</span><br><span class="line"></span><br><span class="line">        ssl_protocols       TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers         AES128-SHA:AES256-SHA:RC4-SHA:DES-CBC3-SHA:RC4-MD5;	<span class="comment">#加密算法，不写使用默认的加密算法</span></span><br><span class="line">        ssl_certificate     /etc/nginx/certs/nginx.crt;	<span class="comment">#私钥</span></span><br><span class="line">        ssl_certificate_key /etc/nginx/certs/nginx.key;	<span class="comment">#证书</span></span><br><span class="line">        ssl_session_cache   shared:SSL:10m;	<span class="comment">#加密传输的缓存的大小10m</span></span><br><span class="line">        ssl_session_timeout 10m;</span><br><span class="line">		location / &#123;</span><br><span class="line">        root <span class="string">"/web/nginx/html"</span></span><br><span class="line">        &#125;	</span><br><span class="line">		&#125; </span><br><span class="line"></span><br><span class="line">生成自签名的证书</span><br><span class="line">	~]<span class="comment"># cd /etc/nginx/</span></span><br><span class="line">	nginx]<span class="comment"># mkdir certs</span></span><br><span class="line">	nginx]<span class="comment"># cd certs/</span></span><br><span class="line">    certs]<span class="comment"># openssl genrsa -out nginx.key 2048	#私钥</span></span><br><span class="line">	certs]<span class="comment"># openssl req -new -x509 -key nginx.key -out nginx.crt -days 3650 -subj "/CN=www.centos.com"	#证书</span></span><br><span class="line"></span><br><span class="line">测试</span><br><span class="line">	 ~]<span class="comment"># mkdir -p /web/nginx/html</span></span><br><span class="line">	 ~]<span class="comment"># echo "123" &gt; /web/nginx/html/index.html</span></span><br><span class="line"></span><br><span class="line">	~]<span class="comment"># nginx -t</span></span><br><span class="line">	~]<span class="comment"># nginx -s reload</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/2019/01/09/nginx配置和使用基础2/ssl.png" alt=""></p>
 <h3 id="ngx-http-rewrite-module模块：实现url重写，将用户请求的URI基于regex所描述的模式进行检查，而后完成替换；"><a href="#ngx-http-rewrite-module模块：实现url重写，将用户请求的URI基于regex所描述的模式进行检查，而后完成替换；" class="headerlink" title="ngx_http_rewrite_module模块：实现url重写，将用户请求的URI基于regex所描述的模式进行检查，而后完成替换；"></a><code>ngx_http_rewrite_module模块：实现url重写，将用户请求的URI基于regex所描述的模式进行检查，而后完成替换；</code></h3><ul>
-<li><p>1、rewrite regex replacement [flag]</p>
-<ul>
+<li>1、rewrite regex replacement [flag]<ul>
 <li>将用户请求的URI基于regex所描述的模式进行检查，匹配到时将其替换为replacement指定的新的URI；</li>
-<li><p>注意：如果在同一级配置块中存在多个rewrite规则，那么会自下而下逐个检查；被某条件规则替换完成后，会重新一轮的替换检查，因此，隐含有循环机制；[flag]所表示的标志位用于控制此循环机制；</p>
-<ul>
-<li><p>如果replacement是以http://或https://开头，则替换结果会直接以重向返回给客户端；</p>
-<ul>
-<li><p>301：永久重定向；</p>
-<ul>
+<li>注意：如果在同一级配置块中存在多个rewrite规则，那么会自下而下逐个检查；被某条件规则替换完成后，会重新一轮的替换检查，因此，隐含有循环机制；[flag]所表示的标志位用于控制此循环机制；<ul>
+<li>如果replacement是以http://或https://开头，则替换结果会直接以重向返回给客户端；<ul>
+<li>301：永久重定向；<ul>
 <li>[flag]：</li>
 <li>last：重写完成后停止对当前URI在当前location中后续的其它重写操作，而后对新的URI启动新一轮重写检查；提前重启新一轮循环； </li>
 <li>break：重写完成后停止对当前URI在当前location中后续的其它重写操作，而后直接跳转至重写规则配置块之后的其它配置；结束循环；</li>
-<li><p>redirect：重写完成后以临时重定向方式直接返回重写后生成的新URI给客户端，由客户端重新发起请求；302：临时重定向</p>
-</li>
-<li><p>permanent:重写完成后以永久重定向方式直接返回重写后生成的新URI给客户端，由客户端重新发起请求；301：永久重定向</p>
-</li>
 </ul>
 </li>
 </ul>
@@ -1146,7 +1138,9 @@
 </ul>
 </li>
 </ul>
-<p><code>范例：将用户对bbs的访问，转成对forum的访问</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># mkdir /web/nginx/html/forum</span></span><br><span class="line">~]<span class="comment"># echo "/web/nginx/html/forum/index.html" &gt; /web/nginx/html/forum/index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#此时对forum/index.html访问url路径为：http://172.10.101.158/forum</span></span><br><span class="line"></span><br><span class="line">实现用户访问http://172.10.101.158/bbs跳转到http://172.10.101.158/forum响应（bbs目录本机可以不存在）</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line">        location /bbs/ &#123;</span><br><span class="line">        rewrite ^/bbs/(.*)$ /forum/<span class="variable">$1</span>;	<span class="comment">#后面未加任何控制符相当于last，$1为后向引用</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">		<span class="comment">#如果访问此server的/var/www/nginx/bbs则重写到此server的/var/www/nginx/forum(此格式仅限单个的重写操作写法)</span></span><br><span class="line"></span><br><span class="line">设置用户对bbs的访问和对forum的访问统统改为其他的其他的server访问</span><br><span class="line">http://www.centos.com/bbs和http://www.centos.com/forum响应的访问请求一个新的serverwww.linux.com的访问</span><br><span class="line">	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line"></span><br><span class="line">        location ~* ^/(bbs|forum) &#123;</span><br><span class="line">        rewrite ^/(bbs|froum)/(.*)$ http://www.linux.com/<span class="variable">$2</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        server &#123;</span><br><span class="line">        server_name www.linux.com;</span><br><span class="line">        listen 8080;</span><br><span class="line">        root <span class="string">"/web/nginx/forum"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">实现对本机的任何的不安全的172.20.101.158下的所有资源都会跳转到www.centos.com的https</span><br><span class="line">        server &#123;</span><br><span class="line"> 66         listen              443 ssl;</span><br><span class="line"> 67         server_name www.centos.com</span><br><span class="line"> 68         ssl_protocols       TLSv1.1 TLSv1.2;</span><br><span class="line"> 69         ssl_ciphers         AES128-SHA:AES256-SHA:RC4-SHA:DES-CBC3-SHA:RC4-    MD5;</span><br><span class="line"> 70         ssl_certificate     /etc/nginx/certs/nginx.crt;</span><br><span class="line"> 71         ssl_certificate_key /etc/nginx/certs/nginx.key;</span><br><span class="line"> 72         ssl_session_cache   shared:SSL:10m;</span><br><span class="line"> 73         ssl_session_timeout 10m;</span><br><span class="line"> 74         location / &#123;</span><br><span class="line"> 75         root <span class="string">"/web/nginx/html"</span>;</span><br><span class="line"> 76         &#125;</span><br><span class="line"> 77     &#125;</span><br><span class="line"> 78 </span><br><span class="line"> 7</span><br><span class="line"> 80         server &#123;</span><br><span class="line"> 81         listen 8080;</span><br><span class="line"> 82         server_name 172.20.101.158;</span><br><span class="line"> 83         root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line"> 84         rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span>;</span><br><span class="line"> 85         location / &#123;</span><br><span class="line"> 86 &#125;</span><br><span class="line"> 87 &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">临时重定向</span><br><span class="line">    rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span> redirect;</span><br><span class="line">永久重定向</span><br><span class="line">	rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span> permanent;</span><br></pre></td></tr></table></figure></p>
+<pre><code>- permanent:重写完成后以永久重定向方式直接返回重写后生成的新URI给客户端，由客户端重新发起请求；301：永久重定向
+- redirect：重写完成后以临时重定向方式直接返回重写后生成的新URI给客户端，由客户端重新发起请求；302：临时重定向
+</code></pre><p><code>范例：将用户对bbs的访问，转成对forum的访问</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">~]<span class="comment"># mkdir /web/nginx/html/forum</span></span><br><span class="line">~]<span class="comment"># echo "/web/nginx/html/forum/index.html" &gt; /web/nginx/html/forum/index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#此时对forum/index.html访问url路径为：http://172.10.101.158/forum</span></span><br><span class="line"></span><br><span class="line">实现用户访问http://172.10.101.158/bbs跳转到http://172.10.101.158/forum响应（bbs目录本机可以不存在）</span><br><span class="line"></span><br><span class="line">~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line">        location /bbs/ &#123;</span><br><span class="line">        rewrite ^/bbs/(.*)$ /forum/<span class="variable">$1</span>;	<span class="comment">#后面未加任何控制符相当于last，$1为后向引用</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">		<span class="comment">#如果访问此server的/var/www/nginx/bbs则重写到此server的/var/www/nginx/forum(此格式仅限单个的重写操作写法)</span></span><br><span class="line"></span><br><span class="line">设置用户对bbs的访问和对forum的访问统统改为其他的其他的server访问</span><br><span class="line">http://www.centos.com/bbs和http://www.centos.com/forum响应的访问请求一个新的serverwww.linux.com的访问</span><br><span class="line">	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line"></span><br><span class="line">        location ~* ^/(bbs|forum) &#123;</span><br><span class="line">        rewrite ^/(bbs|froum)/(.*)$ http://www.linux.com/<span class="variable">$2</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        server &#123;</span><br><span class="line">        server_name www.linux.com;</span><br><span class="line">        listen 8080;</span><br><span class="line">        root <span class="string">"/web/nginx/forum"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name www.centos.com;</span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line"></span><br><span class="line">        location ~* ^/(bbs|forum) &#123;</span><br><span class="line">        rewrite ^/(bbs|froum)/(.*)$ http://IP:PORT/<span class="variable">$2</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        server &#123;</span><br><span class="line">        server_name www.linux.com;</span><br><span class="line">        listen 10080;</span><br><span class="line">        root <span class="string">"/web/nginx/forum"</span>;</span><br><span class="line">&#125;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">实现对本机的任何的不安全的172.20.101.158下的所有资源都会跳转到www.centos.com的https</span><br><span class="line">        server &#123;</span><br><span class="line"> 66         listen              443 ssl;</span><br><span class="line"> 67         server_name www.centos.com</span><br><span class="line"> 68         ssl_protocols       TLSv1.1 TLSv1.2;</span><br><span class="line"> 69         ssl_ciphers         AES128-SHA:AES256-SHA:RC4-SHA:DES-CBC3-SHA:RC4-    MD5;</span><br><span class="line"> 70         ssl_certificate     /etc/nginx/certs/nginx.crt;</span><br><span class="line"> 71         ssl_certificate_key /etc/nginx/certs/nginx.key;</span><br><span class="line"> 72         ssl_session_cache   shared:SSL:10m;</span><br><span class="line"> 73         ssl_session_timeout 10m;</span><br><span class="line"> 74         location / &#123;</span><br><span class="line"> 75         root <span class="string">"/web/nginx/html"</span>;</span><br><span class="line"> 76         &#125;</span><br><span class="line"> 77     &#125;</span><br><span class="line"> 78 </span><br><span class="line"> 7</span><br><span class="line"> 80         server &#123;</span><br><span class="line"> 81         listen 8080;</span><br><span class="line"> 82         server_name 172.20.101.158;</span><br><span class="line"> 83         root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line"> 84         rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span>;</span><br><span class="line"> 85         location / &#123;</span><br><span class="line"> 86 &#125;</span><br><span class="line"> 87 &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">临时重定向</span><br><span class="line">    rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span> redirect;</span><br><span class="line">永久重定向</span><br><span class="line">	rewrite ^/(.*)$ https://centos.com/<span class="variable">$1</span> permanent;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>2、return<ul>
 <li>return code [text];</li>
@@ -1177,10 +1171,10 @@
 </ul>
 </li>
 <li>文件及目录存在性判断：<ul>
-<li>-e, !-e</li>
-<li>-f, !-f</li>
-<li>-d, !-d</li>
-<li>-x, !-x</li>
+<li>-e, !-e    是否存在</li>
+<li>-f, !-f    是否是文件</li>
+<li>-d, !-d    是否为目录</li>
+<li>-x, !-x    是否可执行</li>
 </ul>
 </li>
 </ul>
@@ -1209,7 +1203,7 @@
 </ul>
 </li>
 </ul>
-<p>范例:防盗链<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义正常引用和非正常引用链接的跳转</span></span><br><span class="line">	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name 172.20.101.158;</span><br><span class="line">        valid_referers none blocked server_name 172.20.101.158 172.20.101.82 *.centos.com;		<span class="comment">#定义允许外链访问的地址</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$invalid_referer</span>) &#123;		<span class="comment">#除了上面定义的地址外可以外链访问主页，其余的地址直接跳转至http://172.20.101.158:8080/;</span></span><br><span class="line">        <span class="built_in">return</span> http://172.20.101.158:8080/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line">        rewrite ^/(.*)$ https://www.daizhe.111/<span class="variable">$1</span>;</span><br><span class="line">        location / &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-e 模拟外链来的地址</span><br><span class="line">~]<span class="comment"># curl -I -e "www.baidu.com" http://172.20.101.158/</span></span><br></pre></td></tr></table></figure></p>
+<p>范例:防盗链<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义正常引用和非正常引用链接的跳转</span></span><br><span class="line">	~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">        server &#123;</span><br><span class="line">        listen 8080;</span><br><span class="line">        server_name 172.20.101.158;</span><br><span class="line">        valid_referers none blocked server_names 172.20.101.158 172.20.101.82 *.centos.com;		<span class="comment">#定义允许外链访问的地址</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$invalid_referer</span>) &#123;		<span class="comment">#除了上面定义的地址外可以外链访问主页，其余的地址直接跳转至http://172.20.101.158:8080/;</span></span><br><span class="line">        <span class="built_in">return</span> http://172.20.101.158:8080/</span><br><span class="line">&#125;</span><br><span class="line">		<span class="comment">#定义拒绝页面</span></span><br><span class="line">        root <span class="string">"/var/www/nginx"</span>;</span><br><span class="line">        rewrite ^/(.*)$ https://www.daizhe.111/<span class="variable">$1</span>;</span><br><span class="line">        location / &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-e 模拟外链来的地址</span><br><span class="line">~]<span class="comment"># curl -I -e "www.baidu.com" http://172.20.101.158/</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1431,7 +1425,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1484,7 +1478,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1541,7 +1539,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1642,7 +1644,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">748k</span>
+    <span title="站点总字数">789k</span>
   
 
   
@@ -1653,7 +1655,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:20</span>
+    <span title="站点阅读时长">11:57</span>
   
 </div>
 
