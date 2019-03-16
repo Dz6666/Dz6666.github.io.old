@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/15/ansible工具概述/4.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/15/ansible工具概述/5.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/15/ansible工具概述/6.png">
-<meta property="og:updated_time" content="2019-03-15T16:27:37.922Z">
+<meta property="og:updated_time" content="2019-03-16T13:20:50.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible工具概述">
 <meta name="twitter:description" content="ansible工具概述">
@@ -578,7 +578,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.5k</span>
+                <span title="本文字数">9.9k</span>
               
 
               
@@ -865,12 +865,29 @@
 <h2 id="十六、ansible-配置文件"><a href="#十六、ansible-配置文件" class="headerlink" title="十六、ansible 配置文件"></a>十六、<code>ansible 配置文件</code></h2><p>解析ansible的配置文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@ansible ~]<span class="comment"># vim /etc/ansible/ansible.cfg</span></span><br><span class="line">[defaults]                                   以下默认值 </span><br><span class="line">                                        </span><br><span class="line"><span class="comment"># some basic default values...                   </span></span><br><span class="line">                                           </span><br><span class="line"><span class="comment">#inventory      = /etc/ansible/hosts         定义主机清单路径  </span></span><br><span class="line"><span class="comment">#library        = /usr/share/my_modules/     库文件</span></span><br><span class="line"><span class="comment">#module_utils   = /usr/share/my_module_utils/工具存放路径</span></span><br><span class="line"><span class="comment">#remote_tmp     = ~/.ansible/tmp             远程主机临时文件  </span></span><br><span class="line"><span class="comment">#local_tmp      = ~/.ansible/tmp             本地主机临时文件</span></span><br><span class="line"><span class="comment">#forks          = 5                          并发执行数</span></span><br><span class="line"><span class="comment">#poll_interval  = 15                         拉取间隔</span></span><br><span class="line"><span class="comment">#sudo_user      = root                       以谁的身份在远程执行</span></span><br><span class="line"><span class="comment">#ask_sudo_pass = True                        是否询问sudo口令（默认询问）</span></span><br><span class="line"><span class="comment">#ask_pass      = True                        是否询问执行身份的口令（默认询问）</span></span><br><span class="line"><span class="comment">#transport      = smart                      传输协议</span></span><br><span class="line"><span class="comment">#remote_port    = 22                         远程默认端口</span></span><br><span class="line"><span class="comment">#module_lang    = C                         </span></span><br><span class="line"><span class="comment">#module_set_locale = False                   使用的默认语言          </span></span><br><span class="line">log_path = /var/<span class="built_in">log</span>/ansible.log             日志信息，默认未启用，设置为启用</span><br><span class="line"></span><br><span class="line">因为ansible不是一个服务，所以改完配置文件无需重启服务。</span><br></pre></td></tr></table></figure>
 <h2 id="十七、ansible系列命令"><a href="#十七、ansible系列命令" class="headerlink" title="十七、ansible系列命令"></a><code>十七、ansible系列命令</code></h2><ul>
-<li><code>Ansible系列命令</code>  <ul>
+<li><p><code>Ansible系列命令</code>  </p>
+<ul>
 <li>ansible ansible-doc &ensp;&ensp; ansible-playbook    </li>
 <li>ansible-vault &ensp;&ensp;    ansible-console&ensp;&ensp;   ansible-galaxy   &ensp;&ensp;ansible-pull  </li>
 <li>ansible-doc: 显示模块帮助  </li>
 </ul>
 </li>
+<li><p>ansible通过ssh实现配置管理、应用部署、任务执行等功能，建议配置ansible 端能基于密钥认证的方式联系各被管理节点 </p>
+</li>
+<li>ansible <host-pattern> [-m module_name] [-a args]  <ul>
+<li>–version  显示版本         </li>
+<li>-m module   指定模块，默认为command  </li>
+<li>-v 详细过程 –vv  </li>
+<li>-vvv更详细  </li>
+<li>–list-hosts  显示主机列表，可简写 –list          </li>
+<li>-k, –ask-pass      提示输入ssh连接密码，默认Key验证  </li>
+<li>-K, –ask-become-pass  提示输入sudo时的口令          </li>
+<li>-C, –check   检查，并不执行          </li>
+<li>-T, –timeout=TIMEOUT 执行命令的超时时间，默认10s  </li>
+<li>-u, –user=REMOTE_USER 执行远程执行的用户  </li>
+<li>-b, –become  代替旧版的sudo 切换 </li>
+</ul>
+</host-pattern></li>
 </ul>
 <hr>
 <ul>
@@ -1421,7 +1438,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">804k</span>
+    <span title="站点总字数">805k</span>
   
 
   
