@@ -195,7 +195,17 @@
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/48.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/49.png">
 <meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/50.png">
-<meta property="og:updated_time" content="2019-03-16T10:41:27.527Z">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/51.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/52.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/53.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/54.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/55.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/56.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/57.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/58.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/53.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/12/jenkins安装介绍及简单job实现/59.png">
+<meta property="og:updated_time" content="2019-03-17T03:22:30.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins安装介绍及简单job实现">
 <meta name="twitter:description" content="jenkins安装介绍及简单job实现">
@@ -622,7 +632,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.9k</span>
+                <span title="本文字数">6.2k</span>
               
 
               
@@ -636,7 +646,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -758,7 +768,24 @@
 <li>可以将jenkins从gitlab拉取下来的代码拷贝到后端的web服务器上</li>
 </ul>
 <p>1：实现jenkins和后端的web服务器实现免密钥登陆<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">jenkins服务器</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># ssh-copy-id tomcat@TomcatA_IP</span></span><br><span class="line">    ~]<span class="comment"># ssh-copy-id tomcat@TomcatB_IP</span></span><br><span class="line"></span><br><span class="line">链接测试</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># ssh tomcat@TomcatA/B_IP</span></span><br><span class="line"></span><br><span class="line">执行命令测试</span><br><span class="line"></span><br><span class="line">    ~]<span class="comment"># ssh tomcat@172.20.101.221 "pwd"</span></span><br><span class="line">    /home/tomcat</span><br></pre></td></tr></table></figure></p>
-<p>2：使用jenkins实现代码拷贝到后端的web服务器<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/50.png" alt=""></p>
+<p>2：使用jenkins实现代码拷贝到后端的web服务器</p>
+<ul>
+<li>解释</li>
+</ul>
+<p><img src="/2019/03/12/jenkins安装介绍及简单job实现/50.png" alt=""></p>
+<ul>
+<li>演示</li>
+</ul>
+<p><img src="/2019/03/12/jenkins安装介绍及简单job实现/51.png" alt=""></p>
+<p>3：查看执行的控制台<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/52.png" alt=""></p>
+<p>4：客户端访问VIP调度后端的tomcat WEB服务器查看wab页面是否已经发生修改<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/53.png" alt=""></p>
+<h2 id="九、完整的代码变更演示"><a href="#九、完整的代码变更演示" class="headerlink" title="九、完整的代码变更演示"></a>九、完整的代码变更演示</h2><p>1：jenkins从gitlab上拖取项目并对代码进行修改<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/54.png" alt=""><br><img src="/2019/03/12/jenkins安装介绍及简单job实现/55.png" alt=""></p>
+<p>2：jenkins将修改完成的代码上传至gitlab服务器<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/56.png" alt=""></p>
+<p>3：jenkins立即构建工程<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/57.png" alt=""><br><img src="/2019/03/12/jenkins安装介绍及简单job实现/58.png" alt=""></p>
+<p>4：验证tomcat WEB页面是否发生变更<br><img src="/2019/03/12/jenkins安装介绍及简单job实现/53.png" alt=""></p>
+<hr>
+<h3 id="jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）"><a href="#jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）" class="headerlink" title="jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）"></a>jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）</h3><p><img src="/2019/03/12/jenkins安装介绍及简单job实现/59.png" alt=""></p>
+<hr>
 
       
     </div>
@@ -1165,7 +1192,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jenkins安装介绍及简单job实现"><span class="nav-number">1.</span> <span class="nav-text">jenkins安装介绍及简单job实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Jenkins部署与基础配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、Jenkins部署与基础配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建jenkins账号"><span class="nav-number">1.2.</span> <span class="nav-text">二、创建jenkins账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、jenkins插件管理及安装"><span class="nav-number">1.3.</span> <span class="nav-text">三、jenkins插件管理及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、账号认证授权"><span class="nav-number">1.4.</span> <span class="nav-text">四、账号认证授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、jenkins配置邮箱通知系统"><span class="nav-number">1.5.</span> <span class="nav-text">五、jenkins配置邮箱通知系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、测试jenkins拉代码-代码克隆"><span class="nav-number">1.6.</span> <span class="nav-text">六、测试jenkins拉代码(代码克隆)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、代码克隆"><span class="nav-number">1.7.</span> <span class="nav-text">七、代码克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码克隆–shell命令"><span class="nav-number">1.7.1.</span> <span class="nav-text">代码克隆–shell命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、jenkins将代码部署至后端WEB服务器"><span class="nav-number">1.8.</span> <span class="nav-text">八、jenkins将代码部署至后端WEB服务器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jenkins安装介绍及简单job实现"><span class="nav-number">1.</span> <span class="nav-text">jenkins安装介绍及简单job实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Jenkins部署与基础配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、Jenkins部署与基础配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建jenkins账号"><span class="nav-number">1.2.</span> <span class="nav-text">二、创建jenkins账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、jenkins插件管理及安装"><span class="nav-number">1.3.</span> <span class="nav-text">三、jenkins插件管理及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、账号认证授权"><span class="nav-number">1.4.</span> <span class="nav-text">四、账号认证授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、jenkins配置邮箱通知系统"><span class="nav-number">1.5.</span> <span class="nav-text">五、jenkins配置邮箱通知系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、测试jenkins拉代码-代码克隆"><span class="nav-number">1.6.</span> <span class="nav-text">六、测试jenkins拉代码(代码克隆)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、代码克隆"><span class="nav-number">1.7.</span> <span class="nav-text">七、代码克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码克隆–shell命令"><span class="nav-number">1.7.1.</span> <span class="nav-text">代码克隆–shell命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、jenkins将代码部署至后端WEB服务器"><span class="nav-number">1.8.</span> <span class="nav-text">八、jenkins将代码部署至后端WEB服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、完整的代码变更演示"><span class="nav-number">1.9.</span> <span class="nav-text">九、完整的代码变更演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）"><span class="nav-number">1.9.1.</span> <span class="nav-text">jenkins发布时将tomcat停止，变更页面后在启动tomcat（仅用于演示，如果是生产中要先从负载上摘除）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1210,7 +1237,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">12:11</span>
+    <span title="站点阅读时长">12:12</span>
   
 </div>
 
