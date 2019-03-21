@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "Infinity"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="ansible-galaxy剧本">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible-galaxy剧本">
+<meta property="og:url" content="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/index.html">
+<meta property="og:site_name" content="Dai zhe&#39;s notes">
+<meta property="og:description" content="ansible-galaxy剧本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/标题.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/1.png">
+<meta property="og:image" content="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/2.png">
+<meta property="og:updated_time" content="2019-03-21T09:35:40.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ansible-galaxy剧本">
+<meta name="twitter:description" content="ansible-galaxy剧本">
+<meta name="twitter:image" content="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/标题.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Dai zhe's notes" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ansible-galaxy剧本 | Dai zhe's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dai zhe's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just Du It</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-card"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">97</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-相册">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单&music">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/shudan/" rel="section"><i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br>书单&music</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    <a href="https://github.com/Dz6666" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+      </a>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daizhe.net.cn/2019/03/21/ansible-galaxy剧本/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哆啦A梦">
+      <meta itemprop="description" content="More than that">
+      <meta itemprop="image" content="/images/haha.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dai zhe's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ansible-galaxy剧本
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+                  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-21 17:18:30" itemprop="dateCreated datePublished" datetime="2019-03-21T17:18:30+08:00">2019-03-21</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ansible/" itemprop="url" rel="index"><span itemprop="name">ansible</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/21/ansible-galaxy剧本/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/21/ansible-galaxy剧本/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">8 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ansible-galaxy剧本"><a href="#ansible-galaxy剧本" class="headerlink" title="ansible-galaxy剧本"></a>ansible-galaxy剧本</h1><p><img src="/2019/03/21/ansible-galaxy剧本/标题.png" alt=""><br><a id="more"></a></p>
+<h2 id="一、ansible-galaxy"><a href="#一、ansible-galaxy" class="headerlink" title="一、ansible-galaxy"></a><code>一、ansible-galaxy</code></h2><ul>
+<li>连接 <a href="https://galaxy.ansible.com" target="_blank" rel="noopener">https://galaxy.ansible.com</a> 下载相应的roles </li>
+<li><p>列出所有已安装的galaxy  </p>
+<ul>
+<li>ansible-galaxy list </li>
+</ul>
+</li>
+<li><p>安装galaxy  </p>
+<ul>
+<li>ansible-galaxy install geerlingguy.redis </li>
+</ul>
+</li>
+<li>删除galaxy  <ul>
+<li>ansible-galaxy remove geerlingguy.redis </li>
+</ul>
+</li>
+</ul>
+<h3 id="ansible-pull"><a href="#ansible-pull" class="headerlink" title="ansible-pull"></a><code>ansible-pull</code></h3><ul>
+<li>推送命令至远程，效率无限提升，对运维要求较高</li>
+</ul>
+<h2 id="二、playbook"><a href="#二、playbook" class="headerlink" title="二、playbook"></a><code>二、playbook</code></h2><p>playbook是由一个或多个“play”组成的列表</p>
+<p>play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task 定义好的角色。从根本上来讲，所谓task无非是调用ansible的一个module。 将多个play组织在一个playbook中，即可以让它们联同起来按事先编排的机制 同唱一台大戏 </p>
+<p>Playbook采用YAML语言编写<br><img src="/2019/03/21/ansible-galaxy剧本/1.png" alt=""></p>
+<h2 id="三、YAML介绍"><a href="#三、YAML介绍" class="headerlink" title="三、YAML介绍"></a><code>三、YAML介绍</code></h2><ul>
+<li>YAML是一个可读性高的用来表达资料序列的格式。YAML参考了其他多种语言，包括：XML、 C语言、Python、Perl以及电子邮件格式RFC2822等。Clark Evans在2001年在首次发表了这种 语言，另外Ingy döt Net与Oren Ben-Kiki也是这语言的共同设计者 </li>
+<li>YAML Ain’t Markup Language，即YAML不是XML。不过，在开发的这种语言时，YAML的意 思其实是：”Yet Another Markup Language”（仍是一种标记语言） </li>
+<li>特性  <ul>
+<li>YAML的可读性好  </li>
+<li>YAML和脚本语言的交互性好  </li>
+<li>YAML使用实现语言的数据类型  </li>
+<li>YAML有一个一致的信息模型  </li>
+<li>YAML易于实现  </li>
+<li>YAML可以基于流来处理  </li>
+<li>YAML表达能力强，扩展性好 </li>
+<li>更多的内容及规范参见<a href="http://www.yaml.org" target="_blank" rel="noopener">http://www.yaml.org</a> </li>
+</ul>
+</li>
+</ul>
+<h2 id="四、YAML语法简介"><a href="#四、YAML语法简介" class="headerlink" title="四、YAML语法简介"></a>四、YAML语法简介</h2><ul>
+<li>在单一档案中，可用连续三个连字号(——)区分多个档案。另外，还有选择性的连续三 个点号( … )用来表示档案结尾 </li>
+<li>次行开始正常写Playbook的内容，一般建议写明该Playbook的功能 </li>
+<li>使用#号注释代码 </li>
+<li>缩进必须是统一的，不能空格和tab混用 </li>
+<li>缩进的级别也必须是一致的，同样的缩进代表同样的级别，程序判别配置的级别是通过 缩进结合换行来实现的 </li>
+<li>YAML文件内容是区别大小写的，k/v的值均需大小写敏感 </li>
+<li>k/v的值可同行写也可换行写。同行使用:分隔 </li>
+<li>v可是个字符串，也可是另一个列表 </li>
+<li>一个完整的代码块功能需最少元素需包括 name: task </li>
+<li>一个name只能包括一个task </li>
+<li>YAML文件扩展名通常为yml或yaml </li>
+</ul>
+<h2 id="五、YAML语法简介"><a href="#五、YAML语法简介" class="headerlink" title="五、YAML语法简介"></a><code>五、YAML语法简介</code></h2><ul>
+<li><p><code>List：列表，其所有元素均使用“-”打头</code></p>
+</li>
+<li><p><code>Dictionary：字典，通常由多个key与value构成</code> </p>
+</li>
+</ul>
+<h2 id="六、YAML语法"><a href="#六、YAML语法" class="headerlink" title="六、YAML语法"></a><code>六、YAML语法</code></h2><ul>
+<li>YAML的语法和其他高阶语言类似，并且可以简单表达清单、散列表、标量等数据结构。其结构 （Structure）通过空格来展示，序列（Sequence）里的项用”-“来代表，Map里的键值对用”:”分隔 </li>
+</ul>
+<h2 id="七、Playbook核心元素"><a href="#七、Playbook核心元素" class="headerlink" title="七、Playbook核心元素"></a><code>七、Playbook核心元素</code></h2><ul>
+<li>Hosts   执行的远程主机列表 </li>
+<li>Tasks   任务集 </li>
+<li>Varniables 内置变量或自定义变量在playbook中调用 </li>
+<li>Templates  模板，可替换模板文件中的变量并实现一些简单逻辑的文件 </li>
+<li>Handlers  和notity结合使用，由特定条件触发的操作，满足条件方才执行，否 则不执行 </li>
+<li>tags 标签  指定某条任务执行，用于选择运行playbook中的部分代码。ansible 具有幂等性，因此会自动跳过没有变化的部分，即便如此，有些代码为测试其 确实没有发生变化的时间依然会非常地长。此时，如果确信其没有变化，就可 以通过tags跳过此些代码片断  </li>
+</ul>
+<p>ansible-playbook –t tagsname useradd.yml </p>
+<h2 id="八、playbook基础组件"><a href="#八、playbook基础组件" class="headerlink" title="八、playbook基础组件"></a><code>八、playbook基础组件</code></h2><ul>
+<li><code>Hosts：</code><ul>
+<li>playbook中的每一个play的目的都是为了让某个或某些主机以某个指定的用 户身份执行任务。hosts用于指定要执行指定任务的主机，须事先定义在主机 清单中 </li>
+</ul>
+</li>
+<li><p>可以是如下形式： </p>
+<ul>
+<li>one.example.com </li>
+<li>one.example.com:two.example.com </li>
+<li>192.168.1.50 192.168.1.* </li>
+<li>Websrvs:dbsrvs     两个组的并集 </li>
+<li>Websrvs:&amp;dbsrvs    两个组的交集 </li>
+<li>webservers:!phoenix  在websrvs组，但不在dbsrvs组       </li>
+<li>示例: - hosts: websrvs：dbsrvs </li>
+</ul>
+</li>
+<li><p><code>remote_user:</code>可用于Host和task中。也可以通过指定其通过sudo的方式在远 程主机上执行任务，其可用于play全局或某任务；此外，甚至可以在sudo时使 用sudo_user指定sudo时切换的用户 </p>
+</li>
+<li><code>- hosts: websrvs</code><ul>
+<li>remote_user: root   </li>
+</ul>
+</li>
+<li><p>tasks:    </p>
+<ul>
+<li><code>- name: test connection</code>    </li>
+<li>ping:      </li>
+<li>remote_user: magedu      </li>
+<li>sudo: yes     默认sudo为root      </li>
+<li>sudo_user:wang    sudo为wang</li>
+</ul>
+</li>
+<li><p><code>task列表和action</code> </p>
+</li>
+<li>play的主体部分是task list。task list中的各任务按次序逐个在hosts中指定 的所有主机上执行，即在所有主机上完成第一个任务后，再开始第二个任务 </li>
+<li>task的目的是使用指定的参数执行模块，而在模块参数中可以使用变量。模 块执行是幂等的，这意味着多次执行是安全的，因为其结果均一致 </li>
+<li><p>每个task都应该有其name，用于playbook的执行结果输出，建议其内容尽 可能清晰地描述任务执行步骤。如果未提供name，则action的结果将用于 输出 </p>
+</li>
+<li><p><code>tasks：任务列表</code> </p>
+</li>
+<li>格式：<ul>
+<li>(1) action: module arguments      </li>
+<li>(2) module: arguments      建议使用 </li>
+<li>注意：shell和command模块后面跟命令，而非key=value </li>
+</ul>
+</li>
+<li>某任务的状态在运行后为changed时，可通过“notify”通知给相应的 handlers </li>
+<li>任务可以通过”tags“打标签，而后可在ansible-playbook命令上使用-t指定进 行调用     </li>
+<li>示例：        <ul>
+<li>tasks:  <ul>
+<li><code>- name: disable selinux</code>  </li>
+<li><code>command: /sbin/setenforce 0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果命令或脚本的退出码不为零，可以使用如下方式替代          <ul>
+<li>tasks:    <ul>
+<li><code>- name: run this command and ignore the result</code>   </li>
+<li><code>shell: /usr/bin/somecommand || /bin/true</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>或者使用ignore_errors来忽略错误信息：          </p>
+<ul>
+<li>tasks:    <ul>
+<li><code>- name: run this command and ignore the result</code>    </li>
+<li><code>shell: /usr/bin/somecommand</code>   </li>
+<li>ignore_errors: True </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>运行playbook的方式</code>  </p>
+<ul>
+<li>ansible-playbook &lt;filename.yml&gt; … [options] </li>
+</ul>
+</li>
+<li>常见选项  </li>
+<li>–check 只检测可能会发生的改变，但不真正执行操作  -C</li>
+<li>–list-hosts 列出运行任务的主机  </li>
+<li>–limit 主机列表 只针对主机列表中的主机执行  </li>
+<li><p>-v 显示过程  -vv  -vvv 更详细 </p>
+</li>
+<li><p>示例  </p>
+<ul>
+<li>ansible-playbook  file.yml  –check 只检测  </li>
+<li>ansible-playbook  file.yml    </li>
+<li>ansible-playbook  file.yml  –limit websrvs</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/03/21/ansible-galaxy剧本/2.png" alt=""></p>
+<hr>
+<p>范例：写一个简单的playbook<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[root@ansible data]<span class="comment"># vim test.yml</span></span><br><span class="line">---</span><br><span class="line">- hosts: websrvs   （应用主机）</span><br><span class="line">  remote_user: root (在远程主机执行任务以谁的身份)</span><br><span class="line"></span><br><span class="line">  tasks:            (任务列表)     </span><br><span class="line">  - name: diyi     （任务名称，多个任务，多个任务名）</span><br><span class="line">    ping:          （模块）</span><br><span class="line">  - name: dier</span><br><span class="line">    shell: /bin/ls /data/</span><br><span class="line"></span><br><span class="line">执行之前，检查是否有错误语法，仅是测试并不是真正去执行</span><br><span class="line">[root@ansible data]<span class="comment"># ansible-playbook --check </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看这个playbook执行会对哪个主机进行操作</span><br><span class="line">[root@ansible data]<span class="comment"># ansible-playbook test.yml --list-hosts</span></span><br><span class="line">playbook: test.yml</span><br><span class="line">  play <span class="comment">#1 (appsrvs): appsrvs	TAGS: []</span></span><br><span class="line">    pattern: [u<span class="string">'appsrvs'</span>]</span><br><span class="line">    hosts (2):</span><br><span class="line">      192.168.131.187</span><br><span class="line">      192.168.131.188</span><br><span class="line"></span><br><span class="line">查看这个playbook执行任务的列表</span><br><span class="line">[root@ansible data]<span class="comment"># ansible-playbook test.yml --list-tasks</span></span><br><span class="line">playbook: test.yml</span><br><span class="line">  play <span class="comment">#1 (appsrvs): appsrvs	TAGS: []</span></span><br><span class="line">    tasks:</span><br><span class="line">      diyi	TAGS: []</span><br><span class="line">      dier	TAGS: []</span><br></pre></td></tr></table></figure></p>
+<p><code>范例：使用playbook 实现在被控制端，安装http包，将本机的http配置文件范例复制到被控制端，并且将被控制端的服务，启动起来，设置为开机启动</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">第一步：</span><br><span class="line">创建apache用户，指定组-g apache，指定uid -u 80,指定shell类型-s /sbin/nologin ,指定家目录-d /usr/share/httpd ,系统账户-r</span><br><span class="line">第二步：</span><br><span class="line">安装软件包</span><br><span class="line">第三步：</span><br><span class="line">将控制端修改好的配置文件scp到被控制端的服务的主配置文件中，最为服务已经特定配置好再进行的安装</span><br><span class="line"></span><br><span class="line">第四步：重启服务，设置为开机启动项</span><br><span class="line"></span><br><span class="line">给apache系统用户设置一个安全的密码</span><br><span class="line">[root@ansible ~]<span class="comment"># openssl passwd -1</span></span><br><span class="line">Password: </span><br><span class="line">Verifying - Password: </span><br><span class="line"><span class="variable">$1</span><span class="variable">$uJM71bTc</span><span class="variable">$9yyqQzIm</span>/5PZBrHKTpSHu0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">准备好控制端需要http服务的配置文件</span><br><span class="line">[root@ansible playbook]<span class="comment"># ls</span></span><br><span class="line">httpd.conf   修改配置文件，修改端口号8080</span><br><span class="line"></span><br><span class="line">编写playbook</span><br><span class="line">[root@ansible playbook]<span class="comment"># vim httpd.yml</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">- hosts: 192.168.131.187</span><br><span class="line">  remote_user: root</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: create group</span><br><span class="line">      group: name=apache system=yes gid=80</span><br><span class="line">    - name: create user</span><br><span class="line">      user: name=apache group=apache uid=80 shell=/sbin/nologin home=/usr/sh</span><br><span class="line">are/httpd system=yes password=<span class="string">'$1$uJM71bTc$9yyqQzIm/5PZBrHKTpSHu0'</span></span><br><span class="line">    - name: install package</span><br><span class="line">      yum: name=httpd</span><br><span class="line">    - name: config file</span><br><span class="line">      copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes</span><br><span class="line">    - name: server httpd</span><br><span class="line">      service: name=httpd state=started enabled=yes</span><br><span class="line"></span><br><span class="line">执行前测试</span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook -C httpd.yml </span></span><br><span class="line"></span><br><span class="line">检查无误则执行此脚本</span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook httpd.yml </span></span><br><span class="line"></span><br><span class="line">查看是否成功</span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible 192.168.131.187 -a 'ss -ntl'</span></span><br><span class="line">LISTEN     0      128                      :::8080                    :::*     </span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible 192.168.131.187 -a 'getent passwd apache'</span></span><br><span class="line">192.168.131.187 | SUCCESS | rc=0 &gt;&gt;</span><br><span class="line">apache:x:80:80::/usr/share/httpd:/sbin/nologin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">如果文件中有一项修改了，想再次执行此playbook ，使得服务设置发生变化,这里原有内容不被修改，</span><br><span class="line">方法1</span><br><span class="line">可以将重启服务的时候将started 设置为restarted</span><br><span class="line">方法2 handlers 和notify（幂等性不做重复操作）</span><br><span class="line">触发动作：如果此项发生修改则触发此操作，如果此项未发生变化，则不触发此操作（上述实验：如果修改控制端发给被控制端的配置文件端口号发生变化，则要重新拷贝配置文件到被控制端，命为发生修改，触发动作）切记触发任务notify 和 触发的操作handlers 名字要一样，因为可能出现多个触发任务</span><br><span class="line"></span><br><span class="line">[root@ansible playbook]<span class="comment"># vim httpd.yml </span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">- hosts: 192.168.131.187</span><br><span class="line">  remote_user: root</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: create group</span><br><span class="line">      group: name=apache system=yes gid=80</span><br><span class="line">    - name: create user</span><br><span class="line">      user: name=apache group=apache uid=80 shell=/sbin/nologin home=/usr/share/httpd system=yes password=<span class="string">'$1$uJM71bTc$9yyqQzIm/5PZBrHKTpSHu0'</span></span><br><span class="line">    - name: install package</span><br><span class="line">      yum: name=httpd</span><br><span class="line">    - name: config file</span><br><span class="line">      copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes</span><br><span class="line">      notify: restart service httpd</span><br><span class="line">    - name: server httpd</span><br><span class="line">      service: name=httpd state=started enabled=yes</span><br><span class="line"></span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart service httpd</span><br><span class="line">      service: name=httpd state=restarted</span><br><span class="line">测试:将控制端发给被控制端的服务配置文件发射管修改 Listen 80808</span><br><span class="line"></span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook -C httpd.yml </span></span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook httpd.yml </span></span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible 192.168.131.187 -a 'ss -tnlp'</span></span><br><span class="line">LISTEN     0      128                      :::9527   </span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>范例：触发两个动作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@ansible playbook]# cat httpd.yml </span><br><span class="line">---</span><br><span class="line">- hosts: 192.168.131.187</span><br><span class="line">  remote_user: root</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: create group</span><br><span class="line">      group: name=apache system=yes gid=80</span><br><span class="line">    - name: create user</span><br><span class="line">      user: name=apache group=apache uid=80 shell=/sbin/nologin home=/usr/share/httpd system=yes password=&apos;$1$uJM71bTc$9yyqQzIm/5PZBrHKTpSHu0&apos;</span><br><span class="line">    - name: install package</span><br><span class="line">      yum: name=httpd </span><br><span class="line">    - name: config file</span><br><span class="line">      copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes</span><br><span class="line">      notify: </span><br><span class="line">        - restart service</span><br><span class="line">        - check httpd</span><br><span class="line">    - name: server httpd</span><br><span class="line">      service: name=httpd state=started enabled=yes</span><br><span class="line"></span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart service</span><br><span class="line">      service: name=httpd state=restarted</span><br><span class="line">    - name: check httpd</span><br><span class="line">      shell: /usr/bin/killall -0 httpd &amp;&gt; /dev/null</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>范例：Playbook中tags使用 `<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">用处：可以挑选性的执行playbook中的操作</span><br><span class="line">[root@ansible playbook]<span class="comment"># vim httpd.yml </span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">- hosts: 192.168.131.187</span><br><span class="line">  remote_user: root</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: create group</span><br><span class="line">      group: name=apache system=yes gid=80</span><br><span class="line">    - name: create user</span><br><span class="line">      user: name=apache group=apache uid=80 shell=/sbin/nologin home=/usr/share/httpd system=yes password=<span class="string">'$1$uJM71bTc$9yyqQzIm/5PZBrHKTpSHu0'</span></span><br><span class="line">    - name: install package</span><br><span class="line">      yum: name=httpd</span><br><span class="line">    - name: config file</span><br><span class="line">      copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes</span><br><span class="line">      tags: config</span><br><span class="line">      notify:</span><br><span class="line">        - restart service</span><br><span class="line">        - check httpd</span><br><span class="line">    - name: server httpd</span><br><span class="line">      tags: server</span><br><span class="line">      service: name=httpd state=started enabled=yes</span><br><span class="line"></span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart service</span><br><span class="line">      service: name=httpd state=restarted</span><br><span class="line">    - name: check httpd</span><br><span class="line">      shell: /usr/bin/killall -0 httpd &amp;&gt; /dev/null</span><br><span class="line"></span><br><span class="line">仅执行特定标签</span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook -t config httpd.yml </span></span><br><span class="line"></span><br><span class="line">也可以将一个标签代表连个操作，或者一个动作多个标签，</span><br><span class="line">执行两个标签</span><br><span class="line">[root@ansible playbook]<span class="comment"># ansible-playbook -t "config,server" httpd.yml</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+  
+      <div>
+    
+        <div style="text-align:center;color: #FF0000;font-size:16px;">-------------------码字不易<i class="fa fa-heart"></i>尊重原创<i class="fa fa-heart"></i>转载标注<i class="fa fa-heart"></i>不胜感激-------------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+      
+</div>
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Yes or no？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="哆啦A梦 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="哆啦A梦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ansible/" rel="tag"># ansible</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/shell脚本编程基础/" rel="next" title="shell脚本编程基础">
+                <i class="fa fa-chevron-left"></i> shell脚本编程基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/haha.gif" alt="哆啦A梦">
+            
+              <p class="site-author-name" itemprop="name">哆啦A梦</p>
+              <p class="site-description motion-element" itemprop="description">More than that</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" title="Weibo &rarr; https://weibo.com/5645211828/profile?rightmod=1&wvr=6&mod=personinfo" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://music.163.com/#/user/home?id=1301458825" title="CloudMusic &rarr; https://music.163.com/#/user/home?id=1301458825" rel="noopener" target="_blank"><i class="fa fa-fw fa-music"></i>CloudMusic</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ansible-galaxy剧本"><span class="nav-number">1.</span> <span class="nav-text">ansible-galaxy剧本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、ansible-galaxy"><span class="nav-number">1.1.</span> <span class="nav-text">一、ansible-galaxy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-pull"><span class="nav-number">1.1.1.</span> <span class="nav-text">ansible-pull</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、playbook"><span class="nav-number">1.2.</span> <span class="nav-text">二、playbook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、YAML介绍"><span class="nav-number">1.3.</span> <span class="nav-text">三、YAML介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、YAML语法简介"><span class="nav-number">1.4.</span> <span class="nav-text">四、YAML语法简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、YAML语法简介"><span class="nav-number">1.5.</span> <span class="nav-text">五、YAML语法简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、YAML语法"><span class="nav-number">1.6.</span> <span class="nav-text">六、YAML语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、Playbook核心元素"><span class="nav-number">1.7.</span> <span class="nav-text">七、Playbook核心元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、playbook基础组件"><span class="nav-number">1.8.</span> <span class="nav-text">八、playbook基础组件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-child"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">哆啦A梦</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">828k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">12:33</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<center>
+                <font size="4" color="#FF0000">哆啦A梦已经奔跑:<span id="run_time" style="color:#DB70DB"></span></font>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("December 01,2017");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    str = yearsold + "年";
+                    str += daysold-365 + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="255,0,0" opacity="1" zindex="-1" count="230" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'dSJsYJFvGkHjdapdMEMXCnfL-gzGzoHsz',
+        appKey: 'yOLhPLlsxYBFYhhzjWECUdsf',
+        placeholder: '来了老弟！！！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
